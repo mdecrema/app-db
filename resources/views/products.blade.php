@@ -1,5 +1,10 @@
 @extends('layouts.app')
 
+
+@section('page-title')
+@endsection
+
+
 @section('content')
 
 <h4>PRODOTTI</h4>

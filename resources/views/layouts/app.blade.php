@@ -44,6 +44,11 @@
 
                     <!-- Right Side Of Navbar -->
                     <ul class="navbar-nav ml-auto" style="height: 70px; line-height: 70px; z-index: 5">
+                        <li><a class="nav-link" href="{{ route('products') }}">Tees</a></li>
+                        <li><a class="nav-link" href="{{ route('products') }}">Hoodies</a></li>
+                        <li><a class="nav-link" href="{{ route('products') }}">Pants</a></li>
+                        <li><a class="nav-link" href="{{ route('products') }}">Boots</a></li>
+                        <li><a class="nav-link" href="{{ route('products') }}">News</a></li>
                         <!-- Authentication Links -->
                         @guest
                             <li class="nav-item">
@@ -73,11 +78,7 @@
                                 </div>
                             </li>
                         @endguest
-                        <li><a href="{{ route('products') }}">Tees</a></li>
-                        <li><a href="{{ route('products') }}">Hoodies</a></li>
-                        <li><a href="{{ route('products') }}">Pants</a></li>
-                        <li><a href="{{ route('products') }}">Boots</a></li>
-                        <li><a href="{{ route('products') }}">News</a></li>
+                    
                         <!--<li class="nav-item" style="line-height: 70px; font-size: 18px"><i class="fas fa-shopping-cart"></i></li>
                         <li class="nav-item"><i class="fas fa-bars"></i></li>-->
                     </ul>
@@ -85,7 +86,7 @@
             </div>
         </nav>
 
-        <main class="py-4">
+        <main class="py-4" style="z-index:3">
             @yield('content')
         </main>
     </div>
