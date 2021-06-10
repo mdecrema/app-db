@@ -33,7 +33,7 @@
                     Red dot
                 </a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
-                    <span class="navbar-toggler-icon"></span>
+                    <span class=""><i class="fas fa-bars"></i></span>
                 </button>
 
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
@@ -43,25 +43,25 @@
                     </ul>
 
                     <!-- Right Side Of Navbar -->
-                    <ul  style="height: 70px;">
+                    <ul class="navbar-nav ml-auto" style="height: 70px; line-height: 70px; z-index: 5">
                         <!-- Authentication Links -->
                         @guest
-                            <li class="menu-fields">
-                                <a  href="{{ route('login') }}">{{ __('Login') }}</a>
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
                             </li>
                             @if (Route::has('register'))
-                                <li class="menu-fields">
-                                    <a  href="{{ route('register') }}">{{ __('Register') }}</a>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
                                 </li>
                             @endif
                         @else
-                            <li class="menu-fields">
-                                <a  href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                            <li class="nav-item dropdown">
+                                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                     {{ Auth::user()->name }}
                                 </a>
 
-                                <div >
-                                    <a  href="{{ route('logout') }}"
+                                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                                    <a class="dropdown-item" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
                                         {{ __('Logout') }}
@@ -73,8 +73,11 @@
                                 </div>
                             </li>
                         @endguest
-                        <li class="menu-fields"><a href="{{ route('products') }}">Products</a></li>
-                        <li class="menu-fields"><i class="fas fa-bars"></i></li>
+                        <li><a href="{{ route('products') }}">Tees</a></li>
+                        <li><a href="{{ route('products') }}">Hoodies</a></li>
+                        <li><a href="{{ route('products') }}">Pants</a></li>
+                        <li><a href="{{ route('products') }}">Boots</a></li>
+                        <li><a href="{{ route('products') }}">News</a></li>
                         <!--<li class="nav-item" style="line-height: 70px; font-size: 18px"><i class="fas fa-shopping-cart"></i></li>
                         <li class="nav-item"><i class="fas fa-bars"></i></li>-->
                     </ul>

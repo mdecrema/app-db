@@ -10949,3 +10949,17 @@ a.text-dark:focus {
   line-height: 70px;
 }
 
+.nav-item {
+  z-index: 5;
+}
+
+.navbar-collapse {
+  height: 550px;
+  position: absolute;
+  top: 70px;
+  left: 0;
+  background-color: #fff;
+  width: 100%;
+  padding: 0 20px;
+}
+
