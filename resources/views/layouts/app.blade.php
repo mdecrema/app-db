@@ -43,25 +43,25 @@
                     </ul>
 
                     <!-- Right Side Of Navbar -->
-                    <ul class="navbar-nav ml-auto" style="height: 70px; line-height: 70px">
+                    <ul  style="height: 70px;">
                         <!-- Authentication Links -->
                         @guest
-                            <li class="nav-item">
-                                <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
+                            <li class="menu-fields">
+                                <a  href="{{ route('login') }}">{{ __('Login') }}</a>
                             </li>
                             @if (Route::has('register'))
-                                <li class="nav-item">
-                                    <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
+                                <li class="menu-fields">
+                                    <a  href="{{ route('register') }}">{{ __('Register') }}</a>
                                 </li>
                             @endif
                         @else
-                            <li class="nav-item dropdown">
-                                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                            <li class="menu-fields">
+                                <a  href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                     {{ Auth::user()->name }}
                                 </a>
 
-                                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                                    <a class="dropdown-item" href="{{ route('logout') }}"
+                                <div >
+                                    <a  href="{{ route('logout') }}"
                                        onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
                                         {{ __('Logout') }}
@@ -73,8 +73,8 @@
                                 </div>
                             </li>
                         @endguest
-                        <li><a href="{{ route('products') }}">Products</a></li>
-                        <li>...</li>
+                        <li class="menu-fields"><a href="{{ route('products') }}">Products</a></li>
+                        <li class="menu-fields"><i class="fas fa-bars"></i></li>
                         <!--<li class="nav-item" style="line-height: 70px; font-size: 18px"><i class="fas fa-shopping-cart"></i></li>
                         <li class="nav-item"><i class="fas fa-bars"></i></li>-->
                     </ul>
