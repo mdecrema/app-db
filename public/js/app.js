@@ -37345,6 +37345,8 @@ module.exports = function(module) {
 
 __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
 
+document.getElementById('navbarSupportedContent').collapse();
+
 /***/ }),
 
 /***/ "./resources/js/bootstrap.js":
