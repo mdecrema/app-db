@@ -89,4 +89,13 @@ class AdminController extends Controller
     {
         //
     }
+
+    public function deleteAll()
+    {
+        Product::truncate();
+
+        return redirect()->route("admin.dashboard");
+    }
+
+
 }

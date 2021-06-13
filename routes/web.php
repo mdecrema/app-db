@@ -39,6 +39,8 @@ Route::prefix('admin')->name('admin.')->middleware('auth')->group(function () {
     Route::get('/dashboard/products/create', 'ProductController@create')->name('products.create');
     // Product Store
     Route::post('/dashboard/products/create', 'ProductController@store')->name('products.store');
+
+    Route::delete('dashboard/products/deleteAll', 'AdminController@deleteAll')->name('deleteAll');
     // Product Show
     //Route::get('/new/product/show/{id}', 'ProductController@show')->name('product.show');
     // Product Update
