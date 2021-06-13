@@ -12,9 +12,11 @@
 <div class="row">
 <div class="col-lg-10 offset-lg-1">
 @foreach($products as $product)
-<div class="col-lg-4" style="border: 1px solid blue">
-<img src="{{ $product->photo1 }}" alt="">
-</div>
+<a href="products/{{$product['id']}}">
+    <div class="col-lg-4" style="border: 1px solid blue; padding: 10px; overflow: hidden;">
+        <img src="{{ $product->photo1 }}" alt="" style="width: 100%; height: 100%">
+    </div>
+</a>
 @endforeach
 </div>
 </div>
