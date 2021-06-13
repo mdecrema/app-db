@@ -5,11 +5,10 @@
 @endsection
 
 @section('content')
-<h1>CREA NUOVO PRODOTTO</h1>
 
 <div class="container">
     <div class="row">
-        <h2>Create New Product</h2>
+        <h2>CREA UN NUOVO PRODOTTO</h2>
         
         <form action="{{ route('admin.products.store') }}" method="post" enctype="multipart/form-data">
             @csrf
@@ -17,7 +16,7 @@
 
             <div class="form-group">
                 <label for="title">Titolo</label>
-                <input type="text" class="form-control" id="title" name="nome" placeholder="Titolo" value="{{old('title')}}">
+                <input type="text" class="form-control" id="title" name="nome" placeholder="Titolo" placeholder="titolo">
             </div>
 
             <div class="form-group">
@@ -51,43 +50,43 @@
             </div>
 
             <div class="form-group">
-                <label for="availability">Availabity</label>
-                <input style="width:auto" type="checkbox" class="form-control" id="availability" name="availability" value="1" >
+                <label for="availability">Disponibile</label>
+                <input style="width:auto" type="checkbox" id="availability" name="availability" value="1">
             </div>
 
             <div class="form-group">
                 <label for="title">Colore</label>
-                <input type="text" class="form-control" id="title" name="colore" placeholder="Titolo" value="{{old('title')}}">
+                <input type="text" class="form-control" id="title" name="colore" placeholder="Titolo" placeholder="colore">
             </div>
 
             <div class="form-group">
-                <label for="title">Amount</label>
-                <input type="text" class="form-control" id="title" name="amount" placeholder="Titolo" value="{{old('title')}}">
+                <label for="title">Prezzo</label>
+                <input type="text" class="form-control" id="title" name="amount" placeholder="Titolo" placeholder="€">
             </div>
 
             <div class="form-group">
                 <label for="title">categoria</label>
-                <input type="text" class="form-control" id="title" name="categoria" placeholder="Titolo" value="{{old('title')}}">
+                <input type="text" class="form-control" id="title" name="categoria" placeholder="Titolo" placeholder="categoria">
             </div>
 
             <div class="form-group">
                 <label for="title">Brand</label>
-                <input type="text" class="form-control" id="title" name="brand" placeholder="Titolo" value="{{old('title')}}">
+                <input type="text" class="form-control" id="title" name="brand" placeholder="Titolo" placeholder="brand">
             </div>
 
             <div class="form-group">
                 <label for="title">Valutazione</label>
-                <input type="text" class="form-control" id="title" name="valutazione" placeholder="Titolo" value="{{old('title')}}">
+                <input type="text" class="form-control" id="title" name="valutazione" placeholder="Titolo" placeholder="valutazione">
             </div>
 
             <div class="form-group">
                 <label for="title">Taglia</label>
-                <input type="text" class="form-control" id="title" name="taglia" placeholder="Titolo" value="{{old('title')}}">
+                <input type="text" class="form-control" id="title" name="taglia" placeholder="Titolo" placeholder="taglia">
             </div>
 
             <div class="form-group">
                 <label for="title">Genere</label>
-                <input type="text" class="form-control" id="title" name="genere" placeholder="Titolo" value="{{old('title')}}">
+                <input type="text" class="form-control" id="title" name="genere" placeholder="Titolo" placeholder="genere">
             </div>
 
             <div class="form-group">
