@@ -26,6 +26,8 @@
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Finger+Paint&display=swap" rel="stylesheet">
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
@@ -34,12 +36,12 @@
     <div id="app">
         <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
             <div class="container" style="postion: relative">
-                <a class="navbar-brand" href="{{ url('/') }}">
-                    Red dot
+                <a class="navbar-brand" href="{{ url('/') }}" style="font-size: 20px; font-family: 'Finger Paint', cursive;">
+                    <i id="dot" class="fas fa-circle" style="color: red; font-size: 15px"></i> Red dot
                 </a>
-                <button style="position: absolute; top: 30%; right: 50px; border: none; background-color: transparent">
+                <button style="position: absolute; top: 30%; right: 45px; border: none; background-color: transparent">
                     <a id="cart-icon" href="{{ route('cart') }}">
-                        <i class="fa fa-shopping-cart" aria-hidden="true" style="font-size: 16px;"></i> 
+                        <i class="fa fa-shopping-cart" aria-hidden="true" style="font-size: 16px; color: #333333"></i> 
                         @if(Cart::instance('default')->count() > 0)
                         <div class="notifica">
                             <span class="badge badge-pill badge-danger">
@@ -50,7 +52,7 @@
                     </a>
                 </button>
                 <button style="border: none; background-color: transparent" class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
-                    <span class=""><i class="fas fa-bars"></i></span>
+                    <span class=""><i class="fas fa-bars" style="color: #333333"></i></span>
                 </button>
 
                 <div class="collapse navbar-collapse" id="navbarSupportedContent" data-toggle="collapse">
