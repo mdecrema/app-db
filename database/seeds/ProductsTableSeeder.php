@@ -14,7 +14,7 @@ class ProductsTableSeeder extends Seeder
      */
     public function run(Faker $faker)
     {
-        for($i = 0; $i < 100; $i++) {
+        for($i = 0; $i < 40; $i++) {
             $newProduct = new Product;
 
             $newProduct->nome=$faker->text(30);
