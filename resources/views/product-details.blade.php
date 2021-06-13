@@ -7,8 +7,22 @@
 @section('content')
 <div class="container">
     <div class="item-view row">
-        <div class="item-picture" style="overflow: hidden">
-            <img id="" src="{{ $product->photo1 }}" alt="item pictures" /> <!-- {{ asset('storage/'.$product->photo1) }} -->
+        <div class="item-picture" style="overflow: hidden; position: relative;">
+            <img id="uno" src="{{ asset('storage/'.$product->photo1) }}" class="active first" alt="item pictures" style="width: 100%; height: 350px" /> <!-- {{ asset('storage/'.$product->photo1) }} -->
+            <img id="due" src="{{ asset('storage/'.$product->photo2) }}" alt="item pictures" style="width: 100%; height: 350px" />
+            <img id="tre" src="{{ asset('storage/'.$product->photo3) }}" alt="item pictures" style="width: 100%; height: 350px" />
+            <img id="quattro" src="{{ asset('storage/'.$product->photo4) }}" class="last" alt="item pictures" style="width: 100%; height: 350px" />
+            <!-- Arrows Left and Right -->
+            <div style="width: 40px; height: 100%; position: absolute; top: 0; left: 0">
+                <div id="arrowLeft" style="width: 40px; height: 40px; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); text-align: center">
+                    <i class="fas fa-2x fa-chevron-left"></i>
+                </div>
+            </div>
+            <div style="width: 40px; height: 100%; position: absolute; top: 0; right: 0">
+                <div id="arrowRight" style="width: 40px; height: 40px; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); text-align: center">
+                    <i class="fas fa-2x fa-chevron-right"></i>
+                </div>
+            </div>
         </div>
         <div class="item-details">
             <h3>{{$product->name}}</h3>
