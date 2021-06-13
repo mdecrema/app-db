@@ -14,7 +14,7 @@
 @foreach($products as $product)
 <a href="products/{{$product['id']}}">
     <div class="col-lg-4" style="padding: 10px; overflow: hidden;">
-        <img src="{{ $product->photo1 }}" alt="" style="width: 100%; height: 100%">
+        <img src="{{ asset('storage/'.$product->photo1) }}" alt="" style="width: 100%; height: 100%">
     </div>
 </a>
 @endforeach
