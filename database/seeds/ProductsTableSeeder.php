@@ -32,7 +32,7 @@ class ProductsTableSeeder extends Seeder
             $newProduct->amount=$faker->randomFloat($nbMaxDecimals = 2, $min = NULL, $max = 1000);
             $newProduct->availability=$faker->boolean();
             $newProduct->valutazione=$faker->randomDigit();
-
+//
             $newProduct->save();
         }
     }

@@ -34,7 +34,7 @@ Route::prefix('admin')->name('admin.')->middleware('auth')->group(function () {
     // Admin Landing Page
     Route::get('/dashboard', 'AdminController@index')->name('dashboard');
     // Products -> all 
-    //Route::get('/dashboard/products/all', 'ProductController@productsAll')->name('products.all');
+    Route::get('/dashboard/products', 'AdminController@allProducts')->name('products');
     // Product Create
     Route::get('/dashboard/products/create', 'ProductController@create')->name('products.create');
     // Product Store
