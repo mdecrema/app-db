@@ -3,6 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- REALLY IMPORTANT FOR SECTURY CHECKS IN DEPLOYMENT -->
     <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
 
     <!-- CSRF Token -->
@@ -32,11 +33,23 @@
 <body>
     <div id="app">
         <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
-            <div class="container">
+            <div class="container" style="postion: relative">
                 <a class="navbar-brand" href="{{ url('/') }}">
                     Red dot
                 </a>
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
+                <button style="position: absolute; top: 30%; right: 50px; border: none; background-color: transparent">
+                    <a id="cart-icon" href="{{ route('cart') }}">
+                        <i class="fa fa-shopping-cart" aria-hidden="true" style="font-size: 16px;"></i> 
+                        @if(Cart::instance('default')->count() > 0)
+                        <div class="notifica">
+                            <span class="badge badge-pill badge-danger">
+                                {{ Cart::instance('default')->count() }}
+                            </span>
+                        </div>
+                        @endif
+                    </a>
+                </button>
+                <button style="border: none; background-color: transparent" class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                     <span class=""><i class="fas fa-bars"></i></span>
                 </button>
 

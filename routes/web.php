@@ -21,6 +21,11 @@ Route::get('/products', 'ProductController@index')->name('products');
 Route::get('/products/{id}', 'ProductController@show')->name('products.show');
 Route::post('products/create', 'ProductController@store')->name('products.create');
 
+// Cart 
+Route::get('/cart', 'CartController@index')->name('cart');
+Route::post('products/add-to-cart', 'CartController@store')->name('cart.store');
+Route::delete('cart/remove-item/{item}', 'CartController@destroy')->name('cart.destroy');
+
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
