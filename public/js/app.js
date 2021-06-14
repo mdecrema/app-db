@@ -37346,10 +37346,8 @@ module.exports = function(module) {
 __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js"); // dotFlashing();
 
 
-var left = document.getElementById('arrowLeft');
-var right = document.getElementById('arrowRight');
-var imgFirst = $(".first");
-var imgLast = $(".last");
+__webpack_require__(/*! ./product-details */ "./resources/js/product-details.js");
+
 var dot = document.getElementById('dot');
 var count = 'a';
 
@@ -37366,41 +37364,6 @@ function dotFlashing() {
       count = 'a';
     }
   }, 2000);
-}
-
-left.addEventListener('click', arrowLeft);
-right.addEventListener('click', arrowRight);
-
-function arrowLeft() {
-  var img = $("img.active");
-  img.removeClass("active");
-  /*var punto = $("i.active");
-  punto.removeClass("active");*/
-
-  if (img.hasClass("first")) {
-    /* && punto.hasClass("first") */
-    var imgNext = imgLast; //var puntoNext = imgLast;
-  } else {
-    var imgNext = img.prev(); //var puntoNext = punto.prev();
-  }
-
-  imgNext.addClass("active"); //puntoNext.addClass("active");
-}
-
-function arrowRight() {
-  var img = $("img.active");
-  img.removeClass("active");
-
-  if (img.hasClass("last")) {
-    // Allora significa che cliccando a destra dovrò vedere la prima immagine e il primo pallino sarà blu
-    var imgNext = imgFirst;
-  } else {
-    // Altrimenti verrà selezionata l'immagine successiva a quella che al momento a classe 'active'
-    var imgNext = img.next(); // Stesso cosa per il pallino
-  } // Una volta individuato l'elemento corretto gli aggiungo la classe 'active' in modo da renderlo visibile
-
-
-  imgNext.addClass("active");
 }
 
 /***/ }),
@@ -37447,6 +37410,53 @@ window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 //     cluster: process.env.MIX_PUSHER_APP_CLUSTER,
 //     forceTLS: true
 // });
+
+/***/ }),
+
+/***/ "./resources/js/product-details.js":
+/*!*****************************************!*\
+  !*** ./resources/js/product-details.js ***!
+  \*****************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+var left = document.getElementById('arrowLeft');
+var right = document.getElementById('arrowRight');
+var imgFirst = $(".first");
+var imgLast = $(".last"); //left.addEventListener('click', arrowLeft);
+//right.addEventListener('click', arrowRight);
+
+function arrowLeft() {
+  var img = $("img.active");
+  img.removeClass("active");
+  /*var punto = $("i.active");
+  punto.removeClass("active");*/
+
+  if (img.hasClass("first")) {
+    /* && punto.hasClass("first") */
+    var imgNext = imgLast; //var puntoNext = imgLast;
+  } else {
+    var imgNext = img.prev(); //var puntoNext = punto.prev();
+  }
+
+  imgNext.addClass("active"); //puntoNext.addClass("active");
+}
+
+function arrowRight() {
+  var img = $("img.active");
+  img.removeClass("active");
+
+  if (img.hasClass("last")) {
+    // Allora significa che cliccando a destra dovrò vedere la prima immagine e il primo pallino sarà blu
+    var imgNext = imgFirst;
+  } else {
+    // Altrimenti verrà selezionata l'immagine successiva a quella che al momento a classe 'active'
+    var imgNext = img.next(); // Stesso cosa per il pallino
+  } // Una volta individuato l'elemento corretto gli aggiungo la classe 'active' in modo da renderlo visibile
+
+
+  imgNext.addClass("active");
+}
 
 /***/ }),
 
