@@ -7,6 +7,7 @@
 @section('content')
 <div class="container">
     <div class="item-view row">
+        
         <div class="item-picture" style="overflow: hidden; position: relative;">
             <img id="uno" src="{{ asset('storage/'.$product->photo1) }}" class="active first" alt="item pictures" style="width: 100%; height: 350px" /> <!-- {{ asset('storage/'.$product->photo1) }} -->
             <img id="due" src="{{ asset('storage/'.$product->photo2) }}" alt="item pictures" style="width: 100%; height: 350px" />

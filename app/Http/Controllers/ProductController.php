@@ -16,6 +16,7 @@ class ProductController extends Controller
     public function index()
     {
         $products = Product::all();
+        $contents = Storage::disk('public')->getDriver()->getAdapter()->applyPathPrefix('productImages');;
 
         return view('products', compact('products'));
     }//
@@ -61,7 +62,10 @@ class ProductController extends Controller
             //"slug" => "required|unique:posts",
         ]);
 
-        $path1 = Storage::disk('public')->put('productImages', $data['photo1']);
+        $path1 = $data['photo1'];
+        $name = $path1->getClientOriginalName();
+
+        $store1 = Storage::disk('spaces')->put('/img-space/uploads/images/'.$name,file_get_contents($request->file('photo1')->getRealPath()),'public');
         $path2 = Storage::disk('public')->put('productImages', $data['photo2']);
         $path3 = Storage::disk('public')->put('productImages', $data['photo3']);
         $path4 = Storage::disk('public')->put('productImages', $data['photo4']);

@@ -37423,8 +37423,9 @@ window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 var left = document.getElementById('arrowLeft');
 var right = document.getElementById('arrowRight');
 var imgFirst = $(".first");
-var imgLast = $(".last"); //left.addEventListener('click', arrowLeft);
-//right.addEventListener('click', arrowRight);
+var imgLast = $(".last");
+left.addEventListener('click', arrowLeft);
+right.addEventListener('click', arrowRight);
 
 function arrowLeft() {
   var img = $("img.active");

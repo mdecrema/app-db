@@ -5,8 +5,8 @@ var right = document.getElementById('arrowRight');
 var imgFirst = $(".first");
 var imgLast = $(".last");
 
-//left.addEventListener('click', arrowLeft);
-//right.addEventListener('click', arrowRight);
+left.addEventListener('click', arrowLeft);
+right.addEventListener('click', arrowRight);
 
 function arrowLeft() {
     
