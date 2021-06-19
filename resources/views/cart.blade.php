@@ -31,7 +31,7 @@
 
                     <div class="col-lg-12">
                         <div class="cart-img">
-                            <img id="" src="{{ asset('storage/'.$item->model->photo1) }}" alt="item-pitcure" />
+                            <img class="active" id="" src="{{'https://img-space.fra1.digitaloceanspaces.com/img-space/uploads/images/'.$item->model->photo1}}" alt="item-pitcure" />
                         </div>
                         <div class="cart-text">
                             <h4>{{$item->model->nome}}</h4>

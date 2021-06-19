@@ -15,8 +15,7 @@ class ProductController extends Controller
      */
     public function index()
     {
-        $products = Product::all();
-        $contents = Storage::disk('public')->getDriver()->getAdapter()->applyPathPrefix('productImages');;
+        $products = Product::all();     
 
         return view('products', compact('products'));
     }//
@@ -62,14 +61,17 @@ class ProductController extends Controller
             //"slug" => "required|unique:posts",
         ]);
 
-        $path1 = $data['photo1'];
-        $name = $path1->getClientOriginalName();
+        $photo1 = $data['photo1']->getClientOriginalName();
+        $photo2 = $data['photo2']->getClientOriginalName();
+        $photo3 = $data['photo3']->getClientOriginalName();
+        $photo4 = $data['photo4']->getClientOriginalName();
+        $photo5 = $data['photo5']->getClientOriginalName();
 
-        $store1 = Storage::disk('spaces')->put('/img-space/uploads/images/'.$name,file_get_contents($request->file('photo1')->getRealPath()),'public');
-        $path2 = Storage::disk('public')->put('productImages', $data['photo2']);
-        $path3 = Storage::disk('public')->put('productImages', $data['photo3']);
-        $path4 = Storage::disk('public')->put('productImages', $data['photo4']);
-        $path5 = Storage::disk('public')->put('productImages', $data['photo5']);
+        $store1 = Storage::disk('spaces')->put('/img-space/uploads/images/'.$photo1,file_get_contents($request->file('photo1')->getRealPath()),'public');
+        $store2 = Storage::disk('spaces')->put('/img-space/uploads/images/'.$photo2,file_get_contents($request->file('photo2')->getRealPath()),'public');
+        $store3 = Storage::disk('spaces')->put('/img-space/uploads/images/'.$photo3,file_get_contents($request->file('photo3')->getRealPath()),'public');
+        $store4 = Storage::disk('spaces')->put('/img-space/uploads/images/'.$photo4,file_get_contents($request->file('photo4')->getRealPath()),'public');
+        $store5 = Storage::disk('spaces')->put('/img-space/uploads/images/'.$photo5,file_get_contents($request->file('photo5')->getRealPath()),'public');
 
 
         $newProduct = new Product;
@@ -87,11 +89,11 @@ class ProductController extends Controller
         $newProduct->availability = $data['availability'];    
         $newProduct->appView = $data['appView'];
 
-        $newProduct->photo1 = $path1;
-        $newProduct->photo2 = $path2;
-        $newProduct->photo3 = $path3;
-        $newProduct->photo4 = $path4;
-        $newProduct->photo5 = $path5;
+        $newProduct->photo1 = $photo1;
+        $newProduct->photo2 = $photo2;
+        $newProduct->photo3 = $photo3;
+        $newProduct->photo4 = $photo4;
+        $newProduct->photo5 = $photo5;
 
         $newProduct->save();
 
