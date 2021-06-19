@@ -37,7 +37,7 @@
         <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
             <div class="container" style="postion: relative">
             
-                <button style="position: absolute; top: 30%; right: 10px; border: none; background-color: transparent">
+                <button style="position: absolute; top: 30%; right: 0px; border: none; background-color: transparent">
                     <a id="cart-icon" href="{{ route('cart') }}">
                         <i class="fa fa-shopping-cart" aria-hidden="true" style="font-size: 16px; color: #333333"></i> 
                         @if(Cart::instance('default')->count() > 0)
