@@ -53,7 +53,9 @@ class AdminController extends Controller
      */
     public function show($id)
     {
-        //
+        $product = Product::find($id);
+
+        return view('admin.show', compact('product'));
     }
 
     /**
@@ -64,7 +66,7 @@ class AdminController extends Controller
      */
     public function edit($id)
     {
-        //
+        
     }
 
     /**
@@ -87,7 +89,11 @@ class AdminController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $product = Product::find($id);
+
+        $product->delete();
+
+        return redirect()->route("admin.dashboard");
     }
 
     public function deleteAll()

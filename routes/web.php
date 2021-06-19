@@ -39,7 +39,11 @@ Route::prefix('admin')->name('admin.')->middleware('auth')->group(function () {
     Route::get('/dashboard/products/create', 'ProductController@create')->name('products.create');
     // Product Store
     Route::post('/dashboard/products/create', 'ProductController@store')->name('products.store');
-
+    // Product Show
+    Route::get('/dashboard/products/show/{id}', 'AdminController@show')->name('products.show');
+    // Product Delete
+    Route::delete('/dashboard/products/delete/{id}', 'AdminController@destroy')->name('products.delete');
+    // DELETE ALL Products
     Route::delete('dashboard/products/deleteAll', 'AdminController@deleteAll')->name('deleteAll');
     // Product Show
     //Route::get('/new/product/show/{id}', 'ProductController@show')->name('product.show');
