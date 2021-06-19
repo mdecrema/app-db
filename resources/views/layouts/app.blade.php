@@ -36,10 +36,8 @@
     <div id="app">
         <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
             <div class="container" style="postion: relative">
-                <a class="navbar-brand" href="{{ url('/') }}" style="font-size: 20px; font-family: 'Finger Paint', cursive;">
-                    <i id="dot" class="fas fa-circle" style="color: red; font-size: 15px"></i> Red dot
-                </a>
-                <button style="position: absolute; top: 30%; right: 45px; border: none; background-color: transparent">
+            
+                <button style="position: absolute; top: 30%; right: 10px; border: none; background-color: transparent">
                     <a id="cart-icon" href="{{ route('cart') }}">
                         <i class="fa fa-shopping-cart" aria-hidden="true" style="font-size: 16px; color: #333333"></i> 
                         @if(Cart::instance('default')->count() > 0)
@@ -51,7 +49,10 @@
                         @endif
                     </a>
                 </button>
-                <button style="border: none; background-color: transparent" class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
+                <a class="navbar-brand" href="{{ url('/') }}" style="width: 100%; font-size: 20px; font-family: 'Finger Paint', cursive; text-align: center">
+                    <i id="dot" class="fas fa-circle" style="color: red; font-size: 15px"></i> Red dot
+                </a>
+                <button style="border: none; background-color: transparent; position: absolute; top: 30%; left: 0px;" class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                     <span class=""><i class="fas fa-bars" style="color: #333333"></i></span>
                 </button>
 
@@ -62,7 +63,7 @@
                     </ul>
 
                     <!-- Right Side Of Navbar -->
-                    <ul class="navbar-nav ml-auto" style="height: 70px; line-height: 70px; z-index: 5">
+                    <ul class="navbar-nav ml-auto" style="height: 70px; line-height: 60px; z-index: 5">
                         <li><a class="nav-link" href="{{ route('products') }}">Tees</a></li>
                         <li><a class="nav-link" href="{{ route('products') }}">Hoodies</a></li>
                         <li><a class="nav-link" href="{{ route('products') }}">Pants</a></li>
