@@ -10971,6 +10971,212 @@ a.text-dark:focus {
   padding: 0 20px;
 }
 
+footer {
+  height: 300px;
+  background-color: #4D6837;
+}
+
+.fondo {
+  width: 100vw;
+  height: 500px;
+  padding: 5% 2%;
+  border-top: 2px solid #000;
+  color: #fff;
+  position: relative;
+}
+
+.fondo-opacity {
+  width: 100vw;
+  height: 500px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: #000;
+  opacity: 0.3;
+}
+
+.fondo li {
+  font-size: 15px;
+  list-style: none;
+}
+
+#logofooter {
+  width: 130px;
+  height: 80px;
+  margin-bottom: 5%;
+}
+
+.contatti li {
+  font-size: 12px;
+}
+
+.link_utili {
+  width: 100vw;
+  height: 140px;
+  /*background-color: #00ACBB;*/
+}
+
+.social {
+  height: 70px;
+  position: relative;
+}
+
+.social_box {
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  margin-top: 10%;
+  color: #fff;
+  line-height: 40px;
+}
+
+.social-box,
+.newsletter-box,
+.newsletter {
+  margin-top: 5%;
+}
+
+.newsletter {
+  text-decoration: none;
+  color: #00ACBB;
+  font-weight: bold;
+  background-color: #fff;
+  border: 2px solid #fff;
+  border-radius: 5px;
+  padding: 2% 12%;
+  transition: 0.3s;
+  text-shadow: none;
+}
+
+.newsletter:hover {
+  text-decoration: none;
+  background-color: #00ACBB;
+  color: #fff;
+  border: 2px solid #fff;
+}
+
+.copyright {
+  margin-top: 5%;
+  font-size: 20px;
+  color: #fff;
+}
+
+.social_icon {
+  margin: 0 3%;
+  font-size: 30px;
+}
+
+/* Smartphone */
+
+@media only screen and (max-width: 768px) {
+  /* Footer */
+
+  .fondo {
+    margin-top: 80px;
+  }
+
+  .link_utili {
+    height: 200px;
+  }
+
+  .social {
+    height: 100px;
+  }
+
+  .copyright {
+    width: 200px;
+    height: 50px;
+    font-size: 12px;
+    text-align: left;
+  }
+
+  .copyright_box {
+    width: 170px;
+  }
+}
+
+/* Tablet */
+
+@media only screen and (min-width: 769px) and (max-width: 991px) {
+  /* Footer */
+
+  .fondo {
+    height: 250px;
+    margin-top: 80px;
+  }
+
+  .link_utili {
+    height: 150px;
+  }
+
+  .social {
+    height: 50px;
+    position: relative;
+  }
+
+  .social_box {
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    margin: 4% 0;
+    color: #fff;
+    line-height: 50px;
+    font-size: 14px;
+  }
+
+  .newsletter {
+    padding: 0.5% 6%;
+    margin-left: 3%;
+  }
+
+  .copyright {
+    height: 50px;
+    font-size: 12px;
+    text-align: center;
+  }
+}
+
+/* Desktop */
+
+@media only screen and (min-width: 992px) and (max-width: 1200px) {
+  /* Footer */
+
+  .fondo {
+    height: 250px;
+    margin-top: 80px;
+  }
+
+  .link_utili {
+    height: 150px;
+  }
+
+  .social {
+    height: 50px;
+    position: relative;
+  }
+
+  .social_box {
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    margin: 4% 0;
+    color: #fff;
+    line-height: 50px;
+    font-size: 14px;
+  }
+
+  .newsletter {
+    padding: 0.5% 6%;
+    margin-left: 3%;
+  }
+
+  .copyright {
+    height: 50px;
+    font-size: 12px;
+    text-align: center;
+  }
+}
+
 .notifica {
   position: absolute;
   right: -5px;
