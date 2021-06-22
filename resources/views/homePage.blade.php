@@ -32,7 +32,7 @@ Red dot
     </div>
 
     <div class="col-lg-12" style="margin-top: 30px">
-        <div class="col-lg-12" style="height: 100px; margin-bottom: 10px; border-radius: 2px; box-shadow: 2px 2px 5px lightgrey">
+        <div class="col-lg-12" style="height: 100px; margin-bottom: 10px; border-radius: 2px; box-shadow: 4px 1px 10px lightgrey; background-color: #fff">
             <a href="{{ route('products') }}" style="text-decoration: none; color: #000">
                 <div style="width: 40%; height: 100%; float: left; position: relative">
                     <div style="width: 150px; height: 100px; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%)">
@@ -44,7 +44,7 @@ Red dot
                 </div>
             </a>
         </div>
-        <div class="col-lg-12" style="height: 100px; margin-bottom: 10px; border-radius: 2px; box-shadow: 2px 2px 5px lightgrey">
+        <div class="col-lg-12" style="height: 100px; margin-bottom: 10px; border-radius: 2px; box-shadow: 4px 1px 10px lightgrey; background-color: #fff">
             <a href="{{ route('products') }}" style="text-decoration: none; color: #000">
                 <div style="width: 40%; height: 100%; float: left; position: relative">
                     <div style="width: 100px; height: 100px; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%)">
@@ -56,7 +56,7 @@ Red dot
                 </div>
             </a>
         </div>
-        <div class="col-lg-12" style="height: 100px; margin-bottom: 10px; border-radius: 2px; box-shadow: 2px 2px 5px lightgrey">
+        <div class="col-lg-12" style="height: 100px; margin-bottom: 10px; border-radius: 2px; box-shadow: 4px 1px 10px lightgrey; background-color: #fff">
             <a href="{{ route('products') }}" style="text-decoration: none; color: #000">
                 <div style="width: 40%; height: 100%; float: left; position: relative;">
                     <div style="width: 100px; height: 100px; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);">
