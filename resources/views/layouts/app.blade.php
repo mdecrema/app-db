@@ -33,9 +33,9 @@
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 </head>
 <body>
-    <div id="app">
+    
         <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
-            <div class="container" style="postion: relative">
+            <div class="container" style="postion: relative; height: 40px">
             
                 <button style="position: absolute; top: 30%; right: 0px; border: none; background-color: transparent">
                     <a id="cart-icon" href="{{ route('cart') }}">
@@ -50,7 +50,10 @@
                     </a>
                 </button>
                 <a class="navbar-brand" href="{{ url('/') }}" style="width: 100%; font-size: 20px; font-family: 'Finger Paint', cursive; text-align: center">
-                    <i id="dot" class="fas fa-circle" style="color: red; font-size: 15px"></i> Red dot
+                    <!--<i id="dot" class="fas fa-circle" style="color: red; font-size: 15px"></i> Red dot-->
+                    <div style="width: 50px; height: 50px; position: absolute; top: 0; left: 50%; transform: translate(-50%, 0)">
+                        <img class="active" src="{{ asset('img/volcanoLogo.jpg') }}" alt="" style="width: 120%; height: 100%;">
+                    </div>
                 </a>
                 <button style="border: none; background-color: transparent; position: absolute; top: 30%; left: 0px;" class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                     <span class=""><i class="fas fa-bars" style="color: #333333"></i></span>
@@ -171,6 +174,6 @@
           
 
         </footer>
-    </div>
+    
 </body>
 </html>
