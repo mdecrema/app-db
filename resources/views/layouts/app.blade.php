@@ -66,20 +66,20 @@
                     </ul>
 
                     <!-- Right Side Of Navbar -->
-                    <ul class="navbar-nav ml-auto" style="height: 70px; line-height: 60px; z-index: 5">
-                        <li><a class="nav-link" href="{{ route('products') }}">Tees</a></li>
-                        <li><a class="nav-link" href="{{ route('products') }}">Hoodies</a></li>
-                        <li><a class="nav-link" href="{{ route('products') }}">Pants</a></li>
-                        <li><a class="nav-link" href="{{ route('products') }}">Boots</a></li>
-                        <li><a class="nav-link" href="{{ route('products') }}">News</a></li>
+                    <ul class="navbar-nav ml-auto" style="height: 70px; line-height: 60px; z-index: 5; color: #000">
+                        <li><a class="voci-menu" href="{{ route('products') }}">Tees</a></li>
+                        <li><a class="voci-menu" href="{{ route('products') }}">Felpe</a></li>
+                        <li><a class="voci-menu" href="{{ route('products') }}">Pantaloni</a></li>
+                        <li><a class="voci-menu" href="{{ route('products') }}">Scarpe</a></li>
+                        <li><a class="voci-menu" href="{{ route('products') }}">News</a></li>
                         <!-- Authentication Links -->
                         @guest
                             <li class="nav-item">
-                                <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
+                                <a class="voci-menu" href="{{ route('login') }}">{{ __('Login') }}</a>
                             </li>
                             @if (Route::has('register'))
                                 <li class="nav-item">
-                                    <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
+                                    <a class="voci-menu" href="{{ route('register') }}">{{ __('Register') }}</a>
                                 </li>
                             @endif
                         @else
