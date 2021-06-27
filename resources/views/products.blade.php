@@ -7,9 +7,10 @@
 
 @section('content')
 
-<h4>PRODOTTI</h4>
-
 <div class="row">
+    <div class="col-lg-12" style="margin-left: 25px">
+        <h4>PRODOTTI</h4>
+    </div>
 <div class="col-lg-10 offset-lg-1">
 
 @foreach($products as $product)

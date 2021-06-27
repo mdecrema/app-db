@@ -41,10 +41,10 @@
                         </form>
                         <div class="row">
 
-                        <div class="col-lg-7 cart-img">
+                        <div class=" cart-img">
                             <img class="active" id="" src="{{'https://img-space.fra1.digitaloceanspaces.com/img-space/uploads/images/'.$item->model->photo1}}" alt="item-pitcure" />
                         </div>
-                        <div class="col-lg-5 cart-text">
+                        <div class=" cart-text">
                             <h5><strong>{{$item->model->nome}}</strong></h5>
                             <span>Taglia: {{$item->model->taglia}}</span>
                             <select class="quantity">

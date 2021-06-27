@@ -14,24 +14,24 @@
             <img id="tre" src="{{'https://img-space.fra1.digitaloceanspaces.com/img-space/uploads/images/'.$product->photo3}}" class="image" alt="item pictures" style="width: 100%; height: 350px" />
             <img id="quattro" src="{{'https://img-space.fra1.digitaloceanspaces.com/img-space/uploads/images/'.$product->photo4}}" class="image last" alt="item pictures" style="width: 100%; height: 350px" />
             <!-- Arrows Left and Right -->
-            <div style="width: 40px; height: 100%; position: absolute; top: 0; left: 0">
-                <div id="arrowLeft" style="width: 40px; height: 40px; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); text-align: center">
+            <div style="width: 50px; height: 100%; position: absolute; top: 0; left: 0">
+                <div id="arrowLeft" style="width: 50px; height: 50px; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); text-align: center">
                     <i class="fas fa-2x fa-chevron-left"></i>
                 </div>
             </div>
-            <div style="width: 40px; height: 100%; position: absolute; top: 0; right: 0">
-                <div id="arrowRight" style="width: 40px; height: 40px; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); text-align: center">
+            <div style="width: 50px; height: 100%; position: absolute; top: 0; right: 0">
+                <div id="arrowRight" style="width: 50px; height: 50px; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); text-align: center">
                     <i class="fas fa-2x fa-chevron-right"></i>
                 </div>
             </div>
         </div>
-        <div class="item-details">
-            <h3>{{$product->name}}</h3>
-            <p>{{$product->description}}</p>
-            <span></span>
+        <div class="item-details" style="padding: 15px 25px;">
+            <span style="color: grey;">{{ $product->categoria }} - {{ $product->genere }}</span><br>
+            <span style="color: #000; font-size: 20px; font-weight: bold">{{ $product->nome }}</span><br>
+            <span style="color: #000;  font-weight: bold">{{ $product->amount }} €</span>
         </div>
-        <div class="item-amount col-lg-1">
-            € {{$product->amount}}
+        <div class="item-details" style="padding: 15px 25px;">
+            <span style="color: #000; font-size: 16px;">{{ $product->description }}</span><br>
         </div>
         <div class="item-cart col-lg-2">
         <form action="{{ route('cart.store') }}" method="POST"> {{--  --}}
@@ -41,7 +41,7 @@
                 <input type="hidden" name="nome" value="{{ $product->nome }}">
                 <!--<input type="hidden" name="taglia" value="{{ $product->taglia }}">-->
                 <input type="hidden" name="amount" value="{{ $product->amount }}">
-                <button type="submit" class="btn btn-holder btn-warning">Add to Cart</button>
+                <button type="submit" class="btn btn-holder" style="background-color: orange">Add to Cart</button>
             </form>
         </div>
     </div>

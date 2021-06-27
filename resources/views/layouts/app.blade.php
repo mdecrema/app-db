@@ -119,70 +119,18 @@
             @yield('content')
         </main>
 
-        <footer class="fondo">
+        <footer class="">
             
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-5 left">
-                        <ul class="contatti">
-                            <li>
-                                <img id="logofooter" src="" alt="" />
-                            </li>
-                            <li>Ragione Sociale: 'Company' S.P.A.</li>
-                            <li>Sede legale: Contrada Colle Delle Api, 100/A</li>
-                            <li>86100 - City(--)</li>
-                            <li>Pec: email@pec.it</li>
-                            <li>Tel: +39 0874 4981</li>
-                            <li>Fax: +39 0874 629584</li>
-                            <li>info@email.it (per segnalazioni degli utenti)</li>
-                            <li>commerciale@email.it</li>
-                            <li>export@email.it</li>
-                            <li>telefono 380-1292455</li>
-                            <li class="copyright">Copyright © All rights reserved.</li>
-                        </ul>
+            <div class="row">
+                <div class="col-lg-12">
+                    <div style="height: 500px; background-color: #4B6951">
+
                     </div>
-                    <div class="col-lg-4 central">
-              <h5>COMPANY</h5>
-              <ul>
-                  <li>Company</li>
-                  <li>xxxxxxxx</li>
-                  <li>xxxxxxxx</li>
-                  <li>Infos</li>
-                  <li>Our Mission</li>
-                  <li>Superhydrophobic</li>
-                  <li>Employees</li>
-              </ul>
-              <h5>PRODUCTS</h5>
-              <ul>
-                  <li>*Tipo di materiali usati*</li>
-                  <li>*Link prodotto*</li>
-                  <li>*Link prodotto*</li>
-                  <li>*Servizio clienti*</li>
-                  <li>*Referenze*</li>
-              </ul>
-          </div>
-          <div class="col-lg-3 right">
-          <h5>JOIN US</h5>
-              <div class="social-box">
-                
-              </div>
-              <div class="newsletter-box">
-                <h6>Subscribe our newsletter</h6>
-                <a class="newsletter" href="#">Newsletter</a>
-              </div>
-          </div>
-      </div>
-    </div>
+                </div>
+            </div>
           
 
         </footer>
-
-        <script type="text-">
-            @font-face {
-    font-family: 'Didact Gothic', sans-serif;
-    src: url('https://fonts.googleapis.com/css2?family=Didact+Gothic&display=swap');
-}
-        </script>
     
 </body>
 </html>
