@@ -70,7 +70,7 @@ Red dot
         </div>
     </div>
 
-    <!-- Ponte -->
+    <!-- Modello -->
     <div class="col-lg-12" style="position: relative; height: 60vh; overflow: hidden; margin-top: 30px; background-image: url({{ asset('img/modello1.png') }}); background-size: cover; background-repeat: no-repeat;
     -webkit-background-size: cover;
     -moz-background-size: cover;
@@ -88,17 +88,27 @@ Red dot
     <div class="col-lg-12" style="height: 150px; border-top: 1px solid grey; border-bottom: 1px solid grey;overflow-x: scroll; overflow-y: hidden; -webkit-overflow-scrolling: touch; margin-top: 30px">
         <div style="width: 1000px; height: 150px;">
         @foreach($products as $product)
-            <div style="width: 150px; height: 150px; display: inline-block; position: relative; margin: 0 2px">
-                <img class="active" src="{{ 'https://img-space.fra1.digitaloceanspaces.com/img-space/uploads/images/'.$product->photo1 }}" alt="product-img" style="width: 100%; height: 98%">
+            <a href="products/{{$product['id']}}">
+                <div style="width: 150px; height: 150px; display: inline-block; position: relative; margin: 0 2px">
+                    <img class="active" src="{{ 'https://img-space.fra1.digitaloceanspaces.com/img-space/uploads/images/'.$product->photo1 }}" alt="product-img" style="width: 100%; height: 98%">
                 
-                <div style="display: none; position: absolute; top: 50%; left: 50%; transform: translate(-50%; -50%)">
-                    <h6>{{ $product->nome }}</h6>
+                    <div style="display: none; position: absolute; top: 50%; left: 50%; transform: translate(-50%; -50%)">
+                        <h6>{{ $product->nome }}</h6>
+                    </div>
                 </div>
-            </div>
+            </a>
         @endforeach
         </div>
     </div>
     <!-- /scroll items -->
+
+    <!-- Foto Skater -->
+    <div class="col-lg-12" style="position: relative; height: 60vh; overflow: hidden; margin-top: 30px; background-image: url({{ asset('img/copertina2.jpg') }}); background-size: cover; background-repeat: no-repeat;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    ">
 
 </div>
 @endsection
