@@ -26,6 +26,11 @@ Route::get('/cart', 'CartController@index')->name('cart');
 Route::post('products/add-to-cart', 'CartController@store')->name('cart.store');
 Route::delete('cart/remove-item/{item}', 'CartController@destroy')->name('cart.destroy');
 
+// Check-out 
+Route::get('/payment/checkout', 'CheckoutController@index')->name('checkout.index');
+Route::post('/payment/completed/success', 'CheckoutController@checkout')->name('checkout.checkout');
+Route::post('/success','CheckoutController@afterpayment')->name('checkout.completed');
+
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');

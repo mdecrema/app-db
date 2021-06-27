@@ -13,21 +13,11 @@
     background-color: #E7E7E7;  
     padding: 4%;
 
-    .checkout-button {
-        padding: 1% 2%;
-        background-color: #2CB537;
-        border-radius: 5px;
-        a {
-            color: #fff;
-            font-size: 16px;
-            text-decoration: none;
-            text-align: center;
-        }
     }
     
     .cart-img {
-        width: 200px;
-        height: 200px;
+        width: 150px;
+        height: 150px;
         display: inline-block;
         overflow: hidden;
         padding: 2%;
@@ -39,6 +29,7 @@
     }
 
     .cart-text {
+        width: 150px;
         display: inline-block;
         position: relative;
         padding: 2% 4%;
@@ -53,5 +44,17 @@
             background-color: transparent;
         }
     }
+
+    .checkout-button {
+        padding: 1% 2%;
+        background-color: #2CB537;
+        border-radius: 5px;
+        margin-top: 20px;
+        a {
+            color: #fff;
+            font-size: 16px;
+            text-decoration: none;
+            text-align: center;
+        }
 
 }
