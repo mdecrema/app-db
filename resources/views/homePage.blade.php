@@ -70,6 +70,18 @@ Red dot
         </div>
     </div>
 
+    <!-- scroll items -->
+    <div class="col-lg-12" style="height: 100px; border-top: 1px solid grey; border-bottom: 1px solid grey;overflow-x: scroll; overflow-y: hidden">
+        <div style="width: 1000px; height: 100px;">
+        @foreach($products as $product)
+            <div style="width: 100px; height: 100px; display: inline-block">
+                <img src="{{ 'https://img-space.fra1.digitaloceanspaces.com/img-space/uploads/images/'.$product->photo1 }}" alt="product-img" style="width: 100%; height: 98%">
+            </div>
+        @endforeach
+        </div>
+    </div>
+    <!-- /scroll items -->
+
     <!-- Ponte -->
     <div class="col-lg-12" style="position: relative; height: 60vh; overflow: hidden; margin-top: 30px; background-image: url({{ asset('img/moment2.jpg') }}); background-size: cover; background-position: -330px 0; background-repeat: no-repeat;
     -webkit-background-size: cover;

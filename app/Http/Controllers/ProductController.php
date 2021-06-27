@@ -8,6 +8,11 @@ use App\Product;
 
 class ProductController extends Controller
 {
+    public function homePage()
+    {
+        $products = Product::all();
+        return view('homePage', compact('products'));
+    }
     /**
      * Display a listing of the resource.
      *
