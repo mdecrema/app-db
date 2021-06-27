@@ -11,7 +11,7 @@
         <div class="col-md-6 col-md-offset-3">
             <div class="panel panel-default">
                 <div class="panel-heading">
-                    <div class="text-center" style="width: 100%; height: 40px; background-color: green; color: #fff; border-radius: 10px; margin: 0 0 15px 0; line-height: 40px; font-size: 25px">
+                    <div class="text-center" style="width: 100%; height: 40px; background-color: #AFB49D; color: #fff; border-radius: 4px; margin: 0 0 15px 0; line-height: 40px; font-size: 25px">
                         <span class="panel-heading">Checkout</h3>
                     </div>                    
                 </div>

@@ -41,7 +41,7 @@
                 <input type="hidden" name="nome" value="{{ $product->nome }}">
                 <!--<input type="hidden" name="taglia" value="{{ $product->taglia }}">-->
                 <input type="hidden" name="amount" value="{{ $product->amount }}">
-                <button type="submit" class="btn btn-holder" style="background-color: orange">Add to Cart</button>
+                <button type="submit" class="btn btn-holder" style="background-color: #AFB49D">Add to Cart</button>
             </form>
         </div>
     </div>
