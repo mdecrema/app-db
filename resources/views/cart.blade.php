@@ -42,7 +42,7 @@
                         <div class="row">
 
                         <div class="col-lg-7 cart-img">
-                            <img class="" id="" src="{{'https://img-space.fra1.digitaloceanspaces.com/img-space/uploads/images/'.$item->model->photo1}}" alt="item-pitcure" />
+                            <img class="" id="" src="{{'https://img-space.fra1.digitaloceanspaces.com/img-space/uploads/images/'.$item->model->photo1}}" alt="item-pitcure" style="width: 100%; height: 100%;" />
                         </div>
                         <div class="col-lg-5 cart-text">
                             <h5><strong>{{$item->model->nome}}</strong></h5>
