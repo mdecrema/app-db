@@ -85,10 +85,10 @@ Red dot
     </div>
 
     <!-- scroll items -->
-    <div class="col-lg-12" style="height: 100px; border-top: 1px solid grey; border-bottom: 1px solid grey;overflow-x: scroll; overflow-y: hidden; margin-top: 30px">
-        <div style="width: 1000px; height: 100px;">
+    <div class="col-lg-12" style="height: 150px; border-top: 1px solid grey; border-bottom: 1px solid grey;overflow-x: scroll; overflow-y: hidden; -webkit-overflow-scrolling: touch; margin-top: 30px">
+        <div style="width: 1000px; height: 150px;">
         @foreach($products as $product)
-            <div style="width: 100px; height: 100px; display: inline-block">
+            <div style="width: 150px; height: 150px; display: inline-block">
                 <img src="{{ 'https://img-space.fra1.digitaloceanspaces.com/img-space/uploads/images/'.$product->photo1 }}" alt="product-img" style="width: 100%; height: 98%">
             </div>
         @endforeach
