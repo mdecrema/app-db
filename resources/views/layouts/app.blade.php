@@ -176,6 +176,13 @@
           
 
         </footer>
+
+        <script type="text-">
+            @font-face {
+    font-family: 'Didact Gothic', sans-serif;
+    src: url('https://fonts.googleapis.com/css2?family=Didact+Gothic&display=swap');
+}
+        </script>
     
 </body>
 </html>
