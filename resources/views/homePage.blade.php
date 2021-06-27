@@ -70,8 +70,22 @@ Red dot
         </div>
     </div>
 
+    <!-- Ponte -->
+    <div class="col-lg-12" style="position: relative; height: 60vh; overflow: hidden; margin-top: 30px; background-image: url({{ asset('img/modello1.png') }}); background-size: cover; background-repeat: no-repeat;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    ">
+
+        <div style="width: 150px; height: 40px; background-color: #fff; border: 3px solid darkgrey; opacity: 0.7; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); text-align: center;">
+            <a href="{{ route('products') }}" style="text-decoration: none; color: #333333; line-height: 35px; font-weight: bold">NUOVI ARRIVI</a>
+        </div>
+
+    </div>
+
     <!-- scroll items -->
-    <div class="col-lg-12" style="height: 100px; border-top: 1px solid grey; border-bottom: 1px solid grey;overflow-x: scroll; overflow-y: hidden">
+    <div class="col-lg-12" style="height: 100px; border-top: 1px solid grey; border-bottom: 1px solid grey;overflow-x: scroll; overflow-y: hidden; margin-top: 30px">
         <div style="width: 1000px; height: 100px;">
         @foreach($products as $product)
             <div style="width: 100px; height: 100px; display: inline-block">
@@ -81,20 +95,6 @@ Red dot
         </div>
     </div>
     <!-- /scroll items -->
-
-    <!-- Ponte -->
-    <div class="col-lg-12" style="position: relative; height: 60vh; overflow: hidden; margin-top: 30px; background-image: url({{ asset('img/moment2.jpg') }}); background-size: cover; background-position: -330px 0; background-repeat: no-repeat;
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    -o-background-size: cover;
-    background-size: cover;
-    ">
-
-        <div style="width: 150px; height: 40px; background-color: #fff; border: 3px solid lightgrey; opacity: 0.7; position: absolute; top: 60%; left: 50%; transform: translate(-50%, -50%); text-align: center;">
-            <a href="{{ route('products') }}" style="text-decoration: none; color: #000; line-height: 35px">Nuovi Arrivi</a>
-        </div>
-
-    </div>
 
 </div>
 @endsection
