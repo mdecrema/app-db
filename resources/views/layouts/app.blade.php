@@ -34,9 +34,9 @@
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 </head>
-<body>
+<body class="container-fluid">
     
-        <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
+        <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm fixed-top">
             <div class="container" style="postion: relative; height: 40px">
             
                 <button style="position: absolute; top: 30%; right: 0px; border: none; background-color: transparent">
@@ -124,7 +124,7 @@
             <div class="row">
                 <div class="col-lg-12">
                     <div style="height: 500px; background-color: #4B6951">
-
+                        
                     </div>
                 </div>
             </div>
