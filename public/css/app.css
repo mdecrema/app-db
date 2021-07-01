@@ -11269,6 +11269,15 @@ footer {
   display: block;
 }
 
+.box-pallini > i {
+  margin: 0 5px;
+  color: grey;
+}
+
+.box-pallini > i.active {
+  color: #000;
+}
+
 .control-label {
   font-size: 12px;
 }

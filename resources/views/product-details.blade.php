@@ -24,6 +24,13 @@
                     <i class="fas fa-2x fa-chevron-right"></i>
                 </div>
             </div>
+            <!-- Pallini -->
+            <div class="box-pallini" style="width: 150px; height: 20px; position: absolute; bottom: 0; left: 50%; transform: translate(-50%, 0%); font-size: 8px; text-align: center;">
+                <i class="fas fa-circle active first pallino"></i>
+                <i class="fas fa-circle pallino"></i>
+                <i class="fas fa-circle pallino"></i>
+                <i class="fas fa-circle last pallino"></i>
+            </div>
         </div>
         <div class="item-details" style="padding: 15px 25px;">
             <span style="color: grey;">{{ $product->categoria }} - {{ $product->genere }}</span><br>
@@ -62,39 +69,41 @@ function arrowLeft() {
     
         var img = $("img.active");
         img.removeClass("active");
-        /*var punto = $("i.active");
-        punto.removeClass("active");*/
+        var punto = $("i.active");
+        punto.removeClass("active");
     
-        if (img.hasClass("first")) { /* && punto.hasClass("first") */
+        if (img.hasClass("first")  && punto.hasClass("first")) { /* && punto.hasClass("first") */
         var imgNext = imgLast;
-        //var puntoNext = imgLast;
+        var puntoNext = imgLast;
       } else {
         var imgNext = img.prev();
-        //var puntoNext = punto.prev();
+        var puntoNext = punto.prev();
       }
       imgNext.addClass("active");
-      //puntoNext.addClass("active");
+      puntoNext.addClass("active");
 }
 
 function arrowRight() {
 
     var img = $("img.active");
     img.removeClass("active");
+    var punto = $("i.active");
+    punto.removeClass("active");
     
-    if (img.hasClass("last")) {
+    if (img.hasClass("last")  && punto.hasClass("last")) {
         // Allora significa che cliccando a destra dovrò vedere la prima immagine e il primo pallino sarà blu
       var imgNext = imgFirst;
+      var puntoNext = imgFirst;
       
     } else {
       // Altrimenti verrà selezionata l'immagine successiva a quella che al momento a classe 'active'
       var imgNext = img.next();
       // Stesso cosa per il pallino
-      
-    }
-  
+      var puntoNext = punto.next();
+    }  
     // Una volta individuato l'elemento corretto gli aggiungo la classe 'active' in modo da renderlo visibile
     imgNext.addClass("active");
-   
+    puntoNext.addClass("active");
 }
 </script>
 @endsection
