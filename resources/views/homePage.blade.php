@@ -6,7 +6,7 @@ Red dot
 
 @section('content')
 
-<div class="row" style="margin-top: 50px">
+<div class="row">
     <!--<div class="col-lg-12" style="position: relative; height: 60vh; overflow: hidden; background-image: url({{ asset('img/moment2.jpg') }}); background-size: cover; background-position: -330px 0; background-repeat: no-repeat;
     -webkit-background-size: cover;
     -moz-background-size: cover;
