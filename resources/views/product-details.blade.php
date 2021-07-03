@@ -14,14 +14,14 @@
             <img id="tre" src="{{'https://img-space.fra1.digitaloceanspaces.com/img-space/uploads/images/'.$product->photo3}}" class="image" alt="item pictures" style="width: 100%; height: 350px" />
             <img id="quattro" src="{{'https://img-space.fra1.digitaloceanspaces.com/img-space/uploads/images/'.$product->photo4}}" class="image last" alt="item pictures" style="width: 100%; height: 350px" />
             <!-- Arrows Left and Right -->
-            <div style="width: 50px; height: 100%; position: absolute; top: 0; left: 0">
-                <div id="arrowLeft" style="width: 50px; height: 50px; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); text-align: center">
-                    <i class="fas fa-2x fa-chevron-left"></i>
+            <div style="width: 50px; height: 100%; position: absolute; top: 0; left: 5px">
+                <div id="arrowLeft" style="width: 25px; height: 25px; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); text-align: center; background-color: #fff; border-radius: 100%;">
+                    <i class="fas fa-chevron-left"></i>
                 </div>
             </div>
-            <div style="width: 50px; height: 100%; position: absolute; top: 0; right: 0">
-                <div id="arrowRight" style="width: 50px; height: 50px; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); text-align: center">
-                    <i class="fas fa-2x fa-chevron-right"></i>
+            <div style="width: 50px; height: 100%; position: absolute; top: 0; right: 5px">
+                <div id="arrowRight" style="width: 25px; height: 25px; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); text-align: center; background-color: #fff; border-radius: 100%;">
+                    <i class="fas fa-chevron-right"></i>
                 </div>
             </div>
             <!-- Pallini -->
