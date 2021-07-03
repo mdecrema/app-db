@@ -112,7 +112,7 @@
   
                         <div class='form-row row'>
                             <div class='col-xs-12 form-group card required'>
-                                <label class='control-label'>Card Number</label> <input
+                                <label class='control-label'>Card Number</label> <input  name="card_no"
                                     autocomplete='off' class='form-control card-num' size='20' name="cardNumber"
                                     type='text'>
                             </div>
@@ -121,16 +121,16 @@
                         <div class='form-row row'>
                             <div class='col-xs-12 col-md-4 form-group cvc required'>
                                 <label class='control-label'>CVC</label> 
-                                <input autocomplete='off' class='form-control card-cvc' placeholder='e.g 415' size='4'
+                                <input autocomplete='off' class='form-control card-cvc' placeholder='e.g 415' size='4'  name="cvv"
                                     type='text'>
                             </div>
                             <div class='col-xs-12 col-md-4 form-group expiration required'>
-                                <label class='control-label'>Expiration Month</label> <input
+                                <label class='control-label'>Expiration Month</label> <input  name="expiry_month"
                                     class='form-control card-expiry-month' placeholder='MM' size='2'
                                     type='text'>
                             </div>
-                            <div class='col-xs-12 col-md-4 form-group expiration required'>
-                                <label class='control-label'>Expiration Year</label> <input
+                            <div class='col-xs-12 col-md-4 form-group expiration required'> 
+                                <label class='control-label'>Expiration Year</label> <input  name="expiry_year"
                                     class='form-control card-expiry-year' placeholder='YYYY' size='4'
                                     type='text'>
                             </div>
@@ -156,6 +156,7 @@
                         </div>
                           
                     </form>
+
                 </div>
             </div>        
         </div>
@@ -165,7 +166,7 @@
 
 <script type="text/javascript" src="https://js.stripe.com/v2/"></script>
   
-<script type="text/javascript">
+ <script type="text/javascript">
 $(function() {
     var $form         = $(".validation");
   $('form.validation').bind('submit', function(e) {
@@ -216,7 +217,7 @@ $(function() {
     }
   
 });
-</script>
+</script> 
 
 @endsection
 

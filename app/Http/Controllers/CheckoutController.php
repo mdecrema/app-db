@@ -15,8 +15,9 @@ class CheckoutController extends Controller
         return view('checkout');
     }
 
-    public function checkout()
+    public function checkout(Request $request)
     {   
+ 
         // Enter Your Stripe Secret
         Stripe\Stripe::setApiKey(env('STRIPE_SECRET'));
         Stripe\Charge::create ([
@@ -40,7 +41,7 @@ class CheckoutController extends Controller
             'postcode' => $request->postcode,
             'phone' => $request->phone,
             'nameOnCard' => $request->nameOnCard,
-            'total' => $request->total,
+            'total' => 200,
             'error' => $request->error,
         ]);
 
