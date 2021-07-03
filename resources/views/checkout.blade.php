@@ -11,8 +11,8 @@
         <div class="col-md-6 col-md-offset-3">
             <div class="panel panel-default">
                 <div class="panel-heading">
-                    <div class="text-center" style="width: 100%; height: 40px; background-color: #AFB49D; color: #fff; border-radius: 4px; margin: 0 0 15px 0; line-height: 40px; font-size: 25px">
-                        <span class="panel-heading">Checkout</h3>
+                    <div class="text-center" style="width: 100%; height: 40px; background-color: transparent; color: #000; border-radius: 4px; margin: 0 0 15px 0; line-height: 40px; font-size: 20px">
+                        <span class="panel-heading">PAGAMENTO</h3>
                     </div>                    
                 </div>
                 <div class="panel-body">
@@ -30,68 +30,70 @@
                                                     id="payment-form">
                         @csrf
 
-                        <h5>Dettagli di consegna</h5>
+                        <div style="height: 50px; background-color: #000; color: #fff; text-transform: uppercase; line-height: 50px; padding: 0 20px; margin-bottom: 20px">
+                            <h5 style="line-height: 45px">1. opzioni di consegna</h5>
+                        </div>
 
                         <div class='form-row row'>
                             <div class='col-xs-12 form-group required'>
-                                <label class='control-label'>E-mail Address</label> <input name="email"
-                                    class='form-control' size='20' type='text'>
+                                <!--<label class='control-label'>Nome</label>-->
+                                <input name="firstname" class='form-control' size='20' type='text' placeholder="Nome">
                             </div>
                         </div>
 
                         <div class='form-row row'>
                             <div class='col-xs-12 form-group required'>
-                                <label class='control-label'>Nome</label> <input name="firstname"
-                                    class='form-control' size='20' type='text'>
+                                <!--<label class='control-label'>Cognome</label>-->
+                                <input name="lastname" class='form-control' size='20' type='text' placeholder="Cognome">
                             </div>
                         </div>
 
                         <div class='form-row row'>
                             <div class='col-xs-12 form-group required'>
-                                <label class='control-label'>Cognome</label> <input name="lastname"
-                                    class='form-control' size='20' type='text'>
+                                <!--<label class='control-label'>E-mail Address</label>-->
+                                <input name="email" class='form-control' size='20' type='text' placeholder="E-mail">
                             </div>
                         </div>
 
                         <div class='form-row row'>
                             <div class='col-xs-12 form-group required'>
-                                <label class='control-label'>Indirizzo di spedizione</label> <input name="address"
-                                    class='form-control' size='20' type='text'>
+                                <!--<label class='control-label'>Numero di cellulare</label>-->
+                                <input name="phone" class='form-control' size='20' type='text' placeholder="Numero di cellulare">
                             </div>
                         </div>
 
                         <div class='form-row row'>
                             <div class='col-xs-12 form-group required'>
-                                <label class='control-label'>Numero Civico</label> <input name="addressNumber"
-                                    class='form-control' size='20' type='text'>
+                                <label class='control-label'>Indirizzo di spedizione</label> 
+                                <input name="address" class='form-control' size='20' type='text' placeholder="Via/Piazza">
                             </div>
                         </div>
 
                         <div class='form-row row'>
                             <div class='col-xs-12 form-group required'>
-                                <label class='control-label'>Città</label> <input name="city"
-                                    class='form-control' size='20' type='text'>
+                                <!--<label class='control-label'>Numero Civico</label>-->
+                                <input name="addressNumber" class='form-control' size='20' type='text' placeholder="Numero civico">
                             </div>
                         </div>
 
                         <div class='form-row row'>
                             <div class='col-xs-12 form-group required'>
-                                <label class='control-label'>Provincia</label> <input name="province"
-                                    class='form-control' size='20' type='text'>
+                                <!--<label class='control-label'>Città</label>--> 
+                                <input name="city" placeholder="Città" class='form-control' size='20' type='text'>
                             </div>
                         </div>
 
                         <div class='form-row row'>
                             <div class='col-xs-12 form-group required'>
-                                <label class='control-label'>CAP</label> <input name="postcode"
-                                    class='form-control' size='20' type='text'>
+                                <!--<label class='control-label'>Provincia</label>--> 
+                                <input name="province" class='form-control' size='20' type='text' placeholder="Provincia">
                             </div>
                         </div>
 
                         <div class='form-row row'>
                             <div class='col-xs-12 form-group required'>
-                                <label class='control-label'>Numero di cellulare</label> <input name="phone"
-                                    class='form-control' size='20' type='text'>
+                                <!--<label class='control-label'>CAP</label>-->
+                                <input name="postcode" class='form-control' size='20' type='text' placeholder="CAP">
                             </div>
                         </div>
 
@@ -102,35 +104,38 @@
                             </div>
                         </div>
 
+                        <div style="height: 50px; background-color: #000; color: #fff; text-transform: uppercase; line-height: 50px; padding: 0 20px; margin: 20px 0">
+                            <h5 style="line-height: 45px">2. PAGAMENTO</h5>
+                        </div>
         
                         <div class='form-row row'>
                             <div class='col-xs-12 form-group required'>
-                                <label class='control-label'>Nome Intestatario Carta di Credito</label> <input
+                                <label class='control-label'>Nome Intestatario Carta</label> <input
                                     class='form-control' size='20' type='text'>
                             </div>
                         </div>
   
                         <div class='form-row row'>
-                            <div class='col-xs-12 form-group card required'>
-                                <label class='control-label'>Card Number</label> <input  name="card_no"
-                                    autocomplete='off' class='form-control card-num' size='20' name="cardNumber"
+                            <div class='col-xs-12 form-group required'>
+                                <label class='control-label'>Numero Carta</label> <input  name="card_no"
+                                    autocomplete='off' class='form-control card-num' size='20'
                                     type='text'>
                             </div>
                         </div>
   
                         <div class='form-row row'>
                             <div class='col-xs-12 col-md-4 form-group cvc required'>
-                                <label class='control-label'>CVC</label> 
+                                <label class='control-label'>CVV</label> 
                                 <input autocomplete='off' class='form-control card-cvc' placeholder='e.g 415' size='4'  name="cvv"
                                     type='text'>
                             </div>
                             <div class='col-xs-12 col-md-4 form-group expiration required'>
-                                <label class='control-label'>Expiration Month</label> <input  name="expiry_month"
+                                <label class='control-label'>Mese di Scadenza</label> <input  name="expiry_month"
                                     class='form-control card-expiry-month' placeholder='MM' size='2'
                                     type='text'>
                             </div>
                             <div class='col-xs-12 col-md-4 form-group expiration required'> 
-                                <label class='control-label'>Expiration Year</label> <input  name="expiry_year"
+                                <label class='control-label'>Anno di Scadenza</label> <input  name="expiry_year"
                                     class='form-control card-expiry-year' placeholder='YYYY' size='4'
                                     type='text'>
                             </div>
@@ -144,14 +149,14 @@
 
                         <div class="form-row row">
                             <div class='col-xs-12 col-md-4 form-group'>
-                                <label class='control-label'>Total €(euro) - </label> <input name="total"
+                                <label class='control-label'>TOTALE €(euro) </label> <input name="total"
                                 class='form-control' size='20' type='text'>
                             </div>
                         </div>
   
                         <div class="row">
                             <div class="col-xs-12">
-                                <button class="btn btn-lg btn-block" type="submit" style="border: 2px solid green; color: green; font-weight: bold">Pay Now  </button>
+                                <button class="btn btn-lg btn-block" type="submit" style="background-color: green; color: #fff; text-align: left; padding: 10px 20px; border-radius: 0">CONFERMA e PAGA</button>
                             </div>
                         </div>
                           
