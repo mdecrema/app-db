@@ -25,6 +25,7 @@
                 </div>
             </div>
             <!-- Pallini -->
+            <!-- -->
             <div class="box-pallini" style="width: 150px; height: 20px; position: absolute; bottom: 0; left: 50%; transform: translate(-50%, 0%); font-size: 8px; text-align: center;">
                 <i class="fas fa-circle active first pallino"></i>
                 <i class="fas fa-circle pallino"></i>
