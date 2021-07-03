@@ -27,10 +27,10 @@
             <!-- Pallini -->
             <!-- -->
             <div class="box-pallini" style="width: 150px; height: 20px; position: absolute; bottom: 0; left: 50%; transform: translate(-50%, 0%); font-size: 8px; text-align: center;">
-                <i class="fas fa-circle active first pallino"></i>
-                <i class="fas fa-circle pallino"></i>
-                <i class="fas fa-circle pallino"></i>
-                <i class="fas fa-circle last pallino"></i>
+                <i class="fas fa-circle active first" style="margin: 0 5px; color: grey;"></i>
+                <i class="fas fa-circle" style="margin: 0 5px; color: grey;"></i>
+                <i class="fas fa-circle" style="margin: 0 5px; color: grey;"></i>
+                <i class="fas fa-circle last" style="margin: 0 5px; color: grey;"></i>
             </div>
         </div>
         <div class="item-details" style="padding: 15px 25px;">
