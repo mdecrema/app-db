@@ -52,7 +52,7 @@ Red dot
                     </div>
                 </div>
                 <div style="width: 60%; height: 100%; float: left; text-align: left; padding: 20px; line-height: 45px; font-size: 20px">
-                    Abbigliamento
+                    <a href="{{ route('tees') }}" style="text-decoration: none; color: #000">Abbigliamento</a>    
                 </div>
             </a>
         </div>

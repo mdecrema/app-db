@@ -10978,13 +10978,6 @@ a.text-dark:focus {
   font-size: 16px;
 }
 
-footer {
-  width: 100%;
-  min-height: 50px;
-  background-color: #97C2C8;
-  padding: 15px;
-}
-
 footer::after {
   content: "";
   display: table;

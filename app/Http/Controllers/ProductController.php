@@ -25,6 +25,21 @@ class ProductController extends Controller
         return view('products', compact('products'));
     }//
 
+    public function tees()
+    {
+        $products = Product::all();
+
+        $tees = []; 
+
+        foreach ($products as $product) {
+            if ($product->categoria === 'tees') {
+                array_push($tees, $product);
+            }
+        }
+
+        return view('tees', compact('tees'));
+    }
+
     /**
      * Show the form for creating a new resource.
      *
