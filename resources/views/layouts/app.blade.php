@@ -120,6 +120,9 @@
         </main>
 
         <footer style="width: 100%; min-height: 50px; background-color: #97C2C8; padding: 15px;">
+        <!-- #97C2C8 
+            #43D7C5
+    -->
             
             <div class="row" style="min-height: 50px">
                 <div class="col-lg-12">
