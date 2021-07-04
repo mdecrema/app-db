@@ -54,7 +54,7 @@
                 <a class="navbar-brand" href="{{ url('/') }}" style="width: 100%; font-size: 20px; font-family: 'Finger Paint', cursive; text-align: center">
                     <!--<i id="dot" class="fas fa-circle" style="color: red; font-size: 15px"></i> Red dot-->
                     <div style="width: 50px; height: 50px; position: absolute; top: 0; left: 50%; transform: translate(-50%, 0)">
-                        <img class="active" src="{{ asset('img/volcanoLogo.jpg') }}" alt="" style="width: 120%; height: 100%;">
+                        <img src="{{ asset('img/volcanoLogo.jpg') }}" alt="" style="width: 120%; height: 100%;">
                     </div>
                 </a>
                 <button style="border: none; background-color: transparent; position: absolute; top: 30%; left: 0px;" class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
