@@ -119,7 +119,7 @@
             @yield('content')
         </main>
 
-        <footer>
+        <footer style="width: 100%; min-height: 50px; background-color: #97C2C8; padding: 15px;">
             
             <div class="row" style="min-height: 50px">
                 <div class="col-lg-12">
