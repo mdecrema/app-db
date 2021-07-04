@@ -72,7 +72,7 @@
                     </div>
                 </div>
                 <div class="" style="margin: 10px 0">
-                    <a href="{{ url('/') }}">Continua lo shopping</a>
+                    <a href="{{ url('/') }}" style="text-decoration: none; color: #000">Continua lo shopping <i class="fas fa-chevron-right" style="font-size: 10px; margin: 0 5px"></i></a>
                 </div>
 
             @else

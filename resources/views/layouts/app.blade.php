@@ -54,7 +54,7 @@
                 <a class="navbar-brand" href="{{ url('/') }}" style="width: 100%; font-size: 20px; font-family: 'Finger Paint', cursive; text-align: center">
                     <!--<i id="dot" class="fas fa-circle" style="color: red; font-size: 15px"></i> Red dot-->
                     <div style="width: 50px; height: 50px; position: absolute; top: 0; left: 50%; transform: translate(-50%, 0)">
-                        <img class="active" src="{{ asset('img/volcanoLogo.jpg') }}" alt="" style="width: 120%; height: 100%;">
+                        <img src="{{ asset('img/volcanoLogo.jpg') }}" alt="" style="width: 120%; height: 100%; display: block">
                     </div>
                 </a>
                 <button style="border: none; background-color: transparent; position: absolute; top: 30%; left: 0px;" class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
@@ -119,12 +119,13 @@
             @yield('content')
         </main>
 
-        <footer class="">
+        <footer style="width: 100%; height: 500px; background-color: #97C2C8; padding: 15px">
             
             <div class="row">
                 <div class="col-lg-12">
-                    <div style="height: 500px; background-color: #4B6951">
-                        
+                    <div>
+                        <input type="text" style="width: 68%; display: inline-block; padding: 5px 10px; border: 1px solid transparent; border-radius: 3px; background-color: #fff;" placeholder="Indirizzo mail*">
+                        <button class="" type="submit" style="width: 30%; display: inline-block; background-color: #000; color: #fff; border: 1px solid transparent; border-radius: 3px; height: 35px">Registrati</button>
                     </div>
                 </div>
             </div>
