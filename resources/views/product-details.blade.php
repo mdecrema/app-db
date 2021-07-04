@@ -45,7 +45,7 @@
 
         <div class="" style="width: 50%; padding: 15px 25px">
             Taglie disponibili
-            <select class="form-select" name="" id="" style="background-color: #000; color: #fff; padding: 5px 10px; border-radius: 3px">
+            <select class="form-select" name="" id="" style="width: 100px; background-color: #000; color: #fff; padding: 5px 10px; border-radius: 3px">
                 <option value="">36</option>
                 <option value="">37</option>
                 <option value="">38</option>

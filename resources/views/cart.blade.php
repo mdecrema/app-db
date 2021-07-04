@@ -47,7 +47,7 @@
                         <div class=" cart-text">
                             <h5><strong>{{$item->model->nome}}</strong></h5>
                             <span>Taglia: {{$item->model->taglia}}</span>
-                            <select class="quantity">
+                            <select class="form-select" name="" id="" style="width: 50px; font-size: 12px; background-color: #000; color: #fff; padding: 5px 10px; border-radius: 3px">
                                 <option selected="">1</option>
                                 <option>2</option>
                                 <option>3</option> 
