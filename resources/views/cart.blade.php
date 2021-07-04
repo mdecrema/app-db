@@ -68,7 +68,7 @@
         <div class="total">
                     <h4 style="text-align: right; padding: 0 10px">Totale: € {{Cart::total()}}</h4>
                     <div class="col-lg-3 checkout-button">
-                        <a href="{{ route('checkout.index') }}" class="">Completa Il Tuo Ordine <i class="fas fa-shopping-bag"></i></a>
+                        <a href="{{ route('checkout.index') }}" class="" style="text-decoration: none; color: #fff">Completa Il Tuo Ordine <i class="fas fa-shopping-bag"></i></a>
                     </div>
                 </div>
                 <div class="" style="margin: 10px 0">

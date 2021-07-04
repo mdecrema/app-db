@@ -1,9 +1,14 @@
 footer {
-    height: 300px;
-    // background-color: #4D6837;
-    // background-color: #3e4b21;
-    // background-color: rgb(206, 77, 2);
-    background-color: #333333;
+  width: 100%; 
+  min-height: 50px; 
+  background-color: #97C2C8; 
+  padding: 15px;
+}
+
+footer::after {
+  content: '';
+  display: table;
+  clear: both;
 }
 
 .fondo {

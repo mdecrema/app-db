@@ -119,13 +119,32 @@
             @yield('content')
         </main>
 
-        <footer style="width: 100%; height: 500px; background-color: #97C2C8; padding: 15px">
+        <footer>
             
-            <div class="row">
+            <div class="row" style="min-height: 50px">
                 <div class="col-lg-12">
                     <div>
                         <input type="text" style="width: 68%; display: inline-block; padding: 5px 10px; border: 1px solid transparent; border-radius: 3px; background-color: #fff;" placeholder="Indirizzo mail*">
                         <button class="" type="submit" style="width: 30%; display: inline-block; background-color: #000; color: #fff; border: 1px solid transparent; border-radius: 3px; height: 35px">Registrati</button>
+                        <p style="font-size: 8px; color: #fff; margin: 10px 0">
+                        I vostri dati personali saranno trattati da BOARDRIDERS Europe secondo l’informativa sulla privacy di VOLCANO STORE Europe con la finalità di offrirvi o fornirvi i nostri prodotti 
+                        e servizi e per tenervi aggiornati sulle nostre novità e collezioni. Potete annullare la sottoscrizione in qualsiasi momento se non volete più ricevere informazioni od offerte da uno dei nostri brand. 
+                        Potete anche richiedere di accedere, correggere o cancellare i vostri dati personali e avete il diritto della trasmissibilità dei dati.
+                        </p>
+                    </div>
+                    <div style="color: #fff; margin: 20px 0">
+                        <div style="margin: 5px 0"><i class="fas fa-chevron-right" style=""></i> Condizioni Generali di Vendita</div>
+                        <div style="margin: 5px 0"><i class="fas fa-chevron-right" style=""></i> Politica sulla Privacy</div>
+                        <div style="margin: 5px 0"><i class="fas fa-chevron-right" style=""></i> Chi Siamo</div>
+                        <div style="margin: 5px 0"><i class="fas fa-chevron-right" style=""></i> News</div>
+                    </div>
+                    <div style="height: 50px; border-bottom: 1px solid #fff; text-align: center;">
+                        <i class="fab fa-facebook" style="margin: 0 5px; font-size: 20px"></i>
+                        <i class="fab fa-instagram" style="margin: 0 5px; font-size: 20px"></i>
+                        <i class="fab fa-telegram-plane" style="margin: 0 5px; font-size: 20px"></i>
+                    </div>
+                    <div style="font-size: 12px; color: #fff; text-align: center;">
+                        © 2021 VOLCANO
                     </div>
                 </div>
             </div>

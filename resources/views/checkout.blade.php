@@ -30,8 +30,8 @@
                                                     id="payment-form">
                         @csrf
 
-                        <div style="height: 50px; background-color: #000; color: #fff; text-transform: uppercase; line-height: 50px; padding: 0 20px; margin-bottom: 20px">
-                            <h5 style="line-height: 45px">1. opzioni di consegna</h5>
+                        <div style="height: 50px; background-color: #000; color: #fff; text-transform: uppercase; padding: 0 20px; margin-bottom: 20px">
+                            <h5 style="line-height: 50px">1. opzioni di consegna</h5>
                         </div>
 
                         <div class='form-row row'>
@@ -105,7 +105,7 @@
                         </div>
 
                         <div style="height: 50px; background-color: #000; color: #fff; text-transform: uppercase; line-height: 50px; padding: 0 20px; margin: 20px 0">
-                            <h5 style="line-height: 45px">2. PAGAMENTO</h5>
+                            <h5 style="line-height: 50px">2. PAGAMENTO</h5>
                         </div>
         
                         <div class='form-row row'>
@@ -156,7 +156,7 @@
   
                         <div class="row">
                             <div class="col-xs-12">
-                                <button class="btn btn-lg btn-block" type="submit" style="background-color: green; color: #fff; text-align: left; padding: 10px 20px; border-radius: 0">CONFERMA e PAGA</button>
+                                <button class="btn btn-lg btn-block" type="submit" style="background-color: #045871; color: #fff; text-align: left; padding: 10px 20px; border-radius: 0">CONFERMA e PAGA</button>
                             </div>
                         </div>
                           
