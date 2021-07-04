@@ -15,9 +15,9 @@
         <a href="products/{{$tee['id']}}" style="float: left;">
             <img src="{{'https://img-space.fra1.digitaloceanspaces.com/img-space/uploads/images/'.$tee->photo1}}" alt="" style="width: 100%; height: 150px;">
             <div style="width: 100%; height: 100px; position: absolute; bottom: 0; left: 0; padding: 15px 25px;">
-                <span style="color: #000; font-size: 18px; font-weight: bold">{{ $tee->nome }}</span><br>
-                <span style="color: grey;">{{ $tee->categoria }} - {{ $tee->genere }}</span><br>
-                <span style="color: #000;  font-weight: bold">{{ $tee->amount }} €</span>
+                <span style="color: #000; font-size: 14px; font-weight: bold">{{ $tee->nome }}</span><br>
+                <span style="color: grey; font-size: 11px;">{{ $tee->categoria }} - {{ $tee->genere }}</span><br>
+                <span style="color: #000; font-size: 12px;; font-weight: bold">{{ $tee->amount }} €</span>
             </div>
             </a>
         </div>
