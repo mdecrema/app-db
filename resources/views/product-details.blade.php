@@ -45,7 +45,7 @@
 
         <div class="" style="width: 50%; padding: 15px 25px">
             Taglie disponibili
-            <select name="" id="" style="background-color: #000; color: #fff; padding: 5px 10px; border-radius: 3px">
+            <select class="form-select" name="" id="" style="background-color: #000; color: #fff; padding: 5px 10px; border-radius: 3px">
                 <option value="">36</option>
                 <option value="">37</option>
                 <option value="">38</option>
@@ -65,7 +65,7 @@
                 <input type="hidden" name="nome" value="{{ $product->nome }}">
                 <!--<input type="hidden" name="taglia" value="{{ $product->taglia }}">-->
                 <input type="hidden" name="amount" value="{{ $product->amount }}">
-                <button type="submit" class="btn btn-holder" style="background-color: #AFB49D; color: #fff">Aggiungi al Carrello </button>
+                <button type="submit" class="btn btn-holder" style="background-color: #AFB49D; color: #fff">Aggiungi al Carrello</button>
             </form>
         </div>
     </div>
