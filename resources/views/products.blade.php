@@ -17,9 +17,9 @@
         <a href="products/{{$product['id']}}" style="float: left;">
             <img src="{{'https://img-space.fra1.digitaloceanspaces.com/img-space/uploads/images/'.$product->photo1}}" alt="" style="width: 100%; height: 150px;">
             <div style="width: 100%; height: 100px; position: absolute; bottom: 0; left: 0; padding: 15px 25px;">
-                <span style="color: #000; font-size: 18px; font-weight: bold">{{ $product->nome }}</span><br>
-                <span style="color: grey;">{{ $product->categoria }} - {{ $product->genere }}</span><br>
-                <span style="color: #000;  font-weight: bold">{{ $product->amount }} €</span>
+                <span style="color: #000; font-size: 14px; font-weight: bold">{{ $product->nome }}</span><br>
+                <span style="color: grey; font-size: 11px;">{{ $product->description }} - {{ $product->genere }}</span><br>
+                <span style="color: #000; font-size: 12px; font-weight: bold">{{ $product->amount }} €</span>
             </div>
             </a>
         </div>
