@@ -71,7 +71,7 @@
                         <a href="{{ route('checkout.index') }}" class="" style="text-decoration: none; color: #fff">Completa Il Tuo Ordine <i class="fas fa-shopping-bag"></i></a>
                     </div>
                 </div>
-                <div class="" style="margin: 10px 0">
+                <div class="" style="margin: 10px 0; height: 35px; padding: 5px 10px; background-color: #045871; border-radius: 3px; margin-top: 20px;">
                     <a href="{{ url('/') }}" style="text-decoration: none; color: #000">Continua lo shopping <i class="fas fa-chevron-right" style="font-size: 10px; margin: 0 5px"></i></a>
                 </div>
 
