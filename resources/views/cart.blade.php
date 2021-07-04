@@ -41,10 +41,10 @@
                         </form>
                         <div class="row">
 
-                        <div class=" cart-img">
+                        <div class="cart-img" style="width: 50%; height: 150px; display: inline-block; overflow: hidden; padding: 2%;">
                             <img class="active" id="" src="{{'https://img-space.fra1.digitaloceanspaces.com/img-space/uploads/images/'.$item->model->photo1}}" alt="item-pitcure" />
                         </div>
-                        <div class=" cart-text">
+                        <div class="cart-text" style="width: 50%; display: inline-block; position: relative; padding: 2% 4%; line-height: 30px;">
                             <h5><strong>{{$item->model->nome}}</strong></h5>
                             <span>Taglia: {{$item->model->taglia}}</span>
                             <select class="form-select" name="" id="" style="width: 50px; font-size: 12px; background-color: #000; color: #fff; padding: 5px 10px; border-radius: 3px">
@@ -67,11 +67,11 @@
         </div>
         <div class="total">
                     <h4 style="text-align: right; padding: 0 10px">Totale: € {{Cart::total()}}</h4>
-                    <div class="col-lg-3 checkout-button">
+                    <div class="col-lg-3 checkout-button" style=" height: 35px; padding: 5px 10px; background-color: #045871; border-radius: 3px; margin-top: 20px;">
                         <a href="{{ route('checkout.index') }}" class="" style="text-decoration: none; color: #fff">Completa Il Tuo Ordine <i class="fas fa-shopping-bag"></i></a>
                     </div>
                 </div>
-                <div class="" style="margin: 10px 0; height: 35px; padding: 5px 10px; background-color: #045871; border-radius: 3px; margin-top: 20px;">
+                <div class="" style="margin: 10px 0;">
                     <a href="{{ url('/') }}" style="text-decoration: none; color: #000">Continua lo shopping <i class="fas fa-chevron-right" style="font-size: 10px; margin: 0 5px"></i></a>
                 </div>
 

@@ -125,7 +125,7 @@
                 <div class="col-lg-12">
                     <div>
                         <input type="text" style="width: 68%; display: inline-block; padding: 5px 10px; border: 1px solid transparent; border-radius: 3px; background-color: #fff;" placeholder="Indirizzo mail*">
-                        <button class="" type="submit" style="width: 30%; display: inline-block; background-color: #000; color: #fff; border: 1px solid transparent; border-radius: 3px; height: 35px">Registrati</button>
+                        <button class="" type="submit" style="width: 30%; display: inline-block; background-color: #000; color: #fff; border: 1px solid transparent; border-radius: 3px; height: 33px">Registrati</button>
                         <p style="font-size: 8px; color: #fff; margin: 10px 0">
                         I vostri dati personali saranno trattati da BOARDRIDERS Europe secondo l’informativa sulla privacy di VOLCANO STORE Europe con la finalità di offrirvi o fornirvi i nostri prodotti 
                         e servizi e per tenervi aggiornati sulle nostre novità e collezioni. Potete annullare la sottoscrizione in qualsiasi momento se non volete più ricevere informazioni od offerte da uno dei nostri brand. 
