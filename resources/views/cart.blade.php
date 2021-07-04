@@ -30,15 +30,15 @@
             <div class="cart-details col-lg-12">
 
                 @foreach( Cart::content() as $item )
+                    {{-- Elimina dal carrello --}}
+                    <form style="position: absolute; top: 0; right: 5px" action="{{ route('cart.destroy', $item->rowId) }}" method="POST">
+                            @csrf
+                            @method('DELETE')
+                            <button type="submit" class="cart-option" style="border: none; background-color: transparent; font-size: 10px"><i class="fas fa-times"></i></button>
+                    </form>
 
                     <div class="col-lg-12">
 
-                        {{-- Elimina dal carrello --}}
-                        <form style="position: absolute; top: 0; right: 0" action="{{ route('cart.destroy', $item->rowId) }}" method="POST">
-                                @csrf
-                                @method('DELETE')
-                                <button type="submit" class="cart-option" style="border: none; background-color: transparent;"><i class="fas fa-times"></i></button>
-                        </form>
                         <div class="row">
 
                         <div class="cart-img" style="width: 50%; height: 150px; display: inline-block; overflow: hidden; padding: 2%;">
@@ -66,12 +66,12 @@
                 
         </div>
         <div class="total">
-                    <h4 style="text-align: right; padding: 0 10px">Totale: € {{Cart::total()}}</h4>
-                    <div class="col-lg-3 checkout-button" style=" height: 35px; padding: 5px 10px; background-color: #045871; border-radius: 3px; margin-top: 20px;">
+                    <h4 style="text-align: right; padding: 0 10px; margin: 20px 0">Totale: € {{Cart::total()}}</h4>
+                    <div class="col-lg-3 checkout-button" style=" height: 35px; padding: 5px 10px; background-color: #045871; border-radius: 3px; margin-top: 50px;">
                         <a href="{{ route('checkout.index') }}" class="" style="text-decoration: none; color: #fff">Completa Il Tuo Ordine <i class="fas fa-shopping-bag"></i></a>
                     </div>
                 </div>
-                <div class="" style="margin: 10px 0;">
+                <div class="" style="margin: 10px 0 50px;">
                     <a href="{{ url('/') }}" style="text-decoration: none; color: #000">Continua lo shopping <i class="fas fa-chevron-right" style="font-size: 10px; margin: 0 5px"></i></a>
                 </div>
 

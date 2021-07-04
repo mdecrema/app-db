@@ -107,6 +107,15 @@
                         <div style="height: 50px; background-color: #000; color: #fff; text-transform: uppercase; line-height: 50px; padding: 0 20px; margin: 20px 0">
                             <h5 style="line-height: 50px">2. PAGAMENTO</h5>
                         </div>
+
+                        <div class='form-row row'>
+                            <div class='col-xs-12 form-group required'>
+                                <input id="visa" name="typeOfCard" type='radio' value="visa" checked>
+                                <label for="visa" class='control-label' style="margin: 0 20px 0 10px"><i class="fab fa-2x fa-cc-visa"></i></label>
+                                <input id="mastercard" name="typeOfCard" type='radio' value="mastercard">
+                                <label for="mastercard" class='control-label' style="margin: 0 10px"><i class="fab fa-2x fa-cc-mastercard"></i></label>
+                            </div>
+                        </div>
         
                         <div class='form-row row'>
                             <div class='col-xs-12 form-group required'>
@@ -147,6 +156,13 @@
                             </div>
                         </div>
 
+                        <div class='form-row row'>
+                            <div class='col-xs-12 form-group required'>
+                                <input type="checkbox">
+                                <label class='control-label'>Accetto le Condizioni di <a href="">Privacy</a> *
+                            </div>
+                        </div>
+
                         <div class="form-row row">
                             <div class='col-xs-12 col-md-4 form-group'>
                                 <label class='control-label'>TOTALE €(euro) </label> <input name="total"
@@ -161,6 +177,20 @@
                         </div>
                           
                     </form>
+
+                    <div>
+                        <div class="col-xs-12" style="margin: 50px 0 30px; text-align: center;">
+                            <div style="margin: 10px 0">
+                                Spedizione
+                            </div> 
+                            <div style="margin: 10px 0">
+                                Restituzioni
+                            </div> 
+                            <div style="margin: 10px 0">
+                                Hai bisogno d'aiuto?
+                            </div>    
+                        </div>
+                    </div>
 
                 </div>
             </div>        
