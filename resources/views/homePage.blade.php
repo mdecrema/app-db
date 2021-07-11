@@ -26,8 +26,9 @@ Red dot
 
     <div class="col-lg-12" style="margin-top: 0px; position: relative; overflow: hidden">
         <img id="uno" class="image active first" src="{{ asset('img/copertina.jpg') }}" alt="" style="width: 100%; height: 300px;">
-        <img id="due" class="image" src="{{ asset('img/model2Petrol.jpg') }}" alt="" style="width: 100%; height: 300px;">
+        <img id="due" class="image" src="{{ asset('img/model1Street.png') }}" alt="" style="width: 100%; height: 300px;">
         <img id="tre" class="image last" src="{{ asset('img/model2Skater.jpg') }}" alt="" style="width: 100%; height: 300px;">
+        <img id="quattro" class="image last" src="{{ asset('img/model5Street.png') }}" alt="" style="width: 100%; height: 300px;">
         <img id="quattro" class="image last" src="{{ asset('img/model1Petrol.jpg') }}" alt="" style="width: 100%; height: 300px;">
         <!--<img id="cinque" class="image last" src="{{ asset('img/model1Sea.png') }}" alt="" style="width: 100%; height: 300px;">-->
         <!--<div style="width: 150px; height: 40px; background-color: #fff; border: 3px solid lightgrey; opacity: 0.7; position: absolute; top: 30%; left: 50%; transform: translate(-50%, -50%); text-align: center;">
@@ -165,7 +166,7 @@ function photoSlider() {
       x = "d";
     } else if (x == "d") {
       $(".image").removeClass("active");
-      $("#cinque").addClass("active");
+      $("#uno").addClass("active");
 
       cheangeMargin();
       x = "a";
