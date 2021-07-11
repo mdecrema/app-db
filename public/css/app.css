@@ -1,5 +1,13 @@
 @charset "UTF-8";
 
+.verde_acqua {
+  background-color: #96DED1;
+}
+
+.blu_mare {
+  background-color: #045871;
+}
+
 /*!
  * Bootstrap v4.6.0 (https://getbootstrap.com/)
  * Copyright 2011-2021 The Bootstrap Authors
@@ -11264,6 +11272,15 @@ footer::after {
 }*/
 
 /**/
+
+.imagee {
+  display: none;
+  margin-left: 300px;
+}
+
+.imagee.active {
+  display: block;
+}
 
 .image {
   display: none;

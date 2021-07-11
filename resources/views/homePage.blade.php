@@ -24,8 +24,12 @@ Red dot
         </div> -->
     </div>
 
-    <div class="col-lg-12" style="margin-top: 0px; position: relative">
-        <img class="active" src="{{ asset('img/copertina.jpg') }}" alt="" style="width: 100%; height: 300px;">
+    <div class="col-lg-12" style="margin-top: 0px; position: relative; overflow: hidden">
+        <img id="uno" class="image active first" src="{{ asset('img/copertina.jpg') }}" alt="" style="width: 100%; height: 300px;">
+        <img id="due" class="image" src="{{ asset('img/model2Petrol.jpg') }}" alt="" style="width: 100%; height: 300px;">
+        <img id="tre" class="image last" src="{{ asset('img/model2Skater.jpg') }}" alt="" style="width: 100%; height: 300px;">
+        <img id="quattro" class="image last" src="{{ asset('img/model1Petrol.jpg') }}" alt="" style="width: 100%; height: 300px;">
+        <!--<img id="cinque" class="image last" src="{{ asset('img/model1Sea.png') }}" alt="" style="width: 100%; height: 300px;">-->
         <!--<div style="width: 150px; height: 40px; background-color: #fff; border: 3px solid lightgrey; opacity: 0.7; position: absolute; top: 30%; left: 50%; transform: translate(-50%, -50%); text-align: center;">
         <a href="{{ route('products') }}" style="text-decoration: none; color: #000; line-height: 35px">Nuovi Arrivi</a>
         </div>-->
@@ -97,13 +101,14 @@ Red dot
         </div>
     </div>-->
     <!-- scroll items -->
-    <div class="col-lg-12" style="height: 150px; border-top: 1px solid grey; border-bottom: 1px solid grey;overflow-x: scroll; overflow-y: hidden; -webkit-overflow-scrolling: touch; margin-top: 30px">
-        <div style="width: 1000px; height: 150px;">
+    <div class="col-lg-12" style="height: 200px; border-top: 1px solid grey; border-bottom: 1px solid grey;overflow-x: scroll; overflow-y: hidden; -webkit-overflow-scrolling: touch; margin-top: 30px">
+        <div style="width: 1000px; height: 200px;">
         @foreach($products as $product)
             <a href="products/{{$product['id']}}">
-                <div style="width: 150px; height: 150px; display: inline-block; position: relative; margin: 0 2px">
-                    <img class="active" src="{{ 'https://img-space.fra1.digitaloceanspaces.com/img-space/uploads/images/'.$product->photo1 }}" alt="product-img" style="width: 100%; height: 98%">
-                
+                <div style="width: 150px; height: 200px; display: inline-block; position: relative; margin: 0 2px;">
+                    <img class="active" src="{{ 'https://img-space.fra1.digitaloceanspaces.com/img-space/uploads/images/'.$product->photo1 }}" alt="product-img" style="width: 100%; height: 150px">
+                    <span style="color: #000; font-size: 12px; font-weight: bold" class="text-truncate">{{ $product->nome }}</span><br>
+                    <span style="color: #000; font-size: 10px; font-weight: bold">{{ $product->amount }} €</span>
                     <!--<div style="display: none; position: absolute; top: 50%; left: 50%; transform: translate(-50%; -50%)">
                         <h6>{{ $product->nome }}</h6>
                     </div>-->
@@ -114,13 +119,68 @@ Red dot
     </div>
     <!-- /scroll items -->
 
+    <script type="text/javascript">
+photoSlider();
 
-    <div class="col-lg-12" style="height: 300px; margin: 0">
-        <video width="100%" height="300px" autoplay muted>
-            <source src="{{ asset('video/FreerideSkiing.mp4') }}" type="video/mp4">
-            Your browser does not support the video tag.
-        </video>
-    </div>
+var imgFirst = $(".first");
+var imgLast = $(".last");
+
+function cheangeMargin() {
+let count = 300;
+setInterval(function() {
+      if (count == 0) {
+        clearInterval();
+      } else {
+      count -= 1;
+      count--;
+      $(".image.active").css({marginLeft: count+"px"});
+    }
+}, 1);
+}
+
+function photoSlider() {
+
+    let x = "a";
+  setInterval(function() {
+    if (x == "a") {
+      // First si applica solo all'apertura della pagina, prima che inizi il loop
+      $(".image").removeClass("active");
+      $("#due").addClass("active");
+    
+      cheangeMargin();
+      x = "b";
+
+    } else if (x == "b") {
+      $(".image").removeClass("active");
+      $("#tre").addClass("active");
+     
+      cheangeMargin();
+      x = "c";
+
+    } else if (x == "c") {
+      $(".image").removeClass("active");
+      $("#quattro").addClass("active");
+
+      cheangeMargin();
+      x = "d";
+    } else if (x == "d") {
+      $(".image").removeClass("active");
+      $("#cinque").addClass("active");
+
+      cheangeMargin();
+      x = "a";
+    } /* else if (x == "e") {
+      $(".image").removeClass("active");
+      $("#uno").addClass("active");
+
+      cheangeMargin();
+      x = "a";
+    } */
+  },2000);
+}
+
+    </script>
+
 
 
 @endsection
