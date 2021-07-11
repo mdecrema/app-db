@@ -176,7 +176,7 @@ function photoSlider() {
       cheangeMargin();
       x = "a";
     } */
-  },2000);
+  },7000);
 }
 
     </script>
