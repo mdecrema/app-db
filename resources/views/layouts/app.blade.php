@@ -119,9 +119,10 @@
             @yield('content')
         </main>
 
-        <footer style="width: 100%; min-height: 50px; background-color: #97C2C8; padding: 15px;">
-        <!-- #97C2C8 
+        <footer style="width: 100%; min-height: 50px; background-image: url('{{ asset('img/lava.jpg') }}'); padding: 15px;">
+        <!-- #97C2C8 - Acqua Soft
             #43D7C5
+             #FF4901 - Orange
     -->
             
             <div class="row" style="min-height: 50px">
@@ -141,7 +142,7 @@
                         <div style="margin: 5px 0"><i class="fas fa-chevron-right" style=""></i> Chi Siamo</div>
                         <div style="margin: 5px 0"><i class="fas fa-chevron-right" style=""></i> News</div>
                     </div>
-                    <div style="height: 50px; border-bottom: 1px solid #fff; text-align: center;">
+                    <div style="height: 50px; border-bottom: 1px solid #fff; color: #fff; text-align: center;">
                         <i class="fab fa-facebook" style="margin: 0 5px; font-size: 20px"></i>
                         <i class="fab fa-instagram" style="margin: 0 5px; font-size: 20px"></i>
                         <i class="fab fa-telegram-plane" style="margin: 0 5px; font-size: 20px"></i>

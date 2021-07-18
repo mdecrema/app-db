@@ -7,34 +7,9 @@ Red dot
 @section('content')
 
 <div class="row">
-    <!--<div class="col-lg-12" style="position: relative; height: 60vh; overflow: hidden; background-image: url({{ asset('img/moment2.jpg') }}); background-size: cover; background-position: -330px 0; background-repeat: no-repeat;
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    -o-background-size: cover;
-    background-size: cover;
-    ">
+    <div class="col-lg-12" style="height: 8px; margin-top: -20px; background-image: url('{{ asset('img/lava.jpg') }}'); background-size: cover; background-position: 0px, -100px">
 
-    <div style="width: 150px; height: 40px; background-color: #fff; border: 3px solid lightgrey; opacity: 0.7; position: absolute; top: 60%; left: 50%; transform: translate(-50%, -50%); text-align: center;">
-        <a href="{{ route('products') }}" style="text-decoration: none; color: #000; line-height: 35px">Nuovi Arrivi</a>
-    </div>-->
-   
-   <!-- <img class="active" src="{{ asset('img/moment2.jpg') }}" alt="" style="width: 200%; height: 100%; margin-top: -100px; margin-left: -250px"> 
-        <div class="col-lg-4" style="height: 200px; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -70%);">
-            <img src="{{ asset('img/off-w1.png') }}" alt="" style="width: 300px; height: 200px; position: absolute; bottom: 0px; left: 50%; transform: translate(-55%, 0%);"> 
-        </div> -->
     </div>
-
-   <!-- <div class="col-lg-12" style="margin-top: 0px; position: relative; overflow: hidden">
-        <img id="uno" class="image active first" src="{{ asset('img/copertina.jpg') }}" alt="" style="width: 100%; height: 300px;">
-        <img id="due" class="image" src="{{ asset('img/model1Street.png') }}" alt="" style="width: 100%; height: 300px;">
-        <img id="tre" class="image last" src="{{ asset('img/model2Skater.jpg') }}" alt="" style="width: 100%; height: 300px;">
-        <img id="quattro" class="image last" src="{{ asset('img/model5Street.png') }}" alt="" style="width: 100%; height: 300px;">
-        <img id="quattro" class="image last" src="{{ asset('img/model1Petrol.jpg') }}" alt="" style="width: 100%; height: 300px;">
-        <!--<img id="cinque" class="image last" src="{{ asset('img/model1Sea.png') }}" alt="" style="width: 100%; height: 300px;">-->
-        <!--<div style="width: 150px; height: 40px; background-color: #fff; border: 3px solid lightgrey; opacity: 0.7; position: absolute; top: 30%; left: 50%; transform: translate(-50%, -50%); text-align: center;">
-        <a href="{{ route('products') }}" style="text-decoration: none; color: #000; line-height: 35px">Nuovi Arrivi</a>
-        </div>-->
-    <!--</div>-->
 
     <!-- Bootstrap Slider -->
     <div id="carouselExampleIndicators" class="carousel slide" data-interval="7000" data-ride="carousel">
@@ -48,14 +23,27 @@ Red dot
     <div class="carousel-item active">
       <img class="d-block w-100" style="height: 300px" src="{{ asset('img/copertina.jpg') }}" alt="First slide">
     </div>
-    <div class="carousel-item">
+    <div class="carousel-item" style="position: relative">
       <img class="d-block w-100" style="height: 300px" src="{{ asset('img/model1Street.png') }}" alt="Second slide">
+      <div style="width: 200px; height: 70px; line-height: 30px; position: absolute; top: 70%; left: 50%; transform: translate(-50%, -50%); color: #fff; text-align: center;">
+          <div style="width: 150px; height: 30px; margin: auto; border: 1px solid #grey; background-color: #FF5733;">
+            Show More <i class="fas fa-chevron-right" style="font-size: 12px; margin-left: 5px"></i>
+          </div>
+          <span style="text-shadow: 1px 1px 4px #333333">Scopri tutti i prodotti Donna</span>
+      </div>
+
     </div>
     <div class="carousel-item">
       <img class="d-block w-100" style="height: 300px" src="{{ asset('img/model2Skater.jpg') }}" alt="Third slide">
     </div>
     <div class="carousel-item">
       <img class="d-block w-100" style="height: 300px" src="{{ asset('img/model5Street.png') }}" alt="Fourth slide">
+      <div style="width: 200px; height: 70px; line-height: 30px; position: absolute; top: 70%; left: 50%; transform: translate(-50%, -50%); color: #fff; text-align: center;">
+          <div style="width: 150px; height: 30px; margin: auto; border: 1px solid #grey; background-color: #C70039;">
+            Show More <i class="fas fa-chevron-right" style="font-size: 12px; margin-left: 5px"></i>
+          </div>
+          <span style="text-shadow: 1px 1px 4px #333333">Scopri tutti i prodotti Uomo</span>
+      </div>
     </div>
   </div>
   <!--<a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
