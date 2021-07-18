@@ -125,7 +125,7 @@
              #FF4901 - Orange
     -->
             
-            <div class="row" style="min-height: 50px">
+            <div class="row" style="min-height: 50px; text-shadow: 1px 1px 5px #000">
                 <div class="col-lg-12">
                     <div>
                         <input type="text" style="width: 68%; display: inline-block; padding: 5px 10px; border: 1px solid transparent; border-radius: 3px; background-color: #fff;" placeholder="Indirizzo mail*">

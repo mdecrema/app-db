@@ -7,9 +7,8 @@ Red dot
 @section('content')
 
 <div class="row">
-    <div class="col-lg-12" style="height: 8px; margin-top: -20px; background-image: url('{{ asset('img/lava.jpg') }}'); background-size: cover; background-position: 0px, -100px">
-
-    </div>
+    <!-- Banda Colorata --> 
+    <div class="col-lg-12" style="height: 8px; margin-top: -20px; background-image: url('{{ asset('img/lava.jpg') }}'); background-size: cover; background-position: 0px, -100px"></div>
 
     <!-- Bootstrap Slider -->
     <div id="carouselExampleIndicators" class="carousel slide" data-interval="7000" data-ride="carousel">
@@ -64,7 +63,7 @@ Red dot
                         <img class="active" src="{{ asset('img/j1.jpg') }}" alt="" style="width: 100%; height: 100%">
                     </div>
                 </div>
-                <div style="width: 60%; height: 100%; float: left; text-align: left; padding: 20px; line-height: 45px; font-size: 20px">
+                <div style="width: 60%; height: 100%; float: left; text-align: left; padding: 20px; line-height: 45px; font-size: 18px">
                     Scarpe
                 </div>
             </a>
@@ -76,7 +75,7 @@ Red dot
                         <img class="active" src="{{ asset('img/palace2.jpg') }}" alt="" style="width: 100%; height: 100%">
                     </div>
                 </div>
-                <div style="width: 60%; height: 100%; float: left; text-align: left; padding: 20px; line-height: 45px; font-size: 20px">
+                <div style="width: 60%; height: 100%; float: left; text-align: left; padding: 20px; line-height: 45px; font-size: 18px">
                     <a href="{{ route('tees') }}" style="text-decoration: none; color: #000">Abbigliamento</a>    
                 </div>
             </a>
@@ -88,7 +87,7 @@ Red dot
                         <img class="active" src="{{ asset('img/k1.jpg') }}" alt="" style="width: 110%; height: 100%">
                     </div>
                 </div>
-                <div style="width: 60%; height: 100%; float: left; text-align: left; padding: 20px; line-height: 45px; font-size: 20px">
+                <div style="width: 60%; height: 100%; float: left; text-align: left; padding: 20px; line-height: 45px; font-size: 18px">
                     Accessori
                 </div>
             </a>
@@ -121,8 +120,12 @@ Red dot
             VOLCANO - VOLCANO - VOLCANO - VOLCANO - VOLCANO - VOLCANO - VOLCANO - VOLCANO - VOLCANO - VOLCANO - VOLCANO - VOLCANO - VOLCANO - VOLCANO - VOLCANO - VOLCANO 
         </div>
     </div>-->
+
+    <!-- Banda Colorata --> 
+    <div class="col-lg-12" style="height: 8px; margin-top: 30px; background-image: url('{{ asset('img/lava.jpg') }}'); background-size: cover; background-position: 0px, -100px"></div>
+    
     <!-- scroll items -->
-    <div class="col-lg-12" style="height: 200px; border-top: 1px solid grey; border-bottom: 1px solid grey;overflow-x: scroll; overflow-y: hidden; -webkit-overflow-scrolling: touch; margin-top: 30px">
+    <div class="col-lg-12" style="height: 200px; border-top: 1px solid grey; border-bottom: 1px solid grey;overflow-x: scroll; overflow-y: hidden; -webkit-overflow-scrolling: touch;">
         <div style="width: 1000px; height: 200px;">
         @foreach($products as $product)
             <a href="products/{{$product['id']}}">
@@ -140,14 +143,67 @@ Red dot
     </div>
     <!-- /scroll items -->
 
-    <script type="text/javascript">
-    $('.carousel').carousel({
-  interval: 7000
-})
-
-    </script>
+    <!-- Banda Colorata --> 
+    <div class="col-lg-12" style="height: 8px; background-image: url('{{ asset('img/lava.jpg') }}'); background-size: cover; background-position: 0px, -100px"></div>
 
 
+    <div class="col-lg-12" style="position: relative; height: 60vh; overflow: hidden; margin-top: 30px; background-image: url({{ asset('img/model1Camping.jpg') }}); background-size: cover; background-repeat: no-repeat;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    "></div>
+
+    <!-- Accordion - Prova --> 
+    <div class="accordion" id="accordionExample" style="margin-top: 30px">
+  <div class="card">
+    <div class="card-header" id="headingOne">
+      <h2 class="mb-0">
+        <button class="btn btn-link btn-block text-left" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
+          'Prova' Item #1
+        </button>
+      </h2>
+    </div>
+
+    <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordionExample">
+      <div class="card-body">
+        Some placeholder content for the first accordion panel. This panel is shown by default, thanks to the <code>.show</code> class.
+      </div>
+    </div>
+  </div>
+  <div class="card">
+    <div class="card-header" id="headingTwo">
+      <h2 class="mb-0">
+        <button class="btn btn-link btn-block text-left collapsed" type="button" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+          'Prova' Item #2
+        </button>
+      </h2>
+    </div>
+    <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
+      <div class="card-body">
+        Some placeholder content for the second accordion panel. This panel is hidden by default.
+      </div>
+    </div>
+  </div>
+  <div class="card">
+    <div class="card-header" id="headingThree">
+      <h2 class="mb-0">
+        <button class="btn btn-link btn-block text-left collapsed" type="button" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+          'Prova' Item #3
+        </button>
+      </h2>
+    </div>
+    <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordionExample">
+      <div class="card-body">
+        And lastly, the placeholder content for the third and final accordion panel. This panel is hidden by default.
+      </div>
+    </div>
+  </div>
+</div>
+
+
+  
+</div>
 
 
 @endsection
