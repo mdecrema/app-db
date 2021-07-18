@@ -120,9 +120,6 @@ Red dot
             VOLCANO - VOLCANO - VOLCANO - VOLCANO - VOLCANO - VOLCANO - VOLCANO - VOLCANO - VOLCANO - VOLCANO - VOLCANO - VOLCANO - VOLCANO - VOLCANO - VOLCANO - VOLCANO 
         </div>
     </div>-->
-
-    <!-- Banda Colorata --> 
-    <div class="col-lg-12" style="height: 8px; margin-top: 30px; background-image: url('{{ asset('img/lava.jpg') }}'); background-size: cover; background-position: 0px, -100px"></div>
     
     <!-- scroll items -->
     <div class="col-lg-12" style="height: 200px; border-top: 1px solid grey; border-bottom: 1px solid grey;overflow-x: scroll; overflow-y: hidden; -webkit-overflow-scrolling: touch;">
@@ -142,10 +139,6 @@ Red dot
         </div>
     </div>
     <!-- /scroll items -->
-
-    <!-- Banda Colorata --> 
-    <div class="col-lg-12" style="height: 8px; background-image: url('{{ asset('img/lava.jpg') }}'); background-size: cover; background-position: 0px, -100px"></div>
-
 
     <div class="col-lg-12" style="position: relative; height: 60vh; overflow: hidden; margin-top: 30px; background-image: url({{ asset('img/model1Camping.jpg') }}); background-size: cover; background-repeat: no-repeat;
     -webkit-background-size: cover;
