@@ -30,6 +30,9 @@ Route::get('/payment/checkout', 'CheckoutController@index')->name('checkout.inde
 Route::post('/payment/completed/success', 'CheckoutController@checkout')->name('checkout.checkout');
 Route::post('/success','CheckoutController@afterpayment')->name('checkout.completed');
 
+// Informations
+Route::get('/privacy', 'InfoController@privacy')->name('info.privacy');
+
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');

@@ -15,15 +15,6 @@
 }*/
 
 /**/
-.imagee {
-    display: none;
-    margin-left: 300px
-}
-
-.imagee.active {
-    display: block;
-}
-
 .image {
     display: none;
 }
@@ -39,4 +30,10 @@
 
 .box-pallini > i.active {
     color: #000;
+}
+
+.absolute {
+    position: absolute;
+    top: 0;
+    left: 0;
 }

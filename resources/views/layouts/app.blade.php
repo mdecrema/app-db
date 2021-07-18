@@ -137,7 +137,7 @@
                     </div>
                     <div style="color: #fff; margin: 20px 0">
                         <div style="margin: 5px 0"><i class="fas fa-chevron-right" style=""></i> Condizioni Generali di Vendita</div>
-                        <div style="margin: 5px 0"><i class="fas fa-chevron-right" style=""></i> Politica sulla Privacy</div>
+                        <div style="margin: 5px 0"><a href="{{ route('info.privacy') }}" style="color: #fff; text-decoration: none"><i class="fas fa-chevron-right" style=""></i> Politica sulla Privacy</a></div>
                         <div style="margin: 5px 0"><i class="fas fa-chevron-right" style=""></i> Chi Siamo</div>
                         <div style="margin: 5px 0"><i class="fas fa-chevron-right" style=""></i> News</div>
                     </div>

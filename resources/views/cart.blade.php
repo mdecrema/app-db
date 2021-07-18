@@ -1,5 +1,9 @@
 @extends('layouts.app')
 
+@section('page-title')
+    Cart
+@endsection
+
 @section('content')
 <?php $total = 0 ?>
     <div class="container">

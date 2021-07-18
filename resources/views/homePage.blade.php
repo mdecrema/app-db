@@ -24,7 +24,7 @@ Red dot
         </div> -->
     </div>
 
-    <div class="col-lg-12" style="margin-top: 0px; position: relative; overflow: hidden">
+   <!-- <div class="col-lg-12" style="margin-top: 0px; position: relative; overflow: hidden">
         <img id="uno" class="image active first" src="{{ asset('img/copertina.jpg') }}" alt="" style="width: 100%; height: 300px;">
         <img id="due" class="image" src="{{ asset('img/model1Street.png') }}" alt="" style="width: 100%; height: 300px;">
         <img id="tre" class="image last" src="{{ asset('img/model2Skater.jpg') }}" alt="" style="width: 100%; height: 300px;">
@@ -34,7 +34,39 @@ Red dot
         <!--<div style="width: 150px; height: 40px; background-color: #fff; border: 3px solid lightgrey; opacity: 0.7; position: absolute; top: 30%; left: 50%; transform: translate(-50%, -50%); text-align: center;">
         <a href="{{ route('products') }}" style="text-decoration: none; color: #000; line-height: 35px">Nuovi Arrivi</a>
         </div>-->
+    <!--</div>-->
+
+    <!-- Bootstrap Slider -->
+    <div id="carouselExampleIndicators" class="carousel slide" data-interval="7000" data-ride="carousel">
+  <ol class="carousel-indicators">
+    <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+    <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+    <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+    <li data-target="#carouselExampleIndicators" data-slide-to="3"></li>
+  </ol>
+  <div class="carousel-inner">
+    <div class="carousel-item active">
+      <img class="d-block w-100" style="height: 300px" src="{{ asset('img/copertina.jpg') }}" alt="First slide">
     </div>
+    <div class="carousel-item">
+      <img class="d-block w-100" style="height: 300px" src="{{ asset('img/model1Street.png') }}" alt="Second slide">
+    </div>
+    <div class="carousel-item">
+      <img class="d-block w-100" style="height: 300px" src="{{ asset('img/model2Skater.jpg') }}" alt="Third slide">
+    </div>
+    <div class="carousel-item">
+      <img class="d-block w-100" style="height: 300px" src="{{ asset('img/model5Street.png') }}" alt="Fourth slide">
+    </div>
+  </div>
+  <!--<a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="sr-only">Previous</span>
+  </a>
+  <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="sr-only">Next</span>
+  </a>-->
+</div>
 
     <div class="col-lg-12" style="margin-top: 30px">
         <div class="col-lg-12" style="height: 100px; margin-bottom: 10px; border-radius: 2px; box-shadow: 4px 1px 10px lightgrey; background-color: #fff">
@@ -121,66 +153,12 @@ Red dot
     <!-- /scroll items -->
 
     <script type="text/javascript">
-photoSlider();
-
-var imgFirst = $(".first");
-var imgLast = $(".last");
-
-function cheangeMargin() {
-let count = 300;
-setInterval(function() {
-      if (count == 0) {
-        clearInterval();
-      } else {
-      count -= 1;
-      count--;
-      $(".image.active").css({marginLeft: count+"px"});
-    }
-}, 1);
-}
-
-function photoSlider() {
-
-    let x = "a";
-  setInterval(function() {
-    if (x == "a") {
-      // First si applica solo all'apertura della pagina, prima che inizi il loop
-      $(".image").removeClass("active");
-      $("#due").addClass("active");
-    
-      cheangeMargin();
-      x = "b";
-
-    } else if (x == "b") {
-      $(".image").removeClass("active");
-      $("#tre").addClass("active");
-     
-      cheangeMargin();
-      x = "c";
-
-    } else if (x == "c") {
-      $(".image").removeClass("active");
-      $("#quattro").addClass("active");
-
-      cheangeMargin();
-      x = "d";
-    } else if (x == "d") {
-      $(".image").removeClass("active");
-      $("#uno").addClass("active");
-
-      cheangeMargin();
-      x = "a";
-    } /* else if (x == "e") {
-      $(".image").removeClass("active");
-      $("#uno").addClass("active");
-
-      cheangeMargin();
-      x = "a";
-    } */
-  },7000);
-}
+    $('.carousel').carousel({
+  interval: 7000
+})
 
     </script>
+
 
 
 
