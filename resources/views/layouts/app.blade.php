@@ -69,7 +69,7 @@
 
                     <!-- Right Side Of Navbar -->
                     <ul class="navbar-nav ml-auto" style="height: 70px; line-height: 60px; z-index: 5; color: #000">
-                        <li><a class="voci-menu" href="{{ route('products') }}">Tees</a></li>
+                        <li><a class="voci-menu" href="{{ route('tees') }}">Tees</a></li>
                         <li><a class="voci-menu" href="{{ route('products') }}">Felpe</a></li>
                         <li><a class="voci-menu" href="{{ route('products') }}">Pantaloni</a></li>
                         <li><a class="voci-menu" href="{{ route('products') }}">Scarpe</a></li>

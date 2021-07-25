@@ -32,7 +32,7 @@ class ProductController extends Controller
         $tees = []; 
 
         foreach ($products as $product) {
-            if ($product->categoria === 'tees') {
+            if ($product->categoria === 'tee') {
                 array_push($tees, $product);
             }
         }
