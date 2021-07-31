@@ -119,10 +119,11 @@
             @yield('content')
         </main>
 
-        <footer style="width: 100%; min-height: 50px; background-image: url('{{ asset('img/lava.jpg') }}'); padding: 15px;">
+        <footer style="width: 100%; min-height: 50px; background-color: #FF4901; padding: 15px;">
         <!-- #97C2C8 - Acqua Soft
             #43D7C5
-             #FF4901 - Orange
+            #FF4901 - Orange
+            background-image: url('{{ asset('img/lava.jpg') }}')
     -->
             
             <div class="row" style="min-height: 50px; text-shadow: 1px 1px 5px #000">

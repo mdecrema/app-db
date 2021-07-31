@@ -45,7 +45,7 @@
 
         <div class="" style="width: 50%; padding: 15px 25px">
             Taglie disponibili
-            <select class="form-select" name="" id="" style="width: 100px; background-color: #000; color: #fff; padding: 5px 10px; border-radius: 3px">
+            <select class="form-select" name="" id="" style="width: 100px; background-color:  #fff; color: #000; padding: 5px 10px; border-radius: 3px border-bottom: 2px solid  #FF4901">
                 <option value="">36</option>
                 <option value="">37</option>
                 <option value="">38</option>
@@ -65,10 +65,85 @@
                 <input type="hidden" name="nome" value="{{ $product->nome }}">
                 <!--<input type="hidden" name="taglia" value="{{ $product->taglia }}">-->
                 <input type="hidden" name="amount" value="{{ $product->amount }}">
-                <button type="submit" class="btn btn-holder" style="background-color: #96DED1; color: #000">Aggiungi al Carrello</button>
+                <button type="submit" class="btn btn-holder" style="width: 100%; background-color: #000; color: #fff">Aggiungi al Carrello</button> <!-- background-color: #96DED1 -->
             </form>
         </div>
     </div>
+
+    <div class="row">
+        <!-- Accordion - Prova --> 
+    <div class="accordion" id="accordionExample" style="margin-top: 30px; margin-bottom: 30px">
+  <div class="card" style="border: none;">
+    <div class="card-header" id="headingOne">
+      <h2 class="mb-0">
+        <button class="btn btn-link btn-block text-left" style="padding: 0" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
+          Dettagli Prodotto
+        </button>
+      </h2>
+    </div>
+
+    <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordionExample">
+      <div class="card-body">
+        Some placeholder content for the first accordion panel. This panel is shown by default, thanks to the <code>.show</code> class.
+      </div>
+    </div>
+  </div>
+  <div class="card" style="border: none;">
+    <div class="card-header" id="headingTwo">
+      <h2 class="mb-0">
+        <button class="btn btn-link btn-block text-left collapsed" style="padding: 0" type="button" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+          Guida alle taglie
+        </button>
+      </h2>
+    </div>
+    <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
+      <div class="card-body">
+        Some placeholder content for the second accordion panel. This panel is hidden by default.
+      </div>
+    </div>
+  </div>
+  <div class="card" style="border: none;">
+    <div class="card-header" id="headingThree">
+      <h2 class="mb-0">
+        <button class="btn btn-link btn-block text-left collapsed" style="padding: 0" type="button" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+          'Prova' Item #3
+        </button>
+      </h2>
+    </div>
+    <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordionExample">
+      <div class="card-body">
+        And lastly, the placeholder content for the third and final accordion panel. This panel is hidden by default.
+      </div>
+    </div>
+  </div>
+</div>
+    </div>
+
+
+    <div class="row">
+        <div class="col-lg-12">
+            <h5>Consigliati per te</h5>
+        </div>
+        <!-- scroll items -->
+        <div class="col-lg-12" style="height: 200px; border-top: 1px solid grey; border-bottom: 1px solid grey;overflow-x: scroll; overflow-y: hidden; -webkit-overflow-scrolling: touch;">
+            <div style="width: 1000px; height: 200px;">
+            @foreach($products as $product)
+                <a href="products/{{$product['id']}}">
+                    <div style="width: 150px; height: 200px; display: inline-block; position: relative; margin: 0 2px;">
+                        <img class="active" src="{{ 'https://img-space.fra1.digitaloceanspaces.com/img-space/uploads/images/'.$product->photo1 }}" alt="product-img" style="width: 100%; height: 150px">
+                        <span style="color: #000; font-size: 12px; font-weight: bold" class="text-truncate">{{ $product->nome }}</span><br>
+                        <span style="color: #000; font-size: 10px; font-weight: bold">{{ $product->amount }} €</span>
+                        <!--<div style="display: none; position: absolute; top: 50%; left: 50%; transform: translate(-50%; -50%)">
+                            <h6>{{ $product->nome }}</h6>
+                        </div>-->
+                    </div>
+                </a>
+            @endforeach
+            </div>
+        </div>
+        <!-- /scroll items -->
+    </div>
+
 </div>
 
 <script>

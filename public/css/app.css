@@ -11296,6 +11296,10 @@ footer::after {
   left: 0;
 }
 
+.accordion {
+  border: none;
+}
+
 .control-label {
   font-size: 12px;
 }

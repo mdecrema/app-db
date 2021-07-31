@@ -7,9 +7,6 @@ Red dot
 @section('content')
 
 <div class="row">
-    <!-- Banda Colorata --> 
-    <div class="col-lg-12" style="height: 8px; margin-top: -20px; background-image: url('{{ asset('img/lava.jpg') }}'); background-size: cover; background-position: 0px, -100px"></div>
-
     <!-- Bootstrap Slider -->
     <div id="carouselExampleIndicators" class="carousel slide" data-interval="7000" data-ride="carousel">
   <ol class="carousel-indicators">
@@ -195,6 +192,10 @@ Red dot
 </div>
 
 
+<!-- Import the component 
+<script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
+<model-viewer src="{{ asset('img/Bee.glb') }}" alt="A 3D model of an astronaut" ar ar-modes="webxr scene-viewer quick-look" environment-image="neutral" auto-rotate camera-controls></model-viewer>
+-->
   
 </div>
 
