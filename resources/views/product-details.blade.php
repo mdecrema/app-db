@@ -72,12 +72,12 @@
 
     <div class="row">
         <!-- Accordion - Prova --> 
-    <div class="accordion" id="accordionExample" style="margin-top: 30px; margin-bottom: 30px">
+    <div class="accordion" id="accordionExample" style="margin-top: 30px; margin-bottom: 30px;">
   <div class="card" style="border: none;">
-    <div class="card-header" id="headingOne">
+    <div class="card-header" style="background-color: #fff;" id="headingOne">
       <h2 class="mb-0">
-        <button class="btn btn-link btn-block text-left" style="padding: 0" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
-          Dettagli Prodotto
+        <button class="btn btn-link btn-block text-left" style="padding: 0; color: #000" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
+          Dettagli Prodotto <i style="font-size: 12px" class="fas fa-chevron-down"></i>
         </button>
       </h2>
     </div>
@@ -89,10 +89,10 @@
     </div>
   </div>
   <div class="card" style="border: none;">
-    <div class="card-header" id="headingTwo">
+    <div class="card-header" style="background-color: #fff;" id="headingTwo">
       <h2 class="mb-0">
-        <button class="btn btn-link btn-block text-left collapsed" style="padding: 0" type="button" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-          Guida alle taglie
+        <button class="btn btn-link btn-block text-left collapsed" style="padding: 0; color: #000" type="button" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+          Guida alle taglie <i style="font-size: 12px" class="fas fa-chevron-down"></i>
         </button>
       </h2>
     </div>
@@ -102,7 +102,7 @@
       </div>
     </div>
   </div>
-  <div class="card" style="border: none;">
+  <!--<div class="card" style="border: none;">
     <div class="card-header" id="headingThree">
       <h2 class="mb-0">
         <button class="btn btn-link btn-block text-left collapsed" style="padding: 0" type="button" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
@@ -115,7 +115,7 @@
         And lastly, the placeholder content for the third and final accordion panel. This panel is hidden by default.
       </div>
     </div>
-  </div>
+  </div>-->
 </div>
     </div>
 
@@ -130,7 +130,7 @@
             @foreach($products as $product)
                 <a href="products/{{$product['id']}}">
                     <div style="width: 150px; height: 200px; display: inline-block; position: relative; margin: 0 2px;">
-                        <img class="active" src="{{ 'https://img-space.fra1.digitaloceanspaces.com/img-space/uploads/images/'.$product->photo1 }}" alt="product-img" style="width: 100%; height: 150px">
+                        <img src="{{ 'https://img-space.fra1.digitaloceanspaces.com/img-space/uploads/images/'.$product->photo1 }}" alt="product-img" style="width: 100%; height: 150px">
                         <span style="color: #000; font-size: 12px; font-weight: bold" class="text-truncate">{{ $product->nome }}</span><br>
                         <span style="color: #000; font-size: 10px; font-weight: bold">{{ $product->amount }} €</span>
                         <!--<div style="display: none; position: absolute; top: 50%; left: 50%; transform: translate(-50%; -50%)">
