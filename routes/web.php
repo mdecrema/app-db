@@ -12,6 +12,10 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
+ // Briscola Game 
+ Route::get('/briscolaGame', 'CardController@index')->name('briscolaGame');
+ Route::get('/briscolaGame', 'CardController@newGame')->name('newGame');
+ //////////////////////////////////////////////////////////////////////////
 
 Route::get('/', 'ProductController@homePage');
 
@@ -29,6 +33,9 @@ Route::delete('cart/remove-item/{item}', 'CartController@destroy')->name('cart.d
 Route::get('/payment/checkout', 'CheckoutController@index')->name('checkout.index');
 Route::post('/payment/completed/success', 'CheckoutController@checkout')->name('checkout.checkout');
 Route::post('/success','CheckoutController@afterpayment')->name('checkout.completed');
+
+// News
+Route::get('/news', 'NewsController@index')->name('news');
 
 // Informations
 Route::get('/privacy', 'InfoController@privacy')->name('info.privacy');

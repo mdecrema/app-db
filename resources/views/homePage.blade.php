@@ -137,7 +137,24 @@ Red dot
     </div>
     <!-- /scroll items -->
 
+    <!-- Modello Sacco a Pelo -->
     <div class="col-lg-12" style="position: relative; height: 60vh; overflow: hidden; margin-top: 30px; background-image: url({{ asset('img/model1Camping.jpg') }}); background-size: cover; background-repeat: no-repeat;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    "></div>
+
+    <!-- Pantaloni Carhartt -->
+    <div class="col-lg-12" style="position: relative; height: 60vh; overflow: hidden; margin-top: 30px; background-image: url({{ asset('img/chararttPants.png') }});background-size: cover; background-repeat: no-repeat;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    "></div>
+
+    <!-- Modello Stussy -->
+    <div class="col-lg-12" style="position: relative; height: 60vh; overflow: hidden; margin-top: 30px; background-image: url({{ asset('img/model1Stussy.png') }}); background-size: cover; background-repeat: no-repeat;
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;

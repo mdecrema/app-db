@@ -73,7 +73,7 @@
                         <li><a class="voci-menu" href="{{ route('products') }}">Felpe</a></li>
                         <li><a class="voci-menu" href="{{ route('products') }}">Pantaloni</a></li>
                         <li><a class="voci-menu" href="{{ route('products') }}">Scarpe</a></li>
-                        <li><a class="voci-menu" href="{{ route('products') }}">News</a></li>
+                        <li><a class="voci-menu" href="{{ route('news') }}">News</a></li>
                         <!-- Authentication Links -->
                         @guest
                             <li class="nav-item">
