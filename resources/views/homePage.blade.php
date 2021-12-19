@@ -9,7 +9,7 @@ Red dot
 <div class="row">
     <!-- Bootstrap Slider -->
     <div id="carouselExampleIndicators" class="carousel slide" data-interval="7000" data-ride="carousel">
-  <ol class="carousel-indicators">
+  <ol class="carousel-indicators" style="z-index: 5">
     <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
     <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
     <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
@@ -155,6 +155,14 @@ Red dot
 
     <!-- Modello Stussy -->
     <div class="col-lg-12" style="position: relative; height: 60vh; overflow: hidden; margin-top: 30px; background-image: url({{ asset('img/model1Stussy.png') }}); background-size: cover; background-repeat: no-repeat;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    "></div>
+
+    <!-- Palace Board -->
+    <div class="col-lg-12" style="position: relative; height: 60vh; overflow: hidden; margin-top: 30px; background-image: url({{ asset('img/palaceBoard.jpg') }}); background-size: cover; background-repeat: no-repeat;
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
