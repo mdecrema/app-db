@@ -12,10 +12,6 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
- // Briscola Game 
- Route::get('/briscolaGame', 'CardController@index')->name('briscolaGame');
- Route::get('/briscolaGame', 'CardController@newGame')->name('newGame');
- //////////////////////////////////////////////////////////////////////////
 
 Route::get('/', 'ProductController@homePage');
 
@@ -23,6 +19,10 @@ Route::get('/products', 'ProductController@index')->name('products');
 Route::get('/tees', 'ProductController@tees')->name('tees');
 Route::get('/products/{id}', 'ProductController@show')->name('products.show');
 // Route::post('products/create', 'ProductController@store')->name('products.create');
+
+// Ski Rent
+ Route::get('/skiRent', 'SkiRentController@index')->name('skiRent');
+ Route::post('/skiRent', 'SkiRentController@formSubmit')->name('skiRentForm');
 
 // Cart 
 Route::get('/cart', 'CartController@index')->name('cart');

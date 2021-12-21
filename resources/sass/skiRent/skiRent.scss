@@ -1,0 +1,85 @@
+.titolo-ski-rent {
+    width: 50vw; 
+    margin: auto;
+    h2 {
+        color: #FE0000; 
+        font-size: 50px; 
+        font-family: 'Righteous', cursive; 
+        font-style: italic;
+    }
+    p {
+        font-size: 16px; 
+    }
+}
+
+.form-noleggio {
+    width: 50%; 
+    min-height: 350px; 
+    border: 1px solid grey; 
+    border-radius: 10px; 
+    padding: 20px; 
+    /*background-color: lightgrey;*/ 
+    position: absolute; 
+    top: 50%; 
+    left: 50%; 
+    transform: translate(-50%, -50%);
+    .bg-opacity {
+        height: 100%;
+        position: absolute;
+        top: 0;
+        left: 0;
+        background-color: #fff;
+        opacity: 0.7;
+    }
+}
+
+.form-noleggio::after {
+    content: '';
+    display: table;
+    clear: both;
+}
+
+.btn-continua {
+    width: 100%; 
+    background-color: #BC0033; 
+    color: #fff; 
+    font-weight: bold;
+}
+
+@media only screen and (max-width: 768px) {
+    .titolo-ski-rent {
+        width: 80%;
+        margin: auto;
+        h2 {
+            color: #FE0000; 
+            font-size: 30px; 
+            font-family: 'Righteous', cursive; 
+            font-style: italic;
+        }
+        p {
+            font-size: 12px; 
+        }
+    }
+
+    .form-noleggio {
+        width: 80%;
+        top: 60%; 
+        left: 50%; 
+        transform: translate(-50%, -50%);
+    }
+
+    .btn-continua {
+        width: 95%; 
+        background-color: #BC0033; 
+        color: #fff; 
+        font-weight: bold;
+    }
+
+    .boots-img {
+        display: block;
+    }
+
+    .ski-img {
+        display: none;
+    }
+}

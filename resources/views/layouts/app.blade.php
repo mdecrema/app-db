@@ -26,11 +26,11 @@
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <!--<link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">-->
-    <link rel="preconnect" href="https://fonts.gstatic.com">
-<link href="https://fonts.googleapis.com/css2?family=Finger+Paint&display=swap" rel="stylesheet">
-<!-- Main font -->
-<link href="https://fonts.googleapis.com/css2?family=Didact+Gothic&display=swap" rel="stylesheet">
 
+<!-- Main font -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Didact+Gothic&family=Righteous&display=swap" rel="stylesheet">
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 </head>
@@ -62,6 +62,7 @@
 
     <div id="mySidenav" class="sidenav">
     <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+    <a class="voci-menu" href="{{ route('skiRent') }}">Ski Rent</a>
     <a class="voci-menu" href="{{ route('tees') }}">Tees</a>
     <a class="voci-menu" href="{{ route('products') }}">Felpe</a>
     <a class="voci-menu" href="{{ route('products') }}">Pantaloni</a>
@@ -102,14 +103,14 @@
             @yield('content')
         </main>
 
-        <footer style="width: 100%; min-height: 50px; background-color: #FF4901; padding: 15px;">
+      <!--  <footer class="fondo" style="width: 100%; min-height: 50px; background-image: url('{{ asset('img/lava.jpg') }}'); padding: 15px;">-->
         <!-- #97C2C8 - Acqua Soft
             #43D7C5
             #FF4901 - Orange
             background-image: url('{{ asset('img/lava.jpg') }}')
     -->
             
-            <div class="row" style="min-height: 50px; text-shadow: 1px 1px 5px #000">
+      <!--      <div class="row" style="min-height: 50px; text-shadow: 1px 1px 5px #000">
                 <div class="col-lg-12">
                     <div>
                         <input type="text" style="width: 68%; display: inline-block; padding: 5px 10px; border: 1px solid transparent; border-radius: 3px; background-color: #fff;" placeholder="Indirizzo mail*">
@@ -138,7 +139,7 @@
             </div>
           
 
-        </footer>
+        </footer>-->
 
     <script type="text/javascript">
         /* Set the width of the side navigation to 250px */

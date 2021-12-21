@@ -2,6 +2,7 @@
 .body {
     font-family: 'Didact Gothic', sans-serif;
 }
+
 // Variables
 @import 'variables';
 
@@ -13,9 +14,10 @@
 @import 'Partials/_footer.scss';
 
 // Views
+@import './homePage.scss';
 @import './cart.scss';
 @import './product-details.scss';
 @import './checkout.scss';
-
+@import './skiRent/skiRent.scss';
 
 //

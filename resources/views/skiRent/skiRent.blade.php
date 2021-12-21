@@ -1,0 +1,136 @@
+@extends('layouts.app')
+
+@section('page-title')
+    Ski Rent
+@endsection
+
+@section('content')
+
+<div class="row">
+    <div class="titolo-ski-rent">
+        <h2>SKI RENT</h2>
+        <p>
+            Consegna e ritiro a domicilio in meno di 24h del materiale che decidi di noleggiare
+        </p>
+    </div>
+
+    <div>
+        <form action="{{ route('skiRentForm') }}" method="post" class="form-noleggio" style="background-image: url('{{ asset('img/latemar.jpg') }}'); background-size: cover;">
+            @csrf
+            @method("POST")
+            <div class="col-xl-6 col-lg-6 col-md-12 col-xs-12 col-sm-12 bg-opacity">
+
+            </div>
+            <div class="form-row col-xl-6 col-lg-6 col-md-12 col-xs-12 col-sm-12" style="margin-bottom: 10px">
+                <div class="col-12">
+                    <h3>Quando vai a <span style="color: #BC0033">sciare</span>?</h3>
+                </div>
+            </div>
+            <div class="form-row col-xl-6 col-lg-6 col-md-12 col-xs-12 col-sm-12">
+                <div class='input-group date' id='datetimepicker1' style="position: relative">
+                    <input id="data" name="date" type='date' class="form-control" />
+                    <div id="errore" style="position: absolute; bottom: -20px; left: 0; display: none">
+                        <span style="color: #BC0033">*Seleziona una data prima di procedere</span>
+                    </div>
+                </div>
+            </div>
+            <div class="form-row col-xl-6 col-lg-6 col-md-12 col-xs-12 col-sm-12">
+                <div class="col-12" style="margin: 20px 0">
+                    <div onclick="setItemAsActive('sci')" class="" style="padding-right: 50px; display: inline-block; cursor: pointer">
+                        <div id="sci" style="width: 15px; height: 15px; background-color: #BC0033; border-radius: 5px; display: inline-block"></div>
+                        <div style="display: inline-block">
+                            Sci
+                        </div>
+                    </div>
+                    <div onclick="setItemAsActive('snowboard')" class="" style="padding-right: 50px; display: inline-block; cursor: pointer">
+                        <div id="snowboard" style="width: 15px; height: 15px; background-color: #fff; border-radius: 5px; display: inline-block"></div>
+                        <div style="display: inline-block">
+                            Snowboard
+                        </div>
+                    </div>
+                    <div onclick="setItemAsActive('ciaspole')" class="" style="padding-right: 50px; display: inline-block; cursor: pointer">
+                        <div id="ciaspole" style="width: 15px; height: 15px; background-color: #fff; border-radius: 5px; display: inline-block"></div>
+                        <div style="display: inline-block">
+                            Ciaspole
+                        </div>
+                    </div>
+                 </div>
+            </div>
+            
+            <div class="form-row col-xl-6 col-lg-6 col-md-12 col-xs-12 col-sm-12">
+                <select class="form-control" name="level" id="" style="display: inline-block; cursor: pointer">
+                    <option value="principiante">Principiante</option> 
+                    <option value="intermedio" selected>Intermedio</option>
+                    <option value="avanzato">Avanzato</option>
+                </select>
+            </div>  
+            
+            <div class="form-row col-xl-6 col-lg-6 col-md-12 col-xs-12 col-sm-12" style="margin: 20px 0">
+                <button type="submit" class="btn btn-continua">Continua</button>
+            </div>
+
+          </form>
+
+          @if ($errors->any())
+            <div class="alert alert-danger">
+                <ul>
+                @foreach ($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                @endforeach
+                </ul>
+            </div>
+        @endif
+    </div>
+
+    <div class="ski-img" style="width: 380px; height: 170vh; z-index: -1; position: absolute; top: -600px; left: 50px; background-image: url('{{ asset('img/rossignol-hero.jpg') }}'); background-size: cover;">
+
+    </div>
+
+    <div class="boots-img" style="width: 30vw; height: 900px; z-index: -1; position: absolute; top: 50px; right: 0; background-image: url('{{ asset('img/booster.jpg') }}'); background-size: cover;">
+
+    </div>
+</div>
+
+<script>
+    var active='sci';
+    var datePicker=document.getElementById('data');
+    datePicker.addEventListener('change', getDate);
+
+    function setItemAsActive(tipologia) {
+        console.log('here');
+        var sci=document.getElementById('sci');
+        var snowboard=document.getElementById('snowboard');
+        var ciaspole=document.getElementById('ciaspole');
+
+        if (tipologia==='sci') {
+            sci.style.backgroundColor='#BC0033';
+            snowboard.style.backgroundColor='#fff';
+            ciaspole.style.backgroundColor='#fff';
+        } else if (tipologia==='snowboard') {
+            sci.style.backgroundColor='#fff';
+            snowboard.style.backgroundColor='#BC0033';
+            ciaspole.style.backgroundColor='#fff';
+        } else if (tipologia==='ciaspole') {
+            sci.style.backgroundColor='#fff';
+            snowboard.style.backgroundColor='#fff';
+            ciaspole.style.backgroundColor='#BC0033';
+        }
+    }
+
+    function getDate() {
+        var datePicker=document.getElementById('data').value;
+        console.log(datePicker);
+    }
+
+    function formError() {
+        var data=document.getElementById('data');
+        var errore=document.getElementById('errore');
+        setTimeout(() => {
+            data.style.border="2px solid #BC0033";
+            errore.style.display="block";
+        }, timeout);
+    }
+
+</script>
+
+@endsection

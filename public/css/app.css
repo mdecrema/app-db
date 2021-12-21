@@ -11071,13 +11071,15 @@ footer::after {
   clear: both;
 }
 
-.fondo {
+.footer {
   width: 100vw;
   height: 500px;
   padding: 5% 2%;
   border-top: 2px solid #000;
   color: #fff;
-  position: relative;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
 }
 
 .fondo-opacity {
@@ -11165,6 +11167,12 @@ footer::after {
 
 @media only screen and (max-width: 768px) {
   /* Footer */
+
+  footer::after {
+    content: "";
+    display: table;
+    clear: both;
+  }
 
   .fondo {
     margin-top: 80px;
@@ -11269,6 +11277,40 @@ footer::after {
     height: 50px;
     font-size: 12px;
     text-align: center;
+  }
+}
+
+.img-slider {
+  height: 90vh;
+}
+
+.img-slider .carousel-inner {
+  height: 90vh !important;
+}
+
+.img-slider .carousel-inner .carouser-item {
+  height: 90vh !important;
+}
+
+.img-slider .carousel-inner .carouser-item img {
+  height: 100%;
+}
+
+@media only screen and (max-width: 768px) {
+  .img-slider {
+    height: 300px;
+  }
+
+  .img-slider .carousel-inner {
+    height: 300px !important;
+  }
+
+  .img-slider .carousel-inner .carouser-item {
+    height: 300px !important;
+  }
+
+  .img-slider .carousel-inner .carouser-item img {
+    height: 100%;
   }
 }
 
@@ -11381,5 +11423,96 @@ footer::after {
 
 .control-label {
   font-size: 12px;
+}
+
+.titolo-ski-rent {
+  width: 50vw;
+  margin: auto;
+}
+
+.titolo-ski-rent h2 {
+  color: #FE0000;
+  font-size: 50px;
+  font-family: "Righteous", cursive;
+  font-style: italic;
+}
+
+.titolo-ski-rent p {
+  font-size: 16px;
+}
+
+.form-noleggio {
+  width: 50%;
+  min-height: 350px;
+  border: 1px solid grey;
+  border-radius: 10px;
+  padding: 20px;
+  /*background-color: lightgrey;*/
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.form-noleggio .bg-opacity {
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: #fff;
+  opacity: 0.7;
+}
+
+.form-noleggio::after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+.btn-continua {
+  width: 100%;
+  background-color: #BC0033;
+  color: #fff;
+  font-weight: bold;
+}
+
+@media only screen and (max-width: 768px) {
+  .titolo-ski-rent {
+    width: 80%;
+    margin: auto;
+  }
+
+  .titolo-ski-rent h2 {
+    color: #FE0000;
+    font-size: 30px;
+    font-family: "Righteous", cursive;
+    font-style: italic;
+  }
+
+  .titolo-ski-rent p {
+    font-size: 12px;
+  }
+
+  .form-noleggio {
+    width: 80%;
+    top: 60%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+
+  .btn-continua {
+    width: 95%;
+    background-color: #BC0033;
+    color: #fff;
+    font-weight: bold;
+  }
+
+  .boots-img {
+    display: block;
+  }
+
+  .ski-img {
+    display: none;
+  }
 }
 
