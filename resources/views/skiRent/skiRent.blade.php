@@ -28,12 +28,18 @@
             </div>
             <div class="form-row col-xl-6 col-lg-6 col-md-12 col-xs-12 col-sm-12">
                 <div class='input-group date' id='datetimepicker1' style="position: relative">
-                    <input id="data" name="date" type='date' class="form-control" />
-                    <div id="errore" style="position: absolute; bottom: -20px; left: 0; display: none">
+                    <input id="dataInizio" name="dataInizio" type='date' class="form-control" />
+                    <!--<div id="errore" style="position: absolute; bottom: -20px; left: 0; display: none">
                         <span style="color: #BC0033">*Seleziona una data prima di procedere</span>
-                    </div>
+                    </div>-->
+                    <input id="dataFine" name="dataFine" type='date' min="" class="form-control" />
                 </div>
             </div>
+
+            <div class="form-row" id="range" style="visibility: hidden; position: absolute">
+                <input id="daysRange" name='daysRange' type='number' value="">
+            </div>
+
             <div class="form-row col-xl-6 col-lg-6 col-md-12 col-xs-12 col-sm-12">
                 <div class="col-12" style="margin: 20px 0">
                     <div onclick="setItemAsActive('sci')" class="" style="padding-right: 50px; display: inline-block; cursor: pointer">
@@ -75,7 +81,7 @@
             <div class="alert alert-danger">
                 <ul>
                 @foreach ($errors->all() as $error)
-                    <li>{{ $error }}</li>
+                    <li>{{ 'Seleziona una data prima di procedere' }}</li>
                 @endforeach
                 </ul>
             </div>
@@ -93,8 +99,10 @@
 
 <script>
     var active='sci';
-    var datePicker=document.getElementById('data');
-    datePicker.addEventListener('change', getDate);
+    var dataInizio=document.getElementById('dataInizio');
+    var dataFine=document.getElementById('dataFine');
+    dataInizio.addEventListener('change', getDate);
+    dataFine.addEventListener('change', getDateFine);
 
     function setItemAsActive(tipologia) {
         console.log('here');
@@ -118,8 +126,42 @@
     }
 
     function getDate() {
-        var datePicker=document.getElementById('data').value;
-        console.log(datePicker);
+        dataInizio=document.getElementById('dataInizio').valueAsDate;
+        dataFine=document.getElementById('dataFine').value=dataInizio;
+        dataFine=dataInizio;
+        console.log(new Date(dataInizio).getTime(), dataFine);
+        // Set Min Date
+        document.getElementById('dataFine').min=document.getElementById('dataInizio').value;
+
+        rangeOfDays(dataInizio, dataFine);
+    }
+
+    function getDateFine() {
+        dataInizio=document.getElementById('dataInizio').valueAsDate;
+        dataFine=document.getElementById('dataFine').valueAsDate;
+        rangeOfDays(dataInizio, dataFine);
+
+    }
+
+    function rangeOfDays(date1, date2) {
+        var Difference_In_Time = date2.getTime() - date1.getTime();
+  
+        // To calculate the no. of days between two dates
+        var Difference_In_Days = Difference_In_Time / (1000 * 3600 * 24);
+  
+        //To display the final no. of days (result)
+        
+        console.log("Total number of days between dates  <br>"
+               + date1 + "<br> and <br>" 
+               + date2 + " is: <br> " 
+               + Difference_In_Days);
+        
+        Difference_In_Days+=1
+
+        var input = "<input name='daysRange' type='number' value="+ Difference_In_Days +">"
+        console.log(input);
+        
+        document.getElementById('daysRange').value=Difference_In_Days;
     }
 
     function formError() {

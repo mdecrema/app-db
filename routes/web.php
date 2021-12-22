@@ -23,6 +23,7 @@ Route::get('/products/{id}', 'ProductController@show')->name('products.show');
 // Ski Rent
  Route::get('/skiRent', 'SkiRentController@index')->name('skiRent');
  Route::post('/skiRent', 'SkiRentController@formSubmit')->name('skiRentForm');
+ Route::get('/skiRent/results', 'SkiRentController@searchResults')->name('skiRentResults');
 
 // Cart 
 Route::get('/cart', 'CartController@index')->name('cart');
