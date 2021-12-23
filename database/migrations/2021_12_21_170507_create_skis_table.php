@@ -13,7 +13,7 @@ class CreateSkisTable extends Migration
      */
     public function up()
     {
-        Schema::create('ski', function (Blueprint $table) {
+        Schema::create('skis', function (Blueprint $table) {
             $table->id();
 
             $table->smallInteger('length');
