@@ -24,6 +24,7 @@ Route::get('/products/{id}', 'ProductController@show')->name('products.show');
  Route::get('/skiRent', 'SkiRentController@index')->name('skiRent');
  Route::post('/skiRent', 'SkiRentController@formSubmit')->name('skiRentForm');
  Route::get('/skiRent/results', 'SkiRentController@searchResults')->name('skiRentResults');
+ Route::get('/skiRent/rent', 'SkiRentController@rentEquipment')->name('rentEquipment');
 
 // Cart 
 Route::get('/cart', 'CartController@index')->name('cart');
@@ -68,4 +69,10 @@ Route::prefix('admin')->name('admin.')->middleware('auth')->group(function () {
     //Route::post('/dashboard/products/update/{id}', 'ProductController@update')->name('products.update');
     // Orders
     //Route::get('/dashboard/orders', 'OrderController@index')->name('orders.index');
+    // Ski Rent 
+    Route::get('dashboard/skiRent/allEquipment', 'AdminController@skiRentAllEquipment')->name('skiRent.allEquipment');
+    Route::get('dashboard/skiRent/addEquipment', 'AdminController@skiRentAddEquipment')->name('skiRent.addEquipment');
+    Route::post('dashboard/skiRent/store', 'AdminController@skiRentStore')->name('skiRent.store');
+    Route::get('dashboard/skiRent/allRent', 'AdminController@skiRentAllRent')->name('skiRent.allRent');
+    Route::get('dashboard/skiRent/deleteRent/{id}', 'AdminController@skiRentDeleteRent')->name('skiRent.deleteRent');
 });

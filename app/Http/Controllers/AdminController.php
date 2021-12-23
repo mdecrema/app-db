@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Product;
+use App\Ski;
+use App\Rent;
 
 class AdminController extends Controller
 {
@@ -103,5 +105,61 @@ class AdminController extends Controller
         return redirect()->route("admin.dashboard");
     }
 
+    // Ski Rent Admin
+    public function skiRentAllEquipment()
+    {
+        $allSki = Ski::all();
+        return view('admin.skiRent.allEquipment', compact('allSki'));
+    }
+
+    // Ski Rent Admin
+    public function skiRentAllRent()
+    {
+        $allRent = Rent::all();
+        return view('admin.skiRent.allRent', compact('allRent'));
+    }
+
+    public function skiRentDeleteRent($id) {
+        $allRent = Rent::all();
+        $rent = Rent::find($id);
+
+        $rent->delete();
+
+        return redirect()->route('admin.skiRent.allRent', compact('allRent'))->with('success_message', 'Elemento cancellato correttamente!');
+    }
+
+    public function skiRentAddEquipment()
+    {
+        
+        return view('admin.skiRent.addEquipment');
+    }
+
+    public function skiRentStore(Request $request)
+    {
+        $data = $request->all();
+
+        $request->validate([
+            "brand" => "required|max:255",
+            "model" => "required|max:255",
+            "length" => "nullable|max:255",
+            "type" => "nullable|max:255",
+            "level" => "nullable|max:255",
+            "value" => "required|numeric",
+        ]);
+
+        $newSki = new Ski;
+
+        $newSki->brand=$data['brand'];
+        $newSki->model=$data['model'];
+        $newSki->length=$data['length'];
+        $newSki->level=$data['level'];
+        $newSki->type=$data['type'];
+        $newSki->value=$data['value'];
+
+        $newSki->save();
+
+        return redirect()->route("admin.skiRent.all");
+
+    }
 
 }
