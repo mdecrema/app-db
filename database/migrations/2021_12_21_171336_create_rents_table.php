@@ -18,6 +18,7 @@ class CreateRentsTable extends Migration
 
             $table->smallInteger('user_id');
             $table->smallInteger('ski_id');
+            $table->smallInteger('boots_id');
             $table->bigInteger('date');
 
             $table->timestamps();

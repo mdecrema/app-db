@@ -23,21 +23,50 @@
         @foreach($skiArray as $ski)
         <div class="col-xl-4 col-lg-4 col-md-4 col-sm-10 offset-sm-1 col-xs-10 offset-xs-1 ski-card">
             <div class="ski-card-model">
-                <h4>{{ $ski['brand'] }}</h4>
+                <span style="font-size: 22px">{{ $ski['brand'] }}</span>
                 <span>{{ $ski['model'] }}</span>
             </div>
             <div class="ski-card-content" style="position: relative">
                 <div class="discount">
                     <h4>-10%</h4>
                 </div>
-                <strong>Livello {{ $ski['level'] }}</strong>
-                @if( $ski['level'] == 'Principiante' || $ski['level'] == 'principiante' )
-                <i style="color: green; margin-left: 5px" class="fas fa-skiing"></i>
-                @elseif ( $ski['level'] == 'Intermedio' || $ski['level'] == 'intermedio' )
-                <i style="color: orange; margin-left: 5px" class="fas fa-skiing"></i>
-                @elseif ( $ski['level'] == 'Esperto' || $ski['level'] == 'esperto' )
-                <i style="color: red; margin-left: 5px" class="fas fa-skiing"></i>
-                @endif
+                <div class="col-12 ski-card-level">
+                    <strong>Livello {{ $ski['level'] }}</strong>
+                    @if( $ski['level'] == 'Principiante' || $ski['level'] == 'principiante' )
+                    <i style="color: green; margin-left: 5px" class="fas fa-skiing"></i>
+                    @elseif ( $ski['level'] == 'Intermedio' || $ski['level'] == 'intermedio' )
+                    <i style="color: orange; margin-left: 5px" class="fas fa-skiing"></i>
+                    @elseif ( $ski['level'] == 'Esperto' || $ski['level'] == 'esperto' )
+                    <i style="color: red; margin-left: 5px" class="fas fa-skiing"></i>
+                    @endif
+                </div>
+                <div class="col-4 ski-card-img">
+                    <img src="{{ asset('img/volkl-racetiger.jpg') }}" alt="">
+                </div>
+                <div class="col-8 ski-card-price">
+                    <div class="col-12" style="width: 100%; height: 50%;">
+
+                    </div>
+                    <div class="col-12" style="width: 100%; height: 50%;">
+                        <span style="text-decoration: line-through;">
+                            @if(strlen((string)$ski['rentCost'])>0 && strlen((string)$ski['rentCost'])<=2){{ $ski['rentCost'] }},00 €
+                            @elseif(strlen((string)$ski['rentCost'])>0 && strlen((string)$ski['rentCost'])>2) {{ $ski['rentCost'] }}0 €
+                            @endif
+                        </span><br />
+                        <strong style="font-size: 28px">
+                            @php
+                                $rate = 10;
+                                $full_amount = $ski['rentCost']-($ski['rentCost']*$rate/100);
+                            @endphp
+                            @if(strlen((string)$full_amount>0 && strlen((string)$full_amount)<=2)){{ $full_amount }},00 €
+                            @elseif(strlen((string)$full_amount>0 && strlen((string)$full_amount)>2)) {{ $full_amount }}0 €
+                            @endif
+                        </strong>
+                        @if(strlen((string)$ski['rentCost'])>0)
+                        <span>/giorno</span>
+                        @endif
+                    </div>
+                </div>
                 <form action="{{ route('rentEquipment') }}" class="ski-card-form">
                     <input style="visibility: hidden" type="text" name="ski_id" value="{{ $ski['id'] }}">
                     <input style="visibility: hidden" type="text" name="dataInizio" value="{{ $dataInizio }}">

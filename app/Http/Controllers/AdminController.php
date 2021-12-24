@@ -144,6 +144,7 @@ class AdminController extends Controller
             "length" => "nullable|max:255",
             "type" => "nullable|max:255",
             "level" => "nullable|max:255",
+            "rentCost" => "required|numeric",
             "value" => "required|numeric",
         ]);
 
@@ -154,6 +155,7 @@ class AdminController extends Controller
         $newSki->length=$data['length'];
         $newSki->level=$data['level'];
         $newSki->type=$data['type'];
+        $newSki->rentCost=$data['rentCost'];
         $newSki->value=$data['value'];
 
         $newSki->save();

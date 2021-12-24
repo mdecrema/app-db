@@ -11438,7 +11438,7 @@ footer::after {
 }
 
 .titolo-ski-rent p {
-  font-size: 16px;
+  font-size: 20px;
 }
 
 .form-noleggio {
@@ -11494,7 +11494,7 @@ footer::after {
   }
 
   .titolo-ski-rent p {
-    font-size: 12px;
+    font-size: 15px;
   }
 
   .form-noleggio {
@@ -11540,7 +11540,6 @@ footer::after {
 
 .ski-card-model {
   width: 100%;
-  min-height: 50px;
   background-color: #2A91C2;
   color: #fff;
   padding: 5px 20px;
@@ -11574,14 +11573,14 @@ footer::after {
 
 .ski-card-content .ski-card-form {
   width: 85%;
-  height: 40px;
+  height: 30px;
 }
 
 .ski-card-content .ski-card-form .btn-seleziona {
   width: 90%;
-  height: 40px;
+  height: 35px;
   position: absolute;
-  bottom: 5%;
+  bottom: 2%;
   left: 50%;
   transform: translate(-50%, 0);
   background-color: #00579F;
@@ -11590,5 +11589,41 @@ footer::after {
   color: #fff;
   font-weight: 800;
   font-size: 16px;
+}
+
+.ski-card-content .ski-card-level {
+  width: 100%;
+  height: 30px;
+}
+
+.ski-card-content .ski-card-img {
+  height: 260px;
+  overflow: hidden;
+  float: left;
+}
+
+.ski-card-content .ski-card-img img {
+  width: 350%;
+  height: 100%;
+  margin: 0 -130%;
+}
+
+.ski-card-content .ski-card-price {
+  height: 260px;
+  float: left;
+}
+
+@media only screen and (max-width: 768px) {
+  .ski-card-img {
+    height: 250px;
+    overflow: hidden;
+    float: left;
+  }
+
+  .ski-card-img img {
+    width: 500%;
+    height: 100%;
+    margin: 0 -180%;
+  }
 }
 

@@ -38,8 +38,13 @@
         </div>
 
         <div class="form-group">
-            <label for="value">Valore(€)</label>
-            <input type="text" class="form-control" id="value" name="value" placeholder="Valore del materiale (no decimali)" placeholder="€">
+            <label for="rentCost">Costo per noleggio (€/giorno)</label>
+            <input type="text" class="form-control" id="rentCost" name="rentCost" placeholder="15.00">
+        </div>
+
+        <div class="form-group">
+            <label for="value">Valore attrezzatura</label>
+            <input type="text" class="form-control" id="value" name="value" placeholder="€ (no decimali)" placeholder="€">
         </div>
 
         <button type="submit" class="btn btn-primary">Submit</button>
