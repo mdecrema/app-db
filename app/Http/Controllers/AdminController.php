@@ -158,7 +158,7 @@ class AdminController extends Controller
 
         $newSki->save();
 
-        return redirect()->route("admin.skiRent.all");
+        return redirect()->route("admin.skiRent.allEquipment");
 
     }
 

@@ -6,7 +6,7 @@
 
 @section('content')
 
-<div class="row">
+<div class="row search-content">
     <div class="titolo-ski-rent">
         <h2>SKI RENT</h2>
         <p>
@@ -88,12 +88,12 @@
         @endif
     </div>
 
-    <div class="ski-img" style="width: 380px; height: 170vh; z-index: -1; position: absolute; top: -600px; left: 50px; background-image: url('{{ asset('img/rossignol-hero.jpg') }}'); background-size: cover;">
-
+    <div class="ski-img" style="width: 20vw; height: 100vh; z-index: -1; position: absolute; top: 0; left: 50px; background-image: url('{{ asset('img/rossignol-hero.jpg') }}'); background-size: cover;">
+        <!-- background-image: url('{{ asset('img/rossignol-hero.jpg') }}'); background-size: cover; -->
     </div>
 
-    <div class="boots-img" style="width: 30vw; height: 900px; z-index: -1; position: absolute; top: 50px; right: 0; background-image: url('{{ asset('img/booster.jpg') }}'); background-size: cover;">
-
+    <div class="boots-img" style="width: 30vw; height: 100vh; z-index: -1; position: absolute; top: 50px; right: 0; background-image: url('{{ asset('img/booster.jpg') }}'); background-size: cover;">
+        <!-- background-image: url('{{ asset('img/booster.jpg') }}'); background-size: cover; -->
     </div>
 </div>
 

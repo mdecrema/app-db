@@ -1,0 +1,67 @@
+.ski-card {
+    min-height: 400px;
+    margin: 5px 0;
+    border: 1px solid lightgrey;
+    border-radius: 5px;
+    list-style: none;
+    cursor: pointer;
+    position: relative;
+    display: inline-block;
+    padding: 0!important;
+}
+
+.ski-card::after {
+    content: '';
+    display: table;
+    clear: both;
+}
+
+.ski-card-model {
+    width: 100%;
+    min-height: 50px;
+    background-color: #2A91C2;
+    color: #fff;
+    padding: 5px 20px;
+    border-radius: 5px;
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+}
+
+.ski-card-content {
+    min-height: 350px;
+    padding: 10px 20px;
+    position: relative;
+    .discount {
+        width: 55px;
+        height: 55px;
+        border-radius: 100%;
+        background-color: #7BC1F4;
+        position: absolute;
+        top: 20px;
+        right: 20px;
+        text-align: center;
+        h4 {
+            line-height: 52px;
+            color: #fff;
+            font-weight: 800;
+        }
+    }
+
+    .ski-card-form {
+        width: 85%; height: 40px;
+        .btn-seleziona {
+            width: 90%;
+            height: 40px;
+            position: absolute;
+            bottom: 5%;
+            left: 50%;
+            transform: translate(-50%, 0);
+            background-color: #00579F;
+            border: 1px solid transparent;
+            border-radius: 5px;
+            color: #fff;
+            font-weight: 800;
+            font-size: 16px;
+        }
+    }
+}
