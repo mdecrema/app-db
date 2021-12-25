@@ -164,4 +164,40 @@ class AdminController extends Controller
 
     }
 
+    public function skiRentEditEquipment($id) {
+        // $allRent = Rent::all();
+        $ski = Ski::find($id);
+
+        return view('admin.skiRent.editEquipment', compact('ski'));
+    }
+
+    public function skiRentUpdateEquipment(Request $request, $id) {
+        // $allRent = Rent::all();
+        $ski = Ski::find($id);
+
+        $data = $request->all();
+
+        $request->validate([
+            "brand" => "required|max:255",
+            "model" => "required|max:255",
+            "length" => "nullable|max:255",
+            "type" => "nullable|max:255",
+            "level" => "nullable|max:255",
+            "rentCost" => "required|numeric",
+            "value" => "required|numeric",
+        ]);
+
+        $ski->brand=$data['brand'];
+        $ski->model=$data['model'];
+        $ski->length=$data['length'];
+        $ski->level=$data['level'];
+        $ski->type=$data['type'];
+        $ski->rentCost=$data['rentCost'];
+        $ski->value=$data['value'];
+
+        $ski->update();
+
+        return redirect()->route("admin.skiRent.allEquipment");
+    }
+
 }

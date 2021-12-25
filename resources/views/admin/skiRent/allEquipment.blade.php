@@ -14,7 +14,7 @@
             <h5>{{ $ski->model }}</h5>
             <span>Tipologia: <strong>{{ $ski->type }}</strong> </span><br>
             <span>Livello: <strong>{{ $ski->level }}</strong> </span>
-            </span>
+            <a href="edit/{{$ski->id}}"><i class="fas fa-pencil-alt"></i></a>
         </div>
     @endforeach
     </ul>
