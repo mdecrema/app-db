@@ -62,12 +62,12 @@
 
     <div id="mySidenav" class="sidenav">
     <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-    <a class="voci-menu" onclick="closeNav()" href="{{ route('skiRent') }}">Ski Rent</a>
-    <a class="voci-menu" onclick="closeNav()" href="{{ route('tees') }}">Tees</a>
-    <a class="voci-menu" onclick="closeNav()" href="{{ route('products') }}">Felpe</a>
-    <a class="voci-menu" onclick="closeNav()" href="{{ route('products') }}">Pantaloni</a>
-    <a class="voci-menu" onclick="closeNav()" href="briscolaGame">Scarpe</a>
-    <a  class="voci-menu" onclick="closeNav()" href="{{ route('news') }}">News</a>
+    <a class="voci-menu" href="{{ route('skiRent') }}">Ski Rent</a>
+    <a class="voci-menu" href="{{ route('tees') }}">Tees</a>
+    <a class="voci-menu" href="{{ route('products') }}">Felpe</a>
+    <a class="voci-menu" href="{{ route('products') }}">Pantaloni</a>
+    <a class="voci-menu"href="briscolaGame">Scarpe</a>
+    <a  class="voci-menu"href="{{ route('news') }}">News</a>
         <!-- Authentication Links -->
        @guest
             <a class="voci-menu-sm" href="{{ route('login') }}">{{ __('Login') }}</a>
