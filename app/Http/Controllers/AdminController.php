@@ -154,9 +154,9 @@ class AdminController extends Controller
         $newSki->model=$data['model'];
         $newSki->length=$data['length'];
         $newSki->level=$data['level'];
-        $newSki->type=$data['type'];
-        $newSki->rentCost=$data['rentCost'];
-        $newSki->value=$data['value'];
+        $ski->value=$data['value'];
+        $ski->rentCost=$data['rentCost'];
+        $ski->type=$data['type'];
 
         $newSki->save();
 
@@ -191,9 +191,9 @@ class AdminController extends Controller
         $ski->model=$data['model'];
         $ski->length=$data['length'];
         $ski->level=$data['level'];
-        $ski->type=$data['type'];
-        $ski->rentCost=$data['rentCost'];
         $ski->value=$data['value'];
+        $ski->rentCost=$data['rentCost'];
+        $ski->type=$data['type'];
 
         $ski->update();
 
