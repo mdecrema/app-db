@@ -48,23 +48,23 @@
 
                     </div>
                     <div class="col-12" style="width: 100%; height: 50%;">
-                        <span style="text-decoration: line-through;">
-                            @if(strlen((string)$ski['rentCost'])>0 && strlen((string)$ski['rentCost'])<=2){{ $ski['rentCost'] }},00 €
+                        <!--<span style="text-decoration: line-through;">
+                            {{--@if(strlen((string)$ski['rentCost'])>0 && strlen((string)$ski['rentCost'])<=2){{ $ski['rentCost'] }},00 €
                             @elseif(strlen((string)$ski['rentCost'])>0 && strlen((string)$ski['rentCost'])>2) {{ $ski['rentCost'] }}0 €
-                            @endif
-                        </span><br />
-                        <strong style="font-size: 28px">
-                            @php
+                            @endif--}}
+                        </span><br />-->
+                        <!--<strong style="font-size: 28px">
+                            {{--@php
                                 $rate = 10;
                                 $full_amount = $ski['rentCost']-($ski['rentCost']*$rate/100);
                             @endphp
                             @if(strlen((string)$full_amount>0 && strlen((string)$full_amount)<=2)){{ $full_amount }},00 €
                             @elseif(strlen((string)$full_amount>0 && strlen((string)$full_amount)>2)) {{ $full_amount }}0 €
-                            @endif
-                        </strong>
-                        @if(strlen((string)$ski['rentCost'])>0)
+                            @endif--}}
+                        </strong>-->
+                        {{--@if(strlen((string)$ski['rentCost'])>0)
                         <span>/giorno</span>
-                        @endif
+                        @endif--}}
                     </div>
                 </div>
                 <form action="{{ route('rentEquipment') }}" class="ski-card-form">
