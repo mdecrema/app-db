@@ -11552,6 +11552,16 @@ footer::after {
   min-height: 350px;
   padding: 10px 20px;
   position: relative;
+  /*.ski-card-img {
+      height: 260px;
+      overflow: hidden;
+      float: left;
+      img {
+          width: 350%;
+          height: 100%;
+          margin: 0 -130%;
+      }
+  }*/
 }
 
 .ski-card-content .discount {
@@ -11596,34 +11606,21 @@ footer::after {
   height: 30px;
 }
 
-.ski-card-content .ski-card-img {
-  height: 260px;
-  overflow: hidden;
-  float: left;
-}
-
-.ski-card-content .ski-card-img img {
-  width: 350%;
-  height: 100%;
-  margin: 0 -130%;
-}
-
 .ski-card-content .ski-card-price {
   height: 260px;
   float: left;
 }
 
 @media only screen and (max-width: 768px) {
-  .ski-card-img {
-    height: 250px;
-    overflow: hidden;
-    float: left;
-  }
-
-  .ski-card-img img {
-    width: 500%;
-    height: 100%;
-    margin: 0 -180%;
-  }
+  /*.ski-card-img {
+      height: 250px;
+      overflow: hidden;
+      float: left;
+      img {
+          width: 500%;
+          height: 100%;
+          margin: 0 -180%;
+      }
+  }*/
 }
 

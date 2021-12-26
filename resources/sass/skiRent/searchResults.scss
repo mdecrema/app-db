@@ -70,7 +70,7 @@
         height: 30px;
     }
     
-    .ski-card-img {
+    /*.ski-card-img {
         height: 260px;
         overflow: hidden;
         float: left;
@@ -79,7 +79,7 @@
             height: 100%;
             margin: 0 -130%;
         }
-    }
+    }*/
     
     .ski-card-price {
         height: 260px;
@@ -88,7 +88,7 @@
 }
 
 @media only screen and (max-width: 768px) {
-    .ski-card-img {
+    /*.ski-card-img {
         height: 250px;
         overflow: hidden;
         float: left;
@@ -97,5 +97,5 @@
             height: 100%;
             margin: 0 -180%;
         }
-    }
+    }*/
 }
