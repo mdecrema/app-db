@@ -40,8 +40,8 @@
                     <i style="color: red; margin-left: 5px" class="fas fa-skiing"></i>
                     @endif
                 </div>
-                <div class="col-4 ski-card-img" style="height: 260px; overflow: hidden; float: left;">
-                    <img src="{{ asset('img/volkl-racetiger.jpg') }}" alt="" style="width: 350%; height: 100%; margin: 0 -130%;">
+                <div class="col-4 ski-card-img">
+                    <img src="{{ asset('img/volkl-racetiger.jpg') }}" alt="">
                 </div>
                 <div class="col-8 ski-card-price">
                     <div class="col-12" style="width: 100%; height: 50%;">
