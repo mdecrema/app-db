@@ -21,7 +21,7 @@ class CreateSkisTable extends Migration
             $table->text('brand');
             $table->text('model');
             $table->smallInteger('value');
-            // $table->smallInteger('rentCost');
+            $table->smallInteger('rentCost');
             $table->text('type');
 
             $table->timestamps();
