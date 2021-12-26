@@ -154,9 +154,9 @@ class AdminController extends Controller
         $newSki->model=$data['model'];
         $newSki->length=$data['length'];
         $newSki->level=$data['level'];
-        $ski->value=$data['value'];
-        //$ski->rentCost=$data['rentCost'];
-        $ski->type=$data['type'];
+        $newSki->value=$data['value'];
+        //$newSki->rentCost=$data['rentCost'];
+        $newSki->type=$data['type'];
 
         $newSki->save();
 
