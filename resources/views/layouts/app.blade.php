@@ -71,7 +71,7 @@
     <a class="voci-menu" href="{{ route('tees') }}">Tees</a>
     <a class="voci-menu" href="{{ route('products') }}">Felpe</a>
     <a class="voci-menu" href="{{ route('products') }}">Pantaloni</a>
-    <a class="voci-menu"href="briscolaGame">Scarpe</a>
+    <a class="voci-menu" href="">Scarpe</a>
     <a  class="voci-menu"href="{{ route('news') }}">News</a>
         <!-- Authentication Links -->
        @guest

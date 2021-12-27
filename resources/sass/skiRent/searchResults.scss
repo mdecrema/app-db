@@ -11,6 +11,32 @@
     background-color: #fff;
 }
 
+.level-bar {
+    -webkit-appearance: none;
+    width: 100%;
+    height: 5px;
+    background: #d3d3d3;
+    outline: none;
+    border-radius: 20px;
+    -webkit-transition: .2s;
+    transition: opacity .2s;
+  }
+
+.level-bar::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 15px;
+    height: 15px;
+    background: #04AA6D;
+    cursor: pointer;
+  }
+  .level-bar::-moz-range-thumb {
+    width: 15px;
+    height: 15px;
+    background: #04AA6D;
+    cursor: pointer;
+  }
+
 .ski-card::after {
     content: '';
     display: table;
@@ -31,6 +57,7 @@
     min-height: 350px;
     padding: 10px 20px;
     position: relative;
+    background-color: #fff;
     .discount {
         width: 55px;
         height: 55px;
@@ -89,6 +116,9 @@
 }
 
 @media only screen and (max-width: 768px) {
+    .days-num {
+        display: inline-block;
+    }
     .ski-card-img {
         height: 250px;
         overflow: hidden;
