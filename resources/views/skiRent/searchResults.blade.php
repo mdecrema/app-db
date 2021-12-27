@@ -32,8 +32,10 @@
           <div class="card-body">
             <!-- altezza -->
             <div style="margin-bottom: 15px">
-                <div id="filtroAltezza" style="width: 10px; height: 10px; background-color: #0077F7; border-radius: 2px; display: inline-block"></div>
-                La tua altezza: <strong id="level-bar-value"></strong> <strong>cm</strong>
+                <div onclick="setAltezzaAsActive() ">
+                    <div id="filtroAltezza" style="width: 10px; height: 10px; background-color: #fff; border: 1px solid #0077F7; border-radius: 2px; display: inline-block"></div>
+                    La tua altezza: <strong id="level-bar-value"></strong> <strong>cm</strong>
+                </div>
                 <input id="level-bar" type="range" min="100" max="200" value="175" class="level-bar">
                 <div style="width: 100%; height: 10px;">
                     @for($i=100; $i<=200; $i+=5)
@@ -46,9 +48,11 @@
             
             <!-- livello -->
             <div style="margin-bottom: 30px">
-                <div id="filtroLivello" style="width: 10px; height: 10px; background-color: #0077F7; border-radius: 2px; display: inline-block"></div>
-                Livello:
-                <select class="form-control" name="level" id="" style="border-top: none; border-left: none; border-right: none; display: inline-block; cursor: pointer">
+                <div onclick="setLevelAsActive()">
+                    <div id="filtroLivello" style="width: 10px; height: 10px; background-color: #0077F7; border: 1px solid #0077F7; border-radius: 2px; display: inline-block"></div>
+                    Livello:
+                </div>
+                <select class="form-control" name="level" id="" style="border-radius: none; border-top: none; border-left: none; border-right: none; display: inline-block; cursor: pointer">
                     <option value="principiante">Principiante</option> 
                     <option value="intermedio" selected>Intermedio</option>
                     <option value="avanzato">Avanzato</option>
@@ -71,9 +75,11 @@
             <h5>Sci disponibili</h5>
             
             <h5>Disponibilità in base alla tua ricerca</h5>
-            <h6></h6>
-            <div style="color: #BC0033">
-                <i class="fas fa-ban"></i> Rimuovi filtri
+            <div class="col-12" style="border-radius: 5px; padding: 5px 10px; background-color: lightgray">
+                <h6>Livello: <span></span></h6> - <h6>Altezza: <span></span></h6>
+                <div style="color: #BC0033">
+                    <i class="fas fa-ban"></i> Rimuovi filtri
+                </div>
             </div>
             
             @if (session()->has('success_message'))
@@ -195,13 +201,43 @@
     </script>-->
 
     <script>
+        var activeHeight = 0;
         document.getElementById('level-bar-value').innerHTML=document.getElementById('level-bar').value;
         document.getElementById('level-bar').addEventListener('change', getLevelBarValue);
-
+        
+        // Altezza persona
         function getLevelBarValue() {
             var value = document.getElementById('level-bar').value;
             document.getElementById('level-bar-value').innerHTML=value;
+            activeHeight = 1;
+            document.getElementById('filtroAltezza').style.backgroundColor='#0077F7';
         }
+
+        //Filtri attivati
+        function setAltezzaAsActive() {
+            if (activeHeight===0) {
+                activeHeight = 1;
+                document.getElementById('filtroAltezza').style.backgroundColor='#0077F7';
+            } else if (activeHeight===1) {
+                activeHeight = 0;
+                document.getElementById('filtroAltezza').style.backgroundColor='#fff';
+            }
+        }
+
+        
+
+        function getHeight() {
+            var height = document.getElementById('level-bar-value').value;
+            console.log(height);
+        }
+
+        function getLevel() {
+            var level = document.getElementById('level').value;
+            console.log(level);
+        }
+
+        var skis = @json($skiArray);
+        console.log(skis);
     </script>
 </div>
 
