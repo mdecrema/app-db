@@ -14,17 +14,47 @@
     <div class="accordion" id="accordionExample" style="margin: 15px 0">
     <div class="card">
         <div class="" id="headingOne">
-          <h2 class="mb-0">
-            <button class="btn btn-link btn-block text-left" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
-              Filtra risultati <i class="fas fa-chevron-down"></i>
-            </button>
-          </h2>
+            <div>
+                <button class="btn btn-link btn-block text-left" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
+                    Filtra risultati <i class="fas fa-chevron-down"></i>
+                </button>
+            </div>
+            <!--<div style="width: 50%; float: left;">
+                <div style="float: right">
+                    <button class="btn btn-link btn-block text-left" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
+                        <i class="fas fa-ban"></i> Reset
+                    </button>
+                </div>
+            </div>-->
         </div>
     
         <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordionExample">
           <div class="card-body">
-            La tua altezza: <span id="level-bar-value"></span> cm
-            <input id="level-bar" type="range" min="100" max="200" value="150" class="level-bar">
+            <!-- altezza -->
+            <div style="margin-bottom: 15px">
+                <div id="filtroAltezza" style="width: 10px; height: 10px; background-color: #0077F7; border-radius: 2px; display: inline-block"></div>
+                Imposta altezza: <span id="level-bar-value"></span> cm
+                <input id="level-bar" type="range" min="100" max="200" value="150" class="level-bar">
+            </div>
+            
+            <!-- livello -->
+            <div style="margin-bottom: 30px">
+                <div id="filtroLivello" style="width: 10px; height: 10px; background-color: #0077F7; border-radius: 2px; display: inline-block"></div>
+                Livello:
+                <select class="form-control" name="level" id="" style="display: inline-block; cursor: pointer">
+                    <option value="principiante">Principiante</option> 
+                    <option value="intermedio" selected>Intermedio</option>
+                    <option value="avanzato">Avanzato</option>
+                </select>
+            </div>
+
+            <div style="width: 100%; height: 40px">
+                <div style=" float: right">
+                    Reset
+                    <button class="btn btn-primary" style="margin-left: 5px">Applica</button>
+                </div>
+            </div>
+
           </div>
         </div>
       </div>
@@ -32,7 +62,13 @@
     <div class="row" style="">
         <div>
             <h5>Sci disponibili</h5>
-            <div id="sci" style="width: 10px; height: 10px; background-color: #BC0033; border-radius: 5px; display: inline-block"></div><h6 style="display: inline-block; margin-left: 5px">Applica filtri</h6>
+            
+            <h5>Disponibilità in base alla tua ricerca</h5>
+            <h6></h6>
+            <div style="color: #BC0033">
+                <i class="fas fa-ban"></i> Rimuovi filtri
+            </div>
+            
             @if (session()->has('success_message'))
             <div class="alert alert-success">
                 {{ session()->get('success_message') }}
