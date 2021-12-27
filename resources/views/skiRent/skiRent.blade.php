@@ -180,6 +180,7 @@
 
   $('input[name="daterange"]').daterangepicker({
     opens: 'left',
+  //  displayMonths : 1,
     minDate: new Date(),
     locale: {
         format: 'DD-MM-YYYY'

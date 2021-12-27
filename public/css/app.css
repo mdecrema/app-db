@@ -11425,6 +11425,10 @@ footer::after {
   font-size: 12px;
 }
 
+.search-content {
+  background-color: #fff;
+}
+
 .titolo-ski-rent {
   width: 50vw;
   margin: auto;
@@ -11530,6 +11534,7 @@ footer::after {
   position: relative;
   display: inline-block;
   padding: 0 !important;
+  background-color: #fff;
 }
 
 .ski-card::after {

@@ -5,6 +5,11 @@
 @endsection
 
 @section('content')
+<ul style="list-style: none">
+    <li style="display: inline-block; padding: 0 5px"><a href="{{ route('admin.dashboard') }}">Dashboard</a></li>
+    <li style="display: inline-block; padding: 0 5px"><a href="{{ route('admin.skiRent.allEquipment') }}">Tutto il materiale</a></li>
+    <li style="display: inline-block; padding: 0 5px"><a href="{{ route('admin.skiRent.addEquipment') }}">Aggiungi materiale</a></li>
+</ul>
 <h2>Attrezzatura noleggiata</h2>
 @if (session()->has('success_message'))
                         <div class="alert alert-success">
