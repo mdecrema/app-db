@@ -33,15 +33,22 @@
             <!-- altezza -->
             <div style="margin-bottom: 15px">
                 <div id="filtroAltezza" style="width: 10px; height: 10px; background-color: #0077F7; border-radius: 2px; display: inline-block"></div>
-                Imposta altezza: <span id="level-bar-value"></span> cm
-                <input id="level-bar" type="range" min="100" max="200" value="150" class="level-bar">
+                La tua altezza: <strong id="level-bar-value"></strong> <strong>cm</strong>
+                <input id="level-bar" type="range" min="100" max="200" value="175" class="level-bar">
+                <div style="width: 100%; height: 10px;">
+                    @for($i=100; $i<=200; $i+=5)
+                    <div style="width: calc(100%/21); height: 100%; float: left; font-size: 5px">
+                        {{ $i }}
+                    </div>
+                    @endfor
+                </div>
             </div>
             
             <!-- livello -->
             <div style="margin-bottom: 30px">
                 <div id="filtroLivello" style="width: 10px; height: 10px; background-color: #0077F7; border-radius: 2px; display: inline-block"></div>
                 Livello:
-                <select class="form-control" name="level" id="" style="display: inline-block; cursor: pointer">
+                <select class="form-control" name="level" id="" style="border-top: none; border-left: none; border-right: none; display: inline-block; cursor: pointer">
                     <option value="principiante">Principiante</option> 
                     <option value="intermedio" selected>Intermedio</option>
                     <option value="avanzato">Avanzato</option>
