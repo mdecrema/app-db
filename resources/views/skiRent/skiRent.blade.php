@@ -34,7 +34,7 @@
                     </div>-->
                     <input id="dataFine" name="dataFine" type='date' min="" class="form-control" style="position: absolute; visibility: hidden" />
                     <!-- Range DataPicker -->
-                    <input type="text" name="daterange" value="" class="form-control" />
+                    <input type="" name="daterange" value="" class="form-control" onfocus="blur()" />
                 </div>
             </div>
 
@@ -180,7 +180,10 @@
 
   $('input[name="daterange"]').daterangepicker({
     opens: 'left',
-    minDate: new Date()
+    minDate: new Date(),
+    locale: {
+        format: 'DD-MM-YYYY'
+    }
   }, function(start, end, label) {
     dataInizio=start.format('YYYY-MM-DD');
     dataFine=end.format('YYYY-MM-DD');
