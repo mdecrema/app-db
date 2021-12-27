@@ -28,11 +28,13 @@
             </div>
             <div class="form-row col-xl-6 col-lg-6 col-md-12 col-xs-12 col-sm-12">
                 <div class='input-group date' id='datetimepicker1' style="position: relative">
-                    <input id="dataInizio" name="dataInizio" type='date' class="form-control" />
+                    <input id="dataInizio" name="dataInizio" type='date' class="form-control" style="position: absolute; visibility: hidden" />
                     <!--<div id="errore" style="position: absolute; bottom: -20px; left: 0; display: none">
                         <span style="color: #BC0033">*Seleziona una data prima di procedere</span>
                     </div>-->
-                    <input id="dataFine" name="dataFine" type='date' min="" class="form-control" />
+                    <input id="dataFine" name="dataFine" type='date' min="" class="form-control" style="position: absolute; visibility: hidden" />
+                    <!-- Range DataPicker -->
+                    <input type="text" name="daterange" value="" class="form-control" />
                 </div>
             </div>
 
@@ -101,8 +103,8 @@
     var active='sci';
     var dataInizio=document.getElementById('dataInizio');
     var dataFine=document.getElementById('dataFine');
-    dataInizio.addEventListener('change', getDate);
-    dataFine.addEventListener('change', getDateFine);
+    //dataInizio.addEventListener('change', getDate);
+    //dataFine.addEventListener('change', getDateFine);
 
     function setItemAsActive(tipologia) {
         console.log('here');
@@ -140,11 +142,11 @@
         dataInizio=document.getElementById('dataInizio').valueAsDate;
         dataFine=document.getElementById('dataFine').valueAsDate;
         rangeOfDays(dataInizio, dataFine);
-
+        console.log(dataInizio, dataFine);
     }
 
     function rangeOfDays(date1, date2) {
-        var Difference_In_Time = date2.getTime() - date1.getTime();
+        var Difference_In_Time = date2 - date1;
   
         // To calculate the no. of days between two dates
         var Difference_In_Days = Difference_In_Time / (1000 * 3600 * 24);
@@ -156,7 +158,7 @@
                + date2 + " is: <br> " 
                + Difference_In_Days);
         
-        Difference_In_Days+=1
+        Difference_In_Days+=0.000000011574074;
 
         var input = "<input name='daysRange' type='number' value="+ Difference_In_Days +">"
         console.log(input);
@@ -172,6 +174,22 @@
             errore.style.display="block";
         }, timeout);
     }
+
+    // Prova range datapicker
+
+
+  $('input[name="daterange"]').daterangepicker({
+    opens: 'left',
+    minDate: new Date()
+  }, function(start, end, label) {
+    dataInizio=start.format('YYYY-MM-DD');
+    dataFine=end.format('YYYY-MM-DD');
+    rangeOfDays(start, end);
+    document.getElementById('dataInizio').value=dataInizio;
+    document.getElementById('dataFine').value=dataFine;
+  });
+
+
 
 </script>
 
