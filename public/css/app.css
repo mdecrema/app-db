@@ -11467,6 +11467,32 @@ footer::after {
   opacity: 0.7;
 }
 
+.form-noleggio .level-bar {
+  -webkit-appearance: none;
+  width: 100%;
+  height: 5px;
+  background-color: #d3d3d3;
+  outline: none;
+  border-radius: 20px;
+  transition: opacity 0.2s;
+}
+
+.form-noleggio .level-bar::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 5px;
+  height: 20px;
+  background-color: #BC0033;
+  cursor: pointer;
+}
+
+.form-noleggio .level-bar::-moz-range-thumb {
+  width: 5px;
+  height: 20px;
+  background-color: #BC0033;
+  cursor: pointer;
+}
+
 .form-noleggio::after {
   content: "";
   display: table;
@@ -11571,7 +11597,6 @@ footer::after {
 
 .ski-card-model {
   width: 100%;
-  background-color: #2A91C2;
   color: #fff;
   padding: 5px 20px;
   border-radius: 5px;

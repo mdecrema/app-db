@@ -35,7 +35,34 @@
         background-color: #fff;
         opacity: 0.7;
     }
+    
+    .level-bar {
+    -webkit-appearance: none;
+    width: 100%;
+    height: 5px;
+    background-color: #d3d3d3; 
+    outline: none;
+    border-radius: 20px;
+    -webkit-transition: .2s;
+    transition: opacity .2s;
+  }
+
+    .level-bar::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 5px;
+    height: 20px;
+    background-color: #BC0033;
+    cursor: pointer;
+  }
+  .level-bar::-moz-range-thumb {
+    width: 5px;
+    height: 20px;
+    background-color: #BC0033;
+    cursor: pointer;
+  }
 }
+
 
 .form-noleggio::after {
     content: '';

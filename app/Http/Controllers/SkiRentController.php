@@ -128,40 +128,49 @@ class SkiRentController extends Controller
             $allSki = json_decode(json_encode($allSki), true);
 
             $skiArray = $allSki;
-                /*    if (!isset($skiNotAvailable[$k]) || !isset($allSki[$y]['id'])) {
-                        //Se non trova un indice 
-                    } else if ($skiNotAvailable[$k]===$allSki[$y]['id'] && !in_array($allSki[$y], $skiArray)) {
-                        // rimuovo da allSki
-                        //\array_diff($skiArray, [$allSki[$y]]);
-                        unset($allSki[$y]);
-                        
-                    } else if ($skiNotAvailable[$k]===$allSki[$y]['id'] && in_array($allSki[$y], $skiArray)) {
-                        // rimuovere da skiArray
-                        for ($x=0; $x< count($skiArray); $x++) {
-                            if ($skiArray[$x]===$allSki[$y]) {
-                                unset($skiArray[$x]);
-                            }
-                        }
-            
-                        unset($allSki[$y]);
-    
-                    } else {
-                        // aggiungere a skiArray
-                        array_push($skiArray, $allSki[$y]);
-                    }
-                }
-            }*/
+                
+
         } else {
             $skiArray = $allSki;
         }
 
-        //dd($skiArray); 
+        // FILTRARE PER ALTEZZA INSERITA !!! (mancante)
+
+        $principiante = array();
+        $pack_beginner = false;
+        $intermedio = array();
+        $pack_intermediate = false;
+        $esperto = array();
+        $pack_advanced = false;
+
+        for($y = 0; $y< count($skiArray); $y++) {
+            if ($skiArray[$y]['level']==='Principiante') {
+                array_push($principiante, $skiArray[$y]);
+            } else if ($skiArray[$y]['level']==='Intermedio') {
+                array_push($intermedio, $skiArray[$y]);
+            } else if ($skiArray[$y]['level']==='Esperto') {
+                array_push($esperto, $skiArray[$y]);
+            }
+        }
+
+        if (count($principiante)!==0) {
+            $pack_beginner = true;
+        }
+
+        if (count($intermedio)!==0) {
+            $pack_intermediate = true;
+        }
+
+        if (count($esperto)!==0) {
+            $pack_advanced = true;
+        }
+
 
         $skiArray = array_unique($skiArray, SORT_REGULAR);
 
         //dd($skiArray);        
 
-        return view('skiRent/searchResults', compact('skiArray', 'dataInizio', 'dataFine', 'daysRange'));
+        return view('skiRent/searchResults', compact('skiArray', 'pack_beginner', 'pack_intermediate', 'pack_advanced', 'dataInizio', 'dataFine', 'daysRange'));
 
     }
 

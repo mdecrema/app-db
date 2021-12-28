@@ -34,7 +34,7 @@
                     </div>-->
                     <input id="dataFine" name="dataFine" type='date' min="" class="form-control" style="position: absolute; visibility: hidden" />
                     <!-- Range DataPicker -->
-                    <input type="" name="daterange" value="" class="form-control" onfocus="blur()" />
+                    <input type="" name="daterange" value="" class="form-control" onfocus="blur()" style="font-weight: bold" />
                 </div>
             </div>
 
@@ -46,27 +46,48 @@
                 <div class="col-12" style="margin: 20px 0">
                     <div onclick="setItemAsActive('sci')" class="" style="padding-right: 50px; display: inline-block; cursor: pointer">
                         <div id="sci" style="width: 15px; height: 15px; background-color: #BC0033; border-radius: 5px; display: inline-block"></div>
-                        <div style="display: inline-block">
+                        <div style="display: inline-block; font-weight: bold">
                             Sci
                         </div>
                     </div>
                     <div onclick="setItemAsActive('snowboard')" class="" style="padding-right: 50px; display: inline-block; cursor: pointer">
                         <div id="snowboard" style="width: 15px; height: 15px; background-color: #fff; border-radius: 5px; display: inline-block"></div>
-                        <div style="display: inline-block">
+                        <div style="display: inline-block; font-weight: bold">
                             Snowboard
                         </div>
                     </div>
                     <div onclick="setItemAsActive('ciaspole')" class="" style="padding-right: 50px; display: inline-block; cursor: pointer">
                         <div id="ciaspole" style="width: 15px; height: 15px; background-color: #fff; border-radius: 5px; display: inline-block"></div>
-                        <div style="display: inline-block">
+                        <div style="display: inline-block; font-weight: bold">
                             Ciaspole
                         </div>
                     </div>
                  </div>
             </div>
+
+            <div class="form-row col-xl-6 col-lg-6 col-md-12 col-xs-12 col-sm-12" style="margin-bottom: 10px">
+                <!-- altezza -->
+                <div>
+                    La tua altezza: <strong id="level-bar-value"></strong> <strong>cm</strong>
+                </div>
+                <div class="form-control">
+                    <input id="level-bar" type="range" min="100" max="200" value="175" class="level-bar">
+                    <div style="width: 100%; height: 10px;">
+                    @for($i=100; $i<=200; $i+=5)
+                        <div style="width: calc(100%/21); height: 100%; float: left; font-size: 5px">
+                            {{ $i }}
+                        </div>
+                    @endfor
+                    </div>
+                </div>
+            </div>
             
             <div class="form-row col-xl-6 col-lg-6 col-md-12 col-xs-12 col-sm-12">
-                <select class="form-control" name="level" id="" style="display: inline-block; cursor: pointer">
+                <!-- livello -->
+                <div>
+                    Livello:
+                </div>
+                <select class="form-control" name="level" id="" style="display: inline-block; cursor: pointer; font-weight: bold">
                     <option value="principiante">Principiante</option> 
                     <option value="intermedio" selected>Intermedio</option>
                     <option value="avanzato">Avanzato</option>
@@ -105,6 +126,16 @@
     var dataFine=document.getElementById('dataFine');
     //dataInizio.addEventListener('change', getDate);
     //dataFine.addEventListener('change', getDateFine);
+    document.getElementById('level-bar-value').innerHTML=document.getElementById('level-bar').value;
+    document.getElementById('level-bar').addEventListener('change', getLevelBarValue);
+        
+    // Altezza persona
+    function getLevelBarValue() {
+        var value = document.getElementById('level-bar').value;
+        document.getElementById('level-bar-value').innerHTML=value;
+        activeHeight = 1;
+        document.getElementById('filtroAltezza').style.backgroundColor='#0077F7';
+    }
 
     function setItemAsActive(tipologia) {
         console.log('here');
