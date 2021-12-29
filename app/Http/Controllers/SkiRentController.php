@@ -73,11 +73,13 @@ class SkiRentController extends Controller
         $daysRange = $data['daysRange'];
         $dataInizio = $data['dataInizio'];
         $dataFine = $data['dataFine'];
+        $height = $data['height'];
 
         $request->validate([
             "dataInizio" => "required",
             "dataFine" => "required",
             "daysRange"=> "required",
+            "height" => "required",
             "type" => "nullable",
             "level" => "required",
         ]);
@@ -129,12 +131,23 @@ class SkiRentController extends Controller
 
             $skiArray = $allSki;
                 
-
         } else {
             $skiArray = $allSki;
         }
 
-        // FILTRARE PER ALTEZZA INSERITA !!! (mancante)
+        // filtro per altezza
+        for ($t = 0; $t< count($skiArray); $t++) {
+            /*if (!isset($skiArray[$t])) {
+                // Per evitare di incappare in 'Undefined Offset' errors
+            }*/
+          
+            if ($skiArray[$t]['length'] > $data['height']-5 || $skiArray[$t]['length'] < $data['height']-20) {
+                
+                unset($skiArray[$t]);
+            }
+        }
+
+        //dd($skiArray);
 
         $principiante = array();
         $pack_beginner = false;
@@ -144,7 +157,10 @@ class SkiRentController extends Controller
         $pack_advanced = false;
 
         for($y = 0; $y< count($skiArray); $y++) {
-            if ($skiArray[$y]['level']==='Principiante') {
+            if (!isset($skiArray[$y])) {
+                // Per evitare di incappare in 'Undefined Offset' errors
+            }
+            else if ($skiArray[$y]['level']==='Principiante') {
                 array_push($principiante, $skiArray[$y]);
             } else if ($skiArray[$y]['level']==='Intermedio') {
                 array_push($intermedio, $skiArray[$y]);
@@ -170,7 +186,7 @@ class SkiRentController extends Controller
 
         //dd($skiArray);        
 
-        return view('skiRent/searchResults', compact('skiArray', 'pack_beginner', 'pack_intermediate', 'pack_advanced', 'dataInizio', 'dataFine', 'daysRange'));
+        return view('skiRent/searchResults', compact('skiArray', 'pack_beginner', 'pack_intermediate', 'pack_advanced', 'height', 'dataInizio', 'dataFine', 'daysRange'));
 
     }
 

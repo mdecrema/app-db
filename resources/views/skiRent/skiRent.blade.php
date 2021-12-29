@@ -71,7 +71,7 @@
                     La tua altezza: <strong id="level-bar-value"></strong> <strong>cm</strong>
                 </div>
                 <div class="form-control">
-                    <input id="level-bar" type="range" min="100" max="200" value="175" class="level-bar">
+                    <input id="level-bar" type="range" min="100" max="200" value="175" name="height" class="level-bar">
                     <div style="width: 100%; height: 10px;">
                     @for($i=100; $i<=200; $i+=5)
                         <div style="width: calc(100%/21); height: 100%; float: left; font-size: 5px">
