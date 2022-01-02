@@ -11425,85 +11425,61 @@ footer::after {
   font-size: 12px;
 }
 
-.search-content {
-  background-color: #fff;
-}
+@media only screen and (min-width: 769px) {
+  .search-content {
+    background-color: #fff;
+  }
 
-.titolo-ski-rent {
-  width: 50vw;
-  margin: auto;
-}
+  .titolo-ski-rent {
+    width: 50vw;
+    margin: auto;
+  }
 
-.titolo-ski-rent h2 {
-  color: #FE0000;
-  font-size: 50px;
-  font-family: "Righteous", cursive;
-  font-style: italic;
-}
+  .titolo-ski-rent h2 {
+    color: #FE0000;
+    font-size: 50px;
+    font-family: "Righteous", cursive;
+    font-style: italic;
+  }
 
-.titolo-ski-rent p {
-  font-size: 20px;
-}
+  .titolo-ski-rent p {
+    font-size: 20px;
+  }
 
-.form-noleggio {
-  width: 50%;
-  min-height: 350px;
-  border: 1px solid grey;
-  border-radius: 10px;
-  padding: 20px;
-  /*background-color: lightgrey;*/
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-}
+  .form-noleggio {
+    width: 50%;
+    min-height: 350px;
+    border: 1px solid grey;
+    border-radius: 10px;
+    padding: 20px;
+    /*background-color: lightgrey;*/
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
 
-.form-noleggio .bg-opacity {
-  height: 100%;
-  position: absolute;
-  top: 0;
-  left: 0;
-  background-color: #fff;
-  opacity: 0.7;
-}
+  .form-noleggio .bg-opacity {
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color: #fff;
+    opacity: 0.7;
+  }
 
-.form-noleggio .level-bar {
-  -webkit-appearance: none;
-  width: 100%;
-  height: 5px;
-  background-color: #d3d3d3;
-  outline: none;
-  border-radius: 20px;
-  transition: opacity 0.2s;
-}
+  .form-noleggio::after {
+    content: "";
+    display: table;
+    clear: both;
+  }
 
-.form-noleggio .level-bar::-webkit-slider-thumb {
-  -webkit-appearance: none;
-  appearance: none;
-  width: 5px;
-  height: 20px;
-  background-color: #BC0033;
-  cursor: pointer;
-}
-
-.form-noleggio .level-bar::-moz-range-thumb {
-  width: 5px;
-  height: 20px;
-  background-color: #BC0033;
-  cursor: pointer;
-}
-
-.form-noleggio::after {
-  content: "";
-  display: table;
-  clear: both;
-}
-
-.btn-continua {
-  width: 100%;
-  background-color: #BC0033;
-  color: #fff;
-  font-weight: bold;
+  .btn-continua {
+    width: 100%;
+    background-color: #BC0033;
+    color: #fff;
+    font-weight: bold;
+  }
 }
 
 @media only screen and (max-width: 768px) {
