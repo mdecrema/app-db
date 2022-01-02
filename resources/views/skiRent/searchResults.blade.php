@@ -62,22 +62,17 @@
       </div>
     </div>-->
     <div class="row" style="">
-        <div class="col-12" style="font-size: 16px">
-            Dal: <strong style="padding: 5px 10px;">{{ $dataInizio }}</strong>
-            Al: <strong style="padding: 5px 10px;">{{ $dataFine }}</strong>
-            <em class="days-num">- {{ $daysRange }} @if ($daysRange==1) giorno @else giorni @endif -</em><br />
-            La tua altezza: <strong style="padding: 5px 10px;">{{ $height }}</strong> <strong>cm</strong>
+        <div>
+            <h5 style="font-weight: bold; font-family: 'Bakbak One', cursive; margin: 10px 0 5px">Disponibilità in base alla tua ricerca</h5>
+            <div class="col-12" style="font-size: 10px; margin-bottom: 10px">
+                <span style="color: grey">Durata noleggio: </span><strong class="days-num"> {{ $daysRange }} @if ($daysRange==1) giorno @else giorni @endif </strong>,
+                dal <strong>{{ $dataInizio }}</strong>
+                al <strong>{{ $dataFine }}</strong>
+                <br />
+                <span style="color: grey">La tua altezza: </span><strong style="padding: 5px">{{ $height }}</strong><strong>cm</strong>
+            </div>
         </div>
         <div>
-            <!--<h5>Sci disponibili</h5>-->
-            
-            <h5 style="font-weight: bold; font-family: 'Bakbak One', cursive; margin: 20px 0">Disponibilità in base alla tua ricerca</h5>
-            <!--<div class="col-12" style="border-radius: 5px; padding: 5px 10px; background-color: lightgray">
-                <h6>Livello: <span></span></h6> - <h6>Altezza: <span></span></h6>
-                <div style="color: #BC0033">
-                    <i class="fas fa-ban"></i> Rimuovi filtri
-                </div>
-            </div>-->
             @if($pack_beginner===false && $pack_intermediate===false && $pack_advanced===false)
             <div style="margin: 10px 0">
                 <em style="color: lightgrey">Spiacenti, non ci sono attrezzature disponibili</em>
