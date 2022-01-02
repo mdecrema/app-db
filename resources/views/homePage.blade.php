@@ -15,13 +15,23 @@ Red dot
         <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
         <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
         <li data-target="#carouselExampleIndicators" data-slide-to="3"></li>
+
       </ol>
       <div class="carousel-inner">
         <div class="carousel-item active">
           <img class="d-block w-100" style="height: 100%" src="{{ asset('img/copertina.jpg') }}" alt="First slide">
         </div>
+       <!-- <div class="carousel-item">
+          <img class="d-block w-100" style="height: 100%" src="{{ asset('img/skirent.png') }}" alt="Second slide">
+          <div style="width: 200px; height: 70px; line-height: 30px; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); color: #fff; text-align: center;">
+            <h3 style="color: #FE0000; 
+            font-size: 28px; 
+            font-family: 'Righteous', cursive; 
+            font-style: italic;">NOLEGGIO SCI</h3>
+          </div>
+        </div> -->
       <div class="carousel-item" style="position: relative">
-        <img class="d-block w-100" style="height: 100%" src="{{ asset('img/model1Street.png') }}" alt="Second slide">
+        <img class="d-block w-100" style="height: 100%" src="{{ asset('img/model1Street.png') }}" alt="Third slide">
         <div style="width: 200px; height: 70px; line-height: 30px; position: absolute; top: 70%; left: 50%; transform: translate(-50%, -50%); color: #fff; text-align: center;">
           <div style="width: 150px; height: 30px; margin: auto; border: 1px solid #grey; background-color: #FF5733;">
             Show More <i class="fas fa-chevron-right" style="font-size: 12px; margin-left: 5px"></i>
@@ -30,10 +40,10 @@ Red dot
         </div>
       </div>
       <div class="carousel-item">
-        <img class="d-block w-100" style="height: 100%" src="{{ asset('img/model2Skater.jpg') }}" alt="Third slide">
+        <img class="d-block w-100" style="height: 100%" src="{{ asset('img/model2Skater.jpg') }}" alt="Fourth slide">
       </div>
       <div class="carousel-item">
-        <img class="d-block w-100" style="height: 100%" src="{{ asset('img/model5Street.png') }}" alt="Fourth slide">
+        <img class="d-block w-100" style="height: 100%" src="{{ asset('img/model5Street.png') }}" alt="Fifth slide">
         <div style="width: 200px; height: 70px; line-height: 30px; position: absolute; top: 70%; left: 50%; transform: translate(-50%, -50%); color: #fff; text-align: center;">
           <div style="width: 150px; height: 30px; margin: auto; border: 1px solid #grey; background-color: #C70039;">
             Show More <i class="fas fa-chevron-right" style="font-size: 12px; margin-left: 5px"></i>
