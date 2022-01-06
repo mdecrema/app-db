@@ -49,8 +49,8 @@
 <script>
   function onScanSuccess(decodedText, decodedResult) {
     // Handle on success condition with the decoded text or result.
-    console.log(`Scan result: ${decodedText}`, decodedResult);
-    var resp = (`Scan result: ${decodedText}`, decodedResult);
+    console.log(`Scan result: ${decodedText}`);
+    var resp = (`Scan result: ${decodedText}`);
     document.getElementById('codeResp').innerHTML=resp;
 }
 
@@ -63,7 +63,7 @@ var html5QrcodeScanner = new Html5QrcodeScanner(
         
 function onScanSuccess(decodedText, decodedResult) {
     // Handle on success condition with the decoded text or result.
-    var resp = (`Scan result: ${decodedText}`, decodedResult);
+    var resp = (`Scan result: ${decodedText}`);
     document.getElementById('codeResp').innerHTML=resp;
     // ...
     html5QrcodeScanner.clear();
