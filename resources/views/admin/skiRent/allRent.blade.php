@@ -39,6 +39,10 @@
 </div>
 
 <div style="width: 500px" id="reader">fff</div>
+<div>
+    <span id="codeResp"></span>
+</div>
+
 
 
 
@@ -46,6 +50,8 @@
   function onScanSuccess(decodedText, decodedResult) {
     // Handle on success condition with the decoded text or result.
     console.log(`Scan result: ${decodedText}`, decodedResult);
+    var resp = (`Scan result: ${decodedText}`, decodedResult);
+    document.getElementById('codeResp').innerHTML=resp;
 }
 
 var html5QrcodeScanner = new Html5QrcodeScanner(
@@ -57,7 +63,8 @@ var html5QrcodeScanner = new Html5QrcodeScanner(
         
 function onScanSuccess(decodedText, decodedResult) {
     // Handle on success condition with the decoded text or result.
-    console.log(`Scan result: ${decodedText}`, decodedResult);
+    var resp = (`Scan result: ${decodedText}`, decodedResult);
+    document.getElementById('codeResp').innerHTML=resp;
     // ...
     html5QrcodeScanner.clear();
     // ^ this will stop the scanner (video feed) and clear the scan area.
