@@ -82,8 +82,7 @@ function onScanSuccess(decodedText, decodedResult) {
                   success: function(result){
                      console.log(result);
                   }});
-               });
-            });
+            
 
 }
 
