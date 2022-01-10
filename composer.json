@@ -18,7 +18,8 @@
         "laravel/tinker": "^2.0",
         "laravel/ui": "2.4",
         "league/flysystem-aws-s3-v3": "~1",
-        "stripe/stripe-php": "^7.87"
+        "stripe/stripe-php": "^7.87",
+        "milon/barcode": "^7.0"
     },
     "require-dev": {
         "facade/ignition": "^2.0",

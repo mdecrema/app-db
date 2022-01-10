@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Ski extends Model
 {
     protected $fillable = [
-        'length', 'level', 'brand', 'model', 'value', 'type'
+        'length', 'level', 'brand', 'model', 'value', 'type', 'status'
     ];
 
     

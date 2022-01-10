@@ -37,8 +37,20 @@
     @endforeach
     </ul>
 </div>
+<!-- Prova bar code generato -->
+<div style="margin: 20px 0">
+    @foreach($skis as $ski)
+    <div style="margin: 50px 0">
+        <img src="data:image/png;base64,{{DNS1D::getBarcodePNG($ski->id, 'C39')}}" alt="barcode" />
+        <span>{{ $ski->brand }}</span><br />
+        <span style="color: red">{{ $ski->status }}</span>
+    </div>
+    @endforeach
+</div>
+<!-- /Prova bar code generato -->
 
-<div style="width: 500px" id="reader">fff</div>
+
+<div style="width: 500px" id="reader"></div>
 <div>
     <span id="codeResp"></span>
 </div>
@@ -47,19 +59,10 @@
 
 
 <script>
-  function onScanSuccess(decodedText, decodedResult) {
-    // Handle on success condition with the decoded text or result.
-    console.log(`Scan result: ${decodedText}`);
-    var resp = (`Scan result: ${decodedText}`);
-    document.getElementById('codeResp').innerHTML=resp;
-}
 
 var html5QrcodeScanner = new Html5QrcodeScanner(
 	"reader", { fps: 10, qrbox: 250 });
-html5QrcodeScanner.render(onScanSuccess);
 
-var html5QrcodeScanner = new Html5QrcodeScanner(
-    "reader", { fps: 10, qrbox: 250 });
         
 function onScanSuccess(decodedText, decodedResult) {
     // Handle on success condition with the decoded text or result.
@@ -68,9 +71,23 @@ function onScanSuccess(decodedText, decodedResult) {
     // ...
     html5QrcodeScanner.clear();
     // ^ this will stop the scanner (video feed) and clear the scan area.
+    //
+   
+               $.ajax({
+                  url: 'admin/rent/scancode',
+                  method: 'post',
+                  data: {
+                     id: resp,
+                  },
+                  success: function(result){
+                     console.log(result);
+                  }});
+               });
+            });
+
 }
 
 html5QrcodeScanner.render(onScanSuccess);
 </script>
-
+ 
 @endsection

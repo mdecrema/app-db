@@ -116,7 +116,8 @@ class AdminController extends Controller
     public function skiRentAllRent()
     {
         $allRent = Rent::all();
-        return view('admin.skiRent.allRent', compact('allRent'));
+        $skis = Ski::all();
+        return view('admin.skiRent.allRent', compact('allRent', 'skis'));
     }
 
     public function skiRentDeleteRent($id) {
@@ -198,6 +199,18 @@ class AdminController extends Controller
         $ski->update();
 
         return redirect()->route("admin.skiRent.allEquipment");
+    }
+
+
+    // // / / // / / / ///
+    public function codeProva($id) {
+        $ski = Ski::find($id);
+        if ($ski->status === 0) {
+            $ski->status = 1;
+        } else if ($ski->status === 1) {
+            $ski->status = 0;
+        }
+        $ski->update();
     }
 
 }

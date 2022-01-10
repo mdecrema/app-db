@@ -28,7 +28,8 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css">
 
     <!-- FontAwesome -->
-    <link rel = "stylesheet" href = "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"/> 
+    <link rel = "stylesheet" href = "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"/>
+    <script src="https://kit.fontawesome.com/9f4502e548.js" crossorigin="anonymous"></script>
 
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
@@ -46,7 +47,7 @@
     <nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm fixed-top" style="height: 70px; z-index: 10;">
         <div style="height: 100%; width: 50px; position: absolute; top: 0; left: 0; line-height: 70px; text-align: center;">
             <a id="cart-icon" href="{{ route('cart') }}">
-                <i class="fa fa-shopping-cart" aria-hidden="true" style="font-size: 17px; color: #333333"></i> 
+                <i class="fal fa-shopping-bag" aria-hidden="true" style="font-size: 20px; color: #333333"></i>
                 @if(Cart::instance('default')->count() > 0)
                 <div class="notifica">
                     <span class="badge badge-pill badge-danger">
@@ -63,7 +64,7 @@
             </div>
         </a>
         <div onclick="openNav()" style="height: 100%; width: 50px; position: absolute; top: 0; right: 0; line-height: 68px; font-size: 20px; text-align: center; cursor: pointer">
-            <i class="fas fa-bars" style="color: #333333"></i>
+            <i class="fal fa-bars" style="color: #333333"></i>
         </div> 
     </nav>
 
