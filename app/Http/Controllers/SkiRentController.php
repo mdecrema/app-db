@@ -190,7 +190,7 @@ class SkiRentController extends Controller
 
     }
 
-    function compare_objects($obj_a, $obj_b) {
+    /*function compare_objects($obj_a, $obj_b) {
         return $obj_a->id - $obj_b->id;
-      }
+      }*/
 }

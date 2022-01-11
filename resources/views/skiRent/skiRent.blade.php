@@ -70,15 +70,22 @@
                 <div>
                     La tua altezza: <strong id="level-bar-value"></strong> <strong>cm</strong>
                 </div>
-                <div class="form-control">
-                    <input id="level-bar" type="range" min="100" max="200" value="175" name="height" class="level-bar">
-                    <div style="width: 100%; height: 10px;">
-                    @for($i=100; $i<=200; $i+=5)
-                        <div style="width: calc(100%/21); height: 100%; float: left; font-size: 5px">
+                <!--<div class="form-control">
+                    <select id="level-bar" value="175" name="height" class="form-control">
+                    
+                    {{--@for($i=100; $i<=200; $i+=5)
+                        <option value="{{ $i }}">
                             {{ $i }}
-                        </div>
-                    @endfor
+                        </option>
+                    @endfor--}}
+                    </select>
+                </div>-->
+                <div class="col-12" style="height: 30px; border: 2px solid green; overflow-x: scroll;  white-space: nowrap;">
+                    @for($i=100; $i<=200; $i+=5)
+                    <div style="width: 30px; height: 100%; border: 1px solid blue; display: inline-block">
+                        
                     </div>
+                    @endfor
                 </div>
             </div>
             
@@ -128,7 +135,7 @@
     //dataFine.addEventListener('change', getDateFine);
     document.getElementById('level-bar-value').innerHTML=document.getElementById('level-bar').value;
     document.getElementById('level-bar').addEventListener('change', getLevelBarValue);
-        
+
     // Altezza persona
     function getLevelBarValue() {
         var value = document.getElementById('level-bar').value;
@@ -224,8 +231,8 @@
     document.getElementById('dataFine').value=dataFine;
   });
 
-
-
 </script>
+
+<script src="spinner_picker.js"></script>
 
 @endsection
