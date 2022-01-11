@@ -50,6 +50,13 @@
 </div>
 <!-- /Prova bar code generato -->
 
+<!-- Errore chiamata -->
+<div>
+    <h4>ERRORE CHIAMATA:</h4>
+    <strong id="error" style="font-size: 20px">ff</strong>
+</div>
+<!-- /Errore chiamata -->
+
 
 <div style="width: 500px" id="reader"></div>
 <div>
@@ -75,14 +82,18 @@ function onScanSuccess(decodedText, decodedResult) {
     //
    
                $.ajax({
-                  url: 'admin/rent/scancode',
-                  method: 'post',
+                  url: 'dashboard/skiRent/allRent/scancode/',
+                  method: 'POST',
                   data: {
                      id: resp,
                   },
                   success: function(result){
-                     console.log(result);
-                  }});
+                        (result);
+                  },
+                  error: function(error){
+                      document.getElementById('error').innerHTML=error;
+                  }
+                 });
             
 
 }

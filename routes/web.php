@@ -77,4 +77,5 @@ Route::prefix('admin')->name('admin.')->middleware('auth')->group(function () {
     Route::post('dashboard/skiRent/update/{id}', 'AdminController@skiRentUpdateEquipment')->name('skiRent.update');
     Route::get('dashboard/skiRent/allRent', 'AdminController@skiRentAllRent')->name('skiRent.allRent');
     Route::get('dashboard/skiRent/deleteRent/{id}', 'AdminController@skiRentDeleteRent')->name('skiRent.deleteRent');
+    Route::post('dashboard/skiRent/allRent/scancode/{id}', 'AdminController@codeProva');
 });

@@ -23,7 +23,7 @@ class CreateSkisTable extends Migration
             $table->smallInteger('value');
             $table->smallInteger('rentCost');
             $table->text('type');
-            $table->boolean('status');
+            $table->boolean('status')->default(false);
 
             $table->timestamps();
         });
