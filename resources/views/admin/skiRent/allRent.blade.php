@@ -91,7 +91,7 @@ function onScanSuccess(decodedText, decodedResult) {
                         (result);
                   },
                   error: function(request,error){
-                      document.getElementById('error').innerHTML=JSON.stringify(request);
+                      document.getElementById('error').innerHTML=JSON.stringify(error);
                   }
                  });
             
