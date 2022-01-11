@@ -90,8 +90,8 @@ function onScanSuccess(decodedText, decodedResult) {
                   success: function(result){
                         (result);
                   },
-                  error: function(error){
-                      document.getElementById('error').innerHTML=error;
+                  error: function(request,error){
+                      document.getElementById('error').innerHTML=JSON.stringify(request);
                   }
                  });
             
