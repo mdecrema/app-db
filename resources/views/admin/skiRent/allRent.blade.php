@@ -82,7 +82,7 @@ function onScanSuccess(decodedText, decodedResult) {
     //
    
                $.ajax({
-                  url: 'dashboard/skiRent/allRent/scancode/',
+                  url: 'admin/dashboard/skiRent/allRent/scancode',
                   method: 'POST',
                   data: {
                      id: resp,
