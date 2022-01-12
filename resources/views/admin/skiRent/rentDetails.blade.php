@@ -6,30 +6,33 @@
 
 @section('content')
     <div class="row">
-        <!-- Prova bar code generato -->
-<div style="margin: 20px 0">
-    @foreach($skis as $ski)
-    <div style="margin: 50px 0">
-        <!--<img src="data:image/png;base64,{{DNS1D::getBarcodePNG($ski->id, 'C39')}}" alt="barcode" />-->
-        {!!  DNS1D::getBarcodeHTML("$ski->id", "C39")!!}
-    </div>
-    <span>{{ $ski->brand }}</span><br />
-    <span style="color: red">{{ $ski->status }}</span>
-    @endforeach
-</div>
-<!-- /Prova bar code generato -->
+    <!-- Rent Details -->
 
-<!-- Errore chiamata -->
+    <ul>
+      <li>{{ $rent->name }}</li>
+      <li>{{ $rent->packType }}</li>
+      <li>{{ $rent->level }}</li>
+      <li>Altezza: {{ $rent->height }} cm</li>
+      <li>Peso: {{ $rent->weight }} Kg</li>
+      <li>Piede: {{ $rent->footLength }} EU</li>
+      <li>Sci: {{ $rent->ski }}</li>
+      <li>Scarponi: {{ $rent->boots }}</li>
+      <li>Casco: {{ $rent->helmet }}</li>
+    </ul>
+
+    <!-- /Rent Details -->
+
+<!-- Errore chiamata 
 <div>
     <form action="{{ route('admin.skiRent.statusChange', 1) }}" method="post">
-        @csrf
-        @method("POST")
+        {{--@csrf
+        @method("POST")--}}
         <button onclick="provaAjax()">click ajax</button>
     </form>
     <h4>ERRORE CHIAMATA:</h4>
     <strong id="error" style="font-size: 20px">ff</strong>
 </div>
-<!-- /Errore chiamata -->
+ /Errore chiamata -->
 
 
 <div style="width: 500px" id="reader"></div>
@@ -42,7 +45,7 @@
     <div class="modal-dialog modal-dialog-centered" role="document">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLongTitle">Modal title</h5>
+          <h5 class="modal-title" id="exampleModalLongTitle">Vuoi associare questo sci?</h5>
           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
           </button>
@@ -51,8 +54,11 @@
           ...
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-          <button type="button" class="btn btn-primary">Save changes</button>
+          <form action="{{ route('admin.skiRent.statusChange', 1) }}" method="post">
+            -@csrf
+            @method("POST")
+            <button onclick="associa()">SALVA</button>
+        </form>
         </div>
       </div>
     </div>
@@ -61,37 +67,37 @@
 
   <script>
 
-    function provaAjax() {
-        let resp = 1;
-    
+    var ski_id = 0;
+
+    function associa() {    
         $.ajax({
-            headers: {
-                        'X-CSRF-Token': token 
-                   },
-                      url: 'allRent/scancode/'+resp,
-                      method: 'POST',
-                      data: {
-                         id: 1,
-                      },
-                      success: function(result){
-                            
-                            console.log(result);
-                      },
-                      error: function(request,error){
-                          console.log(request);
-                          document.getElementById('error').innerHTML=JSON.stringify(error);
-                      }
-                     });
+          url: 'admin/dashboard/skiRent/allRent/scancode',
+          method: 'POST',
+          data: {
+            id: ski_id,
+          },
+          success: function(result){
+            console.log(result);
+          },
+          error: function(request,error){
+            console.log(request);
+            document.getElementById('error').innerHTML=JSON.stringify(error);
+          }
+        });
     }
     
-    var html5QrcodeScanner = new Html5QrcodeScanner("reader");
+    /*var html5QrcodeScanner = new Html5QrcodeScanner("reader");
     const config = { fps: 10, qrbox: { width: 250, height: 250 } };
-    html5QrCode.start({ facingMode: { exact: "environment"} }, config, onScanSuccess);
+    html5QrCode.start({ facingMode: { exact: "environment"} }, config, onScanSuccess);*/
+    let html5QrcodeScanner = new Html5QrcodeScanner("reader",
+    { fps: 10, qrbox: {width: 400, height: 150}, facingMode: { exact: "environment"} },
+    /* verbose= */ false);
     
             
     function onScanSuccess(decodedText, decodedResult) {
         // Handle on success condition with the decoded text or result.
         var resp = (`Scan result: ${decodedText}`);
+        ski_id = decodedText;
         document.getElementById('codeResp').innerHTML=resp;
         // 
         html5QrcodeScanner.clear();

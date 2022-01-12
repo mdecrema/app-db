@@ -78,5 +78,7 @@ Route::prefix('admin')->name('admin.')->middleware('auth')->group(function () {
     Route::get('dashboard/skiRent/allRent', 'AdminController@skiRentAllRent')->name('skiRent.allRent');
     Route::get('dashboard/skiRent/allRent/rentDetails/{id}', 'AdminController@skiRentRentDetails')->name('skiRent.rentDetails');
     Route::get('dashboard/skiRent/deleteRent/{id}', 'AdminController@skiRentDeleteRent')->name('skiRent.deleteRent');
-    Route::post('dashboard/skiRent/allRent/scancode/{id}', 'AdminController@codeProva')->name('skiRent.statusChange');
+    Route::post('dashboard/skiRent/allRent/scancode/{id}', 'AdminController@changeSkiStatus')->name('skiRent.statusChange');
+    // All Bar Codes
+    Route::get('dashboard/skiRent/skiBarCodes', 'AdminController@skiRentBarCodes')->name('skiRent.barCodes');
 });
