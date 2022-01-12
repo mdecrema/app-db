@@ -71,7 +71,7 @@
 
     function associa(rent_id) {  
       // change ski status  
-        $.ajax({
+       /* $.ajax({
           url: 'admin/dashboard/skiRent/allRent/scancode',
           method: 'POST',
           data: {
@@ -84,7 +84,7 @@
             console.log(request);
             document.getElementById('error').innerHTML=JSON.stringify(error);
           }
-        });
+        }); */
 
         // associate ski to rent
         $.ajax({
