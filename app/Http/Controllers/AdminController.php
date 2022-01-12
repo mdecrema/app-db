@@ -227,9 +227,11 @@ class AdminController extends Controller
         $ski->update();
     }
 
-    public function rentAddSki($rent_id, $ski_id) {
-        $rent = Rent::find($rent_id);
-        $rent->ski_id = $ski_id;
+    public function rentAddSki(Request $request) {
+        $data = $request->all();
+
+        $rent = Rent::find($data['rent_id']);
+        $rent->ski_id = $data['ski_id'];
     }
 
 }

@@ -19,20 +19,20 @@
       <li>Scarponi: {{ $rent->boots }}</li>
       <li>Casco: {{ $rent->helmet }}</li>
     </ul>
+    <ul>
+      <li>Sci ID: <strong>{{ $rent->ski_id }}</strong></li>
+      
+    </ul>
 
     <!-- /Rent Details -->
 
-<!-- Errore chiamata 
+<!-- Errore chiamata  -->
 <div>
-    <form action="{{ route('admin.skiRent.statusChange', 1) }}" method="post">
-        {{--@csrf
-        @method("POST")--}}
-        <button onclick="provaAjax()">click ajax</button>
-    </form>
     <h4>ERRORE CHIAMATA:</h4>
     <strong id="error" style="font-size: 20px">ff</strong>
+    <strong id="error2" style="font-size: 20px">ff</strong>
 </div>
- /Errore chiamata -->
+<!-- /Errore chiamata -->
 
 
 <div style="width: 500px" id="reader"></div>
@@ -99,7 +99,7 @@
           },
           error: function(request,error){
             console.log(request);
-            document.getElementById('error').innerHTML=JSON.stringify(error);
+            document.getElementById('error2').innerHTML=JSON.stringify(error);
           }
         });
     }
