@@ -80,6 +80,7 @@
                     @endfor--}}
                     </select>
                 </div>-->
+                <input type="number" name="height" value="175">
                 <div class="col-12" style="height: 30px; border: 2px solid green; overflow-x: scroll;  white-space: nowrap;">
                     @for($i=100; $i<=200; $i+=5)
                     <div style="width: 30px; height: 100%; border: 1px solid blue; display: inline-block">
@@ -133,12 +134,13 @@
     var dataFine=document.getElementById('dataFine');
     //dataInizio.addEventListener('change', getDate);
     //dataFine.addEventListener('change', getDateFine);
-    document.getElementById('level-bar-value').innerHTML=document.getElementById('level-bar').value;
-    document.getElementById('level-bar').addEventListener('change', getLevelBarValue);
+    //
+    /*document.getElementById('level-bar-value').innerHTML=document.getElementById('level-bar').value;
+    document.getElementById('level-bar').addEventListener('change', getLevelBarValue);*/
 
     // Altezza persona
     function getLevelBarValue() {
-        var value = document.getElementById('level-bar').value;
+        //var value = document.getElementById('level-bar').value;
         document.getElementById('level-bar-value').innerHTML=value;
         activeHeight = 1;
         document.getElementById('filtroAltezza').style.backgroundColor='#0077F7';
@@ -233,6 +235,5 @@
 
 </script>
 
-<script src="spinner_picker.js"></script>
 
 @endsection

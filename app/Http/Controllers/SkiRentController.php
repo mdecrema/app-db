@@ -21,7 +21,15 @@ class SkiRentController extends Controller
         $daysRange = $data['daysRange'];
 
         $request->validate([
-            "ski_id" => "required",
+            //"ski_id" => "required",
+            "name" => "nullable",
+            "height" => "required",
+            "weight" => "required",
+            "footLength" => "required",
+            "packType" => "required",
+            "ski" => "required",
+            "boots" => "required",
+            "helmet" => "required",
             "dataInizio" => "required",
             "dataFine" => "required",
             "daysRange"=> "required",
@@ -45,7 +53,15 @@ class SkiRentController extends Controller
         for ($i = 0; $i < $daysRange; $i++) {
             $newRent = new Rent;
             $newRent->user_id=1; // da MODIFICARE CORRETTAMENTE
-            $newRent->ski_id=$data['ski_id'];
+            // $newRent->ski_id=$data['ski_id'];
+            $newRent->name = $data['name'];
+            $newRent->height = $data['height'];
+            $newRent->weight = $data['weight'];
+            $newRent->footLength = $data['footLength'];
+            $newRent->packType = $data['packType'];
+            $newRent->ski = $data['ski'];
+            $newRent->boots = $data['boots'];
+            $newRent->helmet = $data['helmet'];
             
             $newRent->date=strtotime($array[$i]) * 1000;
             

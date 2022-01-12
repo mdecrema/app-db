@@ -17,6 +17,23 @@ class CreateRentsTable extends Migration
             $table->id();
 
             $table->smallInteger('user_id');
+            // Person details
+            $table->text('name')->nullable();
+            $table->smallInteger('weight');
+            $table->smallInteger('height');
+            $table->smallInteger('footLength');
+            $table->text('level')->nullable();
+
+            // Equipment required
+            $table->text('packType')->nullable();
+            $table->boolean('ski')->default(false);
+            $table->boolean('boots')->default(false);
+            $table->boolean('helmet')->default(false);
+
+            // Rent Amount
+            $table->integer('amount')->default(0);
+
+            // Equipment details
             $table->smallInteger('ski_id')->nullable();
             $table->smallInteger('snowboard_id')->nullable();
             $table->smallInteger('ciaspole_id')->nullable();

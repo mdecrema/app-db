@@ -120,6 +120,11 @@ class AdminController extends Controller
         return view('admin.skiRent.allRent', compact('allRent', 'skis'));
     }
 
+    public function skiRentRentDetails($id) {
+        $rent = Rent::find($id);
+        return view('admin.skiRent.rentDetails', compact('rent'));
+    }
+
     public function skiRentDeleteRent($id) {
         $allRent = Rent::all();
         $rent = Rent::find($id);
