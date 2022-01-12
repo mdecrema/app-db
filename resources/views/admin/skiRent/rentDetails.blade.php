@@ -57,7 +57,7 @@
           <form action="{{ route('admin.skiRent.statusChange', 1) }}" method="post">
             -@csrf
             @method("POST")
-            <button onclick="associa()">SALVA</button>
+            <button onclick="associa($rent->id)">SALVA</button>
         </form>
         </div>
       </div>
@@ -69,12 +69,30 @@
 
     var ski_id = 0;
 
-    function associa() {    
+    function associa(rent_id) {  
+      // change ski status  
         $.ajax({
           url: 'admin/dashboard/skiRent/allRent/scancode',
           method: 'POST',
           data: {
             id: ski_id,
+          },
+          success: function(result){
+            console.log(result);
+          },
+          error: function(request,error){
+            console.log(request);
+            document.getElementById('error').innerHTML=JSON.stringify(error);
+          }
+        });
+
+        // associate ski to rent
+        $.ajax({
+          url: 'admin/dashboard/rent/addSki',
+          method: 'POST',
+          data: {
+            rent_id: rent_id,
+            ski_id: ski_id,
           },
           success: function(result){
             console.log(result);
