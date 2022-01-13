@@ -54,10 +54,12 @@
           ...
         </div>
         <div class="modal-footer">
-          <form action="{{ route('admin.skiRent.statusChange', 1) }}" method="post">
-            -@csrf
+          <form action="{{ route('admin.skiRent.statusChange') }}" method="post">
+            @csrf
             @method("POST")
-            <button onclick="associa({{$rent->id}})">SALVA</button>
+            <input style="display: none; position: absolute;" type="number" name="" id="rent_id" value="{{ $rent->id }}">
+            <input style="display: none; position: absolute;" type="number" name="" id="ski_id" value="">
+            <button type="submit">SALVA</button>
         </form>
         </div>
       </div>
@@ -87,7 +89,7 @@
         }); */
 
         // associate ski to rent
-        $.ajax({
+        /*$.ajax({
           url: 'admin/dashboard/rent/addSki',
           method: 'POST',
           data: {
@@ -101,7 +103,7 @@
             console.log(request);
             document.getElementById('error2').innerHTML=JSON.stringify(error);
           }
-        });
+        });*/
     }
     
     /*var html5QrcodeScanner = new Html5QrcodeScanner("reader");
@@ -116,6 +118,7 @@
         // Handle on success condition with the decoded text or result.
         var resp = (`Scan result: ${decodedText}`);
         ski_id = decodedText;
+        document.getElementById('ski_id').value=ski_id;
         document.getElementById('codeResp').innerHTML=resp;
         // 
         html5QrcodeScanner.clear();

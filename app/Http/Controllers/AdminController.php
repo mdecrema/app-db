@@ -230,21 +230,27 @@ class AdminController extends Controller
         
     }
 
-    public function rentAddSki($id) {
+    public function rentAddSki(Request $request) {
         $allRent = Rent::all();
 
-        /*
-        $ski = Ski::find($data['ski']);
+        $data = $request->all();
+
+        $request->validate([
+            "rent_id" => "required",
+            "ski_id" => "required"
+        ]);
+
+        $ski = Ski::find($data['ski_id']);
         if ($ski->status === 0) {
             $ski->status = 1;
         } else if ($ski->status === 1) {
             $ski->status = 0;
         }
         $ski->update();
-        */
 
-        $rent = Rent::find($id);
-        $rent->ski_id = $id;
+        $rent = Rent::find($data['rent_id']);
+        $rent->ski_id = $data['ski_id'];
+        $rent->update();
 
         return view('admin.skiRent.allRent', compact('allRent'));
     }
