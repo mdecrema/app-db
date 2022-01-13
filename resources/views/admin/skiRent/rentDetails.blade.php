@@ -57,8 +57,8 @@
           <form action="{{ route('admin.skiRent.rentAddSki') }}" method="post">
             @csrf
             @method("POST")
-            <input style="display: none; position: absolute;" type="number" name="" id="rent_id" value="{{ $rent->id }}">
-            <input style="display: none; position: absolute;" type="number" name="" id="ski_id" value="">
+            <input style="display: none; position: absolute;" type="number" name="rent_id" id="rent_id" value="{{ $rent->id }}">
+            <input style="display: none; position: absolute;" type="number" name="ski_id" id="ski_id" value="">
             <button type="submit">SALVA</button>
         </form>
         </div>
