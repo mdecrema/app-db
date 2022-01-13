@@ -95,9 +95,13 @@
                         {{ __('Logout') }}
                     </a>
 
+                    @can('admin')
                     <a class="dropdown-item" href="{{ route('admin.dashboard') }}">
                        Dashboard
                     </a>
+                    @else
+                    
+                    @endcan
 
                     <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
                         @csrf

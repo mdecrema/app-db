@@ -16,6 +16,12 @@
 
                     {{ __('You are logged in!') }}
                 </div>
+
+                @can('admin')
+                Your role: Admin!
+                @else
+                Your role: User!
+                @endcan
             </div>
         </div>
     </div>

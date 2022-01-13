@@ -21,7 +21,10 @@ class RouteServiceProvider extends ServiceProvider
      *
      * @var string
      */
-    public const HOME = '/home';
+    // DEFAULT REDIRECT AFTER LOGIN !!! //  Release the line below if you want to use default redirect. //
+    // public const HOME = '/home';
+    // I'VE CHANGED REDIRECT VIEW TO 'DASHBOARD' AS I WANT THE USER SEE THIS PAGE AFTER LOGIN. //
+    public const HOME = '/admin/dashboard';
 
     /**
      * Define your route model bindings, pattern filters, etc.

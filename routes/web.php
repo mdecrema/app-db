@@ -46,7 +46,7 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
-Route::prefix('admin')->name('admin.')->middleware('auth')->group(function () {
+Route::prefix('admin')->name('admin.')->middleware('can:admin')->group(function () {      
     // Admin Landing Page
     Route::get('/dashboard', 'AdminController@index')->name('dashboard');
     // Products -> all 

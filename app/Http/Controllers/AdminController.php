@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Gate;
 use App\Product;
 use App\Ski;
 use App\Rent;
@@ -15,7 +16,7 @@ class AdminController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
-    {
+    {      
         return view('admin.dashboard');
     }
 
@@ -230,7 +231,10 @@ class AdminController extends Controller
     }
 
     public function rentAddSki(Request $request) {
-        $ski = Ski::find($id);
+        $allRent = Rent::all();
+        $data = $request->all();
+
+        $ski = Ski::find($data['ski']);
         if ($ski->status === 0) {
             $ski->status = 1;
         } else if ($ski->status === 1) {
@@ -238,12 +242,10 @@ class AdminController extends Controller
         }
         $ski->update();
 
-        $data = $request->all();
+        $rent = Rent::find($data['id']);
+        $rent->ski_id = $data['ski'];
 
-        $rent = Rent::find($data['rent_id']);
-        $rent->ski_id = $data['ski_id'];
-
-        return view('admin.skiRent.allRent');
+        return view('admin.skiRent.allRent', compact('allRent'));
     }
 
 }

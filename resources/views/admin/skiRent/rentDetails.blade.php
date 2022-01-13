@@ -91,8 +91,8 @@
           url: 'admin/dashboard/rent/addSki',
           method: 'POST',
           data: {
-            rent_id: rent_id,
-            ski_id: ski_id,
+            id: rent_id,
+            ski: ski_id,
           },
           success: function(result){
             console.log(result);
