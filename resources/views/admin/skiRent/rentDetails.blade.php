@@ -57,7 +57,7 @@
           <form action="{{ route('admin.skiRent.statusChange', 1) }}" method="post">
             -@csrf
             @method("POST")
-            <button onclick="associa($rent->id)">SALVA</button>
+            <button onclick="associa({{$rent->id}})">SALVA</button>
         </form>
         </div>
       </div>
