@@ -7,32 +7,53 @@
 @section('content')
     <div class="row">
     <!-- Rent Details -->
-
-    <ul>
-      <li>{{ $rent->name }}</li>
-      <li>{{ $rent->packType }}</li>
-      <li>{{ $rent->level }}</li>
-      <li>Altezza: {{ $rent->height }} cm</li>
-      <li>Peso: {{ $rent->weight }} Kg</li>
-      <li>Piede: {{ $rent->footLength }} EU</li>
-      <li>Sci: {{ $rent->ski }}</li>
-      <li>Scarponi: {{ $rent->boots }}</li>
-      <li>Casco: {{ $rent->helmet }}</li>
-    </ul>
-    <ul>
-      <li>Sci ID: <strong>{{ $rent->ski_id }}</strong></li>
-      
-    </ul>
-
+      <div class="col-12" style="background-color: teal; color: #fff; padding: 10px">
+        <h3>Noleggio N°. 00{{ $rent->id }}</h3>
+      </div>
+      <div class="col-12" style="margin: 20px 0">
+        <h4>{{ $rent->name }}</h4>
+        <div><i class="fal fa-ruler-vertical"></i>  Altezza: <strong>{{ $rent->height }} cm</strong></div>
+        <div><i class="fal fa-weight"></i>  Peso: <strong>{{ $rent->weight }} Kg</strong></div>
+        <div><i class="fal fa-boot"></i> Piede: <strong>{{ $rent->footLength }} EU</strong></div>
+      </div>
+      <div class="col-12" style="margin: 20px 0 0 0; background-color: grey; color: #fff">
+        <span>Dettagli prenotazione</span>
+      </div>
+      <div class="col-12" style="margin: 0 0 20px 0; background-color: lightgrey; color: #000; padding: 20px 15px">
+        <strong style="font-size: 20px; text-transform: uppercase">{{ $rent->packType }}</strong>
+        <div style="list-style: none; margin: 20px 0; font-size: 18px">
+          <div style="padding: 5px 0">
+            @if( $rent->ski===1 )<strong><i style="color:green" class="fad fa-check-circle"></i></strong>@else <span><i style="color:red" class="fad fa-times-circle"></i></span>@endif Sci 
+            @if( $rent->ski_id===NULL )
+            <div style="display: inline-block; margin-left: 10px; width: 100px; height: 30px; padding: 0 5px; background-color: #15AABF; border-radius: 30px; line-height: 30px; cursor: pointer; color: #fff; font-size: 12px">
+              <div style="width: 20px; height: 20px; border-radius: 100%; text-align: center; background-color: #fff; line-height: 20px; display: inline-block; color: #15AABF">
+                  <i class="fas fa-mobile-alt"></i>
+              </div>
+              <span style="color: #fff; padding: 0 2px; display: inline-block">ASSOCIA</span>
+            </div>
+            @else
+              <span>Identificativo sci: #00-<strong>{{ $rent->ski_id }}</strong></span>
+            @endif
+          </div>
+          <div style="padding: 5px 0" >
+            @if( $rent->boots===1 )<strong><i style="color:green" class="fad fa-check-circle"></i></strong>@else <span><i style="color:red" class="fad fa-times-circle"></i></span>@endif Scarponi
+            @if( $rent->boots_id===NULL )
+            <div style="display: inline-block; margin-left: 10px; width: 100px; height: 30px; padding: 0 5px; background-color: #15AABF; border-radius: 30px; line-height: 30px; cursor: pointer; color: #fff; font-size: 12px">
+              <div style="width: 20px; height: 20px; border-radius: 100%; text-align: center; background-color: #fff; line-height: 20px; display: inline-block; color: #15AABF">
+                  <i class="fas fa-mobile-alt"></i>
+              </div>
+              <span style="color: #fff; padding: 0 2px; display: inline-block">ASSOCIA</span>
+            </div>
+            @else
+              <span>Identificativo sci: #00-<strong>{{ $rent->boots_id }}</strong></span>
+            @endif
+          </div>
+          <div style="padding: 5px 0">
+            @if( $rent->helmet===1 )<strong><i style="color:green" class="fad fa-check-circle"></i></strong>@else <span><i style="color:red" class="fad fa-times-circle"></i></span>@endif Casco
+          </div>
+        </div>
+      </div>
     <!-- /Rent Details -->
-
-<!-- Errore chiamata  -->
-<div>
-    <h4>ERRORE CHIAMATA:</h4>
-    <strong id="error" style="font-size: 20px">ff</strong>
-    <strong id="error2" style="font-size: 20px">ff</strong>
-</div>
-<!-- /Errore chiamata -->
 
 
 <div style="width: 500px" id="reader"></div>
@@ -70,45 +91,7 @@
   <script>
 
     var ski_id = 0;
-
-    function associa(rent_id) {  
-      // change ski status  
-       /* $.ajax({
-          url: 'admin/dashboard/skiRent/allRent/scancode',
-          method: 'POST',
-          data: {
-            id: ski_id,
-          },
-          success: function(result){
-            console.log(result);
-          },
-          error: function(request,error){
-            console.log(request);
-            document.getElementById('error').innerHTML=JSON.stringify(error);
-          }
-        }); */
-
-        // associate ski to rent
-        /*$.ajax({
-          url: 'admin/dashboard/rent/addSki',
-          method: 'POST',
-          data: {
-            id: rent_id,
-            
-          },
-          success: function(result){
-            console.log(result);
-          },
-          error: function(request,error){
-            console.log(request);
-            document.getElementById('error2').innerHTML=JSON.stringify(error);
-          }
-        });*/
-    }
     
-    /*var html5QrcodeScanner = new Html5QrcodeScanner("reader");
-    const config = { fps: 10, qrbox: { width: 250, height: 250 } };
-    html5QrCode.start({ facingMode: { exact: "environment"} }, config, onScanSuccess);*/
     let html5QrcodeScanner = new Html5QrcodeScanner("reader",
     { fps: 10, qrbox: {width: 250, height: 250}, facingMode: { exact: "environment"} });
     
