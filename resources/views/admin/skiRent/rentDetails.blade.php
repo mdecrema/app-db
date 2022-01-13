@@ -92,7 +92,7 @@
           method: 'POST',
           data: {
             id: rent_id,
-            ski: ski_id,
+            
           },
           success: function(result){
             console.log(result);
