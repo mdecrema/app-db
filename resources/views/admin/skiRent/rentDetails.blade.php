@@ -73,12 +73,7 @@
         </div>
         <div class="modal-body">
           <input type="text" id="skiError" value="false" style="">
-          <?php 
-       
-          
-          $err = DOMDocument::getElementById( "skiError" );
-          $ski_id = DOMDocument::getElementById( "ski_id" );
-          ?>
+        
           @if($err===false)
           Stai associando materiale con ID: {{ $inputSki }}<br>
           Sei sicuro di voler procedere?
@@ -122,11 +117,12 @@
         document.getElementById('codeResp').innerHTML=resp;
         // Check ski status
         var error=false;
-        for($i=0; $i<$allSki.length; $i++) {
-          if ($ski[i].id===$ski_id && $ski[i].status===1) {
+        for(let i=0; i<allSki.length; i++) {
+          if (allSki[i].id===ski_id && allSki[i].status===1) {
             error=true;
             document.getElementById('skiError').value=error;
-            
+            $err= document.getElementById('skiError').value;
+            $inputSki=ski_id;
           }
         }
         // 
