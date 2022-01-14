@@ -23,7 +23,7 @@
         <strong style="font-size: 20px; text-transform: uppercase">{{ $rent->packType }}</strong>
         <div style="list-style: none; margin: 20px 0; font-size: 18px">
           <div style="padding: 5px 0">
-            @if( $rent->ski===1 )<strong><i style="color:green" class="fad fa-check-circle"></i></strong>@else <span><i style="color:red" class="fad fa-times-circle"></i></span>@endif Sci 
+            @if( $rent->ski===1 )<strong><i style="color:green" class="fad fa-check-circle"></i></strong>@elseif( $rent->ski===0 ) <span><i style="color:red" class="fad fa-times-circle"></i></span>@endif Sci 
             @if( $rent->ski_id===NULL )
             <div style="display: inline-block; margin-left: 10px; width: 100px; height: 30px; padding: 0 5px; background-color: #15AABF; border-radius: 30px; line-height: 30px; cursor: pointer; color: #fff; font-size: 12px">
               <div style="width: 20px; height: 20px; border-radius: 100%; text-align: center; background-color: #fff; line-height: 20px; display: inline-block; color: #15AABF">
