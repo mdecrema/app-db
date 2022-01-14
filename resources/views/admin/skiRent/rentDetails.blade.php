@@ -117,11 +117,12 @@
         // Handle on success condition with the decoded text or result.
         var resp = (`Scan result: ${decodedText}`);
         var ski_id = decodedText;
+        var allSki = {!! json_encode($skis) !!};
         document.getElementById('ski_id').value=ski_id;
         document.getElementById('codeResp').innerHTML=resp;
         // Check ski status
         var error=false;
-        for($i=0; $i<$ski.length; $i++) {
+        for($i=0; $i<$allSki.length; $i++) {
           if ($ski[i].id===$ski_id && $ski[i].status===1) {
             error=true;
             document.getElementById('skiError').value=error;
