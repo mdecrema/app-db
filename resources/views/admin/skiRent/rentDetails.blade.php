@@ -76,7 +76,7 @@
           <?php 
           $inputError = 'skiError';
           $inputSki = 'ski_id';
-          $err = DOMDocument::getElementById( string $input );
+          $err = DOMDocument::getElementById( string $inputError );
           $ski_id = DOMDocument::getElementById( string $inputSki );
           ?>
           @if($err===false)
