@@ -240,15 +240,16 @@ class AdminController extends Controller
             "ski_id" => "required"
         ]);
 
-        $ski = Ski::find($data['ski_id']);
+        /*$ski = Ski::find($data['ski_id']);
         if ($ski->status === 0) {
             $ski->status = 1;
         } else if ($ski->status === 1) {
             $ski->status = 0;
         }
-        $ski->update();
+        $ski->update();*/
 
-        $rent = Rent::find($data['rent_id']);
+        $id=$data['rent_id'];
+        $rent = Rent::find($id);
         $rent->ski_id = $data['ski_id'];
         $rent->update();
 
