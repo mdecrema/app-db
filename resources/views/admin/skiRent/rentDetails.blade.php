@@ -74,10 +74,10 @@
         <div class="modal-body">
           <input type="text" id="skiError" value="false" style="">
           <?php 
-          $inputError = "skiError";
-          $inputSki = "ski_id";
-          $err = DOMDocument::getElementById( string $inputError );
-          $ski_id = DOMDocument::getElementById( string $inputSki );
+       
+          
+          $err = DOMDocument::getElementById( "skiError" );
+          $ski_id = DOMDocument::getElementById( "ski_id" );
           ?>
           @if($err===false)
           Stai associando materiale con ID: {{ $inputSki }}<br>
