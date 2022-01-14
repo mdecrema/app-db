@@ -251,7 +251,7 @@ class AdminController extends Controller
         $id=$data['rent_id'];
         $rent = Rent::find($id);
         $rent->ski_id = $data['ski_id'];
-        $rent->update();
+        $rent->save();
 
         return view('admin.skiRent.allRent', compact('allRent'));
     }
