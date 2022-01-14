@@ -66,22 +66,39 @@
     <div class="modal-dialog modal-dialog-centered" role="document">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLongTitle">Vuoi associare questo sci?</h5>
+          <h5 class="modal-title" id="exampleModalLongTitle">BAR CODE RICONOSCIUTO</h5>
           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
           </button>
         </div>
         <div class="modal-body">
-          ...
+          <input type="text" id="skiError" value="false" style="">
+          <?php 
+          $inputError = 'skiError';
+          $inputSki = 'ski_id';
+          $err = DOMDocument::getElementById( string $input );
+          $ski_id = DOMDocument::getElementById( string $inputSki );
+          ?>
+          @if($err===false)
+          Stai associando materiale con ID: {{ $inputSki }}<br>
+          Sei sicuro di voler procedere?
+          @else
+          Questo materiale è gia associato ad un'altro noleggio,<br>
+          Per poter continuare è necessario prima svincolarlo.
+          @endif
         </div>
         <div class="modal-footer">
+          @if($err===false)
           <form action="{{ route('admin.skiRent.rentAddSki') }}" method="post">
             @csrf
             @method("POST")
             <input style="display: none; position: absolute;" type="number" name="rent_id" id="rent_id" value="{{ $rent->id }}">
             <input style="display: none; position: absolute;" type="number" name="ski_id" id="ski_id" value="">
             <button type="submit">SALVA</button>
-        </form>
+          </form>
+          @else
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          @endif
         </div>
       </div>
     </div>
@@ -102,6 +119,15 @@
         var ski_id = decodedText;
         document.getElementById('ski_id').value=ski_id;
         document.getElementById('codeResp').innerHTML=resp;
+        // Check ski status
+        var error=false;
+        for($i=0; $i<$ski.length; $i++) {
+          if ($ski[i].id===$ski_id && $ski[i].status===1) {
+            error=true;
+            document.getElementById('skiError').value=error;
+            
+          }
+        }
         // 
         html5QrcodeScanner.clear();
         // ^ this will stop the scanner (video feed) and clear the scan area.
