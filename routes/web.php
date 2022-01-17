@@ -82,4 +82,6 @@ Route::prefix('admin')->name('admin.')->middleware('can:admin')->group(function 
     Route::post('dashboard/skiRent/rent/addSki', 'AdminController@rentAddSki')->name('skiRent.rentAddSki');
     // All Bar Codes
     Route::get('dashboard/skiRent/skiBarCodes', 'AdminController@skiRentBarCodes')->name('skiRent.barCodes');
+    // All User
+    Route::get('dashboard/users/allUser', 'AdminController@allUser')->name('users.allUser');
 });

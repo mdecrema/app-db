@@ -36,6 +36,13 @@ class Handler extends ExceptionHandler
      */
     public function report(Throwable $exception)
     {
+        // dd('Error, Server Exeption');
+
+        if($exception instanceof FileNotFoundException)
+        {
+            dd('Error, Server Exeption');
+        }
+
         parent::report($exception);
     }
 

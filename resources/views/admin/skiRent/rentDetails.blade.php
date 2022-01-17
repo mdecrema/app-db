@@ -23,11 +23,11 @@
         <strong style="font-size: 20px; text-transform: uppercase">{{ $rent->packType }}</strong>
         <div style="list-style: none; margin: 20px 0; font-size: 18px">
           <div style="padding: 5px 0">
-            @if( $rent->ski===1 )<strong><i style="color:green" class="fad fa-check-circle"></i></strong>@else <span><i style="color:red" class="fad fa-times-circle"></i></span>@endif Sci 
+            @if( $rent->ski===1 )<strong><i style="color: green" class="fad fa-check-circle"></i></strong>@else <span><i style="color:red" class="fad fa-times-circle"></i></span>@endif Sci 
             @if( $rent->ski_id===NULL )
             <div style="display: inline-block; margin-left: 10px; width: 100px; height: 30px; padding: 0 5px; background-color: #15AABF; border-radius: 30px; line-height: 30px; cursor: pointer; color: #fff; font-size: 12px">
               <div style="width: 20px; height: 20px; border-radius: 100%; text-align: center; background-color: #fff; line-height: 20px; display: inline-block; color: #15AABF">
-                  <i class="fas fa-mobile-alt"></i>
+                <i class="fas fa-mobile-alt"></i>
               </div>
               <span style="color: #fff; padding: 0 2px; display: inline-block">ASSOCIA</span>
             </div>
@@ -61,8 +61,8 @@
     <span id="codeResp"></span>
 </div>
 
-
-  <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <!-- Modal Conferma -->
+  <div class="modal fade" id="modalConferma" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" role="document">
       <div class="modal-content">
         <div class="modal-header">
@@ -73,17 +73,11 @@
         </div>
         <div class="modal-body">
           <input type="text" id="skiError" value="false" style="">
-        
-          @if($err===false)
           Stai associando materiale con ID: {{ $inputSki }}<br>
           Sei sicuro di voler procedere?
-          @else
-          Questo materiale è gia associato ad un'altro noleggio,<br>
-          Per poter continuare è necessario prima svincolarlo.
-          @endif
         </div>
         <div class="modal-footer">
-          @if($err===false)
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
           <form action="{{ route('admin.skiRent.rentAddSki') }}" method="post">
             @csrf
             @method("POST")
@@ -91,13 +85,36 @@
             <input style="display: none; position: absolute;" type="number" name="ski_id" id="ski_id" value="">
             <button type="submit">SALVA</button>
           </form>
-          @else
-            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-          @endif
         </div>
       </div>
     </div>
   </div>
+  <!-- /Modal Conferma -->
+
+  <!-- Modal Errore -->
+  <div class="modal fade" id="modalErrore" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLongTitle" style="color: red; font-weight: bold">ERRORE!</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <input type="text" id="skiError" value="false" style="">
+          Questo materiale è gia associato ad un'altro noleggio,<br>
+          Per poter continuare è necessario prima svincolarlo.
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- /Modal Errore -->
+
+
     </div>
 
   <script>
@@ -120,16 +137,14 @@
         for(let i=0; i<allSki.length; i++) {
           if (allSki[i].id===ski_id && allSki[i].status===1) {
             error=true;
-            document.getElementById('skiError').value=error;
-            $err= document.getElementById('skiError').value;
-            $inputSki=ski_id;
+            $('#modalErrore').modal('show');
           }
+        } else {
+            $('#modalConferma').modal('show');
         }
         // 
         html5QrcodeScanner.clear();
         // ^ this will stop the scanner (video feed) and clear the scan area.
-        //
-        $('#exampleModalCenter').modal('show');
     }
     
     html5QrcodeScanner.render(onScanSuccess);

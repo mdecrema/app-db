@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Gate;
+use App\User;
 use App\Product;
 use App\Ski;
 use App\Rent;
@@ -226,7 +227,6 @@ class AdminController extends Controller
             $ski->status = 0;
         }
         $ski->update();
-
         
     }
 
@@ -258,4 +258,13 @@ class AdminController extends Controller
         return view('admin.skiRent.rentDetails', compact('rent', 'skis'));
     }
 
+
+
+    // USERS
+    public function allUser()
+    {
+        $users = User::all();
+
+        return view('admin.user.allUser', compact('users'));
+    }
 }

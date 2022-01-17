@@ -18,7 +18,7 @@
             
             <a href="{{ route('admin.products') }}">Tutti i prodotti</a><br/>
             <a href="{{ route('admin.products.create') }}">Crea nuovo prodotto</a><br/>
-            <a href="{{ route('admin.products.create') }}">Utenti registrati</a><br/>
+            <a href="{{ route('admin.users.allUser') }}">Utenti registrati</a><br/>
             
         </div>
     </div>
