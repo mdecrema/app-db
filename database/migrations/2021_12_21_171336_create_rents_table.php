@@ -31,7 +31,7 @@ class CreateRentsTable extends Migration
             $table->boolean('helmet')->default(false);
 
             // Rent Amount
-            $table->integer('amount')->default(0);
+            $table->float('amount', 6, 2)->default(0);
 
             // Equipment details
             $table->smallInteger('ski_id')->nullable();

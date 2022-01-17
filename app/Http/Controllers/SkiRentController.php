@@ -35,6 +35,7 @@ class SkiRentController extends Controller
             "daysRange"=> "required",
             "type" => "nullable",
             "level" => "nullable",
+            "amount" => "nullable",
         ]);
 
         $array = array();
@@ -62,6 +63,7 @@ class SkiRentController extends Controller
             $newRent->ski = $data['ski'];
             $newRent->boots = $data['boots'];
             $newRent->helmet = $data['helmet'];
+            $newRent->amount = $data['amount'];
             
             $newRent->date=strtotime($array[$i]) * 1000;
             

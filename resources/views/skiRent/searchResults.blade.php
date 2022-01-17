@@ -260,7 +260,7 @@
                         </div>
                         <!--<input style="visibility: hidden" type="text" name="ski_id" value="">-->
                         <div style="position: absolute">
-                            <input style="visibility: hidden" type="text" name="packType" id="packType">
+                            <input style="visibility: hidden" type="text" name="packType" id="packType" value="">
                             <input style="visibility: hidden" type="text" name="level" id="level">
                             <input style="visibility: hidden" type="text" name="dataInizio" value="{{ $dataInizio }}">
                             <input style="visibility: hidden" type="text" name="dataFine" value="{{ $dataFine }}">
@@ -268,6 +268,7 @@
                             <input style="visibility: hidden" type="number" name="ski" id="ski" value="1">
                             <input style="visibility: hidden" type="number" name="boots" id="boots" value="1">
                             <input style="visibility: hidden" type="number" name="helmet" id="helmet" value="0">
+                            <input style="visibility: hidden" type="number" step="0.01" name="amount" id="amount" value="">
                         </div>
                         <br>
                         <div class="form-row col-xl-6 col-lg-6 col-md-12 col-xs-12 col-sm-12">
@@ -432,14 +433,23 @@
         function selectPack(packType) {
             console.log(packType);
             if (packType==='principiante') {
+                document.getElementById('packTypeTitle').innerHTML='Pack Beginner';
                 document.getElementById('packType').value='Pack Beginner';
                 document.getElementById('level').value='Principiante';
+                document.getElementById('amount').value='21.60';
+                
             } else if (packType==='intermedio') {
+                document.getElementById('packTypeTitle').innerHTML='Pack Intermediate';
                 document.getElementById('packType').value='Pack Intermediate';
                 document.getElementById('level').value='Intermedio';
+                document.getElementById('amount').value='21.60';
+                
             } else if (packType==='esperto') {
+                document.getElementById('packTypeTitle').innerHTML='Pack Advanced';
                 document.getElementById('packType').value='Pack Advanced';
                 document.getElementById('level').value='Esperto';
+                document.getElementById('amount').value='29.00';
+               
             }
         }
     </script>

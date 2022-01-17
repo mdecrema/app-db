@@ -53,6 +53,20 @@
           </div>
         </div>
       </div>
+      <div class="row" style="width: 100%; background-color: teal; padding: 10px; color: #fff; margin-bottom: 20px">
+        <div class="col-4" style="border: 1px solid darkgrey; text-align: center">
+          <h6>Totale: </h6><br/>
+          <strong>{{ $rent->amount }} €</strong>
+        </div>
+        <div class="col-4" style="border: 1px solid darkgrey; text-align: center">
+          <h6>Dovuto: </h5><br/>
+          <strong>{{ $rent->amount }} €</strong>
+        </div>
+        <div class="col-4" style="border: 1px solid darkgrey; text-align: center">
+          <h6>Pagato: </h5><br/>
+          <strong>{{ $rent->amount }} €</strong>
+        </div>
+      </div>
     <!-- /Rent Details -->
 
 
