@@ -73,8 +73,10 @@
         </div>
         <div class="modal-body">
           <input type="text" id="skiError" value="false" style="">
-          Stai associando materiale con ID: {{ $inputSki }}<br>
-          Sei sicuro di voler procedere?
+          <p>
+            Stai associando materiale con ID: ###<br>
+            Sei sicuro di voler procedere?
+          </p>
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
