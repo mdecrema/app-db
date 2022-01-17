@@ -86,7 +86,7 @@
           </button>
         </div>
         <div class="modal-body">
-          <input type="text" id="skiError" value="false" style="">
+          <!--<input type="text" id="skiError" value="false" style="">-->
           <p>
             Stai associando materiale con ID: ###<br>
             Sei sicuro di voler procedere?
@@ -145,7 +145,7 @@
         // Handle on success condition with the decoded text or result.
         var resp = (`Scan result: ${decodedText}`);
         var ski_id = decodedText;
-        var allSki = {!! json_encode($skis) !!};
+        var allSki = @json($skis);
         document.getElementById('ski_id').value=ski_id;
         document.getElementById('codeResp').innerHTML=resp;
         // Check ski status
