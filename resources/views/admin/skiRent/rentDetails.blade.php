@@ -140,9 +140,9 @@
           if (allSki[i].id===ski_id && allSki[i].status===1) {
             error=true;
             $('#modalErrore').modal('show');
-          }
         } else {
             $('#modalConferma').modal('show');
+        }
         }
         // 
         html5QrcodeScanner.clear();
