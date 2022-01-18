@@ -160,7 +160,7 @@
             skiRented.push(allSki[i]);  
           }
         }
-        if(error===true) {
+        if(skiRented.length===0) {
           $('#modalConferma').modal('show');
         } else {
           $('#modalErrore').modal('show');
