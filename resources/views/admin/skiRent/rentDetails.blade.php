@@ -32,7 +32,7 @@
               <span style="color: #fff; padding: 0 2px; display: inline-block">ASSOCIA</span>
             </div>
             @else
-              <span>Identificativo sci: #00-<strong>{{ $rent->ski_id }}</strong></span>
+              <span>Identificativo sci: ## <strong>{{ $rent->ski_id }}</strong> ##</span>
             @endif
           </div>
           <div style="padding: 5px 0" >
@@ -60,11 +60,11 @@
         </div>
         <div class="col-4" style="border: 1px solid darkgrey; text-align: center">
           <h6>Dovuto: </h5><br/>
-          <strong>{{ $rent->amount }} €</strong>
+          <strong>--</strong>
         </div>
         <div class="col-4" style="border: 1px solid darkgrey; text-align: center">
           <h6>Pagato: </h5><br/>
-          <strong>{{ $rent->amount }} €</strong>
+          <strong>--</strong>
         </div>
       </div>
     <!-- /Rent Details -->
@@ -86,7 +86,6 @@
           </button>
         </div>
         <div class="modal-body">
-          <!--<input type="text" id="skiError" value="false" style="">-->
           <p>
             Stai associando materiale con ID: ###<br>
             Sei sicuro di voler procedere?
@@ -118,9 +117,10 @@
           </button>
         </div>
         <div class="modal-body">
-          <input type="text" id="skiError" value="false" style="">
-          Questo materiale è gia associato ad un'altro noleggio,<br>
-          Per poter continuare è necessario prima svincolarlo.
+          <p>
+            Questo materiale è gia associato ad un'altro noleggio,<br>
+            Per poter continuare è necessario prima svincolarlo.
+          </p>
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -144,19 +144,26 @@
     function onScanSuccess(decodedText, decodedResult) {
         // Handle on success condition with the decoded text or result.
         var resp = (`Scan result: ${decodedText}`);
-        var ski_id = decodedText;
+        var ski_id = parseInt(decodedText);
         var allSki = @json($skis);
+        console.log(allSki);
+        console.log(ski_id);
+        console.log(typeof(ski_id));
         document.getElementById('ski_id').value=ski_id;
         document.getElementById('codeResp').innerHTML=resp;
         // Check ski status
         var error=false;
+        var skiRented = [];
         for(let i=0; i<allSki.length; i++) {
           if (allSki[i].id===ski_id && allSki[i].status===1) {
             error=true;
-            $('#modalErrore').modal('show');
-        } else {
-            $('#modalConferma').modal('show');
+            skiRented.push(allSki[i]);  
+          }
         }
+        if(skiRented.length===0) {
+          $('#modalConferma').modal('show');
+        } else {
+          $('#modalErrore').modal('show');
         }
         // 
         html5QrcodeScanner.clear();

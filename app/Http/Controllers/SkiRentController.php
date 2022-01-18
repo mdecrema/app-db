@@ -48,7 +48,7 @@ class SkiRentController extends Controller
         $daterange = new \DatePeriod($begin, $interval ,$end); 
         
         foreach($daterange as $date) {                 
-            $array[] = $date->format('Y-m-d'); 
+            $array[] = $date->format('Y-m-d');
         }
 
         for ($i = 0; $i < $daysRange; $i++) {

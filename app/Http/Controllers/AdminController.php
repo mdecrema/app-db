@@ -244,11 +244,10 @@ class AdminController extends Controller
         $ski = Ski::find($data['ski_id']);
         if ($ski->status === 0) {
             $ski->status = 1;
+            $ski->save();
         } else if ($ski->status === 1) {
             // $ski->status = 0;
-            
         }
-        $ski->save();
 
         $id=$data['rent_id'];
         $rent = Rent::find($id);

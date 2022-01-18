@@ -10,7 +10,7 @@
             @foreach($users as $user)
             <div class="col-4" style="border: 1px solid grey; border-radius: 5px; background-color: lightgrey">
                 <a href="">
-                    {{ $user->name }}
+                    {{ $user->name }} - Ruolo: {{ $user->role }}
                 </a>
             </div>
             @endforeach
