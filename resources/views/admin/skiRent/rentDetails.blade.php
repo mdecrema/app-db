@@ -158,7 +158,7 @@
           if (allSki[i].id===ski_id && allSki[i].status===1) {
             error=true;
             skiRented.push(allSki[i]);  
-          }
+          } else {}
         }
         if(skiRented.length===0) {
           $('#modalConferma').modal('show');
