@@ -15,7 +15,7 @@
     </div>
 
     <div>
-        <form action="{{ route('skiRentForm') }}" method="post" class="form-noleggio" style="background-image: url('{{ asset('img/latemar.jpg') }}'); background-size: cover; border: 2px solid #757373">
+        <form action="{{ route('skiRentForm') }}" method="post" class="form-noleggio" style="background-image: url('{{ asset('img/latemar.jpg') }}'); background-size: cover; border: 1px solid #757373">
             @csrf
             @method("POST")
             <div class="col-xl-6 col-lg-6 col-md-12 col-xs-12 col-sm-12 bg-opacity">
@@ -34,7 +34,7 @@
                     </div>-->
                     <input id="dataFine" name="dataFine" type='date' min="" class="form-control" value="" style="position: absolute; visibility: hidden" />
                     <!-- Range DataPicker -->
-                    <input type="" name="daterange" value="" class="form-control" onfocus="blur()" style="font-weight: bold; border: 2px solid #757373" />
+                    <input type="" name="daterange" value="" class="form-control" onfocus="blur()" style="font-weight: bold; border: 1px solid #757373" />
                 </div>
             </div>
 
@@ -45,19 +45,19 @@
             <div class="form-row col-xl-6 col-lg-6 col-md-12 col-xs-12 col-sm-12">
                 <div class="col-12" style="margin: 20px 0">
                     <div onclick="setItemAsActive('sci')" class="" style="padding-right: 50px; display: inline-block; cursor: pointer">
-                        <div id="sci" style="width: 15px; height: 15px; background-color: #BC0033; border-radius: 5px; display: inline-block"></div>
+                        <div id="sci" style="width: 15px; height: 15px; background-color: #BC0033; border: 1px solid #757373; border-radius: 2px; display: inline-block"></div>
                         <div style="display: inline-block; font-weight: bold">
                             Sci
                         </div>
                     </div>
                     <div onclick="setItemAsActive('snowboard')" class="" style="padding-right: 50px; display: inline-block; cursor: pointer">
-                        <div id="snowboard" style="width: 15px; height: 15px; background-color: #fff; border-radius: 5px; display: inline-block"></div>
+                        <div id="snowboard" style="width: 15px; height: 15px; background-color: #fff; border: 1px solid #757373; border-radius: 2px; display: inline-block"></div>
                         <div style="display: inline-block; font-weight: bold">
                             Snowboard
                         </div>
                     </div>
                     <div onclick="setItemAsActive('ciaspole')" class="" style="padding-right: 50px; display: inline-block; cursor: pointer">
-                        <div id="ciaspole" style="width: 15px; height: 15px; background-color: #fff; border-radius: 5px; display: inline-block"></div>
+                        <div id="ciaspole" style="width: 15px; height: 15px; background-color: #fff; border: 1px solid #757373; border-radius: 2px; display: inline-block"></div>
                         <div style="display: inline-block; font-weight: bold">
                             Ciaspole
                         </div>
@@ -71,7 +71,7 @@
                 <div>
                     La tua altezza: <strong id="level-bar-value"></strong> <strong>cm</strong>
                 </div>
-                <div class="form-control" style="border: 2px solid #757373">
+                <div class="form-control" style="height: 50px; border: 1px solid #757373">
                     <input id="level-bar" type="range" min="100" max="200" value="175" name="height" class="level-bar">
                     <div style="width: 100%; height: 10px;">
                         @for($i=100; $i<=200; $i+=5)
@@ -107,7 +107,7 @@
                 <div>
                     Livello:
                 </div>
-                <select class="form-control" name="level" id="" style="display: inline-block; cursor: pointer; font-weight: bold; border: 2px solid #757373">
+                <select class="form-control" name="level" id="" style="display: inline-block; cursor: pointer; font-weight: bold; border: 1px solid #757373">
                     <option value="principiante">Principiante</option> 
                     <option value="intermedio" selected>Intermedio</option>
                     <option value="avanzato">Avanzato</option>
