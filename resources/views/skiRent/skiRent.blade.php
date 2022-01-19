@@ -143,7 +143,7 @@
 <script>
     var active='sci'; 
     var dataInizio=document.getElementById('dataInizio');
-    var dataFine=docum ent.getElementById('dataFine');
+    var dataFine=document.getElementById('dataFine');
     
         let gg = fixDate(new Date().getDate());
         let mm = fixDate(new Date().getMonth()+1);
