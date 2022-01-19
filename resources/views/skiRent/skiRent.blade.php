@@ -28,11 +28,11 @@
             </div>
             <div class="form-row col-xl-6 col-lg-6 col-md-12 col-xs-12 col-sm-12">
                 <div class='input-group date' id='datetimepicker1' style="position: relative">
-                    <input id="dataInizio" name="dataInizio" type='date' class="form-control" style="position: absolute; visibility: hidden;" />
+                    <input id="dataInizio" name="dataInizio" type='date' class="form-control" value="" style="position: absolute; visibility: hidden;" />
                     <!--<div id="errore" style="position: absolute; bottom: -20px; left: 0; display: none">
                         <span style="color: #BC0033">*Seleziona una data prima di procedere</span>
                     </div>-->
-                    <input id="dataFine" name="dataFine" type='date' min="" class="form-control" style="position: absolute; visibility: hidden" />
+                    <input id="dataFine" name="dataFine" type='date' min="" class="form-control" value="" style="position: absolute; visibility: hidden" />
                     <!-- Range DataPicker -->
                     <input type="" name="daterange" value="" class="form-control" onfocus="blur()" style="font-weight: bold; border: 2px solid #757373" />
                 </div>
@@ -124,7 +124,7 @@
             <div class="alert alert-danger">
                 <ul>
                 @foreach ($errors->all() as $error)
-                    <li>{{ 'Seleziona una data prima di procedere' }}</li>
+                    <li>{{ 'Compila i campi e riprova' }}</li>
                 @endforeach
                 </ul>
             </div>
@@ -141,9 +141,28 @@
 </div>
 
 <script>
-    var active='sci';
+    var active='sci'; 
     var dataInizio=document.getElementById('dataInizio');
-    var dataFine=document.getElementById('dataFine');
+    var dataFine=docum ent.getElementById('dataFine');
+    
+        let gg = fixDate(new Date().getDate());
+        let mm = fixDate(new Date().getMonth()+1);
+        let aaaa = new Date().getFullYear();
+    
+        console.log(aaaa+'-'+mm+'-'+gg);
+        document.getElementById('dataInizio').value=aaaa+'-'+mm+'-'+gg;
+        document.getElementById('dataFine').value=aaaa+'-'+mm+'-'+gg;
+        document.getElementById('daysRange').value=1;
+        console.log(new Date());
+    
+    function fixDate(num) {
+        if (num<10) {
+            return '0'+num;
+        } else {
+            return num;
+        }
+    }
+    
     //dataInizio.addEventListener('change', getDate);
     //dataFine.addEventListener('change', getDateFine);
     //
@@ -229,7 +248,6 @@
 
     // Prova range datapicker
 
-
   $('input[name="daterange"]').daterangepicker({
     opens: 'left',
   //  displayMonths : 1,
@@ -239,6 +257,7 @@
     }
   }, function(start, end, label) {
     dataInizio=start.format('YYYY-MM-DD');
+    console.log(dataInizio);
     dataFine=end.format('YYYY-MM-DD');
     rangeOfDays(start, end);
     document.getElementById('dataInizio').value=dataInizio;
