@@ -15,15 +15,16 @@
     </div>
 
     <div>
-        <form action="{{ route('skiRentForm') }}" method="post" class="form-noleggio" style="background-image: url('{{ asset('img/latemar.jpg') }}'); background-size: cover; border: 1px solid #757373">
+        <form action="{{ route('skiRentForm') }}" method="post" class="form-noleggio" style="background-image: url('{{ asset('img/templ2.png') }}'); background-size: cover; border: 1px solid #757373">
             @csrf
             @method("POST")
-            <div class="col-xl-6 col-lg-6 col-md-12 col-xs-12 col-sm-12 bg-opacity">
+            <div class="col-xl-6 col-lg-6 col-md-12 col-xs-12 col-sm-12 bg-opacity" style="background-image: url('{{ asset('img/trasparenza.png') }}'); background-size: cover;">
 
             </div>
+
             <div class="form-row col-xl-6 col-lg-6 col-md-12 col-xs-12 col-sm-12" style="margin-bottom: 10px">
                 <div class="col-12">
-                    <h3 style="font-weight: bold">Quando vai a <span style="color: #BC0033; font-weight: bold">sciare</span>?</h3>
+                    <h3 class="qvs-title" style="font-weight: bold">Quando vai a <span style="color: #BC0033; font-weight: bold">sciare</span>?</h3>
                 </div>
             </div>
             <div class="form-row col-xl-6 col-lg-6 col-md-12 col-xs-12 col-sm-12">
@@ -44,21 +45,21 @@
 
             <div class="form-row col-xl-6 col-lg-6 col-md-12 col-xs-12 col-sm-12">
                 <div class="col-12" style="margin: 20px 0">
-                    <div onclick="setItemAsActive('sci')" class="" style="padding-right: 50px; display: inline-block; cursor: pointer">
+                    <div onclick="setItemAsActive('sci')" class="" style="padding-right: 50px; display: inline-block; cursor: pointer; margin: 5px 0">
                         <div id="sci" style="width: 15px; height: 15px; background-color: #BC0033; border: 1px solid #757373; border-radius: 2px; display: inline-block"></div>
-                        <div style="display: inline-block; font-weight: bold">
+                        <div style="display: inline-block; font-weight: bold; margin-left: 5px">
                             Sci
                         </div>
                     </div>
-                    <div onclick="setItemAsActive('snowboard')" class="" style="padding-right: 50px; display: inline-block; cursor: pointer">
+                    <div onclick="setItemAsActive('snowboard')" class="" style="padding-right: 50px; display: inline-block; cursor: pointer; margin: 5px 0">
                         <div id="snowboard" style="width: 15px; height: 15px; background-color: #fff; border: 1px solid #757373; border-radius: 2px; display: inline-block"></div>
-                        <div style="display: inline-block; font-weight: bold">
+                        <div style="display: inline-block; font-weight: bold; margin-left: 5px">
                             Snowboard
                         </div>
                     </div>
-                    <div onclick="setItemAsActive('ciaspole')" class="" style="padding-right: 50px; display: inline-block; cursor: pointer">
+                    <div onclick="setItemAsActive('ciaspole')" class="" style="padding-right: 50px; display: inline-block; cursor: pointer; margin: 5px 0">
                         <div id="ciaspole" style="width: 15px; height: 15px; background-color: #fff; border: 1px solid #757373; border-radius: 2px; display: inline-block"></div>
-                        <div style="display: inline-block; font-weight: bold">
+                        <div style="display: inline-block; font-weight: bold; margin-left: 5px">
                             Ciaspole
                         </div>
                     </div>

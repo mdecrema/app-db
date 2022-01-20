@@ -11463,8 +11463,8 @@ footer::after {
   position: absolute;
   top: 0;
   left: 0;
-  background-color: #fff;
-  opacity: 0.8;
+  /*background-color: #fff;
+  opacity: 0.8;*/
 }
 
 .form-noleggio .level-bar {
@@ -11513,7 +11513,7 @@ footer::after {
 
   .titolo-ski-rent {
     width: 80%;
-    margin: 0 auto 20px auto;
+    margin: 20px auto 50px auto;
   }
 
   .titolo-ski-rent h2 {
@@ -11529,9 +11529,13 @@ footer::after {
 
   .form-noleggio {
     width: 80%;
-    top: 60%;
+    top: 70%;
     left: 50%;
     transform: translate(-50%, -50%);
+  }
+
+  .form-noleggio .qvs-title {
+    font-size: 24px;
   }
 
   .btn-continua {

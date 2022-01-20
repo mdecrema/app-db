@@ -64,7 +64,7 @@
     <div class="row" style="">
         <div>
             <h5 style="font-weight: bold; font-family: 'Bakbak One', cursive; margin: 10px 0 5px">Disponibilità in base alla tua ricerca</h5>
-            <div class="col-12" style="font-size: 10px; margin-bottom: 10px">
+            <div class="" style="font-size: 10px; margin-bottom: 10px">
                 <span style="color: grey">Durata noleggio: </span><strong class="days-num"> {{ $daysRange }} @if ($daysRange==1) giorno @else giorni @endif </strong>,
                 dal <strong>{{ $dataInizio }}</strong>
                 al <strong>{{ $dataFine }}</strong>
