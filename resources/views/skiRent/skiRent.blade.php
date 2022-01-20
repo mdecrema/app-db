@@ -6,25 +6,25 @@
 
 @section('content')
 
-<div class="row search-content">
+<div class="row search-content" style="width: 100vw; height: 100vh; background-image: url('{{ asset('img/skiVillage.jpeg') }}'); background-size: cover;">
     <div class="titolo-ski-rent">
-        <h2>SKI RENT</h2>
-        <p>
+        <h2 style="text-shadow: 2px 2px 2px grey">SKI RENT</h2>
+        <p style="color: #fff; text-shadow: 2px 2px 2px grey">
             Consegna e ritiro a domicilio in meno di 24h del materiale che decidi di noleggiare
         </p>
     </div>
 
     <div>
-        <form action="{{ route('skiRentForm') }}" method="post" class="form-noleggio" style="background-image: url('{{ asset('img/templ2.png') }}'); background-size: cover; border: 1px solid #757373">
+        <form action="{{ route('skiRentForm') }}" method="post" class="form-noleggio" >
             @csrf
             @method("POST")
-            <div class="col-xl-6 col-lg-6 col-md-12 col-xs-12 col-sm-12 bg-opacity" style="background-image: url('{{ asset('img/trasparenza.png') }}'); background-size: cover;">
+            <div class="col-12 bg-opacity" style="background-image: url('{{ asset('img/sfocatura.png') }}'); background-size: cover; ">
 
             </div>
 
             <div class="form-row col-xl-6 col-lg-6 col-md-12 col-xs-12 col-sm-12" style="margin-bottom: 10px">
                 <div class="col-12">
-                    <h3 class="qvs-title" style="font-weight: bold">Quando vai a <span style="color: #BC0033; font-weight: bold">sciare</span>?</h3>
+                    <h3 class="qvs-title" style="font-weight: bold">Quando vai a <span style="color: #BC0033; text-shadow: 2px 2px 2px #000 font-weight: bold">sciare</span>?</h3>
                 </div>
             </div>
             <div class="form-row col-xl-6 col-lg-6 col-md-12 col-xs-12 col-sm-12">
@@ -35,7 +35,7 @@
                     </div>-->
                     <input id="dataFine" name="dataFine" type='date' min="" class="form-control" value="" style="position: absolute; visibility: hidden" />
                     <!-- Range DataPicker -->
-                    <input type="" name="daterange" value="" class="form-control" onfocus="blur()" style="font-weight: bold; border: 1px solid #757373" />
+                    <input type="" name="daterange" value="" class="form-control" onfocus="blur()" style="font-weight: bold; " />
                 </div>
             </div>
 
@@ -46,19 +46,19 @@
             <div class="form-row col-xl-6 col-lg-6 col-md-12 col-xs-12 col-sm-12">
                 <div class="col-12" style="margin: 20px 0">
                     <div onclick="setItemAsActive('sci')" class="" style="padding-right: 50px; display: inline-block; cursor: pointer; margin: 5px 0">
-                        <div id="sci" style="width: 15px; height: 15px; background-color: #BC0033; border: 1px solid #757373; border-radius: 2px; display: inline-block"></div>
+                        <div id="sci" style="width: 15px; height: 15px; background-color: #BC0033; ; border-radius: 2px; display: inline-block"></div>
                         <div style="display: inline-block; font-weight: bold; margin-left: 5px">
                             Sci
                         </div>
                     </div>
                     <div onclick="setItemAsActive('snowboard')" class="" style="padding-right: 50px; display: inline-block; cursor: pointer; margin: 5px 0">
-                        <div id="snowboard" style="width: 15px; height: 15px; background-color: #fff; border: 1px solid #757373; border-radius: 2px; display: inline-block"></div>
+                        <div id="snowboard" style="width: 15px; height: 15px; background-color: #fff; ; border-radius: 2px; display: inline-block"></div>
                         <div style="display: inline-block; font-weight: bold; margin-left: 5px">
                             Snowboard
                         </div>
                     </div>
                     <div onclick="setItemAsActive('ciaspole')" class="" style="padding-right: 50px; display: inline-block; cursor: pointer; margin: 5px 0">
-                        <div id="ciaspole" style="width: 15px; height: 15px; background-color: #fff; border: 1px solid #757373; border-radius: 2px; display: inline-block"></div>
+                        <div id="ciaspole" style="width: 15px; height: 15px; background-color: #fff; ; border-radius: 2px; display: inline-block"></div>
                         <div style="display: inline-block; font-weight: bold; margin-left: 5px">
                             Ciaspole
                         </div>
@@ -72,7 +72,7 @@
                 <div>
                     La tua altezza: <strong id="level-bar-value"></strong> <strong>cm</strong>
                 </div>
-                <div class="form-control" style="height: 50px; border: 1px solid #757373">
+                <div class="form-control" style="height: 50px; ">
                     <input id="level-bar" type="range" min="100" max="200" value="175" name="height" class="level-bar">
                     <div style="width: 100%; height: 10px;">
                         @for($i=100; $i<=200; $i+=5)
@@ -108,7 +108,7 @@
                 <div>
                     Livello:
                 </div>
-                <select class="form-control" name="level" id="" style="display: inline-block; cursor: pointer; font-weight: bold; border: 1px solid #757373">
+                <select class="form-control" name="level" id="" style="display: inline-block; cursor: pointer; font-weight: bold; ">
                     <option value="principiante">Principiante</option> 
                     <option value="intermedio" selected>Intermedio</option>
                     <option value="avanzato">Avanzato</option>
@@ -132,13 +132,7 @@
         @endif
     </div>
 
-    <div class="ski-img" style="width: 20vw; height: 100vh; z-index: -1; position: absolute; top: 0; left: 50px; background-image: url('{{ asset('img/rossignol-hero.jpg') }}'); background-size: cover;">
-        <!-- background-image: url('{{ asset('img/rossignol-hero.jpg') }}'); background-size: cover; -->
-    </div>
-
-    <div class="boots-img" style="width: 30vw; height: 100vh; z-index: -1; position: absolute; top: 50px; right: 0; background-image: url('{{ asset('img/booster.jpg') }}'); background-size: cover;">
-        <!-- background-image: url('{{ asset('img/booster.jpg') }}'); background-size: cover; -->
-    </div>
+   
 </div>
 
 <script>
