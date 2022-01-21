@@ -1,7 +1,4 @@
-.search-content {
-    
-}
-
+@include media-breakpoint-up(lg) {
 .titolo-ski-rent {
     width: 50vw; 
     margin: 0 auto;
@@ -91,7 +88,9 @@
     font-weight: bold;
 }
 
-@media (min-width: 769px) and (max-width: 991.98px) {
+}
+
+@include media-breakpoint-up(md) {
     .desktop {
         display: none;
     }
@@ -105,10 +104,7 @@
     }
 }
 
-@media (max-width: 768px) { //768px
-    .search-content {
-        background-color: #fff;
-    }
+@include media-breakpoint-up(xs) { //768px
 
     .titolo-ski-rent {
         width: 80%;
