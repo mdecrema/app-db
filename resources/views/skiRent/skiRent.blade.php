@@ -7,9 +7,9 @@
 @section('content')
 
 <div class="row search-content" style="width: 100vw; height: 100vh;">
-<div class="bg-image-desktop" style="width: 100%; height: 100%; position: absolute; top: 0; left: 0; background-image: url( {{ asset('img/templ3.png') }} ); background-size: cover"></div>
-<div class="bg-image-tablet" style="width: 100%; height: 100%; position: absolute; top: 0; left: 0; background-image: url( {{ asset('img/templ4.png') }} ); background-size: cover"></div>
-<div class="bg-image-mobile" style="width: 100%; height: 100%; position: absolute; top: 0; left: 0; background-image: url( {{ asset('img/templMobile.png') }} ); background-size: cover"></div>
+<div class="bg-image-desktop d-lg-block d-xl-block d-md-none d-sm-none" style="width: 100%; height: 100%; position: absolute; top: 0; left: 0; background-image: url( {{ asset('img/templ3.png') }} ); background-size: cover"></div>
+<div class="bg-image-tablet d-lg-none d-xl-none d-md-block d-sm-none" style="width: 100%; height: 100%; position: absolute; top: 0; left: 0; background-image: url( {{ asset('img/templ4.png') }} ); background-size: cover"></div>
+<div class="bg-image-mobile d-lg-none d-xl-none d-md-none d-sm-block" style="width: 100%; height: 100%; position: absolute; top: 0; left: 0; background-image: url( {{ asset('img/templMobile.png') }} ); background-size: cover"></div>
     <div class="titolo-ski-rent">
         <h2 style="text-shadow: 2px 2px 2px grey">SKI RENT</h2>
         <p style="color: #fff; text-shadow: 2px 2px 2px grey">

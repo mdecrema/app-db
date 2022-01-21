@@ -11441,18 +11441,6 @@ footer::after {
   font-size: 20px;
 }
 
-.bg-image-desktop {
-  display: block;
-}
-
-.bg-image-tablet {
-  display: none;
-}
-
-.bg-image-mobile {
-  display: none;
-}
-
 .form-noleggio {
   width: 50%;
   min-height: 450px;
@@ -11513,20 +11501,6 @@ footer::after {
   font-weight: bold;
 }
 
-@media only screen and (min-width: 769px) and (max-width: 991.98px) {
-  .bg-image-desktop {
-    display: none;
-  }
-
-  .bg-image-tablet {
-    display: block;
-  }
-
-  .bg-image-mobile {
-    display: none;
-  }
-}
-
 @media only screen and (max-width: 768px) {
   .search-content {
     background-color: #fff;
@@ -11546,18 +11520,6 @@ footer::after {
 
   .titolo-ski-rent p {
     font-size: 15px;
-  }
-
-  .bg-image-desktop {
-    display: none;
-  }
-
-  .bg-image-tablet {
-    display: none;
-  }
-
-  .bg-image-mobile {
-    display: block;
   }
 
   .form-noleggio {
