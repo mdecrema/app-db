@@ -20,6 +20,10 @@
     display: block;
 }
 
+.tablet {
+    display: none;
+}
+
 .mobile {
     display: none;
 }
@@ -87,7 +91,21 @@
     font-weight: bold;
 }
 
-@media only screen and (max-width: 868px) { //768px
+@media only screen and (min-width: 769px) and (max-width: 991.98px) {
+    .desktop {
+        display: none;
+    }
+
+    .tablet {
+        display: block;
+    }
+    
+    .mobile {
+        display: none;
+    }
+}
+
+@media only screen and (max-width: 768px) { //768px
     .search-content {
         background-color: #fff;
     }
@@ -107,6 +125,10 @@
     }
 
     .desktop {
+        display: none;
+    }
+
+    .tablet {
         display: none;
     }
     
