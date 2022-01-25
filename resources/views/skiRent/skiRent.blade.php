@@ -76,12 +76,12 @@
                     <div style="float: left">
                         La tua altezza: <strong id="level-bar-value"></strong> <strong>cm</strong>
                     </div>
-                    <button type="button" onclick="oneLess()" style="width: 20px; height: 20px; border-radius: 100%; background-color: #fff; position: relative; float: left; margin-left: 10px">
+                    <!--<button type="button" onclick="oneLess()" style="width: 20px; height: 20px; border-radius: 100%; background-color: #fff; position: relative; float: left; margin-left: 10px">
                         <i class="far fa-minus-circle centra" style="color: #BC0033"></i>
                     </button>
                     <button type="button" onclick="oneMore()" style="width: 20px; height: 20px; border-radius: 100%; background-color: #fff; position: relative; float: left; margin-left: 5px">
                         <i class="far fa-plus-circle centra" style="color: #BC0033"></i>
-                    </button>
+                    </button>-->
                 </div>
                 <div class="form-control" style="height: 50px; ">
                     <input id="level-bar" type="range" min="100" max="200" value="175" name="height" class="level-bar">
