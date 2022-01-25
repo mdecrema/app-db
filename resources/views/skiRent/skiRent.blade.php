@@ -73,7 +73,15 @@
                 <!-- altezza -->
                 
                 <div>
-                    La tua altezza: <strong id="level-bar-value"></strong> <strong>cm</strong>
+                    <div style="float: left">
+                        La tua altezza: <strong id="level-bar-value"></strong> <strong>cm</strong>
+                    </div>
+                    <button type="button" onclick="oneLess()" style="width: 20px; height: 20px; border-radius: 100%; background-color: #fff; position: relative; float: left; margin-left: 10px">
+                        <i class="far fa-minus-circle centra" style="color: #BC0033"></i>
+                    </button>
+                    <button type="button" onclick="oneMore()" style="width: 20px; height: 20px; border-radius: 100%; background-color: #fff; position: relative; float: left; margin-left: 5px">
+                        <i class="far fa-plus-circle centra" style="color: #BC0033"></i>
+                    </button>
                 </div>
                 <div class="form-control" style="height: 50px; ">
                     <input id="level-bar" type="range" min="100" max="200" value="175" name="height" class="level-bar">
@@ -141,6 +149,7 @@
 
 
 <script>
+   
     var active='sci'; 
     var dataInizio=document.getElementById('dataInizio');
     var dataFine=document.getElementById('dataFine');
@@ -244,6 +253,24 @@
             data.style.border="2px solid #BC0033";
             errore.style.display="block";
         }, timeout);
+    }
+
+    function oneMore() {
+        var value = parseInt(document.getElementById('level-bar').value);
+        if (value<200) {
+            value = value + 1;
+            document.getElementById('level-bar').value = value;
+            document.getElementById('level-bar-value').innerHTML=value;   
+        }
+    }
+
+    function oneLess() {
+        var value = parseInt(document.getElementById('level-bar').value);
+        if (value>100) {
+            value = value - 1;
+            document.getElementById('level-bar').value = value;
+            document.getElementById('level-bar-value').innerHTML=value;
+        }
     }
 
     // Prova range datapicker
