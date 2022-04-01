@@ -101,7 +101,7 @@
                         Totale
                     </td>
                     <td style="text-align: right; font-size: 20px; font-weight: bold">
-                    <?php 
+                    <?php
                         $subtotal = Cart::total();
                         $tax = 10;
                         $total = $subtotal + 5.00 * $tax / 10;
