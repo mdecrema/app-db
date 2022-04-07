@@ -11280,6 +11280,14 @@ footer::after {
   }
 }
 
+.banner-text {
+  width: 100%;
+  height: 30px;
+  background-color: #f37a34;
+  color: #fff;
+  margin-bottom: 10px;
+}
+
 .img-slider {
   height: 90vh;
 }

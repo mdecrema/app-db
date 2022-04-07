@@ -98,7 +98,104 @@
     </div>
     <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
       <div class="card-body">
-        Some placeholder content for the second accordion panel. This panel is hidden by default.
+        <!-- Guida alle taglie table -->
+        <table class="table table-striped">
+  <thead>
+    <tr>  
+      <th scope="col">IT</th>
+      <th scope="col">US</th>
+      <th scope="col">UK</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>     
+      <td>35</td>
+      <td>4.5</td>
+      <td>2.5</td>
+    </tr>
+    <tr>  
+      <td>35.5-36</td>
+      <td>5</td>
+      <td>3</td>
+    </tr>
+    <tr>    
+      <td>36.5</td>
+      <td>5.5</td>
+      <td>3.5</td>
+    </tr>
+    <tr>   
+      <td>37</td>
+      <td>6</td>
+      <td>4</td>
+    </tr>
+    <tr>     
+      <td>37.5-38</td>
+      <td>6.5</td>
+      <td>4.5</td>
+    </tr>
+    <tr>
+      <td>38-38.5</td>
+      <td>7</td>
+      <td>5</td>
+    </tr>
+    <tr>
+      <td>39</td>
+      <td>7.5</td>
+      <td>5.5</td>
+    </tr>
+    <tr>
+      <td>39.5</td>
+      <td>8</td>
+      <td>6</td>
+    </tr>
+    <tr>
+      <td>40-40.5</td>
+      <td>8.5</td>
+      <td>6.5</td>
+    </tr>
+    <tr>
+      <td>40.5-41</td>
+      <td>9</td>
+      <td>7</td>
+    </tr>
+    <tr>
+      <td>41.5</td>
+      <td>9.5</td>
+      <td>7.5</td>
+    </tr>
+    <tr>
+      <td>42</td>
+      <td>10</td>
+      <td>8</td>
+    </tr>
+    <tr>
+      <td>42.5-43</td>
+      <td>10.5</td>
+      <td>8.5</td>
+    </tr>
+    <tr>
+      <td>43-43.5</td>
+      <td>11</td>
+      <td>9</td>
+    </tr>
+    <tr>
+      <td>44</td>
+      <td>11.5</td>
+      <td>9.5</td>
+    </tr>
+    <tr>
+      <td>44.5</td>
+      <td>12</td>
+      <td>10</td>
+    </tr>
+    <tr>
+      <td>45-45.5</td>
+      <td>12.5</td>
+      <td>10.5</td>
+    </tr>
+  </tbody>
+</table>
+        <!-- /Guida alle taglie table -->
       </div>
     </div>
   </div>

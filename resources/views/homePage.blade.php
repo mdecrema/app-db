@@ -7,6 +7,20 @@ Red dot
 @section('content')
 
 <div class="row"> 
+  <!-- banner scritta -->
+  <div class="banner-text">
+    <marquee
+  loop="-1"
+  scrollamount="7"
+  scrolldelay="0"
+  direction="left"
+  height="30"
+  width="100%"
+  align="right">
+  - nuova collezione - VOLCANO.it - nuova collezione - VOLCANO.it - nuova collezione - VOLCANO.it - nuova collezione - VOLCANO.it - nuova collezione - VOLCANO.it -
+</marquee>
+  </div>
+
   <div class="img-slider">
     <!-- Bootstrap Slider -->
     <div id="carouselExampleIndicators" class="carousel slide col-12" data-interval="7000" data-ride="carousel">
