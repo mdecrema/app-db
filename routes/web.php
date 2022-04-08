@@ -84,4 +84,8 @@ Route::prefix('admin')->name('admin.')->middleware('can:admin')->group(function 
     Route::get('dashboard/skiRent/skiBarCodes', 'AdminController@skiRentBarCodes')->name('skiRent.barCodes');
     // All User
     Route::get('dashboard/users/allUser', 'AdminController@allUser')->name('users.allUser');
+    // Orders
+    Route::get('dashboard/orders/pending', 'AdminController@pendingOrders')->name('orders.pending');
+    Route::get('dashboard/orders/progressing', 'AdminController@progressingOrders')->name('orders.progressing');
+    Route::get('dashboard/orders/history', 'AdminController@historyOrders')->name('orders.history');
 });

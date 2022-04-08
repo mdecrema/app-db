@@ -9,6 +9,12 @@ use App\Product;
 use App\Ski;
 use App\Rent;
 
+class MenuLink
+{
+    public $name;
+    public $link;
+}
+
 class AdminController extends Controller
 {
     /**
@@ -17,8 +23,47 @@ class AdminController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
-    {      
-        return view('admin.dashboard');
+    {           
+    
+        $menuOrdini1 = new MenuLink();
+        $menuOrdini1->name = 'Ordini pending';
+        $menuOrdini1->link = 'dashboard/orders/pending';
+                    
+        $menuOrdini2 = new MenuLink();
+        $menuOrdini2->name = 'Ordini in lavorazione';
+        $menuOrdini2->link = 'dashboard/orders/progressing';
+                    
+        $menuOrdini3 = new MenuLink();
+        $menuOrdini3->name = 'Storico ordini';
+        $menuOrdini3->link = 'dashboard/orders/history';
+    
+        $ordiniMenuList = array($menuOrdini1, $menuOrdini2, $menuOrdini3);
+
+        $menuMagazzino1 = new MenuLink();
+        $menuMagazzino1->name = 'Tutti i prodotti';
+        $menuMagazzino1->link = 'dashboard/products';
+
+        $menuMagazzino2 = new MenuLink();
+        $menuMagazzino2->name = 'Aggiungi nuovo';
+        $menuMagazzino2->link = 'dashboard/products/create';
+
+        $magazzinoMenuList = array($menuMagazzino1, $menuMagazzino2);
+
+        $menuNoleggio1 = new MenuLink();
+        $menuNoleggio1->name = 'Tutto il materiale';
+        $menuNoleggio1->link = 'dashboard/skiRent/allEquipment';
+
+        $menuNoleggio1 = new MenuLink();
+        $menuNoleggio1->name = 'Aggiugni materiale';
+        $menuNoleggio1->link = 'dashboard/skiRent/addEquipment';
+
+        $menuNoleggio1 = new MenuLink();
+        $menuNoleggio1->name = 'Materiale noleggiato';
+        $menuNoleggio1->link = 'dashboard/skiRent/allRent';
+
+        $noleggioMenuList = array($menuNoleggio1, $menuOrdini2, $menuOrdini3);
+
+        return view('admin.dashboard', compact('ordiniMenuList', 'magazzinoMenuList', 'noleggioMenuList'));
     }
 
     public function allProducts()
@@ -218,7 +263,12 @@ class AdminController extends Controller
     }
 
 
-    // // / / // / / / ///
+    ///////////////////////////////////////////////////////
+    /*
+    * Funzione di storno materiale quando scannerizzato
+    * >> Ancora in fase di sviluppo
+    * da test risulta non funzionare correttamente
+    */
     public function changeSkiStatus($id) {
         $ski = Ski::find($id);
         if ($ski->status === 0) {
@@ -229,6 +279,7 @@ class AdminController extends Controller
         $ski->update();
         
     }
+    //////////////////////////////////////////////////////
 
     public function rentAddSki(Request $request) {
         $allRent = Rent::all();
@@ -259,11 +310,31 @@ class AdminController extends Controller
 
 
 
-    // USERS
+    /* USERS */
     public function allUser()
     {
         $users = User::all();
 
         return view('admin.user.allUser', compact('users'));
+    }
+
+    /* ORDERS */
+
+    // Pending Orders
+    public function pendingOrders()
+    {
+        return view('admin.orders.pendingOrders');
+    }
+
+    // Progressing Orders
+    public function progressingOrders()
+    {
+        return view('admin.orders.progressingOrders');
+    }
+
+    // History Orders
+    public function historyOrders()
+    {
+        return view('admin.orders.historyOrders');
     }
 }
