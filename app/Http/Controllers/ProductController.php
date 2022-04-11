@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use App\Product;
+use App\Item;
 
 class ProductController extends Controller
 {
@@ -130,8 +131,9 @@ class ProductController extends Controller
     {
         $product = Product::find($id);
         $products = Product::all();
+        $items = Item::all();
 
-        return view('product-details', compact('product', 'products'));
+        return view('product-details', compact('product', 'products', 'items'));
     }
 
     /**

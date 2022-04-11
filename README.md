@@ -76,3 +76,12 @@ If you discover a security vulnerability within Laravel, please send an e-mail t
 ## License
 
 The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+
+/* 
+* Aggiungere correzione inserimento item in cart (per come è sviluppato adesso viene inserito il product nel cart -> SBAGLIATO)
+* Correzioni lato checkController (confusione tra item e product id)
+*
+*
+*
+*
+*/

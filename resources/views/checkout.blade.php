@@ -34,6 +34,24 @@
                             <h5 style="line-height: 50px">1. opzioni di consegna</h5>
                         </div>
 
+                        <div class='form-row row' style="display: none">
+                            <div class='col-xs-12 form-group required'>
+                                <!--<label class='control-label'>Nome</label>-->
+                                <?php
+                                $items_id = array();
+
+                                foreach($items as $item)
+                                {
+                                    array_push($items_id, $item->id);
+                                    
+                                };
+                                ?>
+
+                                <input name="items_id" class='form-control' size='20' type='text' placeholder="Nome" value=$items_id>
+                                <input name="fullAmount" class='form-control' size='20' type='text' placeholder="Nome" value='{{ $fullAmount }}'>
+                            </div>
+                        </div>
+
                         <div class='form-row row'>
                             <div class='col-xs-12 form-group required'>
                                 <!--<label class='control-label'>Nome</label>-->

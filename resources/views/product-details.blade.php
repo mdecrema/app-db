@@ -46,14 +46,40 @@
         <div class="" style="width: 50%; padding: 15px 25px">
             Taglie disponibili
             <select class="form-select" name="" id="" style="width: 100px; background-color:  #fff; color: #000; padding: 5px 10px; border-radius: 3px border-bottom: 2px solid  #FF4901">
-                <option value="">36</option>
-                <option value="">37</option>
-                <option value="">38</option>
-                <option value="">39</option>
-                <option value="">40</option>
-                <option value="">41</option>
-                <option value="">42</option>
-                <option value="">43</option>
+              <?php 
+                $sizesAvailable = array();
+                $sizes1 = ['XS', 'S', 'M', 'L', 'XL', 'XXL'];
+                $sizes2 = ['35', '36', '37', '38', '39', '40', '41', '42', '43', '44', '45'];
+  
+                foreach($items as $item) {
+                  array_push($sizesAvailable, $item->size);
+                }                
+              ?>
+            @if($product->categoria==='t-shirt')
+              
+              @foreach($sizes1 as $size)
+                @if( in_array($size, $sizesAvailable) )
+                  <option value="" style="font-weight: bold">{{ $size }}</option>
+                @else
+                  <option value="" disabled="true" style="color: lightgrey">
+                    {{ $size }}
+                  </option>
+                @endif
+              @endforeach
+
+            @elseif($product->categoria==='shoes')
+
+              @foreach($sizes2 as $size)
+                @if( in_array($size, $sizesAvailable) )
+                  <option value="" style="font-weight: bold">{{ $size }}</option>
+                @else
+                  <option value="" disabled="true" style="color: lightgrey">
+                    {{ $size }}
+                  </option>
+                @endif
+              @endforeach
+
+            @endif
             </select>
          </div>
 
@@ -61,6 +87,7 @@
         <form action="{{ route('cart.store') }}" method="POST"> {{--  --}}
                 @csrf
                 @method('POST')
+                
                 <input type="hidden" name="id" value="{{ $product->id }}">
                 <input type="hidden" name="nome" value="{{ $product->nome }}">
                 <!--<input type="hidden" name="taglia" value="{{ $product->taglia }}">-->
