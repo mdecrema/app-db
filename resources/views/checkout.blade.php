@@ -25,7 +25,7 @@
                     @endif
   
                     <form role="form" action="{{ route('checkout.completed') }}" method="post" class="validation"
-                                                     data-cc-on-file="false"
+                                                    data-cc-on-file="false"
                                                     data-stripe-publishable-key="{{ env('STRIPE_KEY') }}"
                                                     id="payment-form">
                         @csrf

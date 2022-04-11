@@ -25,6 +25,9 @@
                 @foreach($ordiniMenuList as $menuItem)
                 <div class="col-4 card text-truncate" style="padding: 15px; float: left">
                     <a style="color: #000; text-decoration: none" href="{{ $menuItem->link }}">{{ $menuItem->name }}</a>
+                    @if ($menuItem->name === 'Ordini pending')
+                    <span class="badge badge-danger" style="position: absolute; top: 0; right: 0">200</span>
+                    @endif
                 </div>
                 @endforeach
             </div>
@@ -34,7 +37,7 @@
         <div id="magazzino-panel" class="col-xl-4 col-lg-4 col-md-10 col-sm-10 col-xs-10 offset-xl-2 offset-lg-2 offset-md-1 offset-sm-1 offset-xs-1" style="height: 300px">
                 <h3 style="font-weight: bold">Magazzino</h3>
                 @foreach($magazzinoMenuList as $menuItem)
-                <div class="card" style="padding: 15px; margin: 2px 0">
+                <div class="card" style="padding: 10px; margin: 2px 0">
                     <a style="color: #000; text-decoration: none" href="{{ $menuItem->link }}">{{ $menuItem->name }}</a><br/>
                 </div>
                 @endforeach
@@ -42,7 +45,7 @@
         <div class="col-xl-4 col-lg-4 col-md-10 col-sm-10 col-xs-10 offset-xl-0 offset-lg-0 offset-md-1 offset-sm-1 offset-xs-1" style="height: 300px">
                 <h3 style="font-weight: bold">Noleggio</h3>          
                 @foreach($noleggioMenuList as $menuItem)
-                <div class="card" style="padding: 15px; margin: 2px 0">
+                <div class="card" style="padding: 10px; margin: 2px 0">
                     <a style="color: #000; text-decoration: none" href="{{ $menuItem->link }}">{{ $menuItem->name }}</a><br/>
                 </div>
                 @endforeach

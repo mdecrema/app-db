@@ -45,7 +45,7 @@
 
         <div class="" style="width: 50%; padding: 15px 25px">
             Taglie disponibili
-            <select class="form-select" name="" id="" style="width: 100px; background-color:  #fff; color: #000; padding: 5px 10px; border-radius: 3px border-bottom: 2px solid  #FF4901">
+            <select onchange="getSizeValue()" class="form-select" name="" id="itemSize" style="width: 100px; background-color:  #fff; color: #000; padding: 5px 10px; border-radius: 3px border-bottom: 2px solid  #FF4901">
               <?php 
                 $sizesAvailable = array();
                 $sizes1 = ['XS', 'S', 'M', 'L', 'XL', 'XXL'];
@@ -59,9 +59,9 @@
               
               @foreach($sizes1 as $size)
                 @if( in_array($size, $sizesAvailable) )
-                  <option value="" style="font-weight: bold">{{ $size }}</option>
+                  <option value="{{ $size }}" style="font-weight: bold">{{ $size }}</option>
                 @else
-                  <option value="" disabled="true" style="color: lightgrey">
+                  <option value="{{ $size }}" disabled="true" style="color: lightgrey">
                     {{ $size }}
                   </option>
                 @endif
@@ -71,9 +71,9 @@
 
               @foreach($sizes2 as $size)
                 @if( in_array($size, $sizesAvailable) )
-                  <option value="" style="font-weight: bold">{{ $size }}</option>
+                  <option value="{{ $size }}" style="font-weight: bold">{{ $size }}</option>
                 @else
-                  <option value="" disabled="true" style="color: lightgrey">
+                  <option value="{{ $size }}" disabled="true" style="color: lightgrey">
                     {{ $size }}
                   </option>
                 @endif
@@ -90,7 +90,7 @@
                 
                 <input type="hidden" name="id" value="{{ $product->id }}">
                 <input type="hidden" name="nome" value="{{ $product->nome }}">
-                <!--<input type="hidden" name="taglia" value="{{ $product->taglia }}">-->
+                <input type="hidden" name="size" id="sizeSelected" value="">
                 <input type="hidden" name="amount" value="{{ $product->amount }}">
                 <button type="submit" class="btn btn-holder" style="width: 100%; background-color: #000; color: #fff">Aggiungi al Carrello</button> <!-- background-color: #96DED1 -->
             </form>
@@ -271,7 +271,10 @@
 </div>
 
 <script>
-    var left = document.getElementById('arrowLeft');
+var size = document.getElementById('itemSize').value;
+document.getElementById('sizeSelected').value = size;
+
+var left = document.getElementById('arrowLeft');
 var right = document.getElementById('arrowRight');
 
 
@@ -320,6 +323,12 @@ function arrowRight() {
     // Una volta individuato l'elemento corretto gli aggiungo la classe 'active' in modo da renderlo visibile
     imgNext.addClass("active");
     puntoNext.addClass("active");
+}
+
+// Item size selected
+function getSizeValue() {
+  size = document.getElementById('itemSize').value;
+  document.getElementById('sizeSelected').value = size;
 }
 </script>
 @endsection

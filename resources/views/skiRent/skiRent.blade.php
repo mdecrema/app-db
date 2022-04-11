@@ -18,7 +18,7 @@
     </div>
 
     <div>
-        <form action="{{ route('skiRentForm') }}" method="post" class="form-noleggio" >
+        <form action="{{ route('skiRentForm') }}" method="post" class="form-noleggio" style="border: none">
             @csrf
             @method("POST")
             <!--<div class="col-12 bg-opacity" style="background-image: url('{{ asset('img/sfocatura.png') }}'); background-size: cover; ">
@@ -84,7 +84,7 @@
                     </button>-->
                 </div>
                 <div class="form-control" style="height: 50px; ">
-                    <input id="level-bar" type="range" min="100" max="200" value="175" name="height" class="level-bar">
+                    <input id="level-bar" type="range" min="100" max="200" value="175" name="height" class="form-range">
                     <div style="width: 100%; height: 10px;">
                         @for($i=100; $i<=200; $i+=5)
                         <div style="width: calc(100%/21); height: 100%; float: left; font-size: 5px">

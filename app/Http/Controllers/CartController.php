@@ -4,7 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Gloudemans\Shoppingcart\Facades\Cart;
+use Illuminate\Support\Facades\DB;
 use App\Product;
+use App\Item;
 
 class CartController extends Controller
 {
@@ -16,6 +18,8 @@ class CartController extends Controller
     public function index()
     {
         $items = Cart::content();
+
+        dd($items);
 
         return view('cart', compact('items'));
     }
@@ -38,7 +42,25 @@ class CartController extends Controller
      */
     public function store(Request $request)
     {
-        Cart::add($request->id, $request->nome, 1, $request->amount)
+        $product_id = intval($request->id);
+        $sizeChoosed = $request->size;
+
+    //     $item = Item::where([
+    //         'product_id' => $product_id,
+    //         'size' => $sizeChoosed,
+    //         'available' => true
+    //  ])->first();
+
+    $item = Item::join('products', 'items.product_id', '=', 'products.id')
+    ->where([
+        'items.product_id' => $product_id,
+        'items.size' => $sizeChoosed,
+        'items.available' => true
+    ])
+    ->get(['items.*', 'products.*'])->first();
+
+    // DA SISTEMARE I DATI PASSATI AL CART!!!!!
+        Cart::add($item->id, $request->nome, 1, $request->amount)
             ->associate('App\Product');
 
         return redirect()->route('cart')->with('success_message', 'Item was added to your cart!');
