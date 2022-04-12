@@ -19,7 +19,7 @@ class CartController extends Controller
     {
         $items = Cart::content();
 
-        dd($items);
+        // dd($items);
 
         return view('cart', compact('items'));
     }
@@ -59,8 +59,10 @@ class CartController extends Controller
     ])
     ->get(['items.*', 'products.*'])->first();
 
-    // DA SISTEMARE I DATI PASSATI AL CART!!!!!
-        Cart::add($item->id, $request->nome, 1, $request->amount)
+    dd($item);
+
+    // Item ID Sbagliato!!!
+        Cart::add($item->id, $request->nome, 1, $request->amount, ['size' => $item->size])
             ->associate('App\Product');
 
         return redirect()->route('cart')->with('success_message', 'Item was added to your cart!');
