@@ -51,21 +51,49 @@ class CartController extends Controller
     //         'available' => true
     //  ])->first();
 
-    $item = Item::join('products', 'items.product_id', '=', 'products.id')
+    $item = Product::join('items', 'items.product_id', '=', 'products.id')
     ->where([
         'items.product_id' => $product_id,
         'items.size' => $sizeChoosed,
         'items.available' => true
     ])
-    ->get(['items.*', 'products.*'])->first();
+    ->get([
+        'items.*', 
+        'products.nome',
+        'products.photo1',
+        'products.photo2',
+        'products.photo3',
+        'products.photo4',
+        'products.photo5',
+        'products.categoria',
+        'products.genere',
+        'products.description',
+        'products.colore',
+        'products.brand',
+        'products.amount',
+        'products.availability',
+        'products.valutazione',
+    ])->first();
 
-    dd($item);
+    // verificare dati passati
+    Cart::add(
+        $item->id, 
+        $request->nome, 
+        1, 
+        $request->amount, 
+        [
+            'size' => $item->size,
+            'photo1' => $item->photo1,
+        ])
+    ->associate('App\Product');
 
-    // Item ID Sbagliato!!!
-        Cart::add($item->id, $request->nome, 1, $request->amount, ['size' => $item->size])
-            ->associate('App\Product');
+    // Update item availabilty to false
+    DB::table('items')
+        ->where('id', $item->id)
+        ->update(['available' => false]);
 
-        return redirect()->route('cart')->with('success_message', 'Item was added to your cart!');
+    return redirect()->route('cart')->with('success_message', 'Item was added to your cart!');
+
     }
 
     /**
@@ -108,9 +136,14 @@ class CartController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy($rowId, $id)
     {
-        Cart::remove($id);
+        Cart::remove($rowId);
+
+        // Update item availabilty to false
+        DB::table('items')
+            ->where('id', $id)
+            ->update(['available' => true]);
 
         return back()->with('success_message', 'Item has been removed succesfully');
     }

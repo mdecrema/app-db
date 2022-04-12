@@ -182,9 +182,9 @@
                         </div>
 
                         <div class="form-row row">
-                            <div class='col-xs-12 col-md-4 form-group'>
-                                <label class='control-label'>TOTALE €(euro) </label> <input name="total"
-                                class='form-control' size='20' type='text'>
+                            <div class='col-xs-12 col-md-12 form-group'>
+                                <label class='control-label' style="font-size: 16px">spedizione 0.00 €</label> <br>
+                                <label class='control-label' style="font-weight: bold; font-size: 20px">TOTALE {{ Cart::total() }} €</label> 
                             </div>
                         </div>
   

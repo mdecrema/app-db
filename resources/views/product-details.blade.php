@@ -44,17 +44,20 @@
         </div>
 
         <div class="" style="width: 50%; padding: 15px 25px">
+            <?php 
+              $sizesAvailable = array();
+              $sizes1 = ['XS', 'S', 'M', 'L', 'XL', 'XXL'];
+              $sizes2 = ['35', '36', '37', '38', '39', '40', '41', '42', '43', '44', '45'];
+  
+              foreach($items as $item) {
+                if ($item->available == true && $item->sold == false) {
+                  array_push($sizesAvailable, $item->size);
+                }
+              }                
+            ?>
+            @if(count($sizesAvailable) !== 0)
             Taglie disponibili
             <select onchange="getSizeValue()" class="form-select" name="" id="itemSize" style="width: 100px; background-color:  #fff; color: #000; padding: 5px 10px; border-radius: 3px border-bottom: 2px solid  #FF4901">
-              <?php 
-                $sizesAvailable = array();
-                $sizes1 = ['XS', 'S', 'M', 'L', 'XL', 'XXL'];
-                $sizes2 = ['35', '36', '37', '38', '39', '40', '41', '42', '43', '44', '45'];
-  
-                foreach($items as $item) {
-                  array_push($sizesAvailable, $item->size);
-                }                
-              ?>
             @if($product->categoria==='t-shirt')
               
               @foreach($sizes1 as $size)
@@ -81,19 +84,26 @@
 
             @endif
             </select>
+            @else
+            <div>
+              <strong>SOLD OUT</strong>
+            </div>
+            @endif
          </div>
 
         <div class="item-cart col-lg-2" style="padding: 15px 25px">
+        @if(count($sizesAvailable) !== 0)
         <form action="{{ route('cart.store') }}" method="POST"> {{--  --}}
-                @csrf
-                @method('POST')
+          @csrf
+          @method('POST')
                 
-                <input type="hidden" name="id" value="{{ $product->id }}">
-                <input type="hidden" name="nome" value="{{ $product->nome }}">
-                <input type="hidden" name="size" id="sizeSelected" value="">
-                <input type="hidden" name="amount" value="{{ $product->amount }}">
-                <button type="submit" class="btn btn-holder" style="width: 100%; background-color: #000; color: #fff">Aggiungi al Carrello</button> <!-- background-color: #96DED1 -->
-            </form>
+          <input type="hidden" name="id" value="{{ $product->id }}">
+          <input type="hidden" name="nome" value="{{ $product->nome }}">
+          <input type="hidden" name="size" id="sizeSelected" value="">
+          <input type="hidden" name="amount" value="{{ $product->amount }}">
+          <button type="submit" class="btn btn-holder" style="width: 100%; background-color: #000; color: #fff">Aggiungi al Carrello</button> <!-- background-color: #96DED1 -->
+        </form>
+        @endif
         </div>
     </div>
 

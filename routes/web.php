@@ -29,7 +29,7 @@ Route::get('/products/{id}', 'ProductController@show')->name('products.show');
 // Cart 
 Route::get('/cart', 'CartController@index')->name('cart');
 Route::post('products/add-to-cart', 'CartController@store')->name('cart.store');
-Route::delete('cart/remove-item/{item}', 'CartController@destroy')->name('cart.destroy');
+Route::delete('cart/remove-item/{rowId}/{id}', 'CartController@destroy')->name('cart.destroy');
 
 // Check-out 
 Route::get('/payment/checkout', 'CheckoutController@index')->name('checkout.index');

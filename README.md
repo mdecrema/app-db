@@ -81,7 +81,7 @@ The Laravel framework is open-sourced software licensed under the [MIT license](
 * Aggiungere correzione inserimento item in cart (per come è sviluppato adesso viene inserito il product nel cart -> SBAGLIATO)
 * Correzioni lato checkController (confusione tra item e product id)
 *
-*
-*
+* Aggiornare Item->available quando svuoto carrello e/o scade la sessione
+* 
 *
 */

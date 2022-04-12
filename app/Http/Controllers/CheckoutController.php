@@ -75,20 +75,6 @@ class CheckoutController extends Controller
                 //'quantity' => $item->quantity,
             ]);
         }*/
-        $newOrder = new Order;
-
-        $newOrder->items_id = ['8','9','10'];
-        $newOrder->firstnName = $data['firstname'];
-        $newOrder->lastName = $data['lastname'];
-        $newOrder->street = $data['address'];
-        $newOrder->house = $data['addressNumber'];
-        $newOrder->city = $data['city'];
-        $newOrder->postcode = $data['postcode'];
-        $newOrder->fullAmount = $data['fullAmount'];
-
-        $newOrder->save();
-
-        Cart::destroy();
 
         return view('checkout-completed');
 
@@ -118,6 +104,16 @@ class CheckoutController extends Controller
         $newOrder->fullAmount = $data['fullAmount'];
 
         $newOrder->save();
+
+        // Update item->sold to true
+        foreach($items as $item)
+        {
+            DB::table('items')
+                ->where('id', $item->id)
+                ->update(['sold' => true]);
+        }
+
+        Cart::destroy();
 
         return view('checkout-completed');
     }

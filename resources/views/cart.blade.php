@@ -33,7 +33,7 @@
 
                 @foreach( Cart::content() as $item )
                     {{-- Elimina dal carrello --}}
-                    <form style="position: absolute; top: 0; right: 5px" action="{{ route('cart.destroy', $item->rowId) }}" method="POST">
+                    <form style="position: absolute; top: 0; right: 5px" action="{{ route('cart.destroy', [$item->rowId, $item->id]) }}" method="POST">
                             @csrf
                             @method('DELETE')
                             <button type="submit" class="cart-option" style="border: none; background-color: transparent; font-size: 10px"><i class="fas fa-times"></i></button>
@@ -42,10 +42,10 @@
                     <div class="col-lg-12 d-flex flex-grow-1">
 
                         <div class="cart-img" style="width: 50%; height: 150px; display: inline-block; overflow: hidden; padding: 2%;">
-                            <img class="active" id="" src="{{'https://img-space.fra1.digitaloceanspaces.com/img-space/uploads/images/'.$item->model->photo1}}" alt="item-pitcure" />
+                            <img class="active" id="" src="" alt="item-pitcure" />
                         </div>
                         <div class="cart-text" style="width: 50%; display: inline-block; position: relative; padding: 2% 4%; line-height: 30px;">
-                            <h5><strong>{{$item->model->nome}}</strong></h5>
+                            <h5><strong>{{$item->name}}</strong></h5>
                             <span>Taglia: {{$item->options['size']}}</span>
                             <select class="form-select" name="" id="" style="width: 50px; font-size: 12px; background-color: #000; color: #fff; padding: 5px 10px; border-radius: 3px">
                                 <option selected="">1</option>
@@ -54,11 +54,11 @@
                                 <option>4</option>
                                 <option>5</option>
                             </select>
-                            <span>€ {{$item->model->amount}}</span>
+                            <span>€ {{$item->amount}}</span>
                         </div> 
 
                     </div>
-                <?php $total += $item->model->amount * $item->model->quantity ?>
+                <?php $total += $item->amount * $item->quantity ?>
 
                 @endforeach    
         </div>
@@ -103,11 +103,11 @@
                     <td style="text-align: right; font-size: 20px; font-weight: bold">
                         <?php
                         /** Calcolo fake da sistemare in produzione */
-                        $subtotal = Cart::total();
-                        $tax = 10;
-                        $total = $subtotal + 5.00 * $tax / 10;
+                        // $subtotal = Cart::total();
+                        // $tax = 10;
+                        // $total = $subtotal + 5.00 * $tax / 10;
                     ?>
-                        € {{ $total }}
+                        € {{ Cart::total() }}
                     </td>
                 </tr>
             </table>
