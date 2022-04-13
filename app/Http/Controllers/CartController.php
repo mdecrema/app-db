@@ -74,25 +74,32 @@ class CartController extends Controller
         'products.availability',
         'products.valutazione',
     ])->first();
-
+    
     // verificare dati passati
-    Cart::add(
-        $item->id, 
-        $request->nome, 
-        1, 
-        $request->amount, 
-        [
-            'size' => $item->size,
-            'photo1' => $item->photo1,
-        ])
-    ->associate('App\Product');
-
-    // Update item availabilty to false
-    DB::table('items')
-        ->where('id', $item->id)
-        ->update(['available' => false]);
-
-    return redirect()->route('cart')->with('success_message', 'Item was added to your cart!');
+    // if($item->available == 1 && $item->sold == 0) {
+        Cart::add(
+            $item->id, 
+            $request->nome, 
+            1, 
+            $request->amount, 
+            [
+                'size' => $item->size,
+                'photo1' => $item->photo1,
+            ])
+        ->associate('App\Product');
+    
+        // Update item availabilty to false
+        DB::table('items')
+            ->where('id', $item->id)
+            ->update(['available' => false]);
+    
+        return redirect()->route('cart')->with('success_message', 'Item was added to your cart!');
+    // } else {
+        $product = Product::find($product_id);
+        $products = Product::all();
+        $items = Item::all();
+        return view('product-details', compact('product', 'products', 'items'));
+    // }
 
     }
 

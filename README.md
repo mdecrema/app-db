@@ -82,6 +82,6 @@ The Laravel framework is open-sourced software licensed under the [MIT license](
 * Correzioni lato checkController (confusione tra item e product id)
 *
 * Aggiornare Item->available quando svuoto carrello e/o scade la sessione
-* 
+* Da migliorare inputate FullAmount quando faccio il checkout
 *
 */

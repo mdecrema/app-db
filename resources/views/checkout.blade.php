@@ -183,6 +183,7 @@
 
                         <div class="form-row row">
                             <div class='col-xs-12 col-md-12 form-group'>
+                                <input type="hidden" name="fullAmount" value="{{ Cart::total() }}">
                                 <label class='control-label' style="font-size: 16px">spedizione 0.00 €</label> <br>
                                 <label class='control-label' style="font-weight: bold; font-size: 20px">TOTALE {{ Cart::total() }} €</label> 
                             </div>
