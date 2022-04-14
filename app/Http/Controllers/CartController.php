@@ -85,6 +85,7 @@ class CartController extends Controller
             [
                 'size' => $item->size,
                 'photo1' => $item->photo1,
+                'amount' => $item->amount
             ])
         ->associate('App\Product');
     

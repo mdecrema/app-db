@@ -19,7 +19,7 @@
             <div style="width: 100%; height: 100px; position: absolute; bottom: 0; left: 0; padding: 15px 25px;">
                 <span style="color: #000; font-size: 14px; font-weight: bold" class="text-truncate">{{ $product->nome }}</span><br>
                 <span style="color: grey; font-size: 11px;">{{ $product->categoria }} - {{ $product->genere }}</span><br>
-                <span style="color: #000; font-size: 12px; font-weight: bold">{{ $product->amount }} €</span>
+                <span style="color: #000; font-size: 12px; font-weight: bold">{{ number_format($product->amount, 2, '.', ',') }} €</span>
             </div>
             </a>
         </div>

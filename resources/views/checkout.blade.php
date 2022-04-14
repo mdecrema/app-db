@@ -8,12 +8,15 @@
 
 <div class="container">  
     <div class="row">
-        <div class="col-md-6 col-md-offset-3">
+        <div class="col-12 text-center" style="width: 100%; height: 40px; background-color: transparent; color: #000; border-radius: 4px; margin: 15px 0; line-height: 40px; font-size: 20px">
+            <h3 class="panel-heading">CHECKOUT</h3>
+        </div>
+        <div class="col-12" style="background-color: #EFEFEF; padding: 20px 0">
             <div class="panel panel-default">
                 <div class="panel-heading">
-                    <div class="text-center" style="width: 100%; height: 40px; background-color: transparent; color: #000; border-radius: 4px; margin: 0 0 15px 0; line-height: 40px; font-size: 20px">
-                        <span class="panel-heading">PAGAMENTO</h3>
-                    </div>                    
+                    <div class="col-12" style="background-color: #EFEFEF; padding: 20px; text-align: center">
+                        <h6>SPEDIZIONE GRATUITA SU TUTTI GLI ARTICOLI</h6>
+                    </div>                   
                 </div>
                 <div class="panel-body">
   
@@ -29,7 +32,8 @@
                                                     data-stripe-publishable-key="{{ env('STRIPE_KEY') }}"
                                                     id="payment-form">
                         @csrf
-
+                    
+                    <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-xs-12" style="float: left; padding: 0 20px">
                         <div style="height: 50px; background-color: #000; color: #fff; text-transform: uppercase; padding: 0 20px; margin-bottom: 20px">
                             <h5 style="line-height: 50px">1. opzioni di consegna</h5>
                         </div>
@@ -121,9 +125,11 @@
                                     class='form-control' size='20' type='text'>
                             </div>
                         </div>
+                    </div>
 
-                        <div style="height: 50px; background-color: #000; color: #fff; text-transform: uppercase; line-height: 50px; padding: 0 20px; margin: 20px 0">
-                            <h5 style="line-height: 50px">2. PAGAMENTO</h5>
+                    <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-xs-12" style="float: left; padding: 0 20px">
+                        <div style="height: 50px; background-color: #000; color: #fff; text-transform: uppercase; line-height: 50px; padding: 0 20px; margin-bottom: 20px">
+                            <h5 style="line-height: 50px">2. DETTAGLI PAGAMENTO</h5>
                         </div>
 
                         <div class='form-row row'>
@@ -175,44 +181,91 @@
                         </div>
 
                         <div class='form-row row'>
-                            <div class='col-xs-12 form-group required'>
+                            <div class='col-xs-12 form-group required' style="text-align: right">
                                 <input type="checkbox">
                                 <label class='control-label'>Accetto le Condizioni di <a href="">Privacy</a> *
                             </div>
                         </div>
 
                         <div class="form-row row">
-                            <div class='col-xs-12 col-md-12 form-group'>
+                            <div class='col-xs-12 col-md-12 form-group' style="text-align: right">
                                 <input type="hidden" name="fullAmount" value="{{ Cart::total() }}">
-                                <label class='control-label' style="font-size: 16px">spedizione 0.00 €</label> <br>
-                                <label class='control-label' style="font-weight: bold; font-size: 20px">TOTALE {{ Cart::total() }} €</label> 
+                                <table class="col-6 offset-6" style="margin-top: 10px">
+                                    <tr>
+                                        <td>
+                                            Subtotale
+                                        </td>
+                                        <td style="text-align: right; font-size: 10px">
+                                            {{ number_format(Cart::total(), 2, '.', ',') }}
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            Spedizione
+                                        </td>
+                                        <td style="text-align: right; font-size: 10px">
+                                            5.00
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            Sconti
+                                        </td>
+                                        <td style="text-align: right; font-size: 10px">
+                                            0.00
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            Tasse
+                                        </td>
+                                        <td style="text-align: right; font-size: 10px">
+                                            10%
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td style="font-size: 25px; font-weight: bold">
+                                            Totale
+                                        </td>
+                                        <td style="text-align: right; font-size: 25px; font-weight: bold">
+                                            <?php
+                                            /** Calcolo fake da sistemare in produzione */
+                                            // $subtotal = Cart::total();
+                                            // $tax = 10;
+                                            // $total = $subtotal + 5.00 * $tax / 10;
+                                        ?>
+                                            € {{ Cart::total() }}
+                                        </td>
+                                    </tr>
+                                </table>
                             </div>
                         </div>
+
+                        
   
                         <div class="row">
                             <div class="col-xs-12">
                                 <button class="btn btn-lg btn-block" type="submit" style="background-color: #045871; color: #fff; text-align: left; padding: 10px 20px; border-radius: 0">CONFERMA e PAGA</button>
                             </div>
                         </div>
+                    </div>
                           
                     </form>
 
-                    <div>
-                        <div class="col-xs-12" style="margin: 50px 0 30px; text-align: center;">
-                            <div style="margin: 10px 0">
-                                Spedizione
-                            </div> 
-                            <div style="margin: 10px 0">
-                                Restituzioni
-                            </div> 
-                            <div style="margin: 10px 0">
-                                Hai bisogno d'aiuto?
-                            </div>    
-                        </div>
-                    </div>
-
+                    
                 </div>
             </div>        
+        </div>
+        <div style="margin: 30px 0; text-align: center;">
+            <div style="margin: 10px 0">
+                Spedizione
+            </div> 
+            <div style="margin: 10px 0">
+                Restituzioni
+            </div> 
+            <div style="margin: 10px 0">
+                Hai bisogno d'aiuto?
+            </div>    
         </div>
     </div>
 </div>
