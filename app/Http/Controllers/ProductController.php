@@ -71,7 +71,7 @@ class ProductController extends Controller
             "photo5" => "image|nullable",
             "categoria" => "required|max:50",
             "genere" => "required|max:10",
-            "taglia" => "nullable|max:10",
+            "sizes" => "nullable|max:10",
             "description" => "nullable|max:2000",
             "colore" => "required|max:20",
             "brand" => "required|max:50",
