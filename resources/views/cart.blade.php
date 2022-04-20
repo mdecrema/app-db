@@ -8,7 +8,9 @@
 <?php $total = 0 ?>
     <div class="container">
         <div class="row">
-            <h3>Carrello</h3>
+            <div style="width: 100%; height: 40px; background-color: transparent; color: #000; margin: 15px 0; line-height: 40px; font-size: 20px">
+                <h3>CARRELLO</h3>
+            </div>
             @if (session()->has('success_message'))
                 <div class="alert alert-success">
                     {{ session()->get('success_message') }}
@@ -27,19 +29,24 @@
 
             @if (Cart::count() > 0)
 
-            <h6>Hai {{ Cart::count() }} prodotto(i) nel tuo carrello</h6>
+
+            @if (Cart::count() == 1)
+                <h6>Hai 1 prodotto nel tuo carrello</h6>
+            @else 
+                <h6>Hai {{ Cart::count() }} prodotti nel tuo carrello</h6>
+            @endif
 
             <div class="cart-details col-lg-12">
 
                 @foreach( Cart::content() as $item )
-                    {{-- Elimina dal carrello --}}
-                    <form style="position: absolute; top: 0; right: 5px" action="{{ route('cart.destroy', [$item->rowId, $item->id]) }}" method="POST">
-                            @csrf
-                            @method('DELETE')
-                            <button type="submit" class="cart-option" style="border: none; background-color: transparent; font-size: 10px"><i class="fas fa-times"></i></button>
-                    </form>
-
+                
                     <div class="col-lg-12 d-flex flex-grow-1">
+                        {{-- Elimina dal carrello --}}
+                        <form style="position: absolute; top: 0; right: 5px;" action="{{ route('cart.destroy', [$item->rowId, $item->id]) }}" method="POST">
+                                @csrf
+                                @method('DELETE')
+                                <button type="submit" class="cart-option" style="border: none; background-color: transparent; font-size: 10px"><i class="fas fa-times"></i></button>
+                        </form>
 
                         <div class="cart-img" style="width: 50%; height: 150px; display: inline-block; overflow: hidden; padding: 2%;">
                             <img class="active" id="" src="" alt="item-pitcure" />

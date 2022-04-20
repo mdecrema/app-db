@@ -19,7 +19,7 @@ class CartController extends Controller
     {
         $items = Cart::content();
 
-        // dd($items);
+        // dd($item);
 
         return view('cart', compact('items'));
     }
@@ -88,7 +88,7 @@ class CartController extends Controller
                 'amount' => $item->amount
             ])
         ->associate('App\Product');
-    
+
         // Update item availabilty to false
         DB::table('items')
             ->where('id', $item->id)

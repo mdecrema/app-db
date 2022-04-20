@@ -158,7 +158,7 @@
   
                         <div class='form-row row'>
                             <div class='col-xs-12 col-md-4 form-group cvc required'>
-                                <label class='control-label'>CVV</label> 
+                                <label class='control-label'>CVC</label> 
                                 <input autocomplete='off' class='form-control card-cvc' placeholder='e.g 415' size='4'  name="cvv"
                                     type='text'>
                             </div>
@@ -204,7 +204,7 @@
                                             Spedizione
                                         </td>
                                         <td style="text-align: right; font-size: 10px">
-                                            5.00
+                                            0.00
                                         </td>
                                     </tr>
                                     <tr>
@@ -224,10 +224,10 @@
                                         </td>
                                     </tr>
                                     <tr>
-                                        <td style="font-size: 25px; font-weight: bold">
+                                        <td style="font-size: 20px; font-weight: bold">
                                             Totale
                                         </td>
-                                        <td style="text-align: right; font-size: 25px; font-weight: bold">
+                                        <td style="text-align: right; font-size: 20px; font-weight: bold">
                                             <?php
                                             /** Calcolo fake da sistemare in produzione */
                                             // $subtotal = Cart::total();
@@ -245,7 +245,7 @@
   
                         <div class="row">
                             <div class="col-xs-12">
-                                <button class="btn btn-lg btn-block" type="submit" style="background-color: #045871; color: #fff; text-align: left; padding: 10px 20px; border-radius: 0">CONFERMA e PAGA</button>
+                                <button class="btn btn-lg btn-block" type="submit" style="background-color: #045871; color: #fff; text-align: left; padding: 10px 20px; border-radius: 0; text-align: right">CONFERMA e PAGA</button>
                             </div>
                         </div>
                     </div>
@@ -256,6 +256,48 @@
                 </div>
             </div>        
         </div>
+
+        <!-- Ordine -->
+        <div class="col-12" style="background-color: #EFEFEF; padding: 20px 0; margin: 50px 0">
+            <div class="col-12" style="background-color: #EFEFEF; padding-top: 20px; text-align: center">
+                <h6>IL TUO ORDINE</h6>
+            </div>                   
+ 
+            <div class="cart-details">
+
+                @foreach( Cart::content() as $item )
+                
+                    <div class="col-lg-12 d-flex flex-grow-1">
+                        {{-- Elimina dal carrello --}}
+                        {{-- <form style="position: absolute; top: 0; right: 5px;" action="{{ route('cart.destroy', [$item->rowId, $item->id]) }}" method="POST">
+                                @csrf
+                                @method('DELETE')
+                                <button type="submit" class="cart-option" style="border: none; background-color: transparent; font-size: 10px"><i class="fas fa-times"></i></button>
+                        </form> --}}
+
+                        <div class="cart-img" style="width: 50%; height: 150px; display: inline-block; overflow: hidden; padding: 2%;">
+                            <img class="active" id="" src="" alt="item-pitcure" />
+                        </div>
+                        <div class="cart-text" style="width: 50%; display: inline-block; position: relative; padding: 2% 4%; line-height: 30px;">
+                            <h5><strong>{{$item->name}}</strong></h5>
+                            <span>Taglia: {{$item->options['size']}}</span>
+                            <select class="form-select" name="" id="" style="width: 50px; font-size: 12px; background-color: #000; color: #fff; padding: 5px 10px; border-radius: 3px">
+                                <option selected="">1</option>
+                                {{-- <option>2</option>
+                                <option>3</option> 
+                                <option>4</option>
+                                <option>5</option> --}}
+                            </select>
+                            <span>€ {{ number_format($item->options['amount'], 2, '.', ',') }}</span>
+                        </div> 
+
+                    </div>
+
+                @endforeach    
+            </div>
+        </div>
+
+        <!-- FAQ -->
         <div style="margin: 30px 0; text-align: center;">
             <div style="margin: 10px 0">
                 Spedizione

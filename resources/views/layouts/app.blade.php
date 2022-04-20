@@ -111,18 +111,18 @@
         @endguest
     </div>
 
-        <main class="py-4" style="z-index:3; margin-top: 50px">
+        <main class="py-4 div-content" style="min-height: 100vh; z-index:3; margin-top: 50px">
             @yield('content')
         </main>
 
-      <!--  <footer class="fondo" style="width: 100%; min-height: 50px; background-image: url('{{ asset('img/lava.jpg') }}'); padding: 15px;">-->
+        {{-- <footer class="fondo" style="width: 100%; min-height: 50px; background-image: url('{{ asset('img/lava.jpg') }}'); padding: 15px;">-->
         <!-- #97C2C8 - Acqua Soft
             #43D7C5
             #FF4901 - Orange
             background-image: url('{{ asset('img/lava.jpg') }}')
     -->
             
-      <!--      <div class="row" style="min-height: 50px; text-shadow: 1px 1px 5px #000">
+           <div class="row" style="min-height: 50px; text-shadow: 1px 1px 5px #000">
                 <div class="col-lg-12">
                     <div>
                         <input type="text" style="width: 68%; display: inline-block; padding: 5px 10px; border: 1px solid transparent; border-radius: 3px; background-color: #fff;" placeholder="Indirizzo mail*">
@@ -151,7 +151,7 @@
             </div>
           
 
-        </footer>-->
+        </footer> --}}
 
     <script type="text/javascript">
         /* Set the width of the side navigation to 250px */

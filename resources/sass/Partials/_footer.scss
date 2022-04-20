@@ -12,11 +12,9 @@ footer::after {
     //background: linear-gradient(180deg, rgba(0,172,187,1) 0%, rgba(0,138,160,1) 51%, rgba(0,67,78,1) 100%);
     color: #fff;
     //text-shadow: 1px 1px 1px #000;
-  
-    position: fixed;
-    
+    position: absolute;
+    left: 0;
     bottom: 0;
-    width: 100%
 }
 
     .fondo-opacity {
