@@ -25,7 +25,7 @@ class ProductsTableSeeder extends Seeder
             $newProduct->photo5=$faker->imageUrl($width = 550, $height = 300);
             $newProduct->categoria=$faker->text(10);
             $newProduct->genere=$faker->title($gender = 'male'|'female');
-            // $newProduct->taglia=$faker->randomLetter();
+            // $newProduct->sizes=$faker->randomLetter();
             $newProduct->description=$faker->text($maxNbChars = 300);
             $newProduct->colore=$faker->colorName();
             $newProduct->brand=$faker->word();

@@ -100,7 +100,7 @@ class ProductController extends Controller
 
         $newProduct->nome = $data['nome'];
         $newProduct->categoria = $data['categoria'];
-        $newProduct->taglia = $data['taglia'];
+        // $newProduct->taglia = $data['taglia'];
         $newProduct->genere = $data['genere'];
         $newProduct->description = $data['description'];
         $newProduct->colore = $data['colore'];
