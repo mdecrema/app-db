@@ -276,7 +276,7 @@
                         </form> --}}
 
                         <div class="cart-img" style="width: 50%; height: 150px; display: inline-block; overflow: hidden; padding: 2%;">
-                            <img class="active" id="" src="" alt="item-pitcure" />
+                            <img class="active" id="" src="{{'https://img-space.fra1.digitaloceanspaces.com/img-space/uploads/images/'.$item->options['photo1']}}" alt="item-pitcure" />
                         </div>
                         <div class="cart-text" style="width: 50%; display: inline-block; position: relative; padding: 2% 4%; line-height: 30px;">
                             <h5><strong>{{$item->name}}</strong></h5>

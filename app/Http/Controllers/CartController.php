@@ -19,7 +19,7 @@ class CartController extends Controller
     {
         $items = Cart::content();
 
-        // dd($item);
+        // dd($items);
 
         return view('cart', compact('items'));
     }

@@ -11,7 +11,7 @@ Red dot
   <div class="banner-text">
     <marquee
   loop="-1"
-  scrollamount="7"
+  scrollamount="5"
   scrolldelay="0"
   direction="left"
   height="30"
@@ -77,72 +77,73 @@ Red dot
       <span class="sr-only">Next</span>
     </a>-->
   </div>
+
+  <!--  -->
+  <div class="col-lg-12" style="margin-top: 30px">
+    <div class="col-lg-12" style="height: 100px; margin-bottom: 10px; border-radius: 2px; box-shadow: 4px 1px 10px lightgrey; background-color: #fff">
+        <a href="{{ route('products') }}" style="text-decoration: none; color: #000">
+            <div style="width: 40%; height: 100%; float: left; position: relative">
+                <div style="width: 150px; height: 100px; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%)">
+                    <img class="active" src="{{ asset('img/j1.jpg') }}" alt="" style="width: 100%; height: 100%">
+                </div>
+            </div>
+            <div style="width: 60%; height: 100%; float: left; text-align: left; padding: 20px; line-height: 45px; font-size: 18px">
+                Scarpe
+            </div>
+        </a>
+    </div>
+    <div class="col-lg-12" style="height: 100px; margin-bottom: 10px; border-radius: 2px; box-shadow: 4px 1px 10px lightgrey; background-color: #fff">
+        <a href="{{ route('products') }}" style="text-decoration: none; color: #000">
+            <div style="width: 40%; height: 100%; float: left; position: relative">
+                <div style="width: 100px; height: 100px; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%)">
+                    <img class="active" src="{{ asset('img/palace2.jpg') }}" alt="" style="width: 100%; height: 100%">
+                </div>
+            </div>
+            <div style="width: 60%; height: 100%; float: left; text-align: left; padding: 20px; line-height: 45px; font-size: 18px">
+                <a href="{{ route('tees') }}" style="text-decoration: none; color: #000">Abbigliamento</a>    
+            </div>
+        </a>
+    </div>
+    <div class="col-lg-12" style="height: 100px; margin-bottom: 10px; border-radius: 2px; box-shadow: 4px 1px 10px lightgrey; background-color: #fff">
+        <a href="{{ route('products') }}" style="text-decoration: none; color: #000">
+            <div style="width: 40%; height: 100%; float: left; position: relative;">
+                <div style="width: 100px; height: 100px; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);">
+                    <img class="active" src="{{ asset('img/k1.jpg') }}" alt="" style="width: 110%; height: 100%">
+                </div>
+            </div>
+            <div style="width: 60%; height: 100%; float: left; text-align: left; padding: 20px; line-height: 45px; font-size: 18px">
+                Accessori
+            </div>
+        </a>
+    </div>
+  </div>
+
+  <!-- Model tattoo -->
+  <div class="col-lg-12" style="position: relative; height: 70vh; overflow: hidden; margin-top: 30px; background-image: url({{ asset('img/model2Tattoo.png') }}); background-size: cover; background-repeat: no-repeat;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  "></div>
+
+   <!-- Foto Skater -->
+   <div class="col-lg-12" style="position: relative; height: 70vh; overflow: hidden; margin-top: 30px; background-image: url({{ asset('img/copertina2.jpg') }}); background-size: cover; background-repeat: no-repeat;
+   -webkit-background-size: cover;
+   -moz-background-size: cover;
+   -o-background-size: cover;
+   background-size: cover;
+   "></div>
   
-      <div class="col-lg-12" style="margin-top: 30px">
-          <div class="col-lg-12" style="height: 100px; margin-bottom: 10px; border-radius: 2px; box-shadow: 4px 1px 10px lightgrey; background-color: #fff">
-              <a href="{{ route('products') }}" style="text-decoration: none; color: #000">
-                  <div style="width: 40%; height: 100%; float: left; position: relative">
-                      <div style="width: 150px; height: 100px; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%)">
-                          <img class="active" src="{{ asset('img/j1.jpg') }}" alt="" style="width: 100%; height: 100%">
-                      </div>
-                  </div>
-                  <div style="width: 60%; height: 100%; float: left; text-align: left; padding: 20px; line-height: 45px; font-size: 18px">
-                      Scarpe
-                  </div>
-              </a>
-          </div>
-          <div class="col-lg-12" style="height: 100px; border-radius: 2px; box-shadow: 4px 1px 10px lightgrey; background-color: #fff">
-              <a href="{{ route('products') }}" style="text-decoration: none; color: #000">
-                  <div style="width: 40%; height: 100%; float: left; position: relative">
-                      <div style="width: 100px; height: 100px; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%)">
-                          <img class="active" src="{{ asset('img/palace2.jpg') }}" alt="" style="width: 100%; height: 100%">
-                      </div>
-                  </div>
-                  <div style="width: 60%; height: 100%; float: left; text-align: left; padding: 20px; line-height: 45px; font-size: 18px">
-                      <a href="{{ route('tees') }}" style="text-decoration: none; color: #000">Abbigliamento</a>    
-                  </div>
-              </a>
-          </div>
-          <div class="col-lg-12" style="height: 100px; margin-bottom: 10px; border-radius: 2px; box-shadow: 4px 1px 10px lightgrey; background-color: #fff">
-              <a href="{{ route('products') }}" style="text-decoration: none; color: #000">
-                  <div style="width: 40%; height: 100%; float: left; position: relative;">
-                      <div style="width: 100px; height: 100px; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);">
-                          <img class="active" src="{{ asset('img/k1.jpg') }}" alt="" style="width: 110%; height: 100%">
-                      </div>
-                  </div>
-                  <div style="width: 60%; height: 100%; float: left; text-align: left; padding: 20px; line-height: 45px; font-size: 18px">
-                      Accessori
-                  </div>
-              </a>
-          </div>
+       <!-- Stussy -->
+      <div class="col-lg-12" style="position: relative; height: 70vh; overflow: hidden; margin-top: 30px; background-image: url({{ asset('img/stussyFlames.jpg') }}); background-size: cover; background-repeat: no-repeat;
+        -webkit-background-size: cover;
+        -moz-background-size: cover;
+        -o-background-size: cover;
+        background-size: cover;">
+        <div id="animationDiv" style="width: 100%; height: 30%; position: absolute; bottom: -150px; left: 0; background-color: #BF4825; display: block;">
+
+        </div>
       </div>
-  
-      <!-- Modello 
-      <div class="col-lg-12" style="position: relative; height: 60vh; overflow: hidden; margin-top: 30px; background-image: url({{ asset('img/modello1.png') }}); background-size: cover; background-repeat: no-repeat;
-      -webkit-background-size: cover;
-      -moz-background-size: cover;
-      -o-background-size: cover;
-      background-size: cover;
-      ">
-          <div style="width: 150px; height: 40px; background-color: #fff; border: 3px solid darkgrey; opacity: 0.7; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); text-align: center;">
-              <a href="{{ route('products') }}" style="text-decoration: none; color: #333333; line-height: 35px; font-weight: bold">NUOVI ARRIVI</a>
-          </div>
-  
-      </div>-->
-  
-      <!-- Foto Skater -->
-      <div class="col-lg-12" style="position: relative; height: 60vh; overflow: hidden; margin-top: 30px; background-image: url({{ asset('img/copertina2.jpg') }}); background-size: cover; background-repeat: no-repeat;
-      -webkit-background-size: cover;
-      -moz-background-size: cover;
-      -o-background-size: cover;
-      background-size: cover;
-      "></div>
-  
-      <!--<div class="col-lg-12" style="height: 10px; border: 1px solid black; overfow: hidden;">
-          <div style="height: 100%; width: 1000px; font-size: 6px; margin: 0">
-              VOLCANO - VOLCANO - VOLCANO - VOLCANO - VOLCANO - VOLCANO - VOLCANO - VOLCANO - VOLCANO - VOLCANO - VOLCANO - VOLCANO - VOLCANO - VOLCANO - VOLCANO - VOLCANO 
-          </div>
-      </div>-->
       
       <!-- scroll items -->
       <div class="col-lg-12" style="height: 200px; border-top: 1px solid grey; border-bottom: 1px solid grey;overflow-x: scroll; overflow-y: hidden; -webkit-overflow-scrolling: touch;">
@@ -252,6 +253,40 @@ Red dot
   
 
 </div>
+
+<script>
+  var x = 0;
+  window.addEventListener("scroll", (event) => {
+    let scrollY = this.scrollY;
+    console.log(scrollY);
+    if (scrollY > 1700 && scrollY < 2200) {
+      // document.getElementById('animationDiv').style.display='block';
+      if (x === 0) {
+        animationForDiv();
+      }
+    } else {
+      // document.getElementById('animationDiv').style.display='none';
+      clearInterval();
+      document.getElementById('animationDiv').style.bottom='-150px';
+      x = 0;
+    }
+});
+
+function animationForDiv() {
+  x = 1;
+  var div = document.getElementById('animationDiv');
+  
+  var i = 150;
+  setInterval(() => {
+    if (i === 0) {
+      clearInterval();
+    } else {
+      i -= 5;
+      div.style.bottom = '-'+i+'px';
+    }
+  }, 25);
+}
+</script>
 
 
 @endsection
