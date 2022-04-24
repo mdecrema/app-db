@@ -120,6 +120,37 @@ class ProductController extends Controller
 
         return redirect()->route("admin.dashboard");
     }
+    
+    /**
+     * Add Stocks
+     * 
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function storeItems(Request $request)
+    {
+        $itemsData = $request->all();
+
+        $product_id = $itemsData['productId'];
+        $sizesObj = json_decode($itemsData['sizesObj']);
+
+        for($i = 0; $i < count($sizesObj); $i++) {
+            if ($sizesObj[$i]->qty != 0) {
+                for ($k = 1; $k <= $sizesObj[$i]->qty; $k++) {
+                    $newItem = new Item;
+
+                    $newItem->product_id = $product_id;
+                    $newItem->size = $sizesObj[$i]->size;
+                    // Generazione Barcode random -> Da sviluppare in futuro
+                    $newItem->barCode = rand(111111111111,999999999999);
+
+                    $newItem->save();
+                }
+            }
+        }
+
+        return redirect()->route("admin.dashboard");
+    }
 
     /**
      * Display the specified resource.

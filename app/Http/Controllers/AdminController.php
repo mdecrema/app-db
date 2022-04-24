@@ -44,10 +44,14 @@ class AdminController extends Controller
         $menuMagazzino1->link = 'dashboard/products';
 
         $menuMagazzino2 = new MenuLink();
-        $menuMagazzino2->name = 'Aggiungi nuovo';
+        $menuMagazzino2->name = 'Aggiungi nuovo prodotto';
         $menuMagazzino2->link = 'dashboard/products/create';
 
-        $magazzinoMenuList = array($menuMagazzino1, $menuMagazzino2);
+        $menuMagazzino3 = new MenuLink();
+        $menuMagazzino3->name = 'Ricarica giacenza';
+        $menuMagazzino3->link = 'dashboard/items/addItems';
+
+        $magazzinoMenuList = array($menuMagazzino1, $menuMagazzino2, $menuMagazzino3);
 
         $menuNoleggio1 = new MenuLink();
         $menuNoleggio1->name = 'Tutto il materiale';
@@ -71,6 +75,18 @@ class AdminController extends Controller
         $products = Product::all();
 
         return view('admin.products', compact('products'));
+    }
+
+    /**
+     * View to add stocks.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function addItems()
+    {
+        $products = Product::all();
+
+        return view('admin.items.addItems', compact('products'));
     }
 
     /**

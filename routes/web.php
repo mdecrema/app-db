@@ -46,9 +46,18 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
+/**
+ * 
+ * ADMIN DASHBOARD
+ * 
+ */
 Route::prefix('admin')->name('admin.')->middleware('can:admin')->group(function () {      
     // Admin Landing Page
     Route::get('/dashboard', 'AdminController@index')->name('dashboard');
+    
+    /**
+     * PRODUCTS
+     */
     // Products -> all 
     Route::get('/dashboard/products', 'AdminController@allProducts')->name('products');
     // Product Create
@@ -67,9 +76,17 @@ Route::prefix('admin')->name('admin.')->middleware('can:admin')->group(function 
     //Route::get('/dashboard/products/edit/{id}', 'ProductController@edit')->name('products.edit');
     // Product Update
     //Route::post('/dashboard/products/update/{id}', 'ProductController@update')->name('products.update');
-    // Orders
-    //Route::get('/dashboard/orders', 'OrderController@index')->name('orders.index');
-    // Ski Rent 
+
+    /**
+     * ITEMS
+     */
+    // Items add
+    Route::get('dashboard/items/addItems', 'AdminController@addItems')->name('items.addItems');
+    Route::post('dashboard/items/storeItems', 'ProductController@storeItems')->name('items.storeItems');
+
+    /**
+     * SKI RENT 
+     */ 
     Route::get('dashboard/skiRent/allEquipment', 'AdminController@skiRentAllEquipment')->name('skiRent.allEquipment');
     Route::get('dashboard/skiRent/addEquipment', 'AdminController@skiRentAddEquipment')->name('skiRent.addEquipment');
     Route::post('dashboard/skiRent/store', 'AdminController@skiRentStore')->name('skiRent.store');
@@ -82,9 +99,16 @@ Route::prefix('admin')->name('admin.')->middleware('can:admin')->group(function 
     Route::post('dashboard/skiRent/rent/addSki', 'AdminController@rentAddSki')->name('skiRent.rentAddSki');
     // All Bar Codes
     Route::get('dashboard/skiRent/skiBarCodes', 'AdminController@skiRentBarCodes')->name('skiRent.barCodes');
+
+    /**
+     * USERS
+     */
     // All User
     Route::get('dashboard/users/allUser', 'AdminController@allUser')->name('users.allUser');
-    // Orders
+
+    /**
+     * ORDERS
+     */
     Route::get('dashboard/orders/pending', 'AdminController@pendingOrders')->name('orders.pending');
     Route::get('dashboard/orders/progressing', 'AdminController@progressingOrders')->name('orders.progressing');
     Route::get('dashboard/orders/history', 'AdminController@historyOrders')->name('orders.history');
