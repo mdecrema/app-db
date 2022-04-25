@@ -97,13 +97,27 @@ class CheckoutController extends Controller
         $newOrder->items_id = json_encode($items_id);
         $newOrder->firstName = $data['firstname'];
         $newOrder->lastName = $data['lastname'];
+        $newOrder->email = $data['email'];
+        $newOrder->phone = $data['phone'];
         $newOrder->street = $data['address'];
         $newOrder->house = $data['addressNumber'];
         $newOrder->city = $data['city'];
+        $newOrder->area = $data['area'];
+        $newOrder->doorName = $data['doorName'];
         $newOrder->postcode = $data['postcode'];
         $newOrder->fullAmount = $data['fullAmount'];
 
         $newOrder->save();
+
+        ////////
+        // $table->boolean('newOrder')->default(true);
+        // $table->string('dateNewOrder')->nullable();
+        // $table->boolean('pending')->default(true);
+        // $table->boolean('inProgress')->default(false);
+        // $table->string('dateInProgress')->nullable();
+        // $table->boolean('delivered')->default(false);
+        // $table->string('dateDelivered')->nullable();
+        ////////
 
         // Update item->sold to true
         foreach($items as $item)

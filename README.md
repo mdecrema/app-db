@@ -84,6 +84,7 @@ The Laravel framework is open-sourced software licensed under the [MIT license](
 *
 * Aggiornare Item->available quando svuoto carrello e/o scade la sessione
 * WARNING: Rendere private il routing per la view Checkout (OBBLIGARE l'utente a passare prima dal carrello) --> altrimenti possibilità di fare ordini con prezzo sballato
+* WARNING: Disabilitare Refresh su checkout-completed view, oppure rendere private il routing (ERRORE): al refresh verranno inviati più ordini.
 * Gestire errori dovuti alla mancanza di dati inseriti nel checkout form e segnalare all'utente i campi mancanti/obbligatori
 * 
 * ------

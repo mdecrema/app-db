@@ -26,7 +26,7 @@
                 <div class="col-4 card text-truncate" style="padding: 15px; float: left">
                     <a style="color: #000; text-decoration: none" href="{{ $menuItem->link }}">{{ $menuItem->name }}</a>
                     @if ($menuItem->name === 'Ordini pending')
-                    <span class="badge badge-danger" style="position: absolute; top: 0; right: 0">{{ 1 }}</span>
+                    <span class="badge badge-danger" style="position: absolute; top: 0; right: 0">{{ $newOrderNumber }}</span>
                     @endif
                 </div>
                 @endforeach

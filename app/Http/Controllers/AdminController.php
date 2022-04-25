@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Gate;
 use App\User;
 use App\Product;
+use App\Order;
 use App\Ski;
 use App\Rent;
 
@@ -67,7 +68,16 @@ class AdminController extends Controller
 
         $noleggioMenuList = array($menuNoleggio1, $menuOrdini2, $menuOrdini3);
 
-        return view('admin.dashboard', compact('ordiniMenuList', 'magazzinoMenuList', 'noleggioMenuList'));
+        $orders = Order::all();
+        $newOrderNumber = 0;
+
+        foreach($orders as $order) {
+            if ($order->newOrder == true) {
+                $newOrderNumber += 1;
+            }
+        }
+
+        return view('admin.dashboard', compact('ordiniMenuList', 'magazzinoMenuList', 'noleggioMenuList', 'newOrderNumber'));
     }
 
     public function allProducts()
@@ -339,7 +349,9 @@ class AdminController extends Controller
     // Pending Orders
     public function pendingOrders()
     {
-        return view('admin.orders.pendingOrders');
+        $orders = Order::all();
+
+        return view('admin.orders.pendingOrders', compact('orders'));
     }
 
     // Progressing Orders

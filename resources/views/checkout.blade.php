@@ -108,7 +108,7 @@
                         <div class='form-row row'>
                             <div class='col-xs-12 form-group required'>
                                 <!--<label class='control-label'>Provincia</label>--> 
-                                <input name="province" class='form-control' size='20' type='text' placeholder="Provincia">
+                                <input name="area" class='form-control' size='20' type='text' placeholder="Provincia">
                             </div>
                         </div>
 
@@ -121,7 +121,7 @@
 
                         <div class='form-row row'>
                             <div class='col-xs-12 form-group required'>
-                                <label class='control-label'>Nome e Cognome citofono</label> <input name="nameOnCard"
+                                <label class='control-label'>Nome e Cognome citofono</label> <input name="doorName"
                                     class='form-control' size='20' type='text'>
                             </div>
                         </div>
