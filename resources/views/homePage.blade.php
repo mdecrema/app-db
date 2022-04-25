@@ -135,7 +135,7 @@ Red dot
    "></div>
   
        <!-- Stussy -->
-      <div class="col-lg-12" style="position: relative; height: 70vh; overflow: hidden; margin-top: 30px; background-image: url({{ asset('img/stussyFlames.jpg') }}); background-size: cover; background-repeat: no-repeat;
+      <div class="col-lg-12" style="position: relative; height: 70vh; overflow: hidden; margin-top: 30px; background-image: url({{ asset('img/stussyFlames.png') }}); background-size: cover; background-repeat: no-repeat;
         -webkit-background-size: cover;
         -moz-background-size: cover;
         -o-background-size: cover;
@@ -144,6 +144,14 @@ Red dot
 
         </div>
       </div>
+
+    <!-- Foto new balance -->
+    <div class="col-lg-12" style="position: relative; height: 70vh; overflow: hidden; margin-top: 30px; background-image: url({{ asset('img/nb-550.png') }}); background-size: cover; background-repeat: no-repeat;
+      -webkit-background-size: cover;
+      -moz-background-size: cover;
+      -o-background-size: cover;
+      background-size: cover;
+      "></div>
       
        <!-- Vans -->
        <div class="col-lg-12" id="vansBox" style="position: relative; height: 70vh; overflow: hidden; margin-top: 30px;">
@@ -157,6 +165,25 @@ Red dot
 
        </div>
      </div>
+
+     <!-- Jeans carousel -->
+     <div class="" style="position: relative; height: 70vh; overflow: hidden; margin: 30px 0;">
+      <div style="width: 100%; height: 100%;">
+        <img id="j1" class="jPhoto" src="{{ asset('img/jeans1.jpg') }}" alt="jeans" style="width: 100%; height: 100%">
+        <img id="j2" class="jPhoto" src="{{ asset('img/jeans2.jpg') }}" alt="jeans" style="width: 100%; height: 100%; display: none">
+        <img id="j3" class="jPhoto" src="{{ asset('img/jeans3.jpg') }}" alt="jeans" style="width: 100%; height: 100%; display: none">
+        <img id="j4" class="jPhoto" src="{{ asset('img/jeans4.jpg') }}" alt="jeans" style="width: 100%; height: 100%; display: none">
+        <img id="j5" class="jPhoto" src="{{ asset('img/jeans5.jpg') }}" alt="jeans" style="width: 100%; height: 100%; display: none">
+        <img id="j6" class="jPhoto" src="{{ asset('img/jeans6.jpg') }}" alt="jeans" style="width: 100%; height: 100%; display: none">
+        <img id="j7" class="jPhoto" src="{{ asset('img/jeans7.jpg') }}" alt="jeans" style="width: 100%; height: 100%; display: none">
+      </div>
+      <div id="leftArrow" style="width: 20px; height: 30px; position: absolute; top: 50%; left: 5%; transform: translate(-50%, -50%); display: none">
+        <i class="fas fa-2x fa-chevron-left" style="color: darkgrey"></i>
+      </div>
+      <div id="rightArrow" style="width: 20px; height: 30px; position: absolute; top: 50%; right: 0; transform: translate(-50%, -50%)">
+        <i class="fas fa-2x fa-chevron-right" style="color: darkgrey"></i>
+      </div>
+    </div>
 
       <!-- scroll items -->
       <div class="col-lg-12" style="height: 200px; border-top: 1px solid grey; border-bottom: 1px solid grey;overflow-x: scroll; overflow-y: hidden; -webkit-overflow-scrolling: touch;">
@@ -272,7 +299,7 @@ Red dot
   window.addEventListener("scroll", (event) => {
     let scrollY = this.scrollY;
     console.log(scrollY);
-    if (scrollY > 1700 && scrollY < 2200) {
+    if (scrollY > 1650 && scrollY < 2200) {
       //vans box
       document.getElementById('vansBoxLogo').style.display='none';
       document.getElementById('vansBoxBgImg').style.filter='grayscale(0%)';
@@ -281,7 +308,7 @@ Red dot
       if (x === 0) {
         animationForDiv();
       }
-    } else if (scrollY >= 2100 && scrollY <= 2450) {
+    } else if (scrollY >= 2550 && scrollY <= 2950) {
       //stussy box
       clearInterval();
       document.getElementById('animationDiv').style.bottom='-150px';
@@ -315,6 +342,99 @@ function animationForDiv() {
       div.style.bottom = '-'+i+'px';
     }
   }, 25);
+}
+
+// Jeans box
+var checkCarousel = 1;
+document.getElementById('rightArrow').addEventListener('click', jeansCarouselRight);
+document.getElementById('leftArrow').addEventListener('click', jeansCarouselLeft);
+
+function jeansCarouselRight() {
+  var jeansBoxes = document.querySelectorAll('.jPhoto');
+  console.log(jeansBoxes);
+  if (checkCarousel === 1) {
+    for (let i = 0; i < jeansBoxes.length; i++) {
+      jeansBoxes[i].style.display='none';
+    }
+    document.getElementById('j2').style.display='block';
+    document.getElementById('leftArrow').style.display='block';
+    checkCarousel = 2;
+  } else if (checkCarousel === 2) {
+    for (let i = 0; i < jeansBoxes.length; i++) {
+      jeansBoxes[i].style.display='none';
+    }
+    document.getElementById('j3').style.display='block';
+    checkCarousel = 3;
+  } else if (checkCarousel === 3) {
+    for (let i = 0; i < jeansBoxes.length; i++) {
+      jeansBoxes[i].style.display='none';
+    }
+    document.getElementById('j4').style.display='block';
+    checkCarousel = 4;
+  } else if (checkCarousel === 4) {
+    for (let i = 0; i < jeansBoxes.length; i++) {
+      jeansBoxes[i].style.display='none';
+    }
+    document.getElementById('j5').style.display='block';
+    checkCarousel = 5;
+  } else if (checkCarousel === 5) {
+    for (let i = 0; i < jeansBoxes.length; i++) {
+      jeansBoxes[i].style.display='none';
+    }
+    document.getElementById('j6').style.display='block';
+    checkCarousel = 6;
+  } else if (checkCarousel === 6) {
+    for (let i = 0; i < jeansBoxes.length; i++) {
+      jeansBoxes[i].style.display='none';
+    }
+    document.getElementById('j7').style.display='block';
+    document.getElementById('rightArrow').style.display='none';
+    checkCarousel = 7;
+  }
+}
+
+function jeansCarouselLeft() {
+  var jeansBoxes = document.querySelectorAll('.jPhoto');
+  console.log(jeansBoxes);
+  if (checkCarousel === 2) {
+    for (let i = 0; i < jeansBoxes.length; i++) {
+      jeansBoxes[i].style.display='none';
+    }
+    document.getElementById('j1').style.display='block';
+    document.getElementById('leftArrow').style.display='none';
+    checkCarousel = 1;
+  } else if (checkCarousel === 3) {
+    for (let i = 0; i < jeansBoxes.length; i++) {
+      jeansBoxes[i].style.display='none';
+    }
+    document.getElementById('j2').style.display='block';
+    checkCarousel = 2;
+  } else if (checkCarousel === 4) {
+    for (let i = 0; i < jeansBoxes.length; i++) {
+      jeansBoxes[i].style.display='none';
+    }
+    document.getElementById('j3').style.display='block';
+    checkCarousel = 3;
+  } else if (checkCarousel === 5) {
+    for (let i = 0; i < jeansBoxes.length; i++) {
+      jeansBoxes[i].style.display='none';
+    }
+    document.getElementById('j4').style.display='block';
+    checkCarousel = 4;
+  } else if (checkCarousel === 6) {
+    for (let i = 0; i < jeansBoxes.length; i++) {
+      jeansBoxes[i].style.display='none';
+    }
+    document.getElementById('j5').style.display='block';
+    checkCarousel = 5;
+  } else if (checkCarousel === 7) {
+    for (let i = 0; i < jeansBoxes.length; i++) {
+      jeansBoxes[i].style.display='none';
+    }
+    document.getElementById('j6').style.display='block';
+    document.getElementById('rightArrow').style.display='block';
+    checkCarousel = 6;
+  }
 }
 </script>
 
