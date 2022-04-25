@@ -59,8 +59,9 @@
         </div>
         <a class="navbar-brand" href="{{ url('/') }}" style="width: 100%; font-size: 20px; font-family: 'Finger Paint', cursive; text-align: center">
         <!--<i id="dot" class="fas fa-circle" style="color: red; font-size: 15px"></i> Red dot-->
-            <div style="width: 50px; height: 50px; position: absolute; top: 0; left: 49%; transform: translate(-50%, 0)">
-                <img src="{{ asset('img/volcanoLogo.jpg') }}" alt="" style="width: 150%; height: 120%; display: block">
+            <div style="width: 60px; height: 60px; position: absolute; top: 10%; left: 50%; transform: translate(-50%, 0);">
+                {{-- <img src="{{ asset('img/volcanoLogo.jpg') }}" alt="" style="width: 150%; height: 120%; display: block"> --}}
+                <img src="{{ asset('img/vulcano-logo2.png') }}" alt="" style="width: 130%; height: 100%; display: block">
             </div>
         </a>
         <div onclick="openNav()" style="height: 100%; width: 50px; position: absolute; top: 0; right: 0; line-height: 68px; font-size: 20px; text-align: center; cursor: pointer">
