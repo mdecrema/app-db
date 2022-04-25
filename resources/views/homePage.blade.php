@@ -145,6 +145,19 @@ Red dot
         </div>
       </div>
       
+       <!-- Vans -->
+       <div class="col-lg-12" id="vansBox" style="position: relative; height: 70vh; overflow: hidden; margin-top: 30px;">
+       <div id="vansBoxBgImg" style="width: 100%; height: 100%; position: absolute; top: 0; left: 0; display: block; background-image: url({{ asset('img/model1Bike.png') }}); background-size: cover; background-repeat: no-repeat;
+        -webkit-background-size: cover;
+       -moz-background-size: cover;
+       -o-background-size: cover;
+       background-size: cover;">
+       </div> 
+       <div id="vansBoxLogo" style="width: 50%; height: 20%; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); display: none; background-image: url({{ asset('img/logo-vans.jpg') }}); background-size: cover">
+
+       </div>
+     </div>
+
       <!-- scroll items -->
       <div class="col-lg-12" style="height: 200px; border-top: 1px solid grey; border-bottom: 1px solid grey;overflow-x: scroll; overflow-y: hidden; -webkit-overflow-scrolling: touch;">
           <div style="width: 1000px; height: 200px;">
@@ -260,12 +273,29 @@ Red dot
     let scrollY = this.scrollY;
     console.log(scrollY);
     if (scrollY > 1700 && scrollY < 2200) {
-      // document.getElementById('animationDiv').style.display='block';
+      //vans box
+      document.getElementById('vansBoxLogo').style.display='none';
+      document.getElementById('vansBoxBgImg').style.filter='grayscale(0%)';
+      // document.getElementById('vansBox').style.filter='blur(0px)';
+      //stussy box
       if (x === 0) {
         animationForDiv();
       }
+    } else if (scrollY >= 2100 && scrollY <= 2450) {
+      //stussy box
+      clearInterval();
+      document.getElementById('animationDiv').style.bottom='-150px';
+      x = 0;
+      //vans box
+      document.getElementById('vansBoxLogo').style.display='block';
+      document.getElementById('vansBoxBgImg').style.filter='grayscale(100%)';
+      // document.getElementById('vansBox').style.filter='blur(2px)';
     } else {
-      // document.getElementById('animationDiv').style.display='none';
+      //vans box
+      document.getElementById('vansBoxLogo').style.display='none';
+      document.getElementById('vansBoxBgImg').style.filter='grayscale(0%)';
+      // document.getElementById('vansBox').style.filter='blur(0px)';
+      //stussy box
       clearInterval();
       document.getElementById('animationDiv').style.bottom='-150px';
       x = 0;
