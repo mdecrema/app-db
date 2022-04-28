@@ -8,7 +8,7 @@ Red dot
 
 <div class="row"> 
   <!-- banner scritta -->
-  <div class="banner-text">
+  <div class="banner-text" style="background-color: #BF4825">
     <marquee
   loop="-1"
   scrollamount="5"
@@ -134,15 +134,23 @@ Red dot
    background-size: cover;
    "></div>
   
-       <!-- Stussy -->
-      <div class="col-lg-12" style="position: relative; height: 70vh; overflow: hidden; margin-top: 30px; background-image: url({{ asset('img/stussyFlames.png') }}); background-size: cover; background-repeat: no-repeat;
+       <!-- eme studios -->
+      <div class="col-lg-12" style="position: relative; height: 70vh; overflow: hidden; margin-top: 30px; background-image: url({{ asset('img/tylerBlack.png') }}); background-size: cover; background-repeat: no-repeat;
         -webkit-background-size: cover;
         -moz-background-size: cover;
         -o-background-size: cover;
         background-size: cover;">
-        <div id="animationDiv" style="width: 100%; height: 30%; position: absolute; bottom: -150px; left: 0; background-color: #BF4825; display: block;">
+        <div id="animationDiv" style="width: 50%; height: 100%; position: absolute; top: 0px; left: 0; background-color: #BF4825; display: block;">
 
         </div>
+      </div>
+
+      <!-- Modello Sacco a Pelo -->
+      <div class="col-lg-12" style="position: relative; height: 60vh; overflow: hidden; margin-top: 30px;">
+        <h4>VLKN</h4>
+        <p>
+
+        </p>
       </div>
 
     <!-- Foto new balance -->
@@ -177,11 +185,11 @@ Red dot
         <img id="j6" class="jPhoto" src="{{ asset('img/jeans6.jpg') }}" alt="jeans" style="width: 100%; height: 100%; display: none">
         <img id="j7" class="jPhoto" src="{{ asset('img/jeans7.jpg') }}" alt="jeans" style="width: 100%; height: 100%; display: none">
       </div>
-      <div id="leftArrow" style="width: 20px; height: 30px; position: absolute; top: 50%; left: 5%; transform: translate(-50%, -50%); display: none">
-        <i class="fas fa-2x fa-chevron-left" style="color: darkgrey"></i>
+      <div id="leftArrow" style="width: 50px; height: 100px; line-height: 100px; position: absolute; top: 50%; left: 10%; transform: translate(-50%, -50%); display: none; text-align: left">
+        <i class="fas fa-2x fa-chevron-left" style="color: darkgrey;"></i>
       </div>
-      <div id="rightArrow" style="width: 20px; height: 30px; position: absolute; top: 50%; right: 0; transform: translate(-50%, -50%)">
-        <i class="fas fa-2x fa-chevron-right" style="color: darkgrey"></i>
+      <div id="rightArrow" style="width: 50px; height: 100px; line-height: 100px; position: absolute; top: 50%; right: -5%; transform: translate(-50%, -50%); text-align: right">
+        <i class="fas fa-2x fa-chevron-right" style="color: darkgrey;"></i>
       </div>
     </div>
 
@@ -203,22 +211,6 @@ Red dot
           </div>
       </div>
       <!-- /scroll items -->
-  
-      <!-- Modello Sacco a Pelo -->
-      <div class="col-lg-12" style="position: relative; height: 60vh; overflow: hidden; margin-top: 30px; background-image: url({{ asset('img/model1Camping.jpg') }}); background-size: cover; background-repeat: no-repeat;
-      -webkit-background-size: cover;
-      -moz-background-size: cover;
-      -o-background-size: cover;
-      background-size: cover;
-      "></div>
-  
-      <!-- Pantaloni Carhartt -->
-      <div class="col-lg-12" style="position: relative; height: 60vh; overflow: hidden; margin-top: 30px; background-image: url({{ asset('img/chararttPants.png') }});background-size: cover; background-repeat: no-repeat;
-      -webkit-background-size: cover;
-      -moz-background-size: cover;
-      -o-background-size: cover;
-      background-size: cover;
-      "></div>
   
       <!-- Modello Stussy -->
       <div class="col-lg-12" style="position: relative; height: 60vh; overflow: hidden; margin-top: 30px; background-image: url({{ asset('img/model1Stussy.png') }}); background-size: cover; background-repeat: no-repeat;
@@ -299,7 +291,7 @@ Red dot
   window.addEventListener("scroll", (event) => {
     let scrollY = this.scrollY;
     console.log(scrollY);
-    if (scrollY > 1650 && scrollY < 2200) {
+    if (scrollY > 1350 && scrollY < 2050) {
       //vans box
       document.getElementById('vansBoxLogo').style.display='none';
       document.getElementById('vansBoxBgImg').style.filter='grayscale(0%)';
@@ -308,10 +300,10 @@ Red dot
       if (x === 0) {
         animationForDiv();
       }
-    } else if (scrollY >= 2550 && scrollY <= 2950) {
+    } else if (scrollY >= 2940 && scrollY <= 3350) {
       //stussy box
       clearInterval();
-      document.getElementById('animationDiv').style.bottom='-150px';
+      document.getElementById('animationDiv').style.left='0px';
       x = 0;
       //vans box
       document.getElementById('vansBoxLogo').style.display='block';
@@ -324,7 +316,7 @@ Red dot
       // document.getElementById('vansBox').style.filter='blur(0px)';
       //stussy box
       clearInterval();
-      document.getElementById('animationDiv').style.bottom='-150px';
+      document.getElementById('animationDiv').style.left='0px';
       x = 0;
     }
 });
@@ -333,13 +325,13 @@ function animationForDiv() {
   x = 1;
   var div = document.getElementById('animationDiv');
   
-  var i = 150;
+  var i = 0;
   setInterval(() => {
-    if (i === 0) {
+    if (i === 250) {
       clearInterval();
     } else {
-      i -= 5;
-      div.style.bottom = '-'+i+'px';
+      i += 5;
+      div.style.left = '-'+i+'px';
     }
   }, 25);
 }
