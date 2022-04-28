@@ -140,9 +140,9 @@ Red dot
         -moz-background-size: cover;
         -o-background-size: cover;
         background-size: cover;">
-        <div id="animationDiv" style="width: 50%; height: 100%; position: absolute; top: 0px; left: 0; background-color: #BF4825; display: block;">
+        {{-- <div id="animationDiv" style="width: 50%; height: 100%; position: absolute; top: 0px; left: 0; background-color: #BF4825; display: block;">
 
-        </div>
+        </div> --}}
       </div>
 
       <!-- Modello Sacco a Pelo -->
