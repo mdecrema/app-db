@@ -126,6 +126,20 @@ Red dot
   background-size: cover;
   "></div>
 
+   <!-- text -->
+   <div class="col-lg-12" style="position: relative; height: 60vh; overflow: hidden; margin-top: 30px;">
+    <p style="font-family: 'DM Serif Text', serif; font-size: 30px; font-weight: bold; word-spacing: 10px;"> {{-- font-family: 'Gochi Hand', cursive --}}
+      We work to<br> design your outfit
+    </p>
+    <p style="margin-top: 20px; font-size: 12px">
+      Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.
+      It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in
+    </p>
+    <div style="position: absolute; bottom: 0; right: 0; width: 100px; height: 50px; text-align: right">
+      <h3 style="font-family: 'Six Caps', sans-serif; font-size: 30px; word-spacing: 5px;">V L K N</h3>
+    </div>
+  </div>
+
    <!-- Foto Skater -->
    <div class="col-lg-12" style="position: relative; height: 70vh; overflow: hidden; margin-top: 30px; background-image: url({{ asset('img/copertina2.jpg') }}); background-size: cover; background-repeat: no-repeat;
    -webkit-background-size: cover;
@@ -135,23 +149,48 @@ Red dot
    "></div>
   
        <!-- eme studios -->
-      <div class="col-lg-12" style="position: relative; height: 70vh; overflow: hidden; margin-top: 30px; background-image: url({{ asset('img/tylerBlack.png') }}); background-size: cover; background-repeat: no-repeat;
+       <div class="col-lg-12" id="vansBox" style="position: relative; height: 70vh; overflow: hidden; margin-top: 30px;">
+        <div id="vansBoxBgImg" style="width: 100%; height: 100%; position: absolute; top: 0; left: 0; display: block; background-image: url({{ asset('img/tylerBlack.png') }}); background-size: cover; background-repeat: no-repeat;
+         -webkit-background-size: cover;
+        -moz-background-size: cover;
+        -o-background-size: cover;
+        background-size: cover;">
+        </div> 
+        <div id="animationDiv" style="width: 50%; height: 100%; position: absolute; top: 0px; left: 0; background-color: #BF4825; display: block;">
+
+        </div>
+      </div>
+      {{-- <div class="col-lg-12" style="position: relative; height: 70vh; overflow: hidden; margin-top: 30px; background-image: url({{ asset('img/tylerBlack.png') }}); background-size: cover; background-repeat: no-repeat;
         -webkit-background-size: cover;
         -moz-background-size: cover;
         -o-background-size: cover;
         background-size: cover;">
-        {{-- <div id="animationDiv" style="width: 50%; height: 100%; position: absolute; top: 0px; left: 0; background-color: #BF4825; display: block;">
+        <div id="animationDiv" style="width: 50%; height: 100%; position: absolute; top: 0px; left: 0; background-color: #BF4825; display: block;">
 
-        </div> --}}
-      </div>
+        </div>
+      </div> --}}
 
-      <!-- Modello Sacco a Pelo -->
-      <div class="col-lg-12" style="position: relative; height: 60vh; overflow: hidden; margin-top: 30px;">
-        <h4>VLKN</h4>
-        <p>
-
+       <!-- text -->
+       <div class="col-lg-12" style="position: relative; height: 60vh; overflow: hidden; margin-top: 30px;">
+        <h3 style="font-family: 'Six Caps', sans-serif; font-size: 30px; word-spacing: 5px;">V L K N</h3>
+        <p style="margin-top: 70px; font-size: 12px; text-align: justify">
+          {{-- <div style="font-family: 'DM Serif Text', serif; font-size: 50px; height: 40px">L</div> --}}
+          Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.
         </p>
+        <div style="position: absolute; bottom: 0; right: 0; text-align: right; padding: 0 15px">
+          <p style="font-family: 'DM Serif Text', serif; font-size: 30px; font-weight: bold; word-spacing: 10px;"> {{-- font-family: 'Gochi Hand', cursive --}}
+            Your satisfaction<br> is our target  
+          </p>
+        </div>
       </div>
+
+      <!-- Foto skater barça -->
+    <div class="col-lg-12" style="position: relative; height: 70vh; overflow: hidden; margin-top: 30px; background-image: url({{ asset('img/skater-bcn.jpg') }}); background-size: cover; background-repeat: no-repeat;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    "></div>
 
     <!-- Foto new balance -->
     <div class="col-lg-12" style="position: relative; height: 70vh; overflow: hidden; margin-top: 30px; background-image: url({{ asset('img/nb-550.png') }}); background-size: cover; background-repeat: no-repeat;
@@ -160,6 +199,25 @@ Red dot
       -o-background-size: cover;
       background-size: cover;
       "></div>
+
+       <!-- scroll items -->
+       <div class="col-lg-12" style="height: 200px; border-top: 1px solid grey; border-bottom: 1px solid grey;overflow-x: scroll; overflow-y: hidden; -webkit-overflow-scrolling: touch;">
+        <div style="width: 1000px; height: 200px;">
+        @foreach($products as $product)
+            <a href="products/{{$product['id']}}">
+                <div style="width: 150px; height: 200px; display: inline-block; position: relative; margin: 0 2px;">
+                    <img class="active" src="{{ 'https://img-space.fra1.digitaloceanspaces.com/img-space/uploads/images/'.$product->photo1 }}" alt="product-img" style="width: 100%; height: 150px">
+                    <span style="color: #000; font-size: 12px; font-weight: bold" class="text-truncate">{{ $product->nome }}</span><br>
+                    <span style="color: #000; font-size: 10px; font-weight: bold">{{ $product->amount }} €</span>
+                    <!--<div style="display: none; position: absolute; top: 50%; left: 50%; transform: translate(-50%; -50%)">
+                        <h6>{{ $product->nome }}</h6>
+                    </div>-->
+                </div>
+            </a>
+        @endforeach
+        </div>
+    </div>
+    <!-- /scroll items -->
       
        <!-- Vans -->
        <div class="col-lg-12" id="vansBox" style="position: relative; height: 70vh; overflow: hidden; margin-top: 30px;">
@@ -192,44 +250,25 @@ Red dot
         <i class="fas fa-2x fa-chevron-right" style="color: darkgrey;"></i>
       </div>
     </div>
-
-      <!-- scroll items -->
-      <div class="col-lg-12" style="height: 200px; border-top: 1px solid grey; border-bottom: 1px solid grey;overflow-x: scroll; overflow-y: hidden; -webkit-overflow-scrolling: touch;">
-          <div style="width: 1000px; height: 200px;">
-          @foreach($products as $product)
-              <a href="products/{{$product['id']}}">
-                  <div style="width: 150px; height: 200px; display: inline-block; position: relative; margin: 0 2px;">
-                      <img class="active" src="{{ 'https://img-space.fra1.digitaloceanspaces.com/img-space/uploads/images/'.$product->photo1 }}" alt="product-img" style="width: 100%; height: 150px">
-                      <span style="color: #000; font-size: 12px; font-weight: bold" class="text-truncate">{{ $product->nome }}</span><br>
-                      <span style="color: #000; font-size: 10px; font-weight: bold">{{ $product->amount }} €</span>
-                      <!--<div style="display: none; position: absolute; top: 50%; left: 50%; transform: translate(-50%; -50%)">
-                          <h6>{{ $product->nome }}</h6>
-                      </div>-->
-                  </div>
-              </a>
-          @endforeach
-          </div>
-      </div>
-      <!-- /scroll items -->
   
       <!-- Modello Stussy -->
-      <div class="col-lg-12" style="position: relative; height: 60vh; overflow: hidden; margin-top: 30px; background-image: url({{ asset('img/model1Stussy.png') }}); background-size: cover; background-repeat: no-repeat;
+      {{-- <div class="col-lg-12" style="position: relative; height: 60vh; overflow: hidden; margin-top: 30px; background-image: url({{ asset('img/model1Stussy.png') }}); background-size: cover; background-repeat: no-repeat;
       -webkit-background-size: cover;
       -moz-background-size: cover;
       -o-background-size: cover;
       background-size: cover;
-      "></div>
+      "></div> --}}
   
       <!-- Palace Board -->
-      <div class="col-lg-12" style="position: relative; height: 60vh; overflow: hidden; margin-top: 30px; background-image: url({{ asset('img/palaceBoard.jpg') }}); background-size: cover; background-repeat: no-repeat;
+      {{-- <div class="col-lg-12" style="position: relative; height: 60vh; overflow: hidden; margin-top: 30px; background-image: url({{ asset('img/palaceBoard.jpg') }}); background-size: cover; background-repeat: no-repeat;
       -webkit-background-size: cover;
       -moz-background-size: cover;
       -o-background-size: cover;
       background-size: cover;
-      "></div>
+      "></div> --}}
   
       <!-- Accordion - Prova --> 
-      <div class="accordion" id="accordionExample" style="margin-top: 30px">
+      {{-- <div class="accordion" id="accordionExample" style="margin-top: 30px">
     <div class="card">
       <div class="card-header" id="headingOne">
         <h2 class="mb-0">
@@ -272,6 +311,13 @@ Red dot
           And lastly, the placeholder content for the third and final accordion panel. This panel is hidden by default.
         </div>
       </div>
+    </div>
+  </div> --}}
+
+  <!-- Footer -->
+  <div class="row" style="height: 300px; color: #fff; background-color: #292929;">
+    <div class="col-4 offset-4" style="font-family: 'Six Caps', sans-serif; font-size: 30px; word-spacing: 5px; text-align: center">
+      V L K N
     </div>
   </div>
   

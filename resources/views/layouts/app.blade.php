@@ -32,8 +32,11 @@
     <script src="https://kit.fontawesome.com/9f4502e548.js" crossorigin="anonymous"></script>
 
     <!-- Fonts -->
-    <link rel="dns-prefetch" href="//fonts.gstatic.com">
-    <!--<link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">-->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    {{-- <link rel="dns-prefetch" href="//fonts.gstatic.com"> --}}
+    <link href="https://fonts.googleapis.com/css2?family=Nunito&family=Gochi+Hand&family=Bungee+Shade&family=Righteous
+    &family=Permanent+Marker&family=Abril+Fatface&family=DM+Serif+Text&family=Six+Caps&family=Lily+Script+One" rel="stylesheet">
 
 <!-- Main font -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
