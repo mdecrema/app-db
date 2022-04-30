@@ -8,10 +8,10 @@ Red dot
 
 <div class="row"> 
   <!-- banner scritta -->
-  <div class="banner-text" style="background-color: #BF4825">
-    <marquee
+  <div class="banner-text" style="height: 10px; background-color: #BF4825">
+    {{-- <marquee
   loop="-1"
-  scrollamount="5"
+  scrollamount="2"
   scrolldelay="0"
   direction="left"
   height="30"
@@ -20,7 +20,7 @@ Red dot
   - nuova collezione - VOLCANO.it - nuova collezione - VOLCANO.it - nuova collezione - VOLCANO.it - nuova collezione - VOLCANO.it - nuova collezione - VOLCANO.it -
   - nuova collezione - VOLCANO.it - nuova collezione - VOLCANO.it - nuova collezione - VOLCANO.it - nuova collezione - VOLCANO.it - nuova collezione - VOLCANO.it -
   - nuova collezione - VOLCANO.it - nuova collezione - VOLCANO.it - nuova collezione - VOLCANO.it - nuova collezione - VOLCANO.it - nuova collezione - VOLCANO.it -
-  </marquee>
+  </marquee> --}}
   </div>
 
   <div class="img-slider">
@@ -126,17 +126,22 @@ Red dot
   background-size: cover;
   "></div>
 
-   <!-- text -->
+   <!-- text1 -->
    <div class="col-lg-12" style="position: relative; height: 60vh; overflow: hidden; margin-top: 30px;">
-    <p style="font-family: 'DM Serif Text', serif; font-size: 30px; font-weight: bold; word-spacing: 10px;"> {{-- font-family: 'Gochi Hand', cursive --}}
-      We work to<br> design your outfit
-    </p>
-    <p style="margin-top: 20px; font-size: 12px">
-      Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.
-      It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in
-    </p>
-    <div style="position: absolute; bottom: 0; right: 0; width: 100px; height: 50px; text-align: right">
-      <h3 style="font-family: 'Six Caps', sans-serif; font-size: 30px; word-spacing: 5px;">V L K N</h3>
+    <div style="z-index: 2; padding: 10px 0">
+      <p style="font-family: 'DM Serif Text', serif; font-size: 30px; font-weight: bold; word-spacing: 10px;"> {{-- font-family: 'Gochi Hand', cursive --}}
+        We work to<br> design your outfit
+      </p>
+      <p style="margin-top: 20px; font-size: 12px">
+        Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.
+        It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in
+      </p>
+      <div style="position: absolute; bottom: 0; right: 0; width: 100px; height: 50px; text-align: right; padding: 0 15px">
+        <h3 style="font-family: 'Six Caps', sans-serif; font-size: 30px; word-spacing: 5px;">V L K N</h3>
+      </div>
+    </div>
+    <div id="animationDiv" style="width: 30%; height: 100%; z-index: -1; position: absolute; top: 0px; right: 0; background-color: #BF4825; display: block;">
+
     </div>
   </div>
 
@@ -155,9 +160,6 @@ Red dot
         -moz-background-size: cover;
         -o-background-size: cover;
         background-size: cover;">
-        </div> 
-        <div id="animationDiv" style="width: 50%; height: 100%; position: absolute; top: 0px; left: 0; background-color: #BF4825; display: block;">
-
         </div>
       </div>
       {{-- <div class="col-lg-12" style="position: relative; height: 70vh; overflow: hidden; margin-top: 30px; background-image: url({{ asset('img/tylerBlack.png') }}); background-size: cover; background-repeat: no-repeat;
@@ -170,17 +172,22 @@ Red dot
         </div>
       </div> --}}
 
-       <!-- text -->
+       <!-- text2 -->
        <div class="col-lg-12" style="position: relative; height: 60vh; overflow: hidden; margin-top: 30px;">
-        <h3 style="font-family: 'Six Caps', sans-serif; font-size: 30px; word-spacing: 5px;">V L K N</h3>
-        <p style="margin-top: 70px; font-size: 12px; text-align: justify">
-          {{-- <div style="font-family: 'DM Serif Text', serif; font-size: 50px; height: 40px">L</div> --}}
-          Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.
-        </p>
-        <div style="position: absolute; bottom: 0; right: 0; text-align: right; padding: 0 15px">
-          <p style="font-family: 'DM Serif Text', serif; font-size: 30px; font-weight: bold; word-spacing: 10px;"> {{-- font-family: 'Gochi Hand', cursive --}}
-            Your satisfaction<br> is our target  
+        <div style="z-index: 2; padding: 10px 0">
+          <h3 style="font-family: 'Six Caps', sans-serif; font-size: 30px; word-spacing: 5px;">V L K N</h3>
+          <p style="margin-top: 70px; font-size: 12px; text-align: justify">
+            {{-- <div style="font-family: 'DM Serif Text', serif; font-size: 50px; height: 40px">L</div> --}}
+            Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.
           </p>
+          <div style="position: absolute; bottom: 0; right: 0; text-align: right; padding: 0 15px">
+            <p style="font-family: 'DM Serif Text', serif; font-size: 30px; font-weight: bold; word-spacing: 10px;"> {{-- font-family: 'Gochi Hand', cursive --}}
+              Your satisfaction<br> is our target  
+            </p>
+          </div>
+        </div>
+        <div id="animationDiv2" style="width: 30%; height: 100%; z-index: -1; position: absolute; top: 0px; left: 0; background-color: #BF4825; display: block;">
+
         </div>
       </div>
 
@@ -337,35 +344,42 @@ Red dot
   window.addEventListener("scroll", (event) => {
     let scrollY = this.scrollY;
     console.log(scrollY);
-    if (scrollY > 1350 && scrollY < 2050) {
-      //vans box
-      document.getElementById('vansBoxLogo').style.display='none';
-      document.getElementById('vansBoxBgImg').style.filter='grayscale(0%)';
-      // document.getElementById('vansBox').style.filter='blur(0px)';
-      //stussy box
+    if (scrollY > 2150 && scrollY < 2950) {
+      //text1
+      $('#animationDiv').css('marginRight', '0px');
+      //text2
+      if (x === 0) {
+        animationForDiv2();
+      }
+    } else if (scrollY >= 690 && scrollY <= 1530) {
+      //text1
+      $('#animationDiv2').css('marginLeft', '0px');
+      //text2
       if (x === 0) {
         animationForDiv();
       }
-    } else if (scrollY >= 2940 && scrollY <= 3350) {
-      //stussy box
-      clearInterval();
-      document.getElementById('animationDiv').style.left='0px';
-      x = 0;
-      //vans box
-      document.getElementById('vansBoxLogo').style.display='block';
-      document.getElementById('vansBoxBgImg').style.filter='grayscale(100%)';
-      // document.getElementById('vansBox').style.filter='blur(2px)';
     } else {
-      //vans box
-      document.getElementById('vansBoxLogo').style.display='none';
-      document.getElementById('vansBoxBgImg').style.filter='grayscale(0%)';
-      // document.getElementById('vansBox').style.filter='blur(0px)';
-      //stussy box
       clearInterval();
-      document.getElementById('animationDiv').style.left='0px';
+      $('#animationDiv').css('marginRight', '0px');
+      $('#animationDiv2').css('marginRight', '0px');
       x = 0;
     }
 });
+
+function animationForDiv2() {
+  x = 1;
+  var div2 = document.getElementById('animationDiv2');
+  
+  var i = 0;
+  setInterval(() => {
+    if (i === 250) {
+      clearInterval();
+    } else {
+      i += 5;
+      div2.style.left = '-'+i+'px';
+    }
+  }, 25);
+}
 
 function animationForDiv() {
   x = 1;
@@ -377,7 +391,7 @@ function animationForDiv() {
       clearInterval();
     } else {
       i += 5;
-      div.style.left = '-'+i+'px';
+      div.style.right = '-'+i+'px';
     }
   }, 25);
 }
