@@ -87,7 +87,7 @@ Red dot
                     <img class="active" src="{{ asset('img/j1.jpg') }}" alt="" style="width: 100%; height: 100%">
                 </div>
             </div>
-            <div style="width: 60%; height: 100%; float: left; text-align: left; padding: 20px; line-height: 45px; font-size: 18px">
+            <div style="width: 60%; height: 100%; float: left; text-align: left; padding: 20px; line-height: 45px; font-size: 15px">
                 Scarpe
             </div>
         </a>
@@ -99,7 +99,7 @@ Red dot
                     <img class="active" src="{{ asset('img/palace2.jpg') }}" alt="" style="width: 100%; height: 100%">
                 </div>
             </div>
-            <div style="width: 60%; height: 100%; float: left; text-align: left; padding: 20px; line-height: 45px; font-size: 18px">
+            <div style="width: 60%; height: 100%; float: left; text-align: left; padding: 20px; line-height: 45px; font-size: 15px">
                 <a href="{{ route('tees') }}" style="text-decoration: none; color: #000">Abbigliamento</a>    
             </div>
         </a>
@@ -111,7 +111,7 @@ Red dot
                     <img class="active" src="{{ asset('img/k1.jpg') }}" alt="" style="width: 110%; height: 100%">
                 </div>
             </div>
-            <div style="width: 60%; height: 100%; float: left; text-align: left; padding: 20px; line-height: 45px; font-size: 18px">
+            <div style="width: 60%; height: 100%; float: left; text-align: left; padding: 20px; line-height: 45px; font-size: 15px">
                 Accessori
             </div>
         </a>
@@ -155,7 +155,7 @@ Red dot
   
        <!-- eme studios -->
        <div class="col-lg-12" id="vansBox" style="position: relative; height: 70vh; overflow: hidden; margin-top: 30px;">
-        <div id="vansBoxBgImg" style="width: 100%; height: 100%; position: absolute; top: 0; left: 0; display: block; background-image: url({{ asset('img/tylerBlack.png') }}); background-size: cover; background-repeat: no-repeat;
+        <div id="vansBoxBgImg" style="width: 100%; height: 100%; position: absolute; top: 0; left: 0; display: block; background-image: url({{ asset('img/virgilTee.webp') }}); background-size: cover; background-repeat: no-repeat;
          -webkit-background-size: cover;
         -moz-background-size: cover;
         -o-background-size: cover;
@@ -200,7 +200,7 @@ Red dot
     "></div>
 
     <!-- Foto new balance -->
-    <div class="col-lg-12" style="position: relative; height: 70vh; overflow: hidden; margin-top: 30px; background-image: url({{ asset('img/nb-550.png') }}); background-size: cover; background-repeat: no-repeat;
+    <div id="selectedShoes" class="col-lg-12" style="position: relative; height: 70vh; overflow: hidden; margin-top: 30px; background-image: url({{ asset('img/nb-550.png') }}); background-size: cover; background-repeat: no-repeat;
       -webkit-background-size: cover;
       -moz-background-size: cover;
       -o-background-size: cover;
@@ -211,8 +211,8 @@ Red dot
        <div class="col-lg-12" style="height: 200px; border-top: 1px solid grey; border-bottom: 1px solid grey;overflow-x: scroll; overflow-y: hidden; -webkit-overflow-scrolling: touch;">
         <div style="width: 1000px; height: 200px;">
         @foreach($products as $product)
-            <a href="products/{{$product['id']}}">
-                <div style="width: 150px; height: 200px; display: inline-block; position: relative; margin: 0 2px;">
+            {{--<a href="#"> href="products/{{$product['id']}}" --}}
+                <div onclick="changeSelectedShoes({{$product->id}}, '{{$product->photo1}}')" style="width: 150px; height: 200px; display: inline-block; position: relative; margin: 0 2px;">
                     <img class="active" src="{{ 'https://img-space.fra1.digitaloceanspaces.com/img-space/uploads/images/'.$product->photo1 }}" alt="product-img" style="width: 100%; height: 150px">
                     <span style="color: #000; font-size: 12px; font-weight: bold" class="text-truncate">{{ $product->nome }}</span><br>
                     <span style="color: #000; font-size: 10px; font-weight: bold">{{ $product->amount }} €</span>
@@ -220,15 +220,15 @@ Red dot
                         <h6>{{ $product->nome }}</h6>
                     </div>-->
                 </div>
-            </a>
+            {{-- </a> --}}
         @endforeach
         </div>
     </div>
     <!-- /scroll items -->
       
-       <!-- Vans -->
+       <!-- p&co model -->
        <div class="col-lg-12" id="vansBox" style="position: relative; height: 70vh; overflow: hidden; margin-top: 30px;">
-       <div id="vansBoxBgImg" style="width: 100%; height: 100%; position: absolute; top: 0; left: 0; display: block; background-image: url({{ asset('img/model1Bike.png') }}); background-size: cover; background-repeat: no-repeat;
+       <div id="vansBoxBgImg" style="width: 100%; height: 100%; position: absolute; top: 0; left: 0; display: block; background-image: url({{ asset('img/pandco.webp') }}); background-size: cover; background-repeat: no-repeat;
         -webkit-background-size: cover;
        -moz-background-size: cover;
        -o-background-size: cover;
@@ -257,6 +257,78 @@ Red dot
         <i class="fas fa-2x fa-chevron-right" style="color: darkgrey;"></i>
       </div>
     </div>
+
+     <!-- text1 -->
+   <div class="col-lg-12" style="position: relative; height: 60vh; overflow: hidden; margin-top: 30px;">
+    <div style="z-index: 2; padding: 10px 0">
+      <p style="font-family: 'DM Serif Text', serif; font-size: 30px; font-weight: bold; word-spacing: 10px;"> {{-- font-family: 'Gochi Hand', cursive --}}
+        We work to<br> design your outfit
+      </p>
+      <p style="margin-top: 20px; font-size: 12px">
+        Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.
+        It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in
+      </p>
+      <div style="position: absolute; bottom: 0; right: 0; width: 100px; height: 50px; text-align: right; padding: 0 15px">
+        <h3 style="font-family: 'Six Caps', sans-serif; font-size: 30px; word-spacing: 5px;">V L K N</h3>
+      </div>
+    </div>
+    <div id="animationDiv" style="width: 30%; height: 100%; z-index: -1; position: absolute; top: 0px; right: 0; background-color: #606755; display: block;">
+
+    </div>
+  </div>
+
+   <!-- modelSeated model -->
+   <div class="col-lg-12" id="vansBox" style="position: relative; height: 70vh; overflow: hidden; margin-top: 30px;">
+    <div id="vansBoxBgImg" style="width: 100%; height: 100%; position: absolute; top: 0; left: 0; display: block; background-image: url({{ asset('img/modelSeated.png') }}); background-size: cover; background-repeat: no-repeat;
+     -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;">
+    </div> 
+    <div id="vansBoxLogo" style="width: 50%; height: 20%; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); display: none; background-image: url({{ asset('img/logo-vans.jpg') }}); background-size: cover">
+
+    </div>
+  </div>
+
+   <!-- stussy jeans jacket model -->
+   <div class="col-lg-12" id="vansBox" style="position: relative; height: 70vh; overflow: hidden; margin-top: 30px;">
+    <div id="vansBoxBgImg" style="width: 100%; height: 100%; position: absolute; top: 0; left: 0; display: block; background-image: url({{ asset('img/stussyJeansJacket.jpg') }}); background-size: cover; background-repeat: no-repeat;
+     -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;">
+    </div> 
+  </div>
+
+  <!-- text2 -->
+  <div class="col-lg-12" style="position: relative; height: 60vh; overflow: hidden; margin-top: 30px;">
+    <div style="z-index: 2; padding: 10px 0">
+      <h3 style="font-family: 'Six Caps', sans-serif; font-size: 30px; word-spacing: 5px;">V L K N</h3>
+      <p style="margin-top: 70px; font-size: 12px; text-align: justify">
+        {{-- <div style="font-family: 'DM Serif Text', serif; font-size: 50px; height: 40px">L</div> --}}
+        Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.
+      </p>
+      <div style="position: absolute; bottom: 0; right: 0; text-align: right; padding: 0 15px">
+        <p style="font-family: 'DM Serif Text', serif; font-size: 30px; font-weight: bold; word-spacing: 10px;"> {{-- font-family: 'Gochi Hand', cursive --}}
+          Your satisfaction<br> is our target  
+        </p>
+      </div>
+    </div>
+    <div id="animationDiv2" style="width: 30%; height: 100%; z-index: -1; position: absolute; top: 0px; left: 0; background-color: #606755; display: block;">
+
+    </div>
+  </div>
+
+  <!-- coffee plants -->
+  <div class="col-lg-12" id="vansBox" style="position: relative; height: 70vh; overflow: hidden; margin-top: 30px;">
+    <div id="vansBoxBgImg" style="width: 100%; height: 100%; position: absolute; top: 0; left: 0; display: block; background-image: url({{ asset('img/coffee.webp') }}); background-size: cover; background-repeat: no-repeat;
+     -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    background-position: -150px 0">
+    </div> 
+  </div>
   
       <!-- Modello Stussy -->
       {{-- <div class="col-lg-12" style="position: relative; height: 60vh; overflow: hidden; margin-top: 30px; background-image: url({{ asset('img/model1Stussy.png') }}); background-size: cover; background-repeat: no-repeat;
@@ -349,14 +421,14 @@ Red dot
       $('#animationDiv').css('marginRight', '0px');
       //text2
       if (x === 0) {
-        animationForDiv2();
+        //animationForDiv2();
       }
     } else if (scrollY >= 690 && scrollY <= 1530) {
       //text1
       $('#animationDiv2').css('marginLeft', '0px');
       //text2
       if (x === 0) {
-        animationForDiv();
+        //animationForDiv();
       }
     } else {
       clearInterval();
@@ -382,7 +454,7 @@ function animationForDiv2() {
 }
 
 function animationForDiv() {
-  x = 1;
+  x = 2;
   var div = document.getElementById('animationDiv');
   
   var i = 0;
@@ -488,6 +560,14 @@ function jeansCarouselLeft() {
     checkCarousel = 6;
   }
 }
+
+function changeSelectedShoes(productId, productImgLink) {
+  console.log(productId);
+  console.log(productImgLink);
+  var newImgUrl = 'url("https://img-space.fra1.digitaloceanspaces.com/img-space/uploads/images/'+productImgLink+'")';
+  $('#selectedShoes').css('backgroundImage', newImgUrl);
+}
+
 </script>
 
 
