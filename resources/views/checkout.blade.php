@@ -245,7 +245,7 @@
   
                         <div class="row">
                             <div class="col-xs-12">
-                                <button class="btn btn-lg btn-block" type="submit" style="background-color: #045871; color: #fff; text-align: left; padding: 10px 20px; border-radius: 0; text-align: right">CONFERMA e PAGA</button>
+                                <button class="btn btn-lg btn-block" type="submit" style="background-color: #BF4825; color: #fff; text-align: left; padding: 10px 20px; border-radius: 0; text-align: right">CONFERMA e PAGA</button> <!-- #045871 -->
                             </div>
                         </div>
                     </div>
