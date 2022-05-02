@@ -10,6 +10,8 @@ use App\Order;
 use App\Product;
 use Stripe;
 use Session;
+use App\Mail\MailCheckoutCompleted;
+use Illuminate\Support\Facades\Mail;
 
 class CheckoutController extends Controller
 {
@@ -118,6 +120,11 @@ class CheckoutController extends Controller
         // $table->boolean('delivered')->default(false);
         // $table->string('dateDelivered')->nullable();
         ////////
+
+        // Send confirmation email
+        // $customerEmail = $data['email'];
+        // dd($customerEmail);
+        // Mail::to($customerEmail)->send(new MailCheckoutCompleted());
 
         // Update item->sold to true
         foreach($items as $item)
