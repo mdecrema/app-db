@@ -16,25 +16,35 @@ use Illuminate\Support\Facades\Mail;
 class CheckoutController extends Controller
 {
 
-    public function index()
+    public function index($sessionToken)
     {
-        $items = Cart::content();
-        $products_id = array();
-        $fullAmount = 0;   
+        try {
+            if (strlen($sessionToken) === 27) {
 
-        foreach($items as $item)
-        {
-            array_push($products_id, $item->id);
+                $items = Cart::content();
+                $products_id = array();
+                $fullAmount = 0;   
+        
+                foreach($items as $item)
+                {
+                    array_push($products_id, $item->id);
+                }
+        
+                $products = Product::whereIn('id', $products_id)->get();
+        
+                foreach($products as $product)
+                {
+                    $fullAmount += $product->amount;
+                }
+        
+                return view('checkout', compact('items', 'products', 'fullAmount'));
+            }
+
+        } catch  ( Throwable $e) {
+            report($e);
         }
 
-        $products = Product::whereIn('id', $products_id)->get();
 
-        foreach($products as $product)
-        {
-            $fullAmount += $product->amount;
-        }
-
-        return view('checkout', compact('items', 'products', 'fullAmount'));
     }
 
     public function checkout(Request $request)
@@ -84,15 +94,17 @@ class CheckoutController extends Controller
 
     public function afterPayment(Request $request)
     {
-        $items = Cart::content();
-        $items_id = array();
+        // $items = Cart::content();
+        // $items_id = array();
 
-        foreach($items as $item)
-        {
-            array_push($items_id, $item->id);
-        }
-
+        // foreach($items as $item)
+        // {
+        //     array_push($items_id, $item->id);
+        // }
+        
         $data = $request->all();
+        
+        $items_id = json_decode($data['items_id']);
 
         $newOrder = new Order;
 
@@ -122,15 +134,15 @@ class CheckoutController extends Controller
         ////////
 
         // Send confirmation email
-        // $customerEmail = $data['email'];
+        $customerEmail = $data['email'];
         // dd($customerEmail);
-        // Mail::to($customerEmail)->send(new MailCheckoutCompleted());
+        Mail::to($customerEmail)->send(new MailCheckoutCompleted());
 
         // Update item->sold to true
-        foreach($items as $item)
+        foreach($items_id as $item)
         {
             DB::table('items')
-                ->where('id', $item->id)
+                ->where('id', $item)
                 ->update(['sold' => true]);
         }
 

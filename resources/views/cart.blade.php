@@ -123,8 +123,15 @@
         <h6 style="text-align: right; font-size: 10px;">Sconti: 0.00</h6>
         <h6 style="text-align: right; font-size: 10px;">Tasse: 10%</h6>
         <h4 style="text-align: right; padding: 0 10px; margin: 20px 0">Totale: € {{Cart::total()}}</h4> -->
+        <?php
+            $time = date('H:i');
+            $time = str_replace(':', '', $time);
+            $rand = rand(1111111111, 9999999999);
+            $rand2 = uniqid();
+            $sessionToken = $rand.$rand2.$time;
+        ?>
         <div class="col-lg-6 offset-lg-6 col-md-6  offset-md-6 col-xm-12 col-xs-12 checkout-button" style="height: 35px; background-color: #BF4825; padding: 5px 10px; border-radius: 3px; margin-top: 50px; text-align: right"><!-- blu-scuro: #045871 / giallo: #ECDA48; / blu-chiaro: #1D7EB5 -->
-            <a href="{{ route('checkout.index') }}" class="" style="text-decoration: none; color: #fff">Completa Il Tuo Ordine <i class="fas fa-shopping-bag" style="margin-left: 5px"></i></a>
+            <a href="/payment/checkout/{{ $sessionToken }}" class="" style="text-decoration: none; color: #fff">Completa Il Tuo Ordine <i class="fas fa-shopping-bag" style="margin-left: 5px"></i></a>
         </div>
 
         <div class="" style="margin: 10px 0 50px; text-align: right">

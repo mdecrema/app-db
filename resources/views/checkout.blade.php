@@ -51,7 +51,7 @@
                                 };
                                 ?>
 
-                                <input name="items_id" class='form-control' size='20' type='text' placeholder="Nome" value=$items_id>
+                                <input name="items_id" class='form-control' size='20' type='text' placeholder="Nome" value='{{ json_encode($items_id) }}'>
                                 <input name="fullAmount" class='form-control' size='20' type='text' placeholder="Nome" value='{{ $fullAmount }}'>
                             </div>
                         </div>
@@ -339,14 +339,24 @@ $(function() {
     });
   
     if (!$form.data('cc-on-file')) {
-      e.preventDefault();
-      Stripe.setPublishableKey($form.data('stripe-publishable-key'));
-      Stripe.createToken({
+        e.preventDefault();
+        Stripe($form.data('stripe-publishable-key'));
+    // Stripe.setPublishableKey($form.data('stripe-publishable-key'));
+    //   Stripe.createToken({
+    //     number: $('.card-num').val(),
+    //     cvc: $('.card-cvc').val(),
+    //     exp_month: $('.card-expiry-month').val(),
+    //     exp_year: $('.card-expiry-year').val()
+    //   }, stripeHandleResponse);
+    const token = await stripe.tokens.create({
+    bank_account: {
         number: $('.card-num').val(),
         cvc: $('.card-cvc').val(),
         exp_month: $('.card-expiry-month').val(),
         exp_year: $('.card-expiry-year').val()
-      }, stripeHandleResponse);
+        },
+    });
+
     }
   
   });

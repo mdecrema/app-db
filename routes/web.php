@@ -32,7 +32,7 @@ Route::post('products/add-to-cart', 'CartController@store')->name('cart.store');
 Route::delete('cart/remove-item/{rowId}/{id}', 'CartController@destroy')->name('cart.destroy');
 
 // Check-out 
-Route::get('/payment/checkout', 'CheckoutController@index')->name('checkout.index');
+Route::get('/payment/checkout/{token}', 'CheckoutController@index')->name('checkout.index');
 Route::post('/payment/completed/success', 'CheckoutController@checkout')->name('checkout.checkout');
 Route::post('/success','CheckoutController@afterpayment')->name('checkout.completed');
 
