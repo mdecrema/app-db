@@ -36,7 +36,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     {{-- <link rel="dns-prefetch" href="//fonts.gstatic.com"> --}}
     <link href="https://fonts.googleapis.com/css2?family=Nunito&family=Gochi+Hand&family=Bungee+Shade&family=Righteous
-    &family=Permanent+Marker&family=Abril+Fatface&family=DM+Serif+Text&family=Six+Caps&family=Lily+Script+One" rel="stylesheet">
+    &family=Permanent+Marker&family=Abril+Fatface&family=DM+Serif+Text&family=Six+Caps&family=Lily+Script+One&family=Roboto" rel="stylesheet">
 
 <!-- Main font -->
 <link rel="preconnect" href="https://fonts.googleapis.com">

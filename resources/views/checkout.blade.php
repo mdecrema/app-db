@@ -6,7 +6,14 @@
 
 @section('content')
 
-<div class="container">  
+<?php
+$province = array (
+'AG','AL','AN','AO','AQ','AR','AP','AT','AV','BA', 'BT', 'BL','BN','BG','BI','BO','BZ','BS','BR',
+'CA','CL','CB','CI','CE','CT','CZ','CH','CO','CS','CR','KR','CN','EN','FM','FE','FI','FG','FC','FR','GE','GO','GR','IM','IS', 'SP','LT','LE','LC','LI','LO','LU','MC','MN','MS','MT','ME','MI','MO','MB',
+'NA','NO','NU','OT','OR','PD','PA','PR','PV','PG','PU','PE','PC','PI','PT','PN','PZ','PO','RG','RA','RC','RE','RI','RN','RM','RO','SA','SS','SV','SI','SR','SO','TA','TE','TR','TO','TP','TN','TV','TS', 'UD','VA','VE','VB','VC','VR','VV','VI','VT');
+?>
+
+<div class="container" style="font-family: 'Roboto', sans-serif">  
     <div class="row">
         <div class="col-12 text-center" style="width: 100%; height: 40px; background-color: transparent; color: #000; border-radius: 4px; margin: 15px 0; line-height: 40px; font-size: 20px">
             <h3 class="panel-heading">CHECKOUT</h3>
@@ -27,7 +34,7 @@
                         </div>
                     @endif
   
-                    <form role="form" action="{{ route('checkout.completed') }}" method="post" class="validation"
+                    <form role="form" action="{{ route('checkout.checkout') }}" method="post" class="validation"
                                                     data-cc-on-file="false"
                                                     data-stripe-publishable-key="{{ env('STRIPE_KEY') }}"
                                                     id="payment-form">
@@ -73,7 +80,7 @@
                         <div class='form-row row'>
                             <div class='col-xs-12 form-group required'>
                                 <!--<label class='control-label'>E-mail Address</label>-->
-                                <input name="email" class='form-control' size='20' type='text' placeholder="E-mail">
+                                <input name="email" class='form-control' size='20' type='email' placeholder="E-mail">
                             </div>
                         </div>
 
@@ -101,14 +108,20 @@
                         <div class='form-row row'>
                             <div class='col-xs-12 form-group required'>
                                 <!--<label class='control-label'>Città</label>--> 
-                                <input name="city" placeholder="Città" class='form-control' size='20' type='text'>
+                                <input name="city" placeholder="Città/Paese" class='form-control' size='20' type='text'>
                             </div>
                         </div>
 
                         <div class='form-row row'>
                             <div class='col-xs-12 form-group required'>
                                 <!--<label class='control-label'>Provincia</label>--> 
-                                <input name="area" class='form-control' size='20' type='text' placeholder="Provincia">
+                                {{-- <input name="area" class='form-control' size='20' type='text' placeholder="Provincia"> --}}
+                                <select class='form-control' name="area" id="provincia" aria-placeholder="provincia">
+                                    <option value="" style="color: #ABB8C5" disabled selected>Provincia</option>
+                                    @foreach($province as $prov)
+                                    <option value="{{ $prov }}">{{ $prov }}</option>
+                                    @endforeach
+                                </select>
                             </div>
                         </div>
 
@@ -121,8 +134,15 @@
 
                         <div class='form-row row'>
                             <div class='col-xs-12 form-group required'>
-                                <label class='control-label'>Nome e Cognome citofono</label> <input name="doorName"
-                                    class='form-control' size='20' type='text'>
+                                <label class='control-label'>Nome e Cognome citofono</label> 
+                                <input name="doorName" class='form-control' size='20' type='text'>
+                            </div>
+                        </div>
+
+                        <div class='form-row row'>
+                            <div class='col-xs-12 form-group required'>
+                                <label class='control-label'>Altre note per la consegna</label> 
+                                <input name="note" class='form-control' size='20' type='text'>
                             </div>
                         </div>
                     </div>
@@ -130,15 +150,6 @@
                     <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-xs-12" style="float: left; padding: 0 20px">
                         <div style="height: 50px; background-color: #000; color: #fff; text-transform: uppercase; line-height: 50px; padding: 0 20px; margin-bottom: 20px">
                             <h5 style="line-height: 50px">2. DETTAGLI PAGAMENTO</h5>
-                        </div>
-
-                        <div class='form-row row'>
-                            <div class='col-xs-12 form-group required'>
-                                <input id="visa" name="typeOfCard" type='radio' value="visa" checked>
-                                <label for="visa" class='control-label' style="margin: 0 20px 0 10px"><i class="fab fa-2x fa-cc-visa"></i></label>
-                                <input id="mastercard" name="typeOfCard" type='radio' value="mastercard">
-                                <label for="mastercard" class='control-label' style="margin: 0 10px"><i class="fab fa-2x fa-cc-mastercard"></i></label>
-                            </div>
                         </div>
         
                         <div class='form-row row'>
@@ -150,9 +161,8 @@
   
                         <div class='form-row row'>
                             <div class='col-xs-12 form-group required'>
-                                <label class='control-label'>Numero Carta</label> <input  name="card_no"
-                                    autocomplete='off' class='form-control card-num' size='20'
-                                    type='text'>
+                                <label class='control-label'>Numero Carta</label> 
+                                <input  name="card_no" type="tel" pattern="\d*" maxlength="19" class='form-control card-num' size='20'>
                             </div>
                         </div>
   
@@ -169,21 +179,48 @@
                             </div>
                             <div class='col-xs-12 col-md-4 form-group expiration required'> 
                                 <label class='control-label'>Anno di Scadenza</label> <input  name="expiry_year"
-                                    class='form-control card-expiry-year' placeholder='YYYY' size='4'
+                                    class='form-control card-expiry-year' placeholder='AAAA' size='4'
                                     type='text'>
                             </div>
                         </div>
-  
+
                         <div class='form-row row'>
+                            <div class='col-xs-12 form-group'>
+                                <div>
+                                    <label for="" class='control-label'>Tipi di pagamenti accettati</label>
+                                </div>
+                                <div style="width: 190px; height: 35px; overflow: hidden; float: left">
+                                    <img src="{{ asset('img/cardTypesImg.png') }}" alt="Card Types Image" style="width: 100%; height: 100%">
+                                </div>
+                                <div style="width: 50px; height: 35px; overflow: hidden; float: left">
+                                    <img src="{{ asset('img/discoverLogo.jpg') }}" alt="" style="width: 100%; height: 100%">
+                                </div>
+                            </div>
+                        </div>
+  
+                        <div class='form-row row d-none'>
                             <div class='col-md-12 hide error form-group'>
                                 <div class='alert-danger alert'>Fix the errors before you begin.</div>
                             </div>
                         </div>
 
+                        <div class='form-row row' style="margin: 10px 0">
+                            <div style="height: 50px; border: 2px solid #000; background-color: #fff; color: #000; margin-bottom: 20px; position: relative">
+                                <strong>Spedizione Standard</strong> - gratuita
+                                <div>
+                                    <span style="font-size: 12px" id="deliveryDate"></span>
+                                </div>
+                                <div style="width: 50px; height: 100%; position: absolute; top: 0; right: 0; padding: 3%">
+                                    <i class="fa fa-2x fa-box-circle-check"></i>
+                                </div>
+                            </div>
+ 
+                        </div>
+
                         <div class='form-row row'>
-                            <div class='col-xs-12 form-group required' style="text-align: right">
+                            <div class='col-xs-12 form-group required'>
                                 <input type="checkbox">
-                                <label class='control-label'>Accetto le Condizioni di <a href="">Privacy</a> *
+                                <label class='control-label' style="font-size: 14px">Accetto le Condizioni di <a href="">Privacy</a> *</label>
                             </div>
                         </div>
 
@@ -245,7 +282,7 @@
   
                         <div class="row">
                             <div class="col-xs-12">
-                                <button class="btn btn-lg btn-block" type="submit" style="background-color: #BF4825; color: #fff; text-align: left; padding: 10px 20px; border-radius: 0; text-align: right">CONFERMA e PAGA</button> <!-- #045871 -->
+                                <button class="btn btn-lg btn-block btn-conferma-paga" type="submit" style="background-color: #000; color: #fff; text-align: left; padding: 10px 20px; border-radius: 0; text-align: right">CONFERMA e PAGA <i class="fa fa-angle-right" style="font-size: 20px; margin-left: 5px"></i></button> <!-- #045871 / #BF4825-->
                             </div>
                         </div>
                     </div>
@@ -267,7 +304,7 @@
 
                 @foreach( Cart::content() as $item )
                 
-                    <div class="col-lg-12 d-flex flex-grow-1">
+                    <div class="col-lg-12 d-flex flex-grow-1" style="background-color: lightgrey">
                         {{-- Elimina dal carrello --}}
                         {{-- <form style="position: absolute; top: 0; right: 5px;" action="{{ route('cart.destroy', [$item->rowId, $item->id]) }}" method="POST">
                                 @csrf
@@ -275,8 +312,8 @@
                                 <button type="submit" class="cart-option" style="border: none; background-color: transparent; font-size: 10px"><i class="fas fa-times"></i></button>
                         </form> --}}
 
-                        <div class="cart-img" style="width: 50%; height: 150px; display: inline-block; overflow: hidden; padding: 2%;">
-                            <img class="active" id="" src="{{'https://img-space.fra1.digitaloceanspaces.com/img-space/uploads/images/'.$item->options['photo1']}}" alt="item-pitcure" />
+                        <div class="cart-img" style="width: 50%; height: 150px; display: inline-block; overflow: hidden; padding: 2% 4%; text-align: right;">
+                            <img class="active" id="" src="{{'https://img-space.fra1.digitaloceanspaces.com/img-space/uploads/images/'.$item->options['photo1']}}" alt="item-pitcure" style="width: 150px; height: 140px" />
                         </div>
                         <div class="cart-text" style="width: 50%; display: inline-block; position: relative; padding: 2% 4%; line-height: 30px;">
                             <h5><strong>{{$item->name}}</strong></h5>
@@ -316,6 +353,7 @@
 <script type="text/javascript" src="https://js.stripe.com/v3/"></script>
   
  <script type="text/javascript">
+
 $(function() {
     var $form         = $(".validation");
   $('form.validation').bind('submit', function(e) {
@@ -376,7 +414,26 @@ $(function() {
     }
   
 });
+
 </script> 
+
+<script>
+    // Calculate delivery day - using Moment.js
+calculateDeliveryDate();
+function calculateDeliveryDate() {
+    console.log('ciao');
+    var today = new Date();
+    deliveryDay = moment().add(7, 'days').format("DD");
+    deliveryMonth = convertMonthNumberInWord(moment().add(7, 'days').format("MM"));
+    
+    $('#deliveryDate').html('La consegna è prevista entro il ' + deliveryDay + ' ' + deliveryMonth);
+}
+
+function convertMonthNumberInWord(monthNum) {
+    var months = ['Gennaio','Febbraio','Marzo','Aprile','Maggio','Giugno','Luglio','Agosto','Settembre','Ottobre','Novembre','Dicembre'];
+    return months[parseInt(monthNum)-1];
+}
+</script>
 
 @endsection
 

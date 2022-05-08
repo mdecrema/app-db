@@ -13,7 +13,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', 'ProductController@homePage');
+Route::get('/', 'ProductController@homePage')->name('homePage');
 
 Route::get('/products', 'ProductController@index')->name('products');
 Route::get('/tees', 'ProductController@tees')->name('tees');
@@ -34,7 +34,7 @@ Route::delete('cart/remove-item/{rowId}/{id}', 'CartController@destroy')->name('
 // Check-out 
 Route::get('/payment/checkout/{token}', 'CheckoutController@index')->name('checkout.index');
 Route::post('/payment/completed/success', 'CheckoutController@checkout')->name('checkout.checkout');
-Route::post('/success','CheckoutController@afterpayment')->name('checkout.completed');
+Route::get('/success','CheckoutController@afterpayment')->name('checkout.completed');
 
 // News
 Route::get('/news', 'NewsController@index')->name('news');
@@ -113,3 +113,13 @@ Route::prefix('admin')->name('admin.')->middleware('can:admin')->group(function 
     Route::get('dashboard/orders/progressing', 'AdminController@progressingOrders')->name('orders.progressing');
     Route::get('dashboard/orders/history', 'AdminController@historyOrders')->name('orders.history');
 });
+
+
+/**
+ * 
+ * ERRORS VIEWS
+ * 
+ */
+
+ // Checkout
+ Route::get('/errors/checkoutIndexAccessViolation', 'CheckoutController@checkoutIndexAccessError')->name('checkoutIndexAccessError');

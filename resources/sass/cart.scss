@@ -11,7 +11,7 @@
 .cart-details {
     margin: 5% 0;
     background-color: #E7E7E7;  
-    padding: 4%;
+    padding: 0;
     position: relative;
 
     }
@@ -59,6 +59,14 @@
             text-align: center;
         }
 
+}
+
+/* Smartphone */
+  
+@media only screen and (max-width: 768px) {
+    .cart-img {
+        padding: 2% 4%;
+    }
 }
 
 //

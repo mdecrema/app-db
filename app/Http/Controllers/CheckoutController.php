@@ -36,48 +36,50 @@ class CheckoutController extends Controller
                 {
                     $fullAmount += $product->amount;
                 }
+
+                // if ($fullAmount > 0) 
+                // {
+                    return view('checkout', compact('items', 'products', 'fullAmount'));
+                // }
         
-                return view('checkout', compact('items', 'products', 'fullAmount'));
             }
 
         } catch  ( Throwable $e) {
             report($e);
         }
-
+        
+        // $products = Product::all();
+        // return view('errors.checkoutErrors.checkoutIndexAccessError');
 
     }
 
     public function checkout(Request $request)
     {   
  
+  
         // Enter Your Stripe Secret
-        Stripe\Stripe::setApiKey(env('STRIPE_SECRET'));
+        Stripe\Stripe::setApiKey('sk_test_51J9DU3D4jhSKwP3iHJqBcqc6ZG4LvAyTzbkLT6xPs9Q8bc8cnpdJuITTdLwRCdBMcwmt8jTUt83MmiFARRkjt6X900Z19GJYHN');
         Stripe\Charge::create ([
-                "amount" => 100 * 150,
+                // "customer" => $request['firstname'].' '.$request['lastname'],
+                "amount" => $request['fullAmount'] * 100,
                 "currency" => "eur",
-                "source" => $request->stripeToken,
+                "source" => "tok_mastercard",
                 "description" => "Making test payment." 
         ]);
 
         // Insert into Order Table
 
         //$order = Order::create([
-        $payment_intent = \Stripe\PaymentIntent::create([
-            'email' => $request->email,
-            'firstname' => $request->firstname,
-            'lastname' => $request->lastname,
-            'address' => $request->address,
-            'addressNumber' => $request->addressNumber,
-            'city' => $request->city,
-            'province' => $request->province,
-            'postcode' => $request->postcode,
-            'phone' => $request->phone,
-            'nameOnCard' => $request->nameOnCard,
-            'total' => 200,
-            'error' => $request->error,
-        ]);
+        // $payment_intent = \Stripe\PaymentIntent::create([
+        //     'number' => $request->number,
+        //     'cvc' => $request->cvc,
+        //     'exp_month' => $request->exp_month,
+        //     'exp_year' => $request->exp_year,
+        //     'amount' => 200,
+        //     'error' => $request->error,
+        // ]);
 
-        $intent = $payment_intent->client_secret;
+        // $intent = $payment_intent->client_secret;
 
         // Inser into Product Order Table
         /* foreach(Cart::content() as $item) {
@@ -88,12 +90,6 @@ class CheckoutController extends Controller
             ]);
         }*/
 
-        return view('checkout-completed');
-
-    }
-
-    public function afterPayment(Request $request)
-    {
         // $items = Cart::content();
         // $items_id = array();
 
@@ -149,5 +145,24 @@ class CheckoutController extends Controller
         Cart::destroy();
 
         return view('checkout-completed');
+
     }
+
+    public function afterPayment()
+    {
+
+        Session::flash('success', 'Payment successful!');
+        return view('checkout-completed');
+
+    }
+
+    /**
+     * 
+     * ERRORS
+     * 
+     */
+    // public function checkoutIndexAccessError() {
+
+    //     return view('checkoutIndexAccessError');
+    // }
 }
