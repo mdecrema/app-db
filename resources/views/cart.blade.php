@@ -36,7 +36,7 @@
                 <h6>Hai {{ Cart::count() }} prodotti nel tuo carrello</h6>
             @endif
 
-            <div class="cart-details col-lg-12" style="background-color: rgb(235, 234, 234)">
+            <div class="cart-details col-lg-12">
 
                 @foreach( Cart::content() as $item )
                 

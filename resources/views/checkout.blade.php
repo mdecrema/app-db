@@ -304,7 +304,7 @@ $province = array (
 
                 @foreach( Cart::content() as $item )
                 
-                    <div class="col-lg-12 d-flex flex-grow-1" style="background-color: lightgrey">
+                    <div class="col-lg-12 d-flex flex-grow-1">
                         {{-- Elimina dal carrello --}}
                         {{-- <form style="position: absolute; top: 0; right: 5px;" action="{{ route('cart.destroy', [$item->rowId, $item->id]) }}" method="POST">
                                 @csrf
