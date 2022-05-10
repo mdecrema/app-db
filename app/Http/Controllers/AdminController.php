@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Gate;
 use App\User;
 use App\Product;
+use App\Item;
 use App\Order;
 use App\Ski;
 use App\Rent;
@@ -28,7 +29,7 @@ class AdminController extends Controller
     
         $menuOrdini1 = new MenuLink();
         $menuOrdini1->name = 'Ordini pending';
-        $menuOrdini1->link = 'dashboard/orders/pending';
+        $menuOrdini1->link = 'dashboard/orders/allOrders';
                     
         $menuOrdini2 = new MenuLink();
         $menuOrdini2->name = 'Ordini in lavorazione';
@@ -347,11 +348,13 @@ class AdminController extends Controller
     /* ORDERS */
 
     // Pending Orders
-    public function pendingOrders()
+    public function allOrders()
     {
-        $orders = Order::all();
+        $orders = Order::orderBy('id', 'DESC')->get();
+        $products = Product::all();
+        $items = Item::all();
 
-        return view('admin.orders.pendingOrders', compact('orders'));
+        return view('admin.orders.allOrders', compact('orders'));
     }
 
     // Progressing Orders
@@ -361,8 +364,9 @@ class AdminController extends Controller
     }
 
     // History Orders
-    public function historyOrders()
+    public function orderDetails()
     {
-        return view('admin.orders.historyOrders');
+        return view('admin.orders.orderDetails');
     }
+
 }

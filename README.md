@@ -78,15 +78,18 @@ If you discover a security vulnerability within Laravel, please send an e-mail t
 The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
 
 /**
-* // Aggiungere correzione inserimento item in cart (per come è sviluppato adesso viene inserito il product nel cart -> SBAGLIATO)
-* // Correzioni lato checkController (confusione tra item e product id)
-* // Da migliorare inputate FullAmount quando faccio il checkout
+* // Aggiungere correzione inserimento item in cart (per come è sviluppato adesso viene inserito il product nel cart -> SBAGLIATO) [RISOLTO]
+* // Correzioni lato checkController (confusione tra item e product id) [RISOLTO]
+* // Da migliorare inputate FullAmount quando faccio il checkout [RISOLTO]
 *
 * Aggiornare Item->available quando svuoto carrello e/o scade la sessione
-* WARNING: Rendere private il routing per la view Checkout (OBBLIGARE l'utente a passare prima dal carrello) --> altrimenti possibilità di fare ordini con prezzo sballato
-* WARNING: Disabilitare Refresh su checkout-completed view, oppure rendere private il routing (ERRORE): al refresh verranno inviati più ordini.
+* WARNING: Rendere private il routing per la view Checkout (OBBLIGARE l'utente a passare prima dal carrello) --> altrimenti possibilità di fare ordini con prezzo sballato (in parte risolto)
+* WARNING: Disabilitare Refresh su checkout-completed view, oppure rendere private il routing (ERRORE): al refresh verranno inviati più ordini.  
 * Gestire errori dovuti alla mancanza di dati inseriti nel checkout form e segnalare all'utente i campi mancanti/obbligatori
 * 
 * ------
-* gestire il campo tipologia Taglia per i prodotti (0, 1, 2)
+* gestire il campo tipologia Taglia per i prodotti (0, 1, 2) - per adesso i valori sono di tipo 'string' e nell html le condizioni sono 't-shirt' per i vestiti e 'shoes' per le scarpe
+* view di checkout completato (da realizzare)
+* gestione degli ordini - admin (view, presa in carico, consegna avvenuta...)
+* mostrare gli ordini in ordine opposto alla lista restituita dalla query/db
 */
