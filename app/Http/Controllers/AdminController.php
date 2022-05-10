@@ -367,14 +367,23 @@ class AdminController extends Controller
     public function orderDetails($id)
     {
         $order = Order::find($id);
+        $itemsInOrder = [];
         $productsInOrder = [];
+
+        if($order->pending !== false) {
+            $order->pending = false;
+            $order->update();
+        }
         
         foreach(json_decode($order->items_id) as $item_id) {
             $item = Item::find($item_id);
+            array_push($itemsInOrder, $item);
             array_push($productsInOrder, Product::find($item->product_id));
         }
 
-        return view('admin.orders.orderDetails', compact('order', 'productsInOrder'));
+       // dd($order);
+
+        return view('admin.orders.orderDetails', compact('order', 'productsInOrder', 'itemsInOrder'));
     }
 
 }

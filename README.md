@@ -86,6 +86,7 @@ The Laravel framework is open-sourced software licensed under the [MIT license](
 * WARNING: Rendere private il routing per la view Checkout (OBBLIGARE l'utente a passare prima dal carrello) --> altrimenti possibilità di fare ordini con prezzo sballato (in parte risolto)
 * WARNING: Disabilitare Refresh su checkout-completed view, oppure rendere private il routing (ERRORE): al refresh verranno inviati più ordini.  
 * Gestire errori dovuti alla mancanza di dati inseriti nel checkout form e segnalare all'utente i campi mancanti/obbligatori
+* Pensare di creare table->cliente con i dati del checkout e eventualmente verificare se la mail cliente coincide con una mail user già presente (avvisare utente)
 * 
 * ------
 * gestire il campo tipologia Taglia per i prodotti (0, 1, 2) - per adesso i valori sono di tipo 'string' e nell html le condizioni sono 't-shirt' per i vestiti e 'shoes' per le scarpe

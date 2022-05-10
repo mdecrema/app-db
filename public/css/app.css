@@ -11714,3 +11714,7 @@ footer::after {
   }
 }
 
+.card-order-details strong {
+  font-size: 16px;
+}
+

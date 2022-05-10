@@ -5,7 +5,7 @@
 @endsection
 
 @section('content')
-<div class="row">
+<div class="row" style="font-family: 'Roboto', sans-serif">
     <div class="col-lg-12" style="margin-bottom: 30px; text-align: center">
         <h2>Admin Dashboard</h2>
         <h3></h3>

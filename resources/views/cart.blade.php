@@ -68,7 +68,7 @@
                 <?php $total += $item->amount * $item->quantity ?>
 
                 @endforeach    
-        </div>
+            </div>
 
             <table class="col-6 offset-6" style="margin-top: 10px">
                 <tr>

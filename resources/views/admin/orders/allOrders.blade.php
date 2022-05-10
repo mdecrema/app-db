@@ -15,15 +15,15 @@
               <thead>
                 <tr>
                   <th scope="col">#</th>
-                  <th scope="col">Nome/Cognome</th>
-                  <th scope="col">Items</th>
+                  <th scope="col">Cliente</th>
+                  {{-- <th scope="col">Items</th> --}}
                   <th scope="col">Effettuato</th>
                   <th scope="col">Status</th>
                 </tr>
               </thead>
               <tbody>
                   @foreach($orders as $order)
-                  <tr onclick="navigateToDetails('{{ $order->id }}')">
+                  <tr onclick="navigateToDetails('{{ $order->id }}')" style="cursor: pointer">
                     <th scope="row" style="position: relative">
                         @if ($order->pending == true)
                           <span class="badge badge-success">new</span>
@@ -32,7 +32,7 @@
                         @endif
                       </th>
                       <td>{{ $order->firstName }} {{ $order->lastName }}</td>
-                      <td>{{ $order->items_id }}</td>
+                      {{-- <td>{{ $order->items_id }}</td> --}}
                       <td>{{ $order->created_at }}</td>
                       <td>
                         @if($order->inProgress == true && $order->delivered == false)
