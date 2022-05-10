@@ -110,8 +110,8 @@ Route::prefix('admin')->name('admin.')->middleware('can:admin')->group(function 
      * ORDERS
      */
     Route::get('dashboard/orders/allOrders', 'AdminController@allOrders')->name('orders.allOrders');
-    Route::get('dashboard/orders/progressing', 'AdminController@progressingOrders')->name('orders.progressing');
-    Route::get('dashboard/orders/history', 'AdminController@historyOrders')->name('orders.history');
+    // Route::get('dashboard/orders/progressing', 'AdminController@progressingOrders')->name('orders.progressing');
+    Route::get('dashboard/orders/orderDetails/{id}', 'AdminController@orderDetails')->name('orders.orderDetails');
 });
 
 

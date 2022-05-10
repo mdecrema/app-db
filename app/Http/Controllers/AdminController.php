@@ -364,9 +364,17 @@ class AdminController extends Controller
     }
 
     // History Orders
-    public function orderDetails()
+    public function orderDetails($id)
     {
-        return view('admin.orders.orderDetails');
+        $order = Order::find($id);
+        $productsInOrder = [];
+        
+        foreach(json_decode($order->items_id) as $item_id) {
+            $item = Item::find($item_id);
+            array_push($productsInOrder, Product::find($item->product_id));
+        }
+
+        return view('admin.orders.orderDetails', compact('order', 'productsInOrder'));
     }
 
 }
