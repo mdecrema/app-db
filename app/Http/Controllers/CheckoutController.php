@@ -55,16 +55,59 @@ class CheckoutController extends Controller
 
     public function checkout(Request $request)
     {   
- 
-  
+        $data = $request->all();
+            
         // Enter Your Stripe Secret
         Stripe\Stripe::setApiKey('sk_test_51J9DU3D4jhSKwP3iHJqBcqc6ZG4LvAyTzbkLT6xPs9Q8bc8cnpdJuITTdLwRCdBMcwmt8jTUt83MmiFARRkjt6X900Z19GJYHN');
-        Stripe\Charge::create ([
-                // "customer" => $request['firstname'].' '.$request['lastname'],
-                "amount" => $request['fullAmount'] * 100,
-                "currency" => "eur",
-                "source" => "tok_mastercard",
-                "description" => "Making test payment." 
+
+        $tokForCustomer =  Stripe\Token::create([
+            'card' => [
+              'number' => $data['card_no'],
+              'exp_month' => $data['expiry_month'],
+              'exp_year' => $data['expiry_year'],
+              'cvc' => $data['cvv'],
+            ],
+          ]);
+        
+        // Create Customer
+        $customer = \Stripe\Customer::create([
+            "description" => 'Guest',
+            "name" => $data['firstname'],
+            "email" => $data['email'],
+            "phone" => $data['phone'],
+            "source" => $tokForCustomer->id //invalid
+            // "address" => $data['address']
+        ]);
+        
+        $tok = Stripe\Token::create([
+            'card' => [
+              'number' => $data['card_no'],
+              'exp_month' => $data['expiry_month'],
+              'exp_year' => $data['expiry_year'],
+              'cvc' => $data['cvv'],
+            ],
+          ]);
+
+        // Charge Card
+        $charge = Stripe\Charge::create([
+            "customer" => $customer->id,
+            "amount" => $request['fullAmount'] * 100,
+            "currency" => "eur",
+            // "source" => $tok->id, // in test: commentare "customer" e valorizzare "source" = "tok_mastercard"
+            "description" => "Making test payment." 
+        ]);
+
+        // Create Invoice Items
+        $invoice = Stripe\InvoiceItem::create([
+            "customer" => $customer->id,
+            "amount" => $request['fullAmount'] * 100,
+            "currency" => "eur",
+            "description" => "Questa è la ricevuta fiscale per il suo ordine"
+        ]);
+
+        // Sending Invoice
+        $orderInvoice = Stripe\Invoice::create([
+            "customer" => $customer->id
         ]);
 
         // Insert into Order Table
@@ -98,7 +141,6 @@ class CheckoutController extends Controller
         //     array_push($items_id, $item->id);
         // }
         
-        $data = $request->all();
         
         $items_id = json_decode($data['items_id']);
 
