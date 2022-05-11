@@ -46,7 +46,7 @@
                         </tr>
                         <tr scope="col"> 
                             <td scope="row" style="width: 50%;">CAP:</td>
-                            <td style="width: 50%;"><strong>{{ $order->phone }}</strong></td>
+                            <td style="width: 50%;"><strong>{{ $order->postcode }}</strong></td>
                         </tr>
                         <tr scope="col"> 
                             <td scope="row" style="width: 50%;">Citofono:</td>

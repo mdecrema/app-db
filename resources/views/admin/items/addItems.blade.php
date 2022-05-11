@@ -72,7 +72,7 @@
                 </tbody>
             </table>
 
-            <button type="submit" class="btn btn-primary">Submit</button>
+            <button type="submit" class="btn btn-primary">Salva</button>
         </form>
 
         @if ($errors->any())
