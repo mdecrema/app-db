@@ -370,8 +370,8 @@ class AdminController extends Controller
         $itemsInOrder = [];
         $productsInOrder = [];
 
-        if($order->pending !== false) {
-            $order->pending = false;
+        if($order->newOrder !== false) {
+            $order->newOrder = false;
             $order->update();
         }
         

@@ -34,7 +34,7 @@
                   @foreach($orders as $order)
                   <tr onclick="navigateToDetails('{{ $order->id }}')" class="orderRow" style="cursor: pointer">
                     <th scope="row" style="position: relative">
-                        @if ($order->pending == true)
+                        @if ($order->newOrder == true)
                           <span class="badge badge-success">new</span>
                         @else 
                           {{ $order->id }}
