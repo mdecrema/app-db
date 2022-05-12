@@ -46,7 +46,7 @@ class AdminController extends Controller
         $menuMagazzino1->link = 'dashboard/products';
 
         $menuMagazzino2 = new MenuLink();
-        $menuMagazzino2->name = 'Aggiungi nuovo prodotto';
+        $menuMagazzino2->name = 'Aggiungi prodotti';
         $menuMagazzino2->link = 'dashboard/products/create';
 
         $menuMagazzino3 = new MenuLink();

@@ -64,6 +64,8 @@ Route::prefix('admin')->name('admin.')->middleware('can:admin')->group(function 
     Route::get('/dashboard/products/create', 'ProductController@create')->name('products.create');
     // Product Store
     Route::post('/dashboard/products/create', 'ProductController@store')->name('products.store');
+    // Products store from CSV
+    Route::post('/dashboard/products/store/csv', 'ProductController@storeProductsFromCSV')->name('products.store.csv');
     // Product Show
     Route::get('/dashboard/products/show/{id}', 'AdminController@show')->name('products.show');
     // Product Delete

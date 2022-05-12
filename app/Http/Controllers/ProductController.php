@@ -120,6 +120,21 @@ class ProductController extends Controller
 
         return redirect()->route("admin.dashboard");
     }
+
+     /**
+     * Store product from csv file
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function storeProductsFromCSV(Request $request)
+    {
+        $data = $request->all();
+
+       dd($data);
+
+        return redirect()->route("admin.dashboard");
+    }
     
     /**
      * Add Stocks
