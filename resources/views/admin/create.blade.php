@@ -11,12 +11,12 @@
         <!-- left box -->
         <div class="col-xl-6 col-lg-6 col-md-6 col-xs-12 col-sm-12" style="border: 1px solid #grey; border-radius: 5px">
             <h2>IMPORTA CATALOGO</h2>
-            <form action="" method="post" enctype="multipart/form-data">
+            <form action="{{ route('admin.products.store.csv') }}" method="post" enctype="multipart/form-data">
                 @csrf
                 @method("POST")
                 <div class="form-group">
                     <label for="title">Cerca file nel computer (.csv)</label>
-                    <input style="width:auto" type="file" class="form-control" id="" name="" accept=".csv">
+                    <input style="width:auto" type="file" class="form-control" id="" name="products_file" accept=".csv">
                 </div>
                 <button type="submit" class="btn btn-primary">Importa</button>
             </form>

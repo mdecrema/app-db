@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use App\Product;
 use App\Item;
+use App\Imports\ProductsImport;
+use Maatwebsite\Excel\Facades\Excel;
 
 class ProductController extends Controller
 {
@@ -129,11 +131,13 @@ class ProductController extends Controller
      */
     public function storeProductsFromCSV(Request $request)
     {
-        $data = $request->all();
+        $filedata = $request['products_file'];
 
-       dd($data);
+        // dd(request()->file('products_file'));
 
-        return redirect()->route("admin.dashboard");
+        Excel::import(new ProductsImport, request()->file('products_file'));
+
+        return redirect()->route("admin.dashboard")->with('success_message', 'Catalogo prodotti importato con successo!');;
     }
     
     /**

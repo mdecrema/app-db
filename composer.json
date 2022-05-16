@@ -8,7 +8,7 @@
     ],
     "license": "MIT",
     "require": {
-        "php": "^7.2.5",
+        "php": "^7.4.0",
         "fideloper/proxy": "^4.2",
         "fruitcake/laravel-cors": "^1.0",
         "fzaninotto/faker": "^1.9",
@@ -18,8 +18,9 @@
         "laravel/tinker": "^2.0",
         "laravel/ui": "2.4",
         "league/flysystem-aws-s3-v3": "~1",
-        "stripe/stripe-php": "^7.87",
-        "milon/barcode": "^7.0"
+        "maatwebsite/excel": "^3.1",
+        "milon/barcode": "^7.0",
+        "stripe/stripe-php": "^7.87"
     },
     "require-dev": {
         "facade/ignition": "^2.0",

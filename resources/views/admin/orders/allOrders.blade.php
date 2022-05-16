@@ -10,17 +10,19 @@
       <div class="col-12" style="margin: 15px 0;">
           <h2>Elenco degli ordini</h2>
       </div>
-      <div class="col-12">
-        <h5>Filtra per:</h5>
-        <select id="filterOrderSelect" onchange="filterOrder()">
-          <option value="0">tutti gli ordini</option>
-          <option value="in attesa">ordini in attesa</option>
-          <option value="in progress">ordini in lavorazione</option>
-          <option value="completato">ordini completati</option>
-        </select>
+      <div class="col-xl-3 col-lg-3 col-md-6 col-sm-12 col-xs-12">
+        <div class="form-group">
+          <label>Filtra per:</label>
+          <select id="filterOrderSelect" onchange="filterOrder()" class="form-control">
+            <option value="0">tutti gli ordini</option>
+            <option value="1">ordini in attesa</option>
+            <option value="2">ordini in lavorazione</option>
+            <option value="3">ordini completati</option>
+          </select>
+        </div>
       </div>
       <div class="col-12">
-          <table class="table table-striped">
+          <table id='myTable' class="table table-striped">
               <thead>
                 <tr>
                   <th scope="col">#</th>
@@ -43,15 +45,21 @@
                       <td>{{ $order->firstName }} {{ $order->lastName }}</td>
                       {{-- <td>{{ $order->items_id }}</td> --}}
                       <td>{{ $order->created_at }}</td>
-                      <td class="orderStatus">
-                        @if($order->inProgress == true && $order->delivered == false)
+
+                      @if($order->inProgress == true && $order->delivered == false)
+                        <td class="orderStatus" data-attr="2">
                           in progress
-                        @elseif ($order->inProgress == false && $order->delivered == true)
+                        </td>
+                      @elseif ($order->inProgress == false && $order->delivered == true) 
+                        <td class="orderStatus" data-attr="3">
                           completato
-                        @else 
-                          in attesa
-                        @endif
-                      </td>
+                        </td>
+                      @else 
+                        <td class="orderStatus" data-attr="1">
+                          in attesa                        
+                        </td>
+                      @endif
+
                     </tr>
                 @endforeach
               </tbody>
@@ -67,25 +75,29 @@
   }
 
   function filterOrder() {
-    var filter = $('#filterOrderSelect').val();
-    console.log(filter);
-    // $('#tableOrderBody').children()
+    var table, tr, td, i, txtValue;
+  
+    var filter = document.getElementById('filterOrderSelect').value.toLowerCase();
 
-    // row = $('.orderRow');
-    // status = $('.orderStatus');
-    // console.log(status);
-    // for (i = 0; i < status.length; i++) {
-    //   a = status[i];
-    //   txtValue = a.innerText;
-    //   console.log(txtValue);
-    //   if (filter === 0) {
-    //     row[i].style.display = "";
-    //   } else if (txtValue.toLowerCase() === filter) {
-    //     row[i].style.display = "";
-    //   } else {
-    //     row[i].style.display = "none";
-    //   }
-    // }
+    console.log(filter);
+    
+  table = document.getElementById("myTable");
+  tr = table.getElementsByTagName("tr");
+
+  console.log(tr);
+  for (i = 1; i < tr.length; i++) {
+    td = tr[i].getElementsByTagName("td")[2].getAttribute("data-attr");
+    console.log(td);
+    if (td) {
+      if (filter === '0') {
+        tr[i].style.display = "";
+      } else if (td === filter) {
+        tr[i].style.display = "";
+      } else {
+        tr[i].style.display = "none";
+      }
+    }       
+  }
   }
 </script>
 @endsection

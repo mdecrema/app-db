@@ -9,6 +9,11 @@
     <div class="col-lg-12" style="margin-bottom: 30px; text-align: center">
         <h2>Admin Dashboard</h2>
         <h3></h3>
+        @if (session()->has('success_message'))
+        <div class="alert alert-success">
+            {{ session()->get('success_message') }}
+        </div>
+        @endif
     </div>
     <!-- <div class="col-lg-8 offset-lg-2" style="border: 1px solid #333333; border-radius: 5px; margin-bottom: 20px">
         <ul class="nav">

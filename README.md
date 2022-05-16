@@ -93,4 +93,6 @@ The Laravel framework is open-sourced software licensed under the [MIT license](
 * view di checkout completato (da realizzare)
 * gestione degli ordini - admin (view, presa in carico, consegna avvenuta...)
 * mostrare gli ordini in ordine opposto alla lista restituita dalla query/db
+* 
+* quando scade la sessione, invece di mostrare pagina di errore, rimandare l'utente alla schermata di login
 */

@@ -94,7 +94,7 @@ class CartController extends Controller
             ->where('id', $item->id)
             ->update(['available' => false]);
     
-        return redirect()->route('cart')->with('success_message', 'Item was added to your cart!');
+        return redirect()->route('cart')->with('success_message', 'Prodotto aggiunto al carrello!');
     // } else {
         $product = Product::find($product_id);
         $products = Product::all();
