@@ -181,7 +181,7 @@ class ProductController extends Controller
     {
         $product = Product::find($id);
         $products = Product::all();
-        $items = Item::all();
+        $items =  Item::all()->where('product_id', $product->id);
 
         return view('product-details', compact('product', 'products', 'items'));
     }

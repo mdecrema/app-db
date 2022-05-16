@@ -53,7 +53,8 @@
                 if ($item->available == true && $item->sold == false) {
                   array_push($sizesAvailable, $item->size);
                 }
-              }                
+              }             
+             
             ?>
             @if(count($sizesAvailable) !== 0)
             Taglie disponibili

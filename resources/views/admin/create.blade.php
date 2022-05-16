@@ -80,7 +80,7 @@
                 </div>
     
                 <div class="form-group">
-                    <label for="title">categoria</label>
+                    <label for="title">Categoria</label>
                     <input type="text" class="form-control" id="title" name="categoria" placeholder="Titolo" placeholder="categoria">
                 </div>
     
