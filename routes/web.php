@@ -64,8 +64,10 @@ Route::prefix('admin')->name('admin.')->middleware('can:admin')->group(function 
     Route::get('/dashboard/products/create', 'ProductController@create')->name('products.create');
     // Product Store
     Route::post('/dashboard/products/create', 'ProductController@store')->name('products.store');
-    // Products store from CSV
+    // Products store from CSV file
     Route::post('/dashboard/products/store/csv', 'ProductController@storeProductsFromCSV')->name('products.store.csv');
+    // Dowloand products database table as CSV file
+    Route::get('/dashboard/products/export/csv', 'ProductController@downloadProductsDatabaseTableAsCSV')->name('products.export.csv');
     // Product Show
     Route::get('/dashboard/products/show/{id}', 'AdminController@show')->name('products.show');
     // Product Delete

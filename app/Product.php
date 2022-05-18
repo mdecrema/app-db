@@ -12,7 +12,7 @@ class Product extends Model
 
     protected $fillable = [
         'nome', 'photo1', 'photo2', 'photo3', 'photo4', 'photo5', 'categoria', 'genere', 
-        'description', 'colore', 'sizes', 'brand', 'amount', 'availability', 'valutazione', 'appView'
+        'description', 'colore', 'sizes', 'counterSizeType', 'brand', 'amount', 'availability', 'valutazione', 'appView'
     ];
 
     public function items()

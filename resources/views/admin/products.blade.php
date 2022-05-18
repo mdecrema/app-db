@@ -31,7 +31,11 @@ Admin Products
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-dismiss="modal">Annulla</button>
-                            <button type="button" class="btn btn-primary">Scarica</button> 
+                            <button type="button" class="btn btn-primary">
+                                <a href="{{ route('admin.products.export.csv') }}" style="text-decoration: none; color: #fff">
+                                    Scarica
+                                </a>    
+                            </button> 
                         </div>
                     </div>
                 </div>

@@ -27,6 +27,7 @@ class CreateProductsTable extends Migration
             $table->text('description', 2000);
             $table->string('colore', 20);
             $table->json('sizes')->nullable();
+            $table->smallInteger('counterSizeType')->nullable();
             $table->string('brand', 50);
             $table->float('amount', 6, 2);
             $table->SmallInteger('availability')->default(1);
