@@ -42,13 +42,13 @@ Admin Products
             </div>
 
             <!-- Filtri di ricerca -->
-            <div class="col-xl-6 col-lg-6 col-md-6 col-xs-12 col-sm-12" id="accordion" style="background-color: lightgray; padding: 20px">
-                <div class="card" style="border: 2px solid #333333">
-                  <div class="card-header" id="headingOne" style="cursor: pointer" class="btn btn-link" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                    <h5 class="mb-0" onclick="changeCardArrow()">
+            <div class="col-xl-6 col-lg-6 col-md-6 col-xs-12 col-sm-12" id="accordion" style="margin-top: 20px">
+                <div class="card" style="border: 1px solid grey">
+                  <div class="card-header" id="headingOne" style="height: 30px; line-height: 30px; padding: 5px 10px; cursor: pointer" class="btn btn-link" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                    <h6 class="mb-0" onclick="changeCardArrow()">
                         Filtra risultati
-                    </h5> {{-- <i class="fa fa-filter"></i> --}}
-                    <div style="width: 50px; height: 50px; position: absolute; top: 0; right: 0; line-height: 47px; text-align: center">
+                    </h6> {{-- <i class="fa fa-filter"></i> --}}
+                    <div style="width: 50px; height: 50px; position: absolute; top: 0; right: 0; line-height: 25px; text-align: center">
                         <i id="filter_card_arrow" class="fa fa-chevron-down"></i>
                     </div>
                   </div>
@@ -112,7 +112,7 @@ Admin Products
 
         </div>
         @foreach($products as $product)   
-        <div class="col-xl-4 col-lg-4 col-md-4 col-sm-12 col-xs-12" style="height: 350px; padding: 10px; overflow: hidden;">     
+        <div class="col-xl-4 col-lg-4 col-md-4 col-sm-6 col-xs-6" style="height: 350px; padding: 10px; overflow: hidden;">     
             <a href="products/show/{{$product['id']}}">  
                 <img class="active" src="{{'https://img-space.fra1.digitaloceanspaces.com/img-space/uploads/images/'.$product->photo1}}" alt="" style="width: 100%; height: 100%">
             </a>
@@ -122,6 +122,7 @@ Admin Products
 </div>
 
 <script>
+    changeCardArrow();
     function changeCardArrow() {
 
         if (!$('#collapseOne').hasClass('show')) {

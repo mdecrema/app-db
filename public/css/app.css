@@ -11714,7 +11714,18 @@ footer::after {
   }
 }
 
+/**
+*
+* Admin Dashboard
+*
+*
+// Order */
+
 .card-order-details strong {
   font-size: 16px;
+}
+
+.lightgrey_bg_dashboard {
+  background-color: #f2ebeb;
 }
 

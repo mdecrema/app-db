@@ -22,7 +22,11 @@
 @import './skiRent/skiRent.scss';
 @import './skiRent/searchResults.scss';
 //
-// Admin
-//
-// Order
-@import './orderDetails.scss';
+/**
+*
+* Admin Dashboard
+*
+*
+// Order */
+@import './dashboard/orderDetails.scss';
+@import './dashboard/dashboardGeneric.scss';
