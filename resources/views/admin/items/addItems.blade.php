@@ -170,10 +170,10 @@
         productSelected = JSON.parse(document.getElementById('productsList').value);
         console.log(productSelected);
         
-        if (productSelected.categoria === 't-shirt') {
+        if (productSelected.counterSizeType === 1) {
             document.getElementById('tableSizeClothes').style.display='block';
             document.getElementById('tableSizeShoes').style.display='none'; 
-        } else if (productSelected.categoria === 'shoes') {
+        } else if (productSelected.counterSizeType === 2) {
             document.getElementById('tableSizeClothes').style.display='none';
             document.getElementById('tableSizeShoes').style.display='block';            
         }
@@ -185,7 +185,7 @@
         console.log(size);
         console.log(quantity);
 
-        if (productSelected.categoria === 't-shirt') {
+        if (productSelected.counterSizeType === 1) {
             for (let i = 0; i < sizeClothesObj.length; i++) {
                 if (sizeClothesObj[i].size === size) {
                     sizeClothesObj[i].qty = parseFloat(quantity);
@@ -193,7 +193,7 @@
             }
             console.log(sizeClothesObj);
             document.getElementById('sizesObj').value = JSON.stringify(sizeClothesObj);
-        } else if (productSelected.categoria === 'shoes') {
+        } else if (productSelected.counterSizeType === 2) {
             for (let i = 0; i < sizeShoesObj.length; i++) {
                 if (sizeShoesObj[i].size == size) {
                     sizeShoesObj[i].qty = parseFloat(quantity);

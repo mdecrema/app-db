@@ -15,7 +15,7 @@
                 @csrf
                 @method("POST")
                 <div class="form-group">
-                    <label for="title">Cerca file nel computer (.csv)</label>
+                    <label for="title">Carica file (.csv)</label>
                     <input style="width:auto" type="file" class="form-control" id="" name="products_file" accept=".csv">
                 </div>
                 <button type="submit" class="btn btn-primary">Importa</button>
@@ -71,37 +71,46 @@
     
                 <div class="form-group">
                     <label for="title">Colore</label>
-                    <input type="text" class="form-control" id="title" name="colore" placeholder="Titolo" placeholder="colore">
+                    <input type="text" class="form-control" id="title" name="colore" placeholder="colore">
                 </div>
     
                 <div class="form-group">
                     <label for="title">Prezzo</label>
-                    <input type="text" class="form-control" id="title" name="amount" placeholder="Titolo" placeholder="€">
+                    <input type="text" class="form-control" id="title" name="amount" placeholder="€">
                 </div>
     
                 <div class="form-group">
                     <label for="title">Categoria</label>
-                    <input type="text" class="form-control" id="title" name="categoria" placeholder="Titolo" placeholder="categoria">
+                    <input type="text" class="form-control" id="title" name="categoria" placeholder="categoria">
                 </div>
     
                 <div class="form-group">
                     <label for="title">Brand</label>
-                    <input type="text" class="form-control" id="title" name="brand" placeholder="Titolo" placeholder="brand">
+                    <input type="text" class="form-control" id="title" name="brand" placeholder="brand">
                 </div>
     
                 <div class="form-group">
                     <label for="title">Valutazione</label>
-                    <input type="text" class="form-control" id="title" name="valutazione" placeholder="Titolo" placeholder="valutazione">
+                    <input type="text" class="form-control" id="title" name="valutazione" placeholder="valutazione">
                 </div>
     
-                <div class="form-group">
+                {{-- <div class="form-group">
                     <label for="title">Taglia</label>
-                    <input type="text" class="form-control" id="title" name="taglia" placeholder="Titolo" placeholder="taglia">
+                    <input type="text" class="form-control" id="title" name="taglia" placeholder="taglia">
+                </div> --}}
+
+                <div class="form-group">
+                    <label for="counterSizeType">Tipologia taglie</label>
+                    <select class="form-control" name="counterSizeType" id="counterSizeType">
+                        <option value="1">Caratteri alfabetici (ex. S, M, L ...)</option>
+                        <option value="2">Numeri (scarpe)</option>
+                        <option value="3" disabled>Numeri (pantaloni)</option>
+                    </select>
                 </div>
     
                 <div class="form-group">
                     <label for="title">Genere</label>
-                    <input type="text" class="form-control" id="title" name="genere" placeholder="Titolo" placeholder="genere">
+                    <input type="text" class="form-control" id="title" name="genere" placeholder="genere">
                 </div>
     
                 <div class="form-group">

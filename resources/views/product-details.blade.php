@@ -59,7 +59,7 @@
             @if(count($sizesAvailable) !== 0)
             Taglie disponibili
             <select onchange="getSizeValue()" class="form-select" name="" id="itemSize" style="width: 100px; background-color:  #fff; color: #000; padding: 5px 10px; border-radius: 3px border-bottom: 2px solid  #FF4901">
-            @if($product->categoria==='t-shirt')
+            @if($product->counterSizeType===1)
               
               @foreach($sizes1 as $size)
                 @if( in_array($size, $sizesAvailable) )
@@ -71,7 +71,7 @@
                 @endif
               @endforeach
 
-            @elseif($product->categoria==='shoes')
+            @elseif($product->counterSizeType===2)
 
               @foreach($sizes2 as $size)
                 @if( in_array($size, $sizesAvailable) )

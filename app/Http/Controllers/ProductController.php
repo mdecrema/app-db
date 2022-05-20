@@ -75,6 +75,7 @@ class ProductController extends Controller
             "categoria" => "required|max:50",
             "genere" => "required|max:10",
             "sizes" => "nullable|max:10",
+            "counterSizeType" => "nullable|numeric",
             "description" => "nullable|max:2000",
             "colore" => "required|max:20",
             "brand" => "required|max:50",
@@ -105,6 +106,7 @@ class ProductController extends Controller
         $newProduct->categoria = $data['categoria'];
         // $newProduct->taglia = $data['taglia'];
         $newProduct->genere = $data['genere'];
+        $newProduct->counterSizeType = intval($data['counterSizeType']);
         $newProduct->description = $data['description'];
         $newProduct->colore = $data['colore'];
         $newProduct->brand = $data['brand'];
