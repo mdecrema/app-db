@@ -21,6 +21,8 @@ class CreateItemsTable extends Migration
             $table->string('size', 10);
             $table->string('barCode', 40);
             $table->boolean('available')->default(true);
+            $table->boolean('inCart')->default(false);
+            $table->bigInteger('inCartTime')->nullable();
             $table->boolean('sold')->default(false);
 
             $table->timestamps();
