@@ -92,7 +92,12 @@ class CartController extends Controller
         // Update item availabilty to false
         DB::table('items')
             ->where('id', $item->id)
-            ->update(['available' => false]);
+            ->update(
+                [
+                    'inCart' => true,
+                    'inCartTime' => intval(microtime(true) * 1000)
+                ]
+            );
     
         return redirect()->route('cart')->with('success_message', 'Prodotto aggiunto al carrello!');
     // } else {
@@ -151,7 +156,12 @@ class CartController extends Controller
         // Update item availabilty to false
         DB::table('items')
             ->where('id', $id)
-            ->update(['available' => true]);
+            ->update(
+                [
+                    'inCart' => false,
+                    'inCartTime' => null
+                ]
+            );
 
         return back()->with('success_message', 'Item has been removed succesfully');
     }

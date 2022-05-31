@@ -192,9 +192,27 @@ class ProductController extends Controller
      */
     public function show($id)
     {
+        $currentTime = intval(microtime(true) * 1000);
         $product = Product::find($id);
         $products = Product::all();
         $items =  Item::all()->where('product_id', $product->id);
+
+        // Check what items are in other people's cart
+        // Also check if carts session are expired or not, if yes i m gonna modify 'inCart' to false
+        foreach($items as $item) {
+            if ($item->inCart == true && (($currentTime - $item->inCartTime) > 3600000) ) {
+                DB::table('items')
+                    ->where('id', $item->id)
+                    ->update(
+                        [
+                            'inCart' => false,
+                            'inCartTime' => null
+                        ]
+                    );
+            }
+        }
+
+        $items = Item::all()->where('product_id', $product->id)->where('available', true)->where('inCart', false);
 
         return view('product-details', compact('product', 'products', 'items'));
     }
