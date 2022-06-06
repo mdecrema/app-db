@@ -89,10 +89,10 @@ The Laravel framework is open-sourced software licensed under the [MIT license](
 * Pensare di creare table->cliente con i dati del checkout e eventualmente verificare se la mail cliente coincide con una mail user già presente (avvisare utente)
 * 
 * ------
-* gestire il campo tipologia Taglia per i prodotti (0, 1, 2) - per adesso i valori sono di tipo 'string' e nell html le condizioni sono 't-shirt' per i vestiti e 'shoes' per le scarpe
-* view di checkout completato (da realizzare)
-* gestione degli ordini - admin (view, presa in carico, consegna avvenuta...)
-* mostrare gli ordini in ordine opposto alla lista restituita dalla query/db
+* gestire il campo tipologia Taglia per i prodotti (0, 1, 2) - per adesso i valori sono di tipo 'string' e nell html le condizioni sono 't-shirt' per i vestiti e 'shoes' per le scarpe [RISOLTO]
+* view di checkout-completed/acquisto completato (da realizzare)
+* gestione degli ordini - admin (view, presa in carico, consegna avvenuta...) (in progress)
+* mostrare gli ordini in ordine opposto alla lista restituita dalla query/db [RISOLTO]
 * 
 * quando scade la sessione, invece di mostrare pagina di errore, rimandare l'utente alla schermata di login
 *
