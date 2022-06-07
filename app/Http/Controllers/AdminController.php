@@ -71,9 +71,41 @@ class AdminController extends Controller
 
         $menuUtenti1 = new MenuLink();
         $menuUtenti1->name = 'Utenti registrati';
-        $menuUtenti1->link = '';
+        $menuUtenti1->link = 'dashboard/users/allUsers';
 
-        $utentiMenuList = array($menuUtenti1);
+        $menuUtenti2 = new MenuLink();
+        $menuUtenti2->name = 'Ospiti';
+        $menuUtenti2->link = 'dashboard/users/allUsers';
+
+        $menuUtenti3 = new MenuLink();
+        $menuUtenti3->name = 'Aggiungi nuovo';
+        $menuUtenti3->link = 'dashboard/users/allUsers';
+
+        $utentiMenuList = array($menuUtenti1, $menuUtenti2, $menuUtenti3);
+
+        $menuStatistiche1 = new MenuLink();
+        $menuStatistiche1->name = 'Navigazione';
+        $menuStatistiche1->link = '';
+
+        $menuStatistiche2 = new MenuLink();
+        $menuStatistiche2->name = ' Vendite';
+        $menuStatistiche2->link = '';
+
+        $menuStatistiche3 = new MenuLink();
+        $menuStatistiche3->name = 'Sezione noleggio';
+        $menuStatistiche3->link = '';
+
+        $statisticheMenuList = array($menuStatistiche1, $menuStatistiche2, $menuStatistiche3);
+
+        $menuPreferenze1 = new MenuLink();
+        $menuPreferenze1->name = 'Aspetto e funzionalità';
+        $menuPreferenze1->link = '';
+
+        $menuPreferenze2 = new MenuLink();
+        $menuPreferenze2->name = 'Impostazioni generali';
+        $menuPreferenze2->link = '';
+
+        $preferenzeMenuList = array($menuPreferenze1, $menuPreferenze2);
 
         $orders = Order::all();
         $newOrderNumber = 0;
@@ -84,7 +116,7 @@ class AdminController extends Controller
             }
         }
 
-        return view('admin.dashboard', compact('ordiniMenuList', 'magazzinoMenuList', 'noleggioMenuList', 'newOrderNumber'));
+        return view('admin.dashboard', compact('ordiniMenuList', 'magazzinoMenuList', 'noleggioMenuList', 'utentiMenuList', 'statisticheMenuList', 'preferenzeMenuList', 'newOrderNumber'));
     }
 
     public function allProducts()
@@ -344,11 +376,11 @@ class AdminController extends Controller
 
 
     /* USERS */
-    public function allUser()
+    public function allUsers()
     {
         $users = User::all();
 
-        return view('admin.user.allUser', compact('users'));
+        return view('admin.users.allUsers', compact('users'));
     }
 
     /* ORDERS */
