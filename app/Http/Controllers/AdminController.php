@@ -69,6 +69,12 @@ class AdminController extends Controller
 
         $noleggioMenuList = array($menuNoleggio1, $menuOrdini2, $menuOrdini3);
 
+        $menuUtenti1 = new MenuLink();
+        $menuUtenti1->name = 'Utenti registrati';
+        $menuUtenti1->link = '';
+
+        $utentiMenuList = array($menuUtenti1);
+
         $orders = Order::all();
         $newOrderNumber = 0;
 
