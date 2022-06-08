@@ -7,7 +7,16 @@
 @section('content')
 <div class="container">
     <div class="row">
-        <h2>AGGIUNGI GIACENZA</h2>
+        <div style="margin-bottom: 20px">
+            <a href="/admin/dashboard">
+                <div class="back_btn" style="display: inline-block;">
+                    <i class="fa fad fa-arrow-left"></i>
+                </div>
+            </a>
+            <div style="display: inline-block; margin-left: 10px">
+                <h4> Ricarica giacenza </h4>
+            </div>
+        </div>
         
         <form action="{{ route('admin.items.storeItems') }}" method="post" enctype="multipart/form-data">
             @csrf

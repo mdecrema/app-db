@@ -7,9 +7,17 @@
 @section('content')
 <div class="container" style="font-family: 'Roboto', sans-serif">
   <div class="row">
-      <div class="col-12" style="margin: 15px 0;">
-          <h2>Elenco degli ordini</h2>
+    <div style="margin-bottom: 20px">
+      <a href="/admin/dashboard">
+          <div class="back_btn" style="display: inline-block;">
+              <i class="fa fad fa-arrow-left"></i>
+          </div>
+      </a>
+      <div style="display: inline-block; margin-left: 10px">
+          <h4> Elenco degli ordini </h4>
       </div>
+    </div>
+
       <div class="col-xl-3 col-lg-3 col-md-6 col-sm-12 col-xs-12">
         <div class="form-group">
           <label>Filtra per:</label>

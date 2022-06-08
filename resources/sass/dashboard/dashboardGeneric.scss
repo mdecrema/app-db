@@ -1,3 +1,22 @@
 .lightgrey_bg_dashboard {
     background-color: rgb(242, 235, 235);
 }
+
+.back_btn {
+    width: 30px;
+    height: 30px;
+    background-color: #183153;
+    border-radius: 100%;
+    text-align: center;
+    line-height: 29px;
+    color: #fff;
+  }
+
+  .fl_left {
+      float: left;
+  }
+
+  .role_menu_btn.active {
+      background-color: #183153;
+      color: #fff;
+  }

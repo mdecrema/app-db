@@ -13,8 +13,16 @@ Admin Products
             @method('DELETE')
             <button type="submit" disabled class="btn btn-holder btn-secondary">Cancella Tutti i Prodotti <i class="fas fa-exclamation-circle"></i></button>
             </form> --}}
-            
-            <h2> Registro prodotti <a href="" style="font-size: 15px; margin-left: 10px" data-toggle="modal" data-target="#exampleModalCenter">Scarica file <i class="fa fa-download"></i></a> </h2>
+            <div style="margin-bottom: 20px">
+                <a href="/admin/dashboard">
+                    <div class="back_btn" style="display: inline-block;">
+                        <i class="fa fad fa-arrow-left"></i>
+                    </div>
+                </a>
+                <div style="display: inline-block; margin-left: 10px">
+                    <h4> Registro prodotti <a href="" style="font-size: 15px; margin-left: 10px" data-toggle="modal" data-target="#exampleModalCenter">Scarica file <i class="fa fa-download"></i></a> </h4>
+                </div>
+            </div>
 
             <!-- Modal Download db products -->
             <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">

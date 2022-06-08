@@ -8,23 +8,33 @@
 
 <div class="container">
     <div class="row">
+        <div style="margin-bottom: 20px">
+            <a href="/admin/dashboard">
+                <div class="back_btn" style="display: inline-block;">
+                    <i class="fa fad fa-arrow-left"></i>
+                </div>
+            </a>
+            <div style="display: inline-block; margin-left: 10px">
+                <h4> Aggiungi articoli </h4>
+            </div>
+        </div>
         <!-- left box -->
-        <div class="col-xl-6 col-lg-6 col-md-6 col-xs-12 col-sm-12" style="border: 1px solid #grey; border-radius: 5px">
-            <h2>IMPORTA CATALOGO</h2>
+        <div class="col-12" style="border: 1px solid #183153; background-color: #cdd9e9; margin-bottom: 20px; padding: 10px; border-radius: 5px">
+            <h5 style="color: #183153">IMPORTA CATALOGO</h5>
             <form action="{{ route('admin.products.store.csv') }}" method="post" enctype="multipart/form-data">
                 @csrf
                 @method("POST")
                 <div class="form-group">
-                    <label for="title">Carica file (.csv)</label>
-                    <input style="width:auto" type="file" class="form-control" id="" name="products_file" accept=".csv">
+                    <label for="title" style="color: #183153">Carica file (.csv)</label>
+                    <input style="width: 100%" type="file" class="form-control" id="" name="products_file" accept=".csv">
                 </div>
-                <button type="submit" class="btn btn-primary">Importa</button>
+                <button type="submit" class="btn btn-primary" style="float: right">Importa</button>
             </form>
         </div>
 
         <!-- right box -->
-        <div class="col-xl-6 col-lg-6 col-md-6 col-xs-12 col-sm-12" style="border: 1px solid #grey; border-radius: 5px">
-            <h2>CREA UN NUOVO PRODOTTO</h2>
+        <div class="col-12" style="border: 1px solid #grey; margin: 20px 0; padding: 10px; border-radius: 5px">
+            <h5>CREA UN NUOVO PRODOTTO</h5>
             <form action="{{ route('admin.products.store') }}" method="post" enctype="multipart/form-data">
                 @csrf
                 @method("POST")
@@ -118,7 +128,7 @@
                     <input type="text" class="form-control" id="appView" name="appView" placeholder="where?">
                 </div>
     
-                <button type="submit" class="btn btn-primary">Aggiungi</button>
+                <button type="submit" class="btn btn-primary" style="float: right">Aggiungi</button>
             </form>
     
             @if ($errors->any())
