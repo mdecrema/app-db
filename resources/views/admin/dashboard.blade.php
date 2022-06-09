@@ -8,7 +8,7 @@
 <div class="container">
     <div class="row" style="font-family: 'Roboto', sans-serif">
         <div class="col-lg-12" style="margin-bottom: 30px; text-align: center">
-            <h2>Admin Dashboard</h2>
+            <h2>Admin Dashboard</h2><a href="dashboard/phpmailer">prova mail</a>
             <h3></h3>
             @if (session()->has('success_message'))
             <div class="alert alert-success">

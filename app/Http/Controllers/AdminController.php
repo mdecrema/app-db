@@ -424,4 +424,13 @@ class AdminController extends Controller
         return view('admin.orders.orderDetails', compact('order', 'productsInOrder', 'itemsInOrder'));
     }
 
+    // Prova php mailer
+    public function phpMailer() {
+        $mail_headers = "From: " .  'vlkn' . " <" .  'vlkn@info.it' . ">\r\n";
+        $mail_headers .= "Reply-To: " .  'vlkn@info.it' . "\r\n";
+        $mail_headers .= "X-Mailer: PHP/" . phpversion();
+
+        mail('marcodecrema@libero.it', 'TEST PHP MAILER', 'PROVA PROVA PROVA', $mail_headers);
+    }
+
 }
