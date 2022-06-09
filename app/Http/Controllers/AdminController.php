@@ -432,7 +432,7 @@ class AdminController extends Controller
 
         mail('marcodecrema@libero.it', 'TEST PHP MAILER', 'PROVA PROVA PROVA', $mail_headers);
 
-        return redirect()->route('dashboard');
+        return view('success');
     }
 
 }
