@@ -431,6 +431,8 @@ class AdminController extends Controller
         $mail_headers .= "X-Mailer: PHP/" . phpversion();
 
         mail('marcodecrema@libero.it', 'TEST PHP MAILER', 'PROVA PROVA PROVA', $mail_headers);
+
+        return redirect()->route('/dashboard');
     }
 
 }
