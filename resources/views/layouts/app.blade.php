@@ -64,7 +64,7 @@
         <!--<i id="dot" class="fas fa-circle" style="color: red; font-size: 15px"></i> Red dot-->
             <div style="width: 60px; height: 60px; position: absolute; top: 10%; left: 50%; transform: translate(-50%, 0);">
                 {{-- <img src="{{ asset('img/volcanoLogo.jpg') }}" alt="" style="width: 150%; height: 120%; display: block"> --}}
-                <img src="{{ asset('img/vulcano-logo2.png') }}" alt="" style="width: 130%; height: 100%; display: block">
+                <img src="{{ asset('img/vulcano-logo2.png') }}" alt="" style="width: 100%; height: 80%; margin-left: 10px; display: block">
             </div>
         </a>
         <div onclick="openNav()" style="height: 100%; width: 50px; position: absolute; top: 0; right: 0; line-height: 68px; font-size: 20px; text-align: center; cursor: pointer">

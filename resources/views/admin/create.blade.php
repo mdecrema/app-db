@@ -19,8 +19,8 @@
             </div>
         </div>
         <!-- left box -->
-        <div class="col-12" style="border: 1px solid #183153; background-color: #cdd9e9; margin-bottom: 20px; padding: 10px; border-radius: 5px">
-            <h5 style="color: #183153">IMPORTA CATALOGO</h5>
+        <div class="col-12 border_blue" style="background-color: #cdd9e9; margin-bottom: 20px; padding: 10px; border-radius: 5px">
+            <h5 style="color: #183153; font-weight: bold">IMPORTA CATALOGO</h5>
             <form action="{{ route('admin.products.store.csv') }}" method="post" enctype="multipart/form-data">
                 @csrf
                 @method("POST")
@@ -34,7 +34,7 @@
 
         <!-- right box -->
         <div class="col-12" style="border: 1px solid #grey; margin: 20px 0; padding: 10px; border-radius: 5px">
-            <h5>CREA UN NUOVO PRODOTTO</h5>
+            <h5 style="color: #183153; font-weight: bold">CREA UN NUOVO PRODOTTO</h5>
             <form action="{{ route('admin.products.store') }}" method="post" enctype="multipart/form-data">
                 @csrf
                 @method("POST")

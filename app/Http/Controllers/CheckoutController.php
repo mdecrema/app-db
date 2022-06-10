@@ -3,11 +3,13 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Cartalyst\Stripe\Laravel\StripeServiceProvider;
 use Gloudemans\Shoppingcart\Facades\Cart;
 use Illuminate\Support\Facades\DB;
 use App\Order;
 use App\Product;
+use App\Guest;
 use Stripe;
 use Session;
 use App\Mail\MailCheckoutCompleted;
@@ -182,6 +184,18 @@ class CheckoutController extends Controller
             DB::table('items')
                 ->where('id', $item)
                 ->update(['sold' => true]);
+        }
+
+        // Save customer as guest if not authenticated
+        if (!Auth::check()) 
+        {
+            $guest = new Guest();
+
+            $guest->firstName = $data['firstname'];
+            $guest->lastName = $data['lastname'];
+            $guest->email = $data['email'];
+
+            $guest->save();
         }
 
         Cart::destroy();

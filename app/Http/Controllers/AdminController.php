@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Gate;
 use App\User;
+use App\Guest;
 use App\Product;
 use App\Item;
 use App\Order;
@@ -75,7 +76,7 @@ class AdminController extends Controller
 
         $menuUtenti2 = new MenuLink();
         $menuUtenti2->name = 'Ospiti';
-        $menuUtenti2->link = 'dashboard/users/allUsers';
+        $menuUtenti2->link = 'dashboard/users/guests';
 
         $menuUtenti3 = new MenuLink();
         $menuUtenti3->name = 'Aggiungi nuovo';
@@ -381,6 +382,13 @@ class AdminController extends Controller
         $users = User::all();
 
         return view('admin.users.allUsers', compact('users'));
+    }
+
+    public function guests()
+    {
+        $guests = Guest::all();
+
+        return view('admin.users.guests', compact('guests'));
     }
 
     /* ORDERS */

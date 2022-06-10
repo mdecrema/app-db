@@ -108,9 +108,10 @@ Route::prefix('admin')->name('admin.')->middleware('can:admin')->group(function 
     /**
      * USERS
      */
-    // All User
+    // All Users
     Route::get('dashboard/users/allUsers', 'AdminController@allUsers')->name('users.allUsers');
-
+    // Guests
+    Route::get('dashboard/users/guests', 'AdminController@guests')->name('users.guests');
     /**
      * ORDERS
      */
