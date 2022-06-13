@@ -26,14 +26,26 @@ Admin Products
             <div class="p-2 pt-3">
                 <h6>Elenco articoli a magazzino</h6>
             </div>
-            <div class="w-100 pt-2" style="height: calc(100% - 100px); overflow: scroll">
+            <div class="w-100 pt-2" style="height: calc(100% - 100px); overflow-y: scroll; overflow-x: hidden">
                 @foreach($products as $product)
-                <div class="pl-4 p-2">{{ $product->nome }}</div>
+                <div class="pl-4 p-2 text-truncate">{{ $product->nome }}</div>
                 @endforeach
             </div>
         </div>
         <div class="col-9" style="height: 80vh; border: 2px solid #183153; background-color: lightgrey">
-
+            <div class="col-12 p-2" style="height: 20%;">
+                <h5>Filtri di ricerca</h5>
+                @foreach($filters as $filter)
+                <div class="col-2" style="display: inline-block">
+                    <span>{{ $filter->name }}</span>
+                    <select name="" id="" class="w-100">
+                        @foreach($filter->options as $option)
+                            <option value="{{ $option }}">{{ $option }}</option>
+                        @endforeach
+                    </select>
+                </div>
+                @endforeach
+            </div>
             <div class="col-12 bg_extradark" style="height: 80%; position: absolute; left: 0; bottom: 0; border-left: 2px solid #fff">
     
             </div>

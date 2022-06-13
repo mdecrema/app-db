@@ -11,6 +11,7 @@ use App\Item;
 use App\Order;
 use App\Ski;
 use App\Rent;
+use App\Filter;
 
 class MenuLink
 {
@@ -124,7 +125,35 @@ class AdminController extends Controller
     {
         $products = Product::all();
 
-        return view('admin.products', compact('products'));
+        $filters = [];
+
+        $filter_categoria = new Filter();
+        $filter_genere = new Filter();
+        
+        foreach($products as $product) {
+            $options_categoria = [];
+            $options_genere = [];
+            array_push($options_categoria, 'qualsiasi');
+            array_push($options_genere, 'qualsiasi');
+            array_push($options_categoria, $product->categoria);
+            array_push($options_genere, $product->genere);
+            
+        }
+        $options_categoria = array_unique($options_categoria);
+        $options_genere = array_unique($options_genere);
+   
+        $filter_categoria->name = 'Categoria';
+        $filter_categoria->options = $options_categoria;
+
+        $filter_genere->name = 'Genere';
+        $filter_genere->options = $options_genere;
+
+        array_push($filters, $filter_categoria);
+        array_push($filters, $filter_genere);
+
+        // dd($filters);
+
+        return view('admin.products', compact('products', 'filters'));
     }
 
     /**
@@ -432,7 +461,7 @@ class AdminController extends Controller
         return view('admin.orders.orderDetails', compact('order', 'productsInOrder', 'itemsInOrder'));
     }
 
-    // Prova php mailer
+    // Prova php mailer // Non funziona senza web Server 
     public function phpMailer() {
         $mail_headers = "From: " .  'vlkn' . " <" .  'vlkn@info.it' . ">\r\n";
         $mail_headers .= "Reply-To: " .  'vlkn@info.it' . "\r\n";
