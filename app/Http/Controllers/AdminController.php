@@ -129,18 +129,18 @@ class AdminController extends Controller
 
         $filter_categoria = new Filter();
         $filter_genere = new Filter();
+        $filter_brand = new Filter();
         
         foreach($products as $product) {
-            $options_categoria = [];
-            $options_genere = [];
-            array_push($options_categoria, 'qualsiasi');
-            array_push($options_genere, 'qualsiasi');
+            $options_categoria = []; $options_genere = []; $options_brand = [];
+           
             array_push($options_categoria, $product->categoria);
             array_push($options_genere, $product->genere);
-            
+            array_push($options_brand, $product->brand);
         }
         $options_categoria = array_unique($options_categoria);
         $options_genere = array_unique($options_genere);
+        $options_brand = array_unique($options_brand);
    
         $filter_categoria->name = 'Categoria';
         $filter_categoria->options = $options_categoria;
@@ -148,12 +148,31 @@ class AdminController extends Controller
         $filter_genere->name = 'Genere';
         $filter_genere->options = $options_genere;
 
+        $filter_brand->name = 'Brand';
+        $filter_brand->options = $options_brand;
+
         array_push($filters, $filter_categoria);
         array_push($filters, $filter_genere);
+        array_push($filters, $filter_brand);
 
         // dd($filters);
 
         return view('admin.products', compact('products', 'filters'));
+    }
+
+    /**
+     * Get Product details.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function getProductDetails($id)
+    {
+        $product = Product::find($id);
+
+        return response()->json([
+            'status'=>200,
+            'data'=>$product
+        ]);
     }
 
     /**

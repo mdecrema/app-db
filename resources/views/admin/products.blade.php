@@ -5,7 +5,7 @@ Admin Products
 @endsection
 
 @section('content')
-<div class="container">
+<div class="container" style="font-family: 'Roboto', sans-serif">
     <div class="row">
         <div style="margin-bottom: 20px">
             <a href="/admin/dashboard">
@@ -20,37 +20,136 @@ Admin Products
     </div>
     <div class="row">
         <div class="col-3 bg_darkblue p-3" style="height: 80vh;">
-            <div class="w-100" style="height: 50px;">
+            <h6>Cerca per nome</h6>
+            <div class="w-100" style="height: 50px; margin">
                 <input type="text" class="w-100 p-2" placeholder="Ricerca articolo per nome" style="height: 40px;">
             </div>
             <div class="p-2 pt-3">
                 <h6>Elenco articoli a magazzino</h6>
             </div>
-            <div class="w-100 pt-2" style="height: calc(100% - 100px); overflow-y: scroll; overflow-x: hidden">
+            <div class="w-100 pt-2 pb-3 products_list" style="height: calc(100% - 100px); cursor: pointer; overflow-y: scroll; overflow-x: hidden">
                 @foreach($products as $product)
-                <div class="pl-4 p-2 text-truncate">{{ $product->nome }}</div>
+                <div id="{{ $product->id }}" onclick="selectProduct({{ $product->id }})" class="pl-4 p-2 text-truncate">{{ $product->nome }}</div>
                 @endforeach
             </div>
         </div>
         <div class="col-9" style="height: 80vh; border: 2px solid #183153; background-color: lightgrey">
-            <div class="col-12 p-2" style="height: 20%;">
-                <h5>Filtri di ricerca</h5>
+            <div class="col-12 p-3" style="height: 15%;">
+                <h6>Filtri di ricerca</h6>
                 @foreach($filters as $filter)
                 <div class="col-2" style="display: inline-block">
                     <span>{{ $filter->name }}</span>
                     <select name="" id="" class="w-100">
                         @foreach($filter->options as $option)
+                            <option value="0">qualsiasi</option>
                             <option value="{{ $option }}">{{ $option }}</option>
                         @endforeach
                     </select>
                 </div>
                 @endforeach
+                <div class="col-2" style="display: inline-block">
+                    <span>Prezzo</span>
+                    <select name="" id="" class="w-100">
+                        <option value="0">qualsiasi</option>
+                        <option value="1">0 - 50</option>
+                        <option value="1">50 - 100</option>
+                        <option value="1">150 - 200</option>
+                        <option value="1">250 - 300</option>
+                        <option value="1">350 - 400</option>
+                        <option value="1">450 - 500</option>
+                        <option value="1">500+</option>
+                    </select>
+                </div>
             </div>
-            <div class="col-12 bg_extradark" style="height: 80%; position: absolute; left: 0; bottom: 0; border-left: 2px solid #fff">
-    
+            <div class="col-12 bg_extradark" style="height: 85%; position: absolute; left: 0; bottom: 0; border-left: 2px solid #fff">
+                <div class="col-12 p-3 selected_product_details" style="height: 100%; color: #fff">
+                    <h3 id="product_name" class="text-uppercase"></h3>
+                    <div class="col-6">
+                        <div class="mt-3 mb-3">
+                            <h6 id="label_description"></h6>
+                            <p id="product_description" class="p-2 d-none" style="background-color: #fff; color: #000"></p>
+                        </div>
+                        <div class="mt-3 mb-3">
+                            <h6 id="label_category"></h6>
+                            <p id="product_category" class="p-2 d-none" style="background-color: #fff; color: #000"></p>
+                        </div>
+                        <div class="mt-3 mb-3">
+                            <h6 id="label_brand"></h6>
+                            <p id="product_brand" class="p-2 d-none" style="background-color: #fff; color: #000"></p>
+                        </div>
+                        <div class="mt-3 mb-3">
+                            <h6 id="label_color"></h6>
+                            <p id="product_color" class="p-2 d-none" style="background-color: #fff; color: #000"></p>
+                        </div>
+                        <div class="mt-3 mb-3">
+                            <h6 id="label_amount"></h6>
+                            <p id="product_amount" class="p-2 d-none" style="background-color: #fff; color: #000"></p>
+                        </div>
+                    </div>
+                    <div class="col-6">
+                        <div class="mt-3 mb-3">
+                            <h6 id="label_availability"></h6>
+                            <p id="product_availability" class="p-2 d-none" style="background-color: #fff; color: #000"></p>
+                        </div>
+                        {{-- <div class="mt-3 mb-3">
+                            <h6 id="label_appView"></h6>
+                            <p id="product_appView" class="p-2" style="background-color: #fff; color: #000"></p>
+                        </div> --}}
+                        {{-- <div class="mt-3 mb-3">
+                            <h6 id="label_brand"></h6>
+                            <p id="product_brand" class="p-2" style="background-color: #fff; color: #000"></p>
+                        </div> --}}
+                        
+                    </div>
+                </div>
             </div>
         </div>
     </div>
 </div>
+
+<script>
+    function selectProduct(id) {
+        console.log(id);
+        var product = {};
+        $(".products_list > div").css("background-color", "transparent");
+        let divSelected = '#'+id;
+        $("#"+id).css("background-color", "#0061EB");
+
+        // $.ajaxSetup({
+        //     headers: {
+        //         'X-CSRF-TOKEN': $('meta[name="csrf-token"').attr('content')
+        //     }
+        // });
+
+        $.ajax({
+            type: "GET",
+            // headers: {
+            //     'X-CSRF-TOKEN': $('meta[name="csrf-token"').attr('content')
+            // }
+            url: "products/details/"+id,
+            success: function(res){
+                console.log(res);
+                product = res.data;
+
+                $('#product_name').html(product.nome);
+                $('#label_description').html('Descrizione');
+                $('#product_description').html(product.description);
+                $('#label_category').html('Categoria');
+                $('#product_category').html(product.categoria);
+                $('#label_brand').html('Brand');
+                $('#product_brand').html(product.brand);
+                $('#label_color').html('Colore');
+                $('#product_color').html(product.colore);
+                $('#label_amount').html('Prezzo');
+                $('#product_amount').html(product.amount);
+                $('#label_availability').html('Disponibilità');
+                $('#product_availability').html(product.availability);
+                // $('#label_appView').html('Mostra');
+                // $('#product_appView').html(product.amount);
+                $('.selected_product_details p').removeClass('d-none');
+            }
+        })
+    }
+</script>
 
 @endsection

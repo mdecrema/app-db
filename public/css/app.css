@@ -11729,6 +11729,10 @@ footer::after {
   background-color: #f2ebeb;
 }
 
+.bg_blue {
+  background-color: #0061EB;
+}
+
 .bg_extradark {
   background-color: #0a182a;
 }

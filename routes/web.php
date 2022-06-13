@@ -61,6 +61,8 @@ Route::prefix('admin')->name('admin.')->middleware('can:admin')->group(function 
      */
     // Products -> all 
     Route::get('/dashboard/products', 'AdminController@allProducts')->name('products');
+    // Product Details
+    Route::get('/dashboard/products/details/{id}', 'AdminController@getProductDetails')->name('private.product.details');
     // Product Create
     Route::get('/dashboard/products/create', 'ProductController@create')->name('products.create');
     // Product Store
