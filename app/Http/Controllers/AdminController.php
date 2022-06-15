@@ -137,15 +137,16 @@ class AdminController extends Controller
         $filter_genere = new Filter();
         $filter_brand = new Filter();
         $filter_color = new Filter();
+
+        $options_categoria = []; $options_genere = []; $options_brand = []; $options_color = [];
         
-        foreach($products as $product) {
-            $options_categoria = []; $options_genere = []; $options_brand = []; $options_color = [];
-           
+        foreach($products as $product) {    
             array_push($options_categoria, $product->categoria);
             array_push($options_genere, $product->genere);
             array_push($options_brand, $product->brand);
             array_push($options_color, $product->colore);
         }
+
         $options_categoria = array_unique($options_categoria);
         $options_genere = array_unique($options_genere);
         $options_brand = array_unique($options_brand);
@@ -168,8 +169,6 @@ class AdminController extends Controller
         array_push($filters, $filter_brand);
         array_push($filters, $filter_color);
 
-        // dd($filters);
-
         return view('admin.products', compact('filters'));
     }
 
@@ -180,25 +179,40 @@ class AdminController extends Controller
      */
     public function getAllProducts(Request $request)
     {
-        // $filters = $request->all();
-        // // return response()->json([
-        // //     'status'=>200,
-        // //     //'data'=>$products,
-        // //     'filters'=>$request->all()
-        // // ]);
-
-        // if($filters->filters == true) {
+        $filters = $request->all();
         
-        //     $products = Product::all()->where('categoria', 'shoes');
+        $filterNewArr = [];
+        $query = 'select * from products where ';
+        
+        if($filters['filters'] === 'true') {
 
-        //     // strtolower($filter->name)
-        //     return response()->json([
-        //         'status'=>200,
-        //         'data'=>$products,
-        //         'filters'=>$request->all()
-        //     ]);
+            foreach($filters['filterObj'] as $filter) {
+               
+                if($filter['option'] !== '0') {
+                    $obj = new Filter();
 
-        // } else {
+                    $obj->name = strtolower($filter['name']);
+                    $obj->options = $filter['option'];
+
+                    array_push($filterNewArr, $obj);
+                    if (count($filterNewArr) === 1) {
+                        $query .= $filter['name'].' = "'.$filter['option'].'"';
+                    } else {
+                        $query .= ' AND '.$filter['name'].' = "'.$filter['option'].'"';
+                    }
+                }
+            }
+            
+            $products = DB::select($query);
+
+            return response()->json([
+                'status'=>200,
+                'data'=>$products,
+                'filters'=>$request->all(),
+                'filtersName'=>$query
+            ]);
+
+        } else {
 
             $products = Product::all();
             return response()->json([
@@ -207,7 +221,7 @@ class AdminController extends Controller
                 'filters'=>$request->all()
             ]);
 
-        // }
+        }
 
     }
 

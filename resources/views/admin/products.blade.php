@@ -42,14 +42,14 @@ Admin Products
                 <div class="mr-3" style="max-width: 120px; display: inline-block">
                     <span style="font-size: 12px">{{ $filter->name }}</span>
                     <select onchange="setFilter('{{ $filter->name }}')" name="" id="{{ $filter->name }}" class="w-100 form-control text-truncate">
+                        <option value="0">qualsiasi</option>
                         @foreach($filter->options as $option)
-                            <option value="0">qualsiasi</option>
-                            <option value="{{ $option }}" class="text-truncate">{{ $option }}</option>
+                        <option value="{{ $option }}" class="text-truncate">{{ $option }}</option>
                         @endforeach
                     </select>
                 </div>
                 @endforeach
-                <div style="max-width: 120px; display: inline-block">
+                {{-- <div style="max-width: 120px; display: inline-block">
                     <span style="font-size: 12px">Prezzo</span>
                     <select name="" id="" class="w-100 form-control text-truncate">
                         <option value="0" class="text-truncate">qualsiasi</option>
@@ -61,9 +61,14 @@ Admin Products
                         <option value="6" class="text-truncate">450 - 500</option>
                         <option value="7" class="text-truncate">500+</option>
                     </select>
-                </div>
+                </div> --}}
             </div>
             <div class="col-12 bg_extradark p-3" style="height: 80%; position: absolute; left: 0; bottom: 0; border-left: 2px solid #fff; overflow-y: scroll">
+                {{-- Spinner Loader --}}
+                <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%)">
+                    <i id="spinner" class="fa fa-4x fa-spinner fa-spin d-none" style="color: #183153; z-index: 10"></i>
+                </div>
+                {{-- /Spinner Loader --}}
                 <div class="col-12 selected_product_details" style="height: 100%; color: #fff">
                     <div class="col-12">
                         <div class="mt-3 mb-3" style="position: relative">
@@ -100,23 +105,23 @@ Admin Products
                         </div>
                     </div>
                     <div class="col-6" style="float: left; text-align: right">
-                        <div class="mt-3 mb-3">
+                        {{-- <div class="mt-3 mb-3">
                             <h6>Foto</h6>
+                        </div> --}}
+                        <div class="mt-3 mb-3">
+                            <img id="product_photo1" class="d-none" src="" alt="" style="width: 200px; height: 200px">
                         </div>
                         <div class="mt-3 mb-3">
-                            <img id="product_photo1" class="" src="" alt="" style="width: 200px; height: 200px">
+                            <img id="product_photo2" class="d-none" src="" alt="" style="width: 200px; height: 200px">
                         </div>
                         <div class="mt-3 mb-3">
-                            <img id="product_photo2" class="" src="" alt="" style="width: 200px; height: 200px">
+                            <img id="product_photo3" class="d-none" src="" alt="" style="width: 200px; height: 200px">
                         </div>
                         <div class="mt-3 mb-3">
-                            <img id="product_photo3" class="" src="" alt="" style="width: 200px; height: 200px">
+                            <img id="product_photo4" class="d-none" src="" alt="" style="width: 200px; height: 200px">
                         </div>
                         <div class="mt-3 mb-3">
-                            <img id="product_photo4" class="" src="" alt="" style="width: 200px; height: 200px">
-                        </div>
-                        <div class="mt-3 mb-3">
-                            <img id="product_photo5" class="" src="" alt="" style="width: 200px; height: 200px">
+                            <img id="product_photo5" class="d-none" src="" alt="" style="width: 200px; height: 200px">
                         </div>
                     </div>
                 </div>
@@ -128,7 +133,7 @@ Admin Products
 <script>
     $(document).ready(() => {
         getAllProducts(null, false);
-    })
+    });
 
     var filters = [
         {
@@ -150,8 +155,8 @@ Admin Products
     ];
 
     function getAllProducts(data, isFiltered) {
-        console.log('data:');
-        //console.log(f);
+        $("#spinner").removeClass('d-none');
+
         $.ajax({
             type: "POST",
             headers: {
@@ -164,18 +169,31 @@ Admin Products
             },
             dataType: "json",
             success: function(res){
-                console.log(res);
+                $("#spinner").addClass('d-none');
+
                 $(".products_list > div").remove();
                 res.data.forEach(product => {
                     let div = '<div id="'+ product.id +'" onclick="selectProduct('+ product.id +')" class="pl-4 p-2 text-truncate">'+ product.nome +'</div>';
                     $(".products_list").append(div)
                 });
+
+                selectProduct(res.data[0].id)
+                
             }
         })
     }
 
     function setFilter(name) {
         var selectVal = $('#'+name).val();
+        if (selectVal !== '0') {
+            $('#'+name).css("background-color", "#0061EB"); // #00D7D2
+            $('#'+name).css("color", "#fff");
+            // $('#'+name).css("font-weight", "bold");
+        } else {
+            $('#'+name).css("background-color", "#fff");
+            $('#'+name).css("color", "#000");
+            // $('#'+name).css("font-weight", "normal");
+        }
         for (let i = 0; i < filters.length; i++) {
             if (filters[i].name === name) {
                 console.log(filters[i].name);
@@ -189,7 +207,8 @@ Admin Products
     }
 
     function selectProduct(id) {
-        console.log(id);
+        $("#spinner").removeClass('d-none');
+
         var product = {};
         $(".products_list > div").css("background-color", "transparent");
         let divSelected = '#'+id;
@@ -208,7 +227,8 @@ Admin Products
             // }
             url: "products/details/"+id,
             success: function(res){
-                console.log(res);
+                $("#spinner").addClass('d-none');
+
                 product = res.data;
 
                 $('#product_name').html(product.nome);
@@ -233,6 +253,7 @@ Admin Products
                 // $('#label_appView').html('Mostra');
                 // $('#product_appView').html(product.amount);
                 $('.selected_product_details p').removeClass('d-none');
+                $('.selected_product_details img').removeClass('d-none');
                 $('#edit_btn').removeClass('d-none');
             }
         })
