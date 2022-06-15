@@ -59,10 +59,12 @@ Route::prefix('admin')->name('admin.')->middleware('can:admin')->group(function 
     /**
      * PRODUCTS
      */
-    // Products -> all 
-    Route::get('/dashboard/products', 'AdminController@allProducts')->name('products');
+    // Products View 
+    Route::get('/dashboard/products', 'AdminController@allProductsAdminView')->name('products');
+    // Product All
+    Route::post('/dashboard/products/all', 'AdminController@getAllProducts')->name('private.products.all');
     // Product Details
-    Route::get('/dashboard/products/details/{id}', 'AdminController@getProductDetails')->name('private.product.details');
+    Route::get('/dashboard/products/details/{id}', 'AdminController@getProductDetailsById')->name('private.product.details');
     // Product Create
     Route::get('/dashboard/products/create', 'ProductController@create')->name('products.create');
     // Product Store

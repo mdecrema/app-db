@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Gate;
+use Illuminate\Support\Facades\DB;
 use App\User;
 use App\Guest;
 use App\Product;
@@ -121,7 +122,12 @@ class AdminController extends Controller
         return view('admin.dashboard', compact('ordiniMenuList', 'magazzinoMenuList', 'noleggioMenuList', 'utentiMenuList', 'statisticheMenuList', 'preferenzeMenuList', 'newOrderNumber'));
     }
 
-    public function allProducts()
+    /**
+     * Return Admin Product View w/ filters.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function allProductsAdminView()
     {
         $products = Product::all();
 
@@ -130,17 +136,20 @@ class AdminController extends Controller
         $filter_categoria = new Filter();
         $filter_genere = new Filter();
         $filter_brand = new Filter();
+        $filter_color = new Filter();
         
         foreach($products as $product) {
-            $options_categoria = []; $options_genere = []; $options_brand = [];
+            $options_categoria = []; $options_genere = []; $options_brand = []; $options_color = [];
            
             array_push($options_categoria, $product->categoria);
             array_push($options_genere, $product->genere);
             array_push($options_brand, $product->brand);
+            array_push($options_color, $product->colore);
         }
         $options_categoria = array_unique($options_categoria);
         $options_genere = array_unique($options_genere);
         $options_brand = array_unique($options_brand);
+        $options_color = array_unique($options_color);
    
         $filter_categoria->name = 'Categoria';
         $filter_categoria->options = $options_categoria;
@@ -151,13 +160,55 @@ class AdminController extends Controller
         $filter_brand->name = 'Brand';
         $filter_brand->options = $options_brand;
 
+        $filter_color->name = 'Colore';
+        $filter_color->options = $options_color;
+
         array_push($filters, $filter_categoria);
         array_push($filters, $filter_genere);
         array_push($filters, $filter_brand);
+        array_push($filters, $filter_color);
 
         // dd($filters);
 
-        return view('admin.products', compact('products', 'filters'));
+        return view('admin.products', compact('filters'));
+    }
+
+    /**
+     * Get All Product.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function getAllProducts(Request $request)
+    {
+        // $filters = $request->all();
+        // // return response()->json([
+        // //     'status'=>200,
+        // //     //'data'=>$products,
+        // //     'filters'=>$request->all()
+        // // ]);
+
+        // if($filters->filters == true) {
+        
+        //     $products = Product::all()->where('categoria', 'shoes');
+
+        //     // strtolower($filter->name)
+        //     return response()->json([
+        //         'status'=>200,
+        //         'data'=>$products,
+        //         'filters'=>$request->all()
+        //     ]);
+
+        // } else {
+
+            $products = Product::all();
+            return response()->json([
+                'status'=>200,
+                'data'=>$products,
+                'filters'=>$request->all()
+            ]);
+
+        // }
+
     }
 
     /**
@@ -165,7 +216,7 @@ class AdminController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function getProductDetails($id)
+    public function getProductDetailsById($id)
     {
         $product = Product::find($id);
 

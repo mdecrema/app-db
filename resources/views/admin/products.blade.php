@@ -29,9 +29,9 @@ Admin Products
                 <h6>Elenco articoli a magazzino</h6>
             </div>
             <div class="w-100 pt-2 pb-3 products_list" style="height: calc(100% - 100px); cursor: pointer; overflow-y: scroll; overflow-x: hidden">
-                @foreach($products as $product)
+                {{-- @foreach($products as $product)
                 <div id="{{ $product->id }}" onclick="selectProduct({{ $product->id }})" class="pl-4 p-2 text-truncate">{{ $product->nome }}</div>
-                @endforeach
+                @endforeach --}}
             </div>
         </div>
         {{-- Column Right --}}
@@ -41,7 +41,7 @@ Admin Products
                 @foreach($filters as $filter)
                 <div class="mr-3" style="max-width: 120px; display: inline-block">
                     <span style="font-size: 12px">{{ $filter->name }}</span>
-                    <select name="" id="" class="w-100 form-control text-truncate">
+                    <select onchange="setFilter('{{ $filter->name }}')" name="" id="{{ $filter->name }}" class="w-100 form-control text-truncate">
                         @foreach($filter->options as $option)
                             <option value="0">qualsiasi</option>
                             <option value="{{ $option }}" class="text-truncate">{{ $option }}</option>
@@ -65,8 +65,15 @@ Admin Products
             </div>
             <div class="col-12 bg_extradark p-3" style="height: 80%; position: absolute; left: 0; bottom: 0; border-left: 2px solid #fff; overflow-y: scroll">
                 <div class="col-12 selected_product_details" style="height: 100%; color: #fff">
-                    <h3 id="product_name" class="text-uppercase"></h3>
-                    <div class="col-6">
+                    <div class="col-12">
+                        <div class="mt-3 mb-3" style="position: relative">
+                            <h3 id="product_name" class="text-uppercase"></h3>
+                            <div id="edit_btn" class="d-none" style="position: absolute; top: 0; right: 0">
+                                <button class="btn btn-primary">Modifica</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-6" style="float: left">
                         <div class="mt-3 mb-3">
                             <h6 id="label_description"></h6>
                             <p id="product_description" class="p-2 d-none" style="background-color: #fff; color: #000"></p>
@@ -87,20 +94,30 @@ Admin Products
                             <h6 id="label_amount"></h6>
                             <p id="product_amount" class="p-2 d-none" style="background-color: #fff; color: #000"></p>
                         </div>
-                    </div>
-                    <div class="col-6">
                         <div class="mt-3 mb-3">
                             <h6 id="label_availability"></h6>
                             <p id="product_availability" class="p-2 d-none" style="background-color: #fff; color: #000"></p>
                         </div>
-                        {{-- <div class="mt-3 mb-3">
-                            <h6 id="label_appView"></h6>
-                            <p id="product_appView" class="p-2" style="background-color: #fff; color: #000"></p>
-                        </div> --}}
-                        {{-- <div class="mt-3 mb-3">
-                            <h6 id="label_brand"></h6>
-                            <p id="product_brand" class="p-2" style="background-color: #fff; color: #000"></p>
-                        </div> --}} 
+                    </div>
+                    <div class="col-6" style="float: left; text-align: right">
+                        <div class="mt-3 mb-3">
+                            <h6>Foto</h6>
+                        </div>
+                        <div class="mt-3 mb-3">
+                            <img id="product_photo1" class="" src="" alt="" style="width: 200px; height: 200px">
+                        </div>
+                        <div class="mt-3 mb-3">
+                            <img id="product_photo2" class="" src="" alt="" style="width: 200px; height: 200px">
+                        </div>
+                        <div class="mt-3 mb-3">
+                            <img id="product_photo3" class="" src="" alt="" style="width: 200px; height: 200px">
+                        </div>
+                        <div class="mt-3 mb-3">
+                            <img id="product_photo4" class="" src="" alt="" style="width: 200px; height: 200px">
+                        </div>
+                        <div class="mt-3 mb-3">
+                            <img id="product_photo5" class="" src="" alt="" style="width: 200px; height: 200px">
+                        </div>
                     </div>
                 </div>
             </div>
@@ -109,6 +126,68 @@ Admin Products
 </div>
 
 <script>
+    $(document).ready(() => {
+        getAllProducts(null, false);
+    })
+
+    var filters = [
+        {
+            name: 'Categoria',
+            option: '0'
+        },
+        {
+            name: 'Genere',
+            option: '0'
+        },
+        {
+            name: 'Brand',
+            option: '0'
+        },
+        {
+            name: 'Colore',
+            option: '0'
+        }
+    ];
+
+    function getAllProducts(data, isFiltered) {
+        console.log('data:');
+        //console.log(f);
+        $.ajax({
+            type: "POST",
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            },
+            url: "products/all",
+            data: {
+                filters: isFiltered,
+                filterObj: data
+            },
+            dataType: "json",
+            success: function(res){
+                console.log(res);
+                $(".products_list > div").remove();
+                res.data.forEach(product => {
+                    let div = '<div id="'+ product.id +'" onclick="selectProduct('+ product.id +')" class="pl-4 p-2 text-truncate">'+ product.nome +'</div>';
+                    $(".products_list").append(div)
+                });
+            }
+        })
+    }
+
+    function setFilter(name) {
+        var selectVal = $('#'+name).val();
+        for (let i = 0; i < filters.length; i++) {
+            if (filters[i].name === name) {
+                console.log(filters[i].name);
+                console.log(name);
+                filters[i].option = selectVal;
+                console.log(filters);
+            }
+        }
+        console.log(filters);
+        getAllProducts(filters, true);
+    }
+
     function selectProduct(id) {
         console.log(id);
         var product = {};
@@ -142,12 +221,19 @@ Admin Products
                 $('#label_color').html('Colore');
                 $('#product_color').html(product.colore);
                 $('#label_amount').html('Prezzo');
-                $('#product_amount').html(product.amount);
+                $('#product_amount').html(product.amount.toFixed(2));
                 $('#label_availability').html('Disponibilità');
                 $('#product_availability').html(product.availability);
+
+                $('#product_photo1').attr('src', 'https://img-space.fra1.digitaloceanspaces.com/img-space/uploads/images/'+product.photo1);
+                $('#product_photo2').attr('src', 'https://img-space.fra1.digitaloceanspaces.com/img-space/uploads/images/'+product.photo2);
+                $('#product_photo3').attr('src', 'https://img-space.fra1.digitaloceanspaces.com/img-space/uploads/images/'+product.photo3);
+                $('#product_photo4').attr('src', 'https://img-space.fra1.digitaloceanspaces.com/img-space/uploads/images/'+product.photo4);
+                $('#product_photo5').attr('src', 'https://img-space.fra1.digitaloceanspaces.com/img-space/uploads/images/'+product.photo5);
                 // $('#label_appView').html('Mostra');
                 // $('#product_appView').html(product.amount);
                 $('.selected_product_details p').removeClass('d-none');
+                $('#edit_btn').removeClass('d-none');
             }
         })
     }
