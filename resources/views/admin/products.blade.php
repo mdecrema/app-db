@@ -137,19 +137,19 @@ Admin Products
 
     var filters = [
         {
-            name: 'Categoria',
+            name: 'categoria',
             option: '0'
         },
         {
-            name: 'Genere',
+            name: 'genere',
             option: '0'
         },
         {
-            name: 'Brand',
+            name: 'brand',
             option: '0'
         },
         {
-            name: 'Colore',
+            name: 'colore',
             option: '0'
         }
     ];
@@ -241,7 +241,7 @@ Admin Products
                 $('#label_color').html('Colore');
                 $('#product_color').html(product.colore);
                 $('#label_amount').html('Prezzo');
-                $('#product_amount').html(product.amount.toFixed(2));
+                $('#product_amount').html(product.amount); // .toFixed(2)
                 $('#label_availability').html('Disponibilità');
                 $('#product_availability').html(product.availability);
 
