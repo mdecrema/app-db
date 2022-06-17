@@ -18,29 +18,19 @@ Admin Products
             </div>
         </div>
     </div>
-    <div class="row">
-        {{-- Column Left --}}
-        <div class="col-3 bg_darkblue p-3" style="height: 80vh;">
-            <h6>Cerca per nome</h6>
-            <div class="w-100" style="height: 50px; margin">
-                <input type="text" class="w-100 p-2" placeholder="Ricerca articolo per nome" style="height: 40px;">
+    <div class="row" style="height: 80vh">
+        {{-- Filters --}}
+        <div class="col-12 bg_extradarkblue p-3 d-flex" style="height: 15%;">
+            <div class="col-3 pl-0 mr-3">
+                <span style="color: #fff">Cerca per nome</span>
+                <input type="text" class="p-2 form-control" placeholder="Ricerca articolo per nome">
             </div>
-            <div class="p-2 pt-3">
-                <h6>Elenco articoli a magazzino</h6>
+            <div style="color: #fff">
+                <i class="fa fa-magnifying-glass"></i>
             </div>
-            <div class="w-100 pt-2 pb-3 products_list" style="height: calc(100% - 100px); cursor: pointer; overflow-y: scroll; overflow-x: hidden">
-                {{-- @foreach($products as $product)
-                <div id="{{ $product->id }}" onclick="selectProduct({{ $product->id }})" class="pl-4 p-2 text-truncate">{{ $product->nome }}</div>
-                @endforeach --}}
-            </div>
-        </div>
-        {{-- Column Right --}}
-        <div class="col-9 p-3" style="height: 80vh; border: 2px solid #183153; background-color: lightgrey">
-            <div class="col-12" style="height: 20%;">
-                <!-- <h6>Filtri di ricerca</h6> -->
-                @foreach($filters as $filter)
-                <div class="mr-3" style="max-width: 120px; display: inline-block">
-                    <span style="font-size: 12px">{{ $filter->name }}</span>
+            @foreach($filters as $filter)
+                <div class="mr-3" style="max-width: 120px;">
+                    <span style="font-size: 12px; color: #fff">{{ $filter->name }}</span>
                     <select onchange="setFilter('{{ $filter->name }}')" name="" id="{{ $filter->name }}" class="w-100 form-control text-truncate">
                         <option value="0">qualsiasi</option>
                         @foreach($filter->options as $option)
@@ -49,6 +39,9 @@ Admin Products
                     </select>
                 </div>
                 @endforeach
+                <div style="color: #fff; line-height: 40px">
+                    <i class="fa fa-bars-sort"></i>
+                </div>
                 {{-- <div style="max-width: 120px; display: inline-block">
                     <span style="font-size: 12px">Prezzo</span>
                     <select name="" id="" class="w-100 form-control text-truncate">
@@ -62,19 +55,43 @@ Admin Products
                         <option value="7" class="text-truncate">500+</option>
                     </select>
                 </div> --}}
+           
+        </div>
+        {{-- Column Left --}}
+        <div class="col-3 bg_darkblue p-3" style="height: 85%;">
+            <div class="p-2 pt-3">
+                <h6>Elenco articoli a magazzino</h6>
             </div>
-            <div class="col-12 bg_extradark p-3" style="height: 80%; position: absolute; left: 0; bottom: 0; border-left: 2px solid #fff; overflow-y: scroll">
+            <div class="w-100 pt-2 pb-3 products_list" style="height: 90%; cursor: pointer; overflow-y: scroll; overflow-x: hidden; scrollbar-width: thin;">
+                {{-- @foreach($products as $product)
+                <div id="{{ $product->id }}" onclick="selectProduct({{ $product->id }})" class="pl-4 p-2 text-truncate">{{ $product->nome }}</div>
+                @endforeach --}}
+            </div>
+        </div>
+        {{-- Column Right --}}
+        <div class="col-9 bg_lightgrey p-3" style="height: 85%; border-left: 2px solid #0a182a; overflow-y: scroll">
                 {{-- Spinner Loader --}}
                 <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%)">
                     <i id="spinner" class="fa fa-4x fa-spinner fa-spin d-none" style="color: #183153; z-index: 10"></i>
                 </div>
                 {{-- /Spinner Loader --}}
-                <div class="col-12 selected_product_details" style="height: 100%; color: #fff">
+                <div class="col-12 selected_product_details" style="height: 100%;">
                     <div class="col-12">
                         <div class="mt-3 mb-3" style="position: relative">
-                            <h3 id="product_name" class="text-uppercase"></h3>
-                            <div id="edit_btn" class="d-none" style="position: absolute; top: 0; right: 0">
-                                <button class="btn btn-primary">Modifica</button>
+                            <h3 id="product_name" class="text-uppercase font-weight-bold"></h3>
+                            <div class="d-flex justify-content-between" style="position: absolute; top: 0; right: 0; text-align: right">
+                                <div id="edit_btn" class="d-none">
+                                    <button class="btn btn-primary">Modifica</button>
+                                </div>
+                                {{-- <div id="edit_btn" class="d-none">
+                                    <button class="btn btn-primary">Impostazioni</button>
+                                </div> --}}
+                                <div id="config_btn" class="d-none ml-2">
+                                    <button class="btn btn-primary">Configura</button>
+                                </div>
+                                <div id="delete_btn" class="d-none ml-2">
+                                    <button class="btn bg_darkblue" style="color: #fff">Elimina</button>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -104,12 +121,12 @@ Admin Products
                             <p id="product_availability" class="p-2 d-none" style="background-color: #fff; color: #000"></p>
                         </div>
                     </div>
-                    <div class="col-6" style="float: left; text-align: right">
+                    <div class="col-6 p-3" style="float: left; text-align: right;">
                         {{-- <div class="mt-3 mb-3">
                             <h6>Foto</h6>
                         </div> --}}
                         <div class="mt-3 mb-3">
-                            <img id="product_photo1" class="d-none" src="" alt="" style="width: 200px; height: 200px">
+                            <img id="product_photo1" class="d-none" src="" alt="" style="width: 200px; height: 200px;">
                         </div>
                         <div class="mt-3 mb-3">
                             <img id="product_photo2" class="d-none" src="" alt="" style="width: 200px; height: 200px">
@@ -126,7 +143,6 @@ Admin Products
                     </div>
                 </div>
             </div>
-        </div>
     </div>
 </div>
 
@@ -137,19 +153,19 @@ Admin Products
 
     var filters = [
         {
-            name: 'categoria',
+            name: 'Categoria',
             option: '0'
         },
         {
-            name: 'genere',
+            name: 'Genere',
             option: '0'
         },
         {
-            name: 'brand',
+            name: 'Brand',
             option: '0'
         },
         {
-            name: 'colore',
+            name: 'Colore',
             option: '0'
         }
     ];
@@ -255,6 +271,8 @@ Admin Products
                 $('.selected_product_details p').removeClass('d-none');
                 $('.selected_product_details img').removeClass('d-none');
                 $('#edit_btn').removeClass('d-none');
+                $('#delete_btn').removeClass('d-none');
+                $('#config_btn').removeClass('d-none');
             }
         })
     }
