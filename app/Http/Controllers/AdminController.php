@@ -182,7 +182,7 @@ class AdminController extends Controller
         $filters = $request->all();
         
         $filterNewArr = [];
-        $query = 'select * from products ';
+        $query = 'select * from products';
         
         if($filters['filters'] === 'true') {
 
@@ -195,10 +195,11 @@ class AdminController extends Controller
                     $obj->options = $filter['option'];
 
                     array_push($filterNewArr, $obj);
+
                     if (count($filterNewArr) === 1) {
-                        $query .= 'WHERE ' .$filter['name'].' = "'.$filter['option'].'"';
+                        $query .= ' WHERE ' .strtolower($filter['name']).' = "'.$filter['option'].'"';
                     } else {
-                        $query .= ' AND '.$filter['name'].' = "'.$filter['option'].'"';
+                        $query .= ' AND '.strtolower($filter['name']).' = "'.$filter['option'].'"';
                     }
                 }
             }
