@@ -197,9 +197,9 @@ class AdminController extends Controller
                     array_push($filterNewArr, $obj);
 
                     if (count($filterNewArr) === 1) {
-                        $query .= ' WHERE ' .strtolower($filter['name']).' = "'.$filter['option'].'"';
+                        $query .= ' WHERE ' .strtolower($filter['name']).' = \''.$filter['option'].'\'';
                     } else {
-                        $query .= ' AND '.strtolower($filter['name']).' = "'.$filter['option'].'"';
+                        $query .= ' AND '.strtolower($filter['name']).' = \''.$filter['option'].'\'';
                     }
                 }
             }
