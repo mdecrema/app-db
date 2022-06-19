@@ -23,7 +23,7 @@ Admin Products
         <div class="col-12 bg_extradarkblue p-3 d-flex" style="height: 15%;">
             <div class="col-3 pl-0 mr-3">
                 <span style="color: #fff">Cerca per nome</span>
-                <input type="text" class="p-2 form-control" placeholder="Ricerca articolo per nome">
+                <input onkeyup="setFilter('Nome')" id="Nome" type="text" class="p-2 form-control" placeholder="Ricerca articolo per nome">
             </div>
             <div style="color: #fff">
                 <i class="fa fa-magnifying-glass"></i>
@@ -32,15 +32,17 @@ Admin Products
                 <div class="mr-3" style="max-width: 120px;">
                     <span style="font-size: 12px; color: #fff">{{ $filter->name }}</span>
                     <select onchange="setFilter('{{ $filter->name }}')" name="" id="{{ $filter->name }}" class="w-100 form-control text-truncate">
-                        <option value="0">qualsiasi</option>
+                        <option value="">qualsiasi</option>
                         @foreach($filter->options as $option)
                         <option value="{{ $option }}" class="text-truncate">{{ $option }}</option>
                         @endforeach
                     </select>
                 </div>
                 @endforeach
-                <div style="color: #fff; line-height: 40px">
-                    <i class="fa fa-bars-sort"></i>
+                <div class="p-3" style="color: #fff; line-height: 40px; position: absolute; top: 0; right: 0" data-toggle="tooltip" data-placement="bottom" title="Aggungi un nuovo prodotto">
+                    <a href="{{ route('admin.products.create') }}">
+                        <i class="fa fa-2x fa-file-plus text-success"></i>
+                    </a>
                 </div>
                 {{-- <div style="max-width: 120px; display: inline-block">
                     <span style="font-size: 12px">Prezzo</span>
@@ -75,6 +77,11 @@ Admin Products
                     <i id="spinner" class="fa fa-4x fa-spinner fa-spin d-none" style="color: #183153; z-index: 10"></i>
                 </div>
                 {{-- /Spinner Loader --}}
+                {{-- Label nessun risultato --}}
+                <div id="no_results_label" class="col-12 pt-2 pl-3 d-none" style="font-size: 22px">
+                    <em>Nessun risultato trovato</em>
+                </div>
+                {{-- /Label nessun risultato --}}
                 <div class="col-12 selected_product_details" style="height: 100%;">
                     <div class="col-12">
                         <div class="mt-3 mb-3" style="position: relative">
@@ -153,20 +160,24 @@ Admin Products
 
     var filters = [
         {
+            name: 'Nome',
+            option: ''
+        },
+        {
             name: 'Categoria',
-            option: '0'
+            option: ''
         },
         {
             name: 'Genere',
-            option: '0'
+            option: ''
         },
         {
             name: 'Brand',
-            option: '0'
+            option: ''
         },
         {
             name: 'Colore',
-            option: '0'
+            option: ''
         }
     ];
 
@@ -188,12 +199,20 @@ Admin Products
                 $("#spinner").addClass('d-none');
 
                 $(".products_list > div").remove();
-                res.data.forEach(product => {
-                    let div = '<div id="'+ product.id +'" onclick="selectProduct('+ product.id +')" class="pl-4 p-2 text-truncate">'+ product.nome +'</div>';
-                    $(".products_list").append(div)
-                });
-
-                selectProduct(res.data[0].id)
+                // $(".selected_product_details").html("");
+                if (res.data.length > 0) {
+                    $('.selected_product_details').removeClass('d-none');
+                    $('#no_results_label').addClass('d-none');
+                    res.data.forEach(product => {
+                        let div = '<div id="'+ product.id +'" onclick="selectProduct('+ product.id +')" class="pl-4 p-2 text-truncate">'+ product.nome +'</div>';
+                        $(".products_list").append(div)
+                    });
+    
+                    selectProduct(res.data[0].id)
+                } else {
+                    $('.selected_product_details').addClass('d-none');
+                    $('#no_results_label').removeClass('d-none');
+                }
                 
             }
         })
@@ -201,7 +220,7 @@ Admin Products
 
     function setFilter(name) {
         var selectVal = $('#'+name).val();
-        if (selectVal !== '0') {
+        if (selectVal !== '') {
             $('#'+name).css("background-color", "#0061EB"); // #00D7D2
             $('#'+name).css("color", "#fff");
             // $('#'+name).css("font-weight", "bold");
@@ -210,6 +229,7 @@ Admin Products
             $('#'+name).css("color", "#000");
             // $('#'+name).css("font-weight", "normal");
         }
+        
         for (let i = 0; i < filters.length; i++) {
             if (filters[i].name === name) {
                 console.log(filters[i].name);

@@ -188,18 +188,26 @@ class AdminController extends Controller
 
             foreach($filters['filterObj'] as $filter) {
                
-                if($filter['option'] !== '0') {
+                if(strlen($filter['option']) !== 0) {
                     $obj = new Filter();
-
+    
                     $obj->name = strtolower($filter['name']);
                     $obj->options = $filter['option'];
-
+    
                     array_push($filterNewArr, $obj);
 
                     if (count($filterNewArr) === 1) {
-                        $query .= ' WHERE ' .strtolower($filter['name']).' = \''.$filter['option'].'\'';
+                        if ($filter['name'] == 'Nome') {
+                            $query .= ' WHERE ' .strtolower($filter['name']).' LIKE \'%'.$filter['option'].'%\'';
+                        } else {
+                            $query .= ' WHERE ' .strtolower($filter['name']).' = \''.$filter['option'].'\'';
+                        }
                     } else {
-                        $query .= ' AND '.strtolower($filter['name']).' = \''.$filter['option'].'\'';
+                        if ($filter['name'] == 'Nome') {
+                            $query .= ' AND ' .strtolower($filter['name']).' LIKE \'%'.$filter['option'].'%\'';
+                        } else {
+                            $query .= ' AND '.strtolower($filter['name']).' = \''.$filter['option'].'\'';
+                        }
                     }
                 }
             }
