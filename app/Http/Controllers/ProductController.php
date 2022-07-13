@@ -24,10 +24,19 @@ class ProductController extends Controller
         $payload = base64_decode($request->payload);
         $last_activty = intval(microtime(true) * 1000);
 
-        $query = "INSERT INTO sessions (user_id, ip_address, user_agent, payload, last_activity)
-        VALUES (NULL, '".$ip."', '".$user_agent."', '".$payload."', '".$last_activty."')";
+        $sessionsInDb = DB::table('sessions')
+                        ->where('ip_address', $ip)
+                        ->get();;
 
-        DB::insert($query);
+        if(count($sessionsInDb)) {
+            DB::table('sessions')
+            ->where('ip_address', $ip)
+            ->update(['last_activity' => intval(microtime(true) * 1000)]);
+        } else {
+            $query = "INSERT INTO sessions (user_id, ip_address, user_agent, payload, last_activity)
+            VALUES (NULL, '".$ip."', '".$user_agent."', '".$payload."', '".$last_activty."')";
+            DB::insert($query);
+        }
         //
 
         return view('homePage', compact('products', 'ip', 'user_agent'));
