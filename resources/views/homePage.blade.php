@@ -7,6 +7,9 @@ Red dot
 @section('content')
 
 <div class="row"> 
+  <div style="height: 40px">
+    <p>User: {{ $users }}</p>
+  </div>
   <!-- banner scritta -->
   <div class="banner-text" style="height: 10px; background-color: #BF4825">
     {{-- <marquee
