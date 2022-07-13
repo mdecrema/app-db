@@ -88,7 +88,7 @@ Admin Products
                             <h3 id="product_name" class="text-uppercase font-weight-bold"></h3>
                             <div class="d-flex justify-content-between" style="position: absolute; top: 0; right: 0; text-align: right">
                                 <div id="edit_btn" class="d-none">
-                                    <button class="btn btn-primary">Modifica</button>
+                                    <button class="btn btn-primary" onclick="updateProduct()">Modifica</button>
                                 </div>
                                 {{-- <div id="edit_btn" class="d-none">
                                     <button class="btn btn-primary">Impostazioni</button>
@@ -103,6 +103,9 @@ Admin Products
                         </div>
                     </div>
                     <div class="col-6" style="float: left">
+                        <div class="mt-3 mb-3">
+                            <p id="product_id" class="p-2 d-none" style="background-color: #fff; color: #000"></p>
+                        </div>
                         <div class="mt-3 mb-3">
                             <h6 id="label_description"></h6>
                             <p id="product_description" class="p-2 d-none" style="background-color: #fff; color: #000"></p>
@@ -127,6 +130,13 @@ Admin Products
                             <h6 id="label_availability"></h6>
                             <p id="product_availability" class="p-2 d-none" style="background-color: #fff; color: #000"></p>
                         </div>
+                        <div>
+                            <span style="font-size: 20px">Configurazione</span>
+                        </div>
+                        <div class="mt-3 mb-3 ml-3 form-check form-switch">
+                            <input class="form-check-input" type="checkbox" id="flexSwitchCheckDefault">
+                            <label class="form-check-label" for="flexSwitchCheckDefault">Disabilita prodotto</label>
+                        </div>
                     </div>
                     <div class="col-6 p-3" style="float: left; text-align: right;">
                         {{-- <div class="mt-3 mb-3">
@@ -149,6 +159,15 @@ Admin Products
                         </div>
                     </div>
                 </div>
+                <!-- Salva e ripristina -->
+                {{-- <div class="p-2 w-100 d-flex justify-content-around bg_darkgrey" style="position: sticky; bottom: 0; left: 0; height: 60px;">
+                    <div class="pl-4 pr-4" style="width: 50%">
+                        <button class="btn w-100" style="background-color: #EC7C28; border-radius: 20px; font-size: 18px">Salva</button>
+                    </div>
+                    <div class="pl-4 pr-4" style="width: 50%">
+                        <button class="btn w-100" style="background-color: #EC7C28; border-radius: 20px; font-size: 18px">Ripristina</button>
+                    </div>
+                </div> --}}
             </div>
     </div>
 </div>
@@ -267,6 +286,8 @@ Admin Products
 
                 product = res.data;
 
+                
+                $('#product_id').html(product.id);
                 $('#product_name').html(product.nome);
                 $('#label_description').html('Descrizione');
                 $('#product_description').html(product.description);
@@ -293,6 +314,39 @@ Admin Products
                 $('#edit_btn').removeClass('d-none');
                 $('#delete_btn').removeClass('d-none');
                 $('#config_btn').removeClass('d-none');
+            }
+        })
+    }
+
+    function updateProduct() {
+        let product_id = $('#product_id').html();
+        console.log(product_id)
+
+        var product = {
+            //id: product_id,
+            nome: $('#product_name').html(),
+            description: $('#product_description').html(),
+            categoria: $('#product_category').html(),
+            brand: $('#product_brand').html(),
+            colore: $('#product_color').html(),
+            amount: $('#product_amount').html(),
+            availability: $('#product_availability').val()
+        }
+
+        var jsonProduct = JSON.stringify(product)
+
+        $.ajax({
+            type: "POST",
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"').attr('content')
+            },
+            url: "products/update/"+ product_id,
+            data: {
+                jsonProduct
+            },
+            dataType: "json",
+            success: function(res){
+               console.log('success')
             }
         })
     }

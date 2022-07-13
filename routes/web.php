@@ -13,7 +13,11 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', 'ProductController@homePage')->name('homePage');
+Route::get('/', 'ProductController@homePage', function() {
+    $value = session('key');
+    $value = session('key', 'default');
+    session(['key' => 'value']);
+})->name('homePage');
 
 Route::get('/products', 'ProductController@index')->name('products');
 Route::get('/tees', 'ProductController@tees')->name('tees');
@@ -65,6 +69,8 @@ Route::prefix('admin')->name('admin.')->middleware('can:admin')->group(function 
     Route::post('/dashboard/products/all', 'AdminController@getAllProducts')->name('private.products.all');
     // Product Details
     Route::get('/dashboard/products/details/{id}', 'AdminController@getProductDetailsById')->name('private.product.details');
+    // Product Update
+    Route::post('/dashboard/products/update/{id}', 'ProductController@productUpdate')->name('products.update');
     // Product Create
     Route::get('/dashboard/products/create', 'ProductController@create')->name('products.create');
     // Product Store

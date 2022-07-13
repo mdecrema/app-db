@@ -13,10 +13,20 @@ use Maatwebsite\Excel\Facades\Excel;
 
 class ProductController extends Controller
 {
-    public function homePage()
+    public function homePage(Request $request)
     {
         $products = Product::all();
-        return view('homePage', compact('products'));
+
+        $value = $request->session()->get('key');
+
+        // session_start();  #start a session
+
+        // if ( !isset( $_SESSION['count'] ) ) 
+        // $_SESSION['count'] = 1; else $_SESSION['count']++;
+
+        // $session = 
+
+        return view('homePage', compact('products', 'value'));
     }
     /**
      * Display a listing of the resource.
@@ -236,9 +246,25 @@ class ProductController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function productUpdate(Request $request, $id)
     {
-        //
+        $product = Product::find($id);
+
+        $data = json_encode($request->all());
+        $data = json_decode($data);
+
+        $product->nome = $data['nome'];
+        $product->categoria = $data['categoria'];
+        $product->genere = $data['genere'];
+        $product->description = $data['description'];
+        $product->colore = $data['colore'];
+        // $product->size = $data['size'];
+        // $product->counterSizeType = $data['counterSizeType'];
+        $product->brand = $data['brand'];
+        $product->amount = $data['amount'];
+        $product->availability = $data['availability'];
+
+        $product->update();
     }
 
     /**
