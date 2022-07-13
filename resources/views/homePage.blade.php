@@ -6,7 +6,12 @@ Red dot
 
 @section('content')
 
-<div class="row"> 
+<div class="row">
+  {{-- <div style="height: 40px">
+    IP<strong> {{ $ip }}</strong>
+    User-Agent<strong> {{ $user_agent }}</strong>
+    <?php dump($payload) ?> 
+  </div> --}}
   <!-- banner scritta -->
   {{--<div class="banner-text bg_lightgrey" style="height: 5px;">
      <marquee

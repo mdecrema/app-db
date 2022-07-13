@@ -18,16 +18,19 @@ class ProductController extends Controller
     {
         $products = Product::all();
 
-        $value = $request->session()->get('key');
+        // Session info storaging
+        $ip = $request->ip();
+        $user_agent = $request->server('HTTP_USER_AGENT');
+        $payload = base64_decode($request->payload);
+        $last_activty = intval(microtime(true) * 1000);
 
-        // session_start();  #start a session
+        $query = "INSERT INTO sessions (user_id, ip_address, user_agent, payload, last_activity)
+        VALUES (NULL, '".$ip."', '".$user_agent."', '".$payload."', '".$last_activty."')";
 
-        // if ( !isset( $_SESSION['count'] ) ) 
-        // $_SESSION['count'] = 1; else $_SESSION['count']++;
+        DB::insert($query);
+        //
 
-        // $session = 
-
-        return view('homePage', compact('products', 'value'));
+        return view('homePage', compact('products', 'ip', 'user_agent'));
     }
     /**
      * Display a listing of the resource.

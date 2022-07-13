@@ -31,6 +31,17 @@
             </div>
             @endforeach
         </div>
+
+        <!-- sessioni -->
+        <div class="mt-4">
+            @foreach($sessions as $session)
+            <div class="col-lg-6 col-xl-6 col-md-6 col-sm-12 col-xs-12 mb-2 card" style="border: 1px solid darkgrey">
+                <strong>IP Address: </strong> {{ $session->ip_address }}<br>
+                <strong>User-agent: </strong> {{ $session->user_agent }}<br>
+                <strong>Ultima attività: </strong> {{ $session->last_activity }}
+            </div>
+            @endforeach
+        </div>
     </div>  
 </div>
 

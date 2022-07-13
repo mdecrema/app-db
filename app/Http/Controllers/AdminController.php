@@ -76,13 +76,13 @@ class AdminController extends Controller
         $menuUtenti1->name = 'Utenti registrati';
         $menuUtenti1->link = 'dashboard/users/allUsers';
 
-        $menuUtenti2 = new MenuLink();
-        $menuUtenti2->name = 'Ospiti';
-        $menuUtenti2->link = 'dashboard/users/guests';
-
         $menuUtenti3 = new MenuLink();
         $menuUtenti3->name = 'Aggiungi nuovo';
         $menuUtenti3->link = 'dashboard/users/allUsers';
+
+        $menuUtenti2 = new MenuLink();
+        $menuUtenti2->name = 'Sessioni';
+        $menuUtenti2->link = 'dashboard/users/allUsers';
 
         $utentiMenuList = array($menuUtenti1, $menuUtenti2, $menuUtenti3);
 
@@ -502,8 +502,9 @@ class AdminController extends Controller
     public function allUsers()
     {
         $users = User::all();
+        $sessions =  DB::table('sessions')->get();
 
-        return view('admin.users.allUsers', compact('users'));
+        return view('admin.users.allUsers', compact('users', 'sessions'));
     }
 
     public function guests()
