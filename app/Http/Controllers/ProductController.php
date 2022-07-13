@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\DB;
 use App\Product;
 use App\Item;
+use App\User;
 use App\Imports\ProductsImport;
 use App\Exports\ProductsExport;
 use Maatwebsite\Excel\Facades\Excel;

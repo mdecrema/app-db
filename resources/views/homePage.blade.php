@@ -8,8 +8,8 @@ Red dot
 
 <div class="row"> 
   <!-- banner scritta -->
-  <div class="banner-text" style="height: 10px; background-color: #BF4825">
-    {{-- <marquee
+  {{--<div class="banner-text bg_lightgrey" style="height: 5px;">
+     <marquee
   loop="-1"
   scrollamount="2"
   scrolldelay="0"
@@ -20,8 +20,8 @@ Red dot
   - nuova collezione - VOLCANO.it - nuova collezione - VOLCANO.it - nuova collezione - VOLCANO.it - nuova collezione - VOLCANO.it - nuova collezione - VOLCANO.it -
   - nuova collezione - VOLCANO.it - nuova collezione - VOLCANO.it - nuova collezione - VOLCANO.it - nuova collezione - VOLCANO.it - nuova collezione - VOLCANO.it -
   - nuova collezione - VOLCANO.it - nuova collezione - VOLCANO.it - nuova collezione - VOLCANO.it - nuova collezione - VOLCANO.it - nuova collezione - VOLCANO.it -
-  </marquee> --}}
-  </div>
+  </marquee>
+  </div> --}}
 
   <div class="img-slider">
     <!-- Bootstrap Slider -->
