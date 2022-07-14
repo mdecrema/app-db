@@ -26,9 +26,9 @@ class ProductController extends Controller
 
         $sessionsInDb = DB::table('sessions')
                         ->where('ip_address', $ip)
-                        ->get();;
+                        ->get();
 
-        if(count($sessionsInDb)) {
+        if(count($sessionsInDb) > 0) {
             DB::table('sessions')
             ->where('ip_address', $ip)
             ->update(['last_activity' => intval(microtime(true) * 1000)]);
