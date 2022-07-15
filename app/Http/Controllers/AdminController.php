@@ -88,7 +88,7 @@ class AdminController extends Controller
 
         $menuStatistiche1 = new MenuLink();
         $menuStatistiche1->name = 'Navigazione';
-        $menuStatistiche1->link = '';
+        $menuStatistiche1->link = 'dashboard/statistics/allStats';
 
         $menuStatistiche2 = new MenuLink();
         $menuStatistiche2->name = ' Vendite';

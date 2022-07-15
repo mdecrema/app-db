@@ -75,10 +75,10 @@
     <div id="mySidenav" class="sidenav">
     <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
     <a class="voci-menu" href="{{ route('skiRent') }}">Ski Rent</a>
-    <a class="voci-menu" href="{{ route('tees') }}">Tees</a>
-    <a class="voci-menu" href="{{ route('products') }}">Felpe</a>
-    <a class="voci-menu" href="{{ route('products') }}">Pantaloni</a>
-    <a class="voci-menu" href="">Scarpe</a>
+    <a class="voci-menu" href="{{ route('productsByType', 't-shirt') }}">Tees</a>
+    <a class="voci-menu" href="{{ route('productsByType', 'hoodies') }}">Felpe</a>
+    <a class="voci-menu" href="{{ route('productsByType', 'pants') }}">Pantaloni</a>
+    <a class="voci-menu" href="{{ route('productsByType', 'shoes') }}">Scarpe</a>
     <a  class="voci-menu"href="{{ route('news') }}">News</a>
         <!-- Authentication Links -->
        @guest

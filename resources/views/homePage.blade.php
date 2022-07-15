@@ -86,7 +86,7 @@ Red dot
   <!--  -->
   <div class="col-lg-12" style="margin-top: 30px">
     <div class="col-lg-12" style="height: 100px; margin-bottom: 10px; border-radius: 2px; box-shadow: 4px 1px 10px lightgrey; background-color: #fff">
-        <a href="{{ route('products') }}" style="text-decoration: none; color: #000">
+        <a href="{{ route('productsByType', 'shoes') }}" style="text-decoration: none; color: #000">
             <div style="width: 40%; height: 100%; float: left; position: relative">
                 <div style="width: 150px; height: 100px; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%)">
                     <img class="active" src="{{ asset('img/j1.jpg') }}" alt="" style="width: 100%; height: 100%">
@@ -105,12 +105,12 @@ Red dot
                 </div>
             </div>
             <div style="width: 60%; height: 100%; float: left; text-align: left; padding: 20px; line-height: 45px; font-size: 15px">
-                <a href="{{ route('tees') }}" style="text-decoration: none; color: #000">Abbigliamento</a>    
+                Abbigliamento   
             </div>
         </a>
     </div>
     <div class="col-lg-12" style="height: 100px; margin-bottom: 10px; border-radius: 2px; box-shadow: 4px 1px 10px lightgrey; background-color: #fff">
-        <a href="{{ route('products') }}" style="text-decoration: none; color: #000">
+        <a href="{{ route('productsByType', 'accessories') }}" style="text-decoration: none; color: #000">
             <div style="width: 40%; height: 100%; float: left; position: relative;">
                 <div style="width: 100px; height: 100px; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);">
                     <img class="active" src="{{ asset('img/k1.jpg') }}" alt="" style="width: 110%; height: 100%">

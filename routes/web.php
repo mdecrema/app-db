@@ -14,13 +14,13 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', 'ProductController@homePage', function() {
-    $value = session('key');
-    $value = session('key', 'default');
-    session(['key' => 'value']);
+    // $value = session('key');
+    // $value = session('key', 'default');
+    // session(['key' => 'value']);
 })->name('homePage');
 
 Route::get('/products', 'ProductController@index')->name('products');
-Route::get('/tees', 'ProductController@tees')->name('tees');
+Route::get('/products/{type}', 'ProductController@productsByType')->name('productsByType');
 Route::get('/products/{id}', 'ProductController@show')->name('products.show');
 // Route::post('products/create', 'ProductController@store')->name('products.create');
 
@@ -128,6 +128,10 @@ Route::prefix('admin')->name('admin.')->middleware('can:admin')->group(function 
     Route::get('dashboard/orders/allOrders', 'AdminController@allOrders')->name('orders.allOrders');
     // Route::get('dashboard/orders/progressing', 'AdminController@progressingOrders')->name('orders.progressing');
     Route::get('dashboard/orders/orderDetails/{id}', 'AdminController@orderDetails')->name('orders.orderDetails');
+    /**
+     * STATISTICS
+     */
+    Route::get('dashboard/statistics/allStats', 'StatisticController@index')->name('allStats');
 });
 
 

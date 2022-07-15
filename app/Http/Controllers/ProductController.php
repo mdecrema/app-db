@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\DB;
 use App\Product;
 use App\Item;
 use App\User;
+use App\Statistic;
 use App\Imports\ProductsImport;
 use App\Exports\ProductsExport;
 use Maatwebsite\Excel\Facades\Excel;
@@ -66,6 +67,20 @@ class ProductController extends Controller
         }
 
         return view('tees', compact('tees'));
+    }
+
+    public function productsByType($type) {
+        $products = Product::all()
+                    ->where('categoria', $type);
+
+        // Statistics
+        $stat = new Statistic();
+        $stat->view = true;
+        $stat->view_name = $type;
+        $stat->dateTime = intval(microtime(true) * 1000);
+        $stat->save();
+        
+        return view('tees', compact('products', 'type'));            
     }
 
     /**
@@ -237,6 +252,13 @@ class ProductController extends Controller
         }
 
         $items = Item::all()->where('product_id', $product->id)->where('available', true)->where('inCart', false);
+
+        // Statistics
+        $stat = new Statistic();
+        $stat->product = true;
+        $stat->product_id = $product->id;
+        $stat->dateTime = intval(microtime(true) * 1000);
+        $stat->save();
 
         return view('product-details', compact('product', 'products', 'items'));
     }

@@ -6,11 +6,19 @@ use Illuminate\Http\Request;
 use App\Product;
 use App\Rent;
 use App\Ski;
+use App\Statistic;
 
 class SkiRentController extends Controller
 {
     public function index() 
     {
+        // Statistics
+        $stat = new Statistic();
+        $stat->view = true;
+        $stat->view_name = 'skiRent';
+        $stat->dateTime = intval(microtime(true) * 1000);
+        $stat->save();
+
         return view('skiRent/skiRent');
     }
 
