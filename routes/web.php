@@ -21,7 +21,7 @@ Route::get('/', 'ProductController@homePage', function() {
 
 Route::get('/products', 'ProductController@index')->name('products');
 Route::get('/products/{type}', 'ProductController@productsByType')->name('productsByType');
-Route::get('/products/{id}', 'ProductController@show')->name('products.show');
+Route::get('/products/products/{id}', 'ProductController@show')->name('products.show');
 // Route::post('products/create', 'ProductController@store')->name('products.create');
 
 // Ski Rent

@@ -48,6 +48,70 @@
                 @endforeach
             </div>
         </div>
+
+
+        <!-- products stats -->
+        {{-- @foreach($productStats as $prodStat)
+            <div class="d-flex justify-content-around" style="border: 1px solid blue">
+                <div>
+                    <span>{{ $prodStat->product_id }}</span>
+                </div>
+                <div>
+                    <span>{{ $prodStat->productCount }}</span>
+                </div>
+            </div>
+        @endforeach --}}
+        
+
+        <!-- Charts -->
+        {{-- <input id="productStatArrJSON" value="{{ $productStatArr }}" class="d-none"> --}}
+        <div class="col-12">
+            <div class="mt-3 mb-5 pl-3">
+                <span style="font-size: 20px">Articoli più visitati</span>
+            </div>
+            <div class="chart-container" style="position: relative; height: 300px; width: 300px; margin: auto">
+                <canvas id="myChart" width="200px" height="200px"></canvas>
+            </div>
+        </div>
+
     </div>
 </div>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+
+    // const productStatArr = JSON.parse(document.getElementId('productStatArrJSON'));
+
+    // console.log(productStatArr);
+  
+    const data = {
+  labels: [
+    'Red',
+    'Blue',
+    'Yellow'
+  ],
+  datasets: [{
+    label: 'My First Dataset',
+    data: [300, 50, 100],
+    backgroundColor: [
+      '#183153',
+      '#0a182a',
+      '#0061EB'
+    ],
+    hoverOffset: 4
+  }]
+};
+  
+    const config = {
+      type: 'pie',
+      data: data,
+      options: {}
+    };
+
+    const myChart = new Chart(
+    document.getElementById('myChart'),
+    config
+  );
+  </script>
 @endsection
+
