@@ -57,7 +57,7 @@ class StatisticController extends Controller
         // dd($products_id_arr);
         
         for ($i = 0; $i < count($array_of_product_id); $i++) {
-            $query = 'SELECT COUNT(id) AS id FROM statistics WHERE product=1 AND product_id='.$array_of_product_id[$i].'';
+            $query = 'SELECT COUNT(id) AS id FROM statistics WHERE product = TRUE AND product_id='.$array_of_product_id[$i].'';
             $execute = DB::select($query);
     
             ${"product_" . $i} = new ProductStats();
