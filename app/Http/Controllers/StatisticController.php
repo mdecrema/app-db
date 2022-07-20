@@ -38,64 +38,35 @@ class StatisticController extends Controller
         // Products stats
         $productStats = Statistic::all()->where('product', true);        
         $productStatArr = [];
+        $products_id = [];
+        $array_of_product_id = [];
         $products_id_arr = [];
 
-        //dd( count($productStats));
-
-        for ($i = 0; $i < count($productStats); $i++) {
-            // ${"productStatObj_" . $i} = new ProductStats();
-            // ${"productStatObj_" . $i}->id = $productStat_ids[$i];
-            if (isset($productStats[$i])) {
-                array_push($products_id_arr, $productStats[$i]->product_id);
-                array_unique($products_id_arr);
-            }
+        $query = 'SELECT product_id AS product_id FROM `statistics` WHERE product=1';
+        $products_id = DB::select($query);
+        for ($i = 0; $i < count($products_id); $i++) {
+            array_push($products_id_arr, $products_id[$i]->product_id);
         }
 
         for ($i = 0; $i < count($products_id_arr); $i++) {
-            $query = 'SELECT COUNT(id) AS id FROM `statistics` WHERE product=1 AND product_id='.$products_id_arr[$i].'';
+            if (!in_array($products_id_arr[$i], $array_of_product_id)) {
+            array_push($array_of_product_id, $products_id_arr[$i]);
+            }
+        }
+        //array_unique($array_of_product_id);
+        // dd($products_id_arr);
+        
+        for ($i = 0; $i < count($array_of_product_id); $i++) {
+            $query = 'SELECT COUNT(id) AS id FROM `statistics` WHERE product=1 AND product_id='.$array_of_product_id[$i].'';
             $execute = DB::select($query);
-            // ${"product_" . $i} = count(Statistic::all()->where('product', true)->where('product_id', $products_id_arr[$i]));
-            // ${"productStatObj_" . $i} = new ProductStats();
-            // ${"productStatObj_" . $i}->id = $productStat_ids[$i];
-            //if (isset($productStats[$i])) {
-                ${"product_" . $i} = new ProductStats();
-                ${"product_" . $i}->id = $products_id_arr[$i];
-                ${"product_" . $i}->productCount = $execute[0]->id;
-                array_push($productStatArr, ${"product_" . $i} );
-            //}
-            //dd($productStatArr);
+    
+            ${"product_" . $i} = new ProductStats();
+            ${"product_" . $i}->id = $array_of_product_id[$i];
+            ${"product_" . $i}->productCount = $execute[0]->id;
+            array_push($productStatArr, ${"product_" . $i} );
         }
 
-        //dd($productStatArr);
-
-    //    dd($productStats);
-    //     dd(count($productStats));
-
-        // for ($i = 0; $i < 200000; $i++) {
-        //     if(isset($productStats[$i])) {
-        //         array_push($productStat_ids, $productStats[$i]->product_id);
-        //     }                
-        // }
-
-        // $productStat_ids = array_unique($productStat_ids);
-
-        // for ($i = 0; $i < count($productStat_ids); $i++) {
-        //     ${"productStatObj_" . $i} = new ProductStats();
-        //     ${"productStatObj_" . $i}->id = $productStat_ids[$i];
-        //     // dd($productStats);
-        //     for ($k = 0; $k <= count($productStats); $k++) {
-        //         if (isset($productStats[$k])) {
-        //             ${"productStatObj_" . $i}->productCount += 1;
-
-        //         }
-        //     }
-        //     array_push($productStatArr, ${"productStatObj_" . $i});
-        // }
-
-        // dd($productStatArr);
-        // dd($productStat_ids);
-
-
+        // Views Stats
         $teesViewCount = count($teesView);
         $hoodiesViewCount = count($hoodiesView);
         $pantsViewCount = count($pantsView);

@@ -80,19 +80,23 @@
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <script>
 
-    // const productStatArr = JSON.parse(document.getElementId('productStatArrJSON'));
+    const productStatArr = <?php echo json_encode($productStatArr); ?>;
 
-    // console.log(productStatArr);
+    let datas = [];
+    let labels = [];
+
+    for(let i = 0; i < productStatArr.length; i++) {
+        labels.push(productStatArr[i].id);
+        datas.push(productStatArr[i].productCount);
+    }
+
+    console.log(productStatArr);
   
     const data = {
-  labels: [
-    'Red',
-    'Blue',
-    'Yellow'
-  ],
+  labels: labels,
   datasets: [{
     label: 'My First Dataset',
-    data: [300, 50, 100],
+    data: datas,
     backgroundColor: [
       '#183153',
       '#0a182a',
