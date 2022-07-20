@@ -42,7 +42,7 @@ class StatisticController extends Controller
         $array_of_product_id = [];
         $products_id_arr = [];
 
-        $query = 'SELECT product_id AS product_id FROM statistics WHERE product = true';
+        $query = 'SELECT product_id FROM statistics WHERE product = true';
         $products_id = DB::select($query);
         for ($i = 0; $i < count($products_id); $i++) {
             array_push($products_id_arr, $products_id[$i]->product_id);
