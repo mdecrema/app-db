@@ -18,13 +18,6 @@
             </div>
         </div>
 
-        {{-- <div class="col-12">
-            @foreach($users as $user)
-            <div class="col-lg-6 col-xl-6 col-md-6 col-sm-12 col-xs-12 card">
-                {{ $user->name }}
-            </div>
-            @endforeach
-        </div> --}}
         <div class="col-12 p-2">
             <div class="mt-3 mb-5 pl-3">
                 <span style="font-size: 20px">
@@ -35,7 +28,7 @@
                     Il grafico mostra la percentuale di ogni pagina rispetto al totale delle visite.
                 </p>
             </div>
-            <div class="d-flex justify-content-around" style="height: 300px;">
+            <!-- <div class="d-flex justify-content-around" style="height: 300px;">
                 @foreach($viewStatsArr as $stat)
                 <div style="width: 70px; height: 300px; background-color: lightgrey; box-shadow: 2px 2px 5px grey; position: relative; border-radius: 5px">
                     <div class="d-flex justify-content-center align-items-center" style="position: absolute; bottom: 0; left: 0; width: 100%; height: {{ $stat->viewPercentage }}%; background-color: #0AA09D">
@@ -52,6 +45,9 @@
                     {{ $stat->name }}
                 </div>
                 @endforeach
+            </div> -->
+            <div class="chart-container" style="position: relative; height: 400px; width: 60%; margin: auto">
+                <canvas id="view_chart" width="200px" height="200px"></canvas>
             </div>
         </div>
 
@@ -70,7 +66,6 @@
         
 
         <!-- Charts -->
-        {{-- <input id="productStatArrJSON" value="{{ $productStatArr }}" class="d-none"> --}}
         <div class="col-12">
             <div class="mt-3 mb-5 pl-3">
                 <span style="font-size: 20px">
@@ -80,8 +75,8 @@
                     Numero totale di visite per singolo articolo effettuate dagli utenti
                 </p>
             </div>
-            <div class="chart-container" style="position: relative; height: 300px; width: 300px; margin: auto">
-                <canvas id="myChart" width="200px" height="200px"></canvas>
+            <div class="chart-container" style="position: relative; height: 300px; width: 60%; margin: auto">
+                <canvas id="product_chart" width="200px" height="200px"></canvas>
             </div>
         </div>
 
@@ -93,40 +88,76 @@
 
     const productStatArr = <?php echo json_encode($productStatArr); ?>;
 
-    let datas = [];
-    let labels = [];
+    let productData = [];
+    let productLabel = [];
 
     for(let i = 0; i < productStatArr.length; i++) {
-        labels.push(productStatArr[i].id);
-        datas.push(productStatArr[i].productCount);
+        productLabel.push(productStatArr[i].id);
+        productData.push(productStatArr[i].productCount);
     }
 
     console.log(productStatArr);
   
-    const data = {
-  labels: labels,
-  datasets: [{
-    label: 'My First Dataset',
-    data: datas,
-    backgroundColor: [
-      '#183153',
-      '#0a182a',
-      '#0061EB'
-    ],
-    hoverOffset: 4
-  }]
-};
+    const productChartData = {
+        labels: productLabel,
+        datasets: [{
+        label: 'My First Dataset',
+        data: productData,
+        backgroundColor: [
+            '#0AA09D',
+        ],
+        hoverOffset: 4
+        }]
+    };
   
-    const config = {
-      type: 'pie',
-      data: data,
+    const productChartConfig = {
+      type: 'bar',
+      data: productChartData,
       options: {}
     };
 
-    const myChart = new Chart(
-    document.getElementById('myChart'),
-    config
+    const product_chart = new Chart(
+    document.getElementById('product_chart'),
+    productChartConfig
+    );
+
+
+    // View Chart
+    const viewStatsArr = <?php echo json_encode($viewStatsArr); ?>;
+  
+    console.log(viewStatsArr);
+
+    let viewData = [];
+    let viewLabel = [];
+
+    for(let i = 0; i < viewStatsArr.length; i++) {
+        viewLabel.push(viewStatsArr[i].name);
+        viewData.push(viewStatsArr[i].viewCount);
+    }
+
+    const viewChartdata = {
+        labels: viewLabel,
+        datasets: [{
+        label: 'Visualizzazioni per singola pagina',
+        data: viewData,
+        backgroundColor: [
+            '#0AA09D',
+        ],
+        hoverOffset: 4
+        }]
+    };
+  
+    const viewChartConfig = {
+      type: 'pie',
+      data: viewChartdata,
+      options: {}
+    };
+
+    const view_chart = new Chart(
+    document.getElementById('view_chart'),
+    viewChartConfig
   );
+
   </script>
 @endsection
 
