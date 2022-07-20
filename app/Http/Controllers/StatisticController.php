@@ -42,7 +42,7 @@ class StatisticController extends Controller
         $array_of_product_id = [];
         $products_id_arr = [];
 
-        $query = 'SELECT product_id AS product_id FROM `statistics` WHERE product=1';
+        $query = 'SELECT product_id AS product_id FROM statistics WHERE product=1';
         $products_id = DB::select($query);
         for ($i = 0; $i < count($products_id); $i++) {
             array_push($products_id_arr, $products_id[$i]->product_id);
@@ -57,7 +57,7 @@ class StatisticController extends Controller
         // dd($products_id_arr);
         
         for ($i = 0; $i < count($array_of_product_id); $i++) {
-            $query = 'SELECT COUNT(id) AS id FROM `statistics` WHERE product=1 AND product_id='.$array_of_product_id[$i].'';
+            $query = 'SELECT COUNT(id) AS id FROM statistics WHERE product=1 AND product_id='.$array_of_product_id[$i].'';
             $execute = DB::select($query);
     
             ${"product_" . $i} = new ProductStats();

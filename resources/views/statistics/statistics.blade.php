@@ -25,9 +25,15 @@
             </div>
             @endforeach
         </div> --}}
-        <div class="col-12 p-2" style="background-color: rgb(227, 227, 227); border-radius: 5px">
+        <div class="col-12 p-2">
             <div class="mt-3 mb-5 pl-3">
-                <span style="font-size: 20px">Visualizzazioni pagine</span>
+                <span style="font-size: 20px">
+                    Visualizzazioni pagine
+                </span>
+                <p style="font-size: 14px">
+                    Numero totale di visite per singola pagina effettuate dagli utenti.
+                    Il grafico mostra la percentuale di ogni pagina rispetto al totale delle visite.
+                </p>
             </div>
             <div class="d-flex justify-content-around" style="height: 300px;">
                 @foreach($viewStatsArr as $stat)
@@ -67,7 +73,12 @@
         {{-- <input id="productStatArrJSON" value="{{ $productStatArr }}" class="d-none"> --}}
         <div class="col-12">
             <div class="mt-3 mb-5 pl-3">
-                <span style="font-size: 20px">Articoli più visitati</span>
+                <span style="font-size: 20px">
+                    Articoli più visitati
+                </span>
+                <p style="font-size: 14px">
+                    Numero totale di visite per singolo articolo effettuate dagli utenti
+                </p>
             </div>
             <div class="chart-container" style="position: relative; height: 300px; width: 300px; margin: auto">
                 <canvas id="myChart" width="200px" height="200px"></canvas>
