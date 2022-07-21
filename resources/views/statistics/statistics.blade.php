@@ -19,7 +19,7 @@
         </div>
 
         <div class="col-12 p-2">
-            <div class="mt-3 mb-5 pl-3">
+            <div class="mt-3 mb-5">
                 <span style="font-size: 20px">
                     Visualizzazioni pagine
                 </span>
@@ -46,7 +46,7 @@
                 </div>
                 @endforeach
             </div> -->
-            <div class="chart-container" style="position: relative; height: 400px; width: 60%; margin: auto">
+            <div class="chart-container" style="position: relative; min-height: 400px; width: 100%; margin: auto">
                 <canvas id="view_chart" width="200px" height="200px"></canvas>
             </div>
         </div>
@@ -67,7 +67,7 @@
 
         <!-- Charts -->
         <div class="col-12">
-            <div class="mt-3 mb-5 pl-3">
+            <div class="mt-3 mb-5">
                 <span style="font-size: 20px">
                     Articoli più visitati
                 </span>
@@ -75,7 +75,7 @@
                     Numero totale di visite per singolo articolo effettuate dagli utenti
                 </p>
             </div>
-            <div class="chart-container" style="position: relative; height: 300px; width: 60%; margin: auto">
+            <div class="chart-container" style="position: relative; min-height: 300px; width: 100%; margin: auto">
                 <canvas id="product_chart" width="200px" height="200px"></canvas>
             </div>
         </div>
@@ -104,7 +104,10 @@
         label: 'My First Dataset',
         data: productData,
         backgroundColor: [
-            '#0AA09D',
+            '#183153',
+            '#13468f',
+            '#446695',
+            '#2a61af'
         ],
         hoverOffset: 4
         }]
