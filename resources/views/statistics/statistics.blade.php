@@ -7,7 +7,7 @@
 @section('content')
 <div class="container">
     <div class="row">
-        <div style="margin-bottom: 20px">
+        <div style="margin-bottom: 20px; position: sticky; top: 0;">
             <a href="/admin/dashboard">
                 <div class="back_btn" style="display: inline-block;">
                     <i class="fa fad fa-arrow-left"></i>
@@ -18,8 +18,10 @@
             </div>
         </div>
 
-        <div class="col-12 p-2">
-            <div class="mt-3 mb-5">
+        <!-- View Chart -->
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-6 col-xl-6 mt-2 mb-2">
+            <!-- title and description -->
+            <div class="mt-3 mb-5" style="min-height: 80px">
                 <span style="font-size: 20px">
                     Visualizzazioni pagine
                 </span>
@@ -46,28 +48,30 @@
                 </div>
                 @endforeach
             </div> -->
-            <div class="chart-container" style="position: relative; min-height: 400px; width: 100%; margin: auto">
+            <!-- chart -->
+            <div class="chart-container mb-2" style="position: relative; min-height: 300px; width: 100%; margin: auto">
                 <canvas id="view_chart" width="200px" height="200px"></canvas>
+            </div>
+            <!-- Data legend -->
+            <div style="min-height: 150px">
+                <strong>Numero di visualizzazioni</strong>
+                @foreach($viewStatsArr as $viewStat)
+                <div class="col-6 d-flex justify-content-between pt-1 pb-1">
+                    <div class="text-uppercase">
+                        {{ $viewStat->name }}
+                    </div>
+                    <div>
+                        {{ $viewStat->viewCount }}
+                    </div>
+                </div>
+                @endforeach
             </div>
         </div>
 
-
-        <!-- products stats -->
-        {{-- @foreach($productStats as $prodStat)
-            <div class="d-flex justify-content-around" style="border: 1px solid blue">
-                <div>
-                    <span>{{ $prodStat->product_id }}</span>
-                </div>
-                <div>
-                    <span>{{ $prodStat->productCount }}</span>
-                </div>
-            </div>
-        @endforeach --}}
-        
-
-        <!-- Charts -->
-        <div class="col-12">
-            <div class="mt-3 mb-5">
+        <!-- Product Chart -->
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-6 col-xl-6 mt-2 mb-2">
+            <!-- title and description -->
+            <div class="mt-3 mb-5" style="min-height: 80px">
                 <span style="font-size: 20px">
                     Articoli più visitati
                 </span>
@@ -75,8 +79,25 @@
                     Numero totale di visite per singolo articolo effettuate dagli utenti
                 </p>
             </div>
-            <div class="chart-container" style="position: relative; min-height: 300px; width: 100%; margin: auto">
+            <!-- chart -->
+            <div class="chart-container mb-2" style="position: relative; min-height: 300px; width: 100%; margin: auto">
                 <canvas id="product_chart" width="200px" height="200px"></canvas>
+            </div>
+            <!-- Data legend -->
+            <div class="mt-2" style="min-height: 150px">
+                <strong>TOP 5 Prodotti più visitati</strong>
+                @foreach($viewStatsArr as $viewStat)
+                    @if(array_search($viewStat, $viewStatsArr) < 5)
+                    <div class="col-6 d-flex justify-content-between pt-1 pb-1">
+                        <div class="text-uppercase">
+                            {{ $viewStat->name }}
+                        </div>
+                        <div>
+                            {{ $viewStat->viewCount }}
+                        </div>
+                    </div>
+                    @endif
+                @endforeach
             </div>
         </div>
 
@@ -104,10 +125,7 @@
         label: 'My First Dataset',
         data: productData,
         backgroundColor: [
-            '#183153',
-            '#13468f',
-            '#446695',
-            '#2a61af'
+            '#0AA09D',
         ],
         hoverOffset: 4
         }]
@@ -144,7 +162,10 @@
         label: 'Visualizzazioni per singola pagina',
         data: viewData,
         backgroundColor: [
-            '#0AA09D',
+            '#183153',
+            '#13468f',
+            '#446695',
+            '#2a61af'
         ],
         hoverOffset: 4
         }]
