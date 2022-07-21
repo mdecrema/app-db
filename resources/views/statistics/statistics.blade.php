@@ -86,6 +86,16 @@
             <!-- Data legend -->
             <div class="mt-2" style="min-height: 150px">
                 <strong>TOP 5 Prodotti per numero di visite</strong>
+                <!-- Sort products descending to show correct standings -->
+                <?php 
+                    usort($productStatArr, function($a, $b)
+                    {
+                        if( $a->productCount == $b->productCount) {
+                            return 0; 
+                        }
+                        return $a->productCount < $b->productCount ? 1 : -1;
+                    });
+                ?>
                 @foreach($productStatArr as $productStat)
                     @if(array_search($productStat, $productStatArr) < 5)
                     <div class="col-6 d-flex justify-content-between pt-1 pb-1">
