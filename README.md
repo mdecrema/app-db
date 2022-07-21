@@ -97,4 +97,11 @@ The Laravel framework is open-sourced software licensed under the [MIT license](
 * quando scade la sessione, invece di mostrare pagina di errore, rimandare l'utente alla schermata di login
 *
 * Errore: ricarica la giacenza anche se un prodotto a 'counterSizeType' undefined (indagare)
+* Problema RICARICA GIACENZA : Rimuovere la possibilità di inserire giacenza tramite freccine, altrimenti il numero non viene passato al controller
+*
+* DASHBOARD:
+* Rendere fissa (sticky) la freccina back per toranre alla schermata dashboard (sarebbe meglio anche creare un layout base per la dashboard da poter riutilizzare)
+*   
+* Pensare alla realizzazione per la gestione delle cateorie/reparti
+*
 */

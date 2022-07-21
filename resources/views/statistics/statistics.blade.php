@@ -31,11 +31,12 @@
                 </p>
             </div>
             <!-- chart -->
+            @if (count($viewStatsArr) > 0)
             <div class="chart-container mb-2" style="position: relative; min-height: 300px; width: 100%; margin: auto">
                 <canvas id="view_chart" width="200px" height="200px"></canvas>
             </div>
             <!-- Data legend -->
-            <div style="min-height: 150px">
+            <div class="mt-2" style="min-height: 150px">
                 <strong>Numero di visualizzazioni per pagina</strong>
                 @foreach($viewStatsArr as $viewStat)
                 <div class="col-6 d-flex justify-content-between pt-1 pb-1">
@@ -48,6 +49,11 @@
                 </div>
                 @endforeach
             </div>
+            @else
+            <div style="min-height: 450px">
+                <el>- Nessun dato disponibile -</el>
+            </div>
+            @endif
         </div>
 
         <!-- PRODUCT CHART -->
@@ -62,13 +68,19 @@
                 </p>
             </div>
             <!-- chart -->
+            @if (count($productStatArr) > 0)
             <div class="chart-container mb-2" style="position: relative; min-height: 300px; width: 100%; margin: auto">
                 <canvas id="product_chart" width="200px" height="200px"></canvas>
             </div>
             <!-- Data legend -->
             <div class="product_data_legend_container mt-2" style="min-height: 150px">
-                <strong>5 Articoli più visti</strong>
+                <strong>TOP 5 Articoli più visti</strong>
             </div>
+            @else
+            <div style="min-height: 450px">
+                <em>- Nessun dato disponibile -</em>
+            </div>
+            @endif
         </div>
 
     </div>
@@ -119,11 +131,13 @@
     sortData(productStatArr, 'productCount', true);
 
     for(let i = 0; i < productStatArr.length; i++) {
-        let productDataLegendRow = '<div class="col-6 d-flex justify-content-between pt-1 pb-1">';
-        productDataLegendRow += '<div class="text-uppercase">(' + productStatArr[i].id + ') - ' + productStatArr[i].productName + '</div>';
-        productDataLegendRow += '<div>' + productStatArr[i].productCount + '</div>';
-        productDataLegendRow += '</div>'
-        $('.product_data_legend_container').append(productDataLegendRow);
+        if (productStatArr.indexOf(productStatArr[i]) <= 5) {
+            let productDataLegendRow = '<div class="col-6 d-flex justify-content-between pt-1 pb-1">';
+            productDataLegendRow += '<div class="text-uppercase text-truncate">(' + productStatArr[i].id + ') - ' + productStatArr[i].productName + '</div>';
+            productDataLegendRow += '<div>' + productStatArr[i].productCount + '</div>';
+            productDataLegendRow += '</div>'
+            $('.product_data_legend_container').append(productDataLegendRow);
+        }
     }
 
     function sortData(dataArr, dataToSort, descending) {
