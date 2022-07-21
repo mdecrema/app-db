@@ -121,14 +121,14 @@ class StatisticController extends Controller
 
         return view('statistics/statistics', compact(
             'viewStatsArr',
-            'teesView',
-            'hoodiesView',
-            'pantsView',
-            'shoesView',
-            'teesViewCount',
-            'hoodiesViewCount',
-            'pantsViewCount',
-            'shoesViewCount',
+            // 'teesView',
+            // 'hoodiesView',
+            // 'pantsView',
+            // 'shoesView',
+            // 'teesViewCount',
+            // 'hoodiesViewCount',
+            // 'pantsViewCount',
+            // 'shoesViewCount',
             'productStatArr'
             )
         );

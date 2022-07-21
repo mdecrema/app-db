@@ -18,10 +18,10 @@
             </div>
         </div>
 
-        <!-- View Chart -->
-        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-6 col-xl-6 mt-2 mb-2 border_bottom">
+        <!-- VIEW CHART -->
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-6 col-xl-6 mt-2 mb-2 p-3 border_bottom" style="background-color: #dbe6f6">
             <!-- title and description -->
-            <div class="mt-3 mb-5" style="min-height: 80px">
+            <div class="mb-5" style="min-height: 80px">
                 <span style="font-size: 20px">
                     Visualizzazioni pagine
                 </span>
@@ -30,24 +30,6 @@
                     Il grafico mostra la percentuale di ogni pagina rispetto al totale delle visite.
                 </p>
             </div>
-            <!-- <div class="d-flex justify-content-around" style="height: 300px;">
-                @foreach($viewStatsArr as $stat)
-                <div style="width: 70px; height: 300px; background-color: lightgrey; box-shadow: 2px 2px 5px grey; position: relative; border-radius: 5px">
-                    <div class="d-flex justify-content-center align-items-center" style="position: absolute; bottom: 0; left: 0; width: 100%; height: {{ $stat->viewPercentage }}%; background-color: #0AA09D">
-                        <div class="center">
-                            <span style="font-size: 20px; color: #fff">{{ $stat->viewCount }}</span>
-                        </div>
-                    </div>
-                </div>
-                @endforeach
-            </div>
-            <div class="mt-3 d-flex justify-content-around">
-                @foreach($viewStatsArr as $stat)
-                <div class="">
-                    {{ $stat->name }}
-                </div>
-                @endforeach
-            </div> -->
             <!-- chart -->
             <div class="chart-container mb-2" style="position: relative; min-height: 300px; width: 100%; margin: auto">
                 <canvas id="view_chart" width="200px" height="200px"></canvas>
@@ -68,10 +50,10 @@
             </div>
         </div>
 
-        <!-- Product Chart -->
-        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-6 col-xl-6 mt-2 mb-2 border_bottom">
+        <!-- PRODUCT CHART -->
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-6 col-xl-6 mt-2 mb-2 p-3 border_bottom" style="background-color: #e3ebeb"> <!-- deefef d1ecec -->
             <!-- title and description -->
-            <div class="mt-3 mb-5" style="min-height: 80px">
+            <div class="mb-5" style="min-height: 80px">
                 <span style="font-size: 20px">
                     Articoli più visitati
                 </span>
@@ -84,31 +66,8 @@
                 <canvas id="product_chart" width="200px" height="200px"></canvas>
             </div>
             <!-- Data legend -->
-            <div class="mt-2" style="min-height: 150px">
-                <strong>TOP 5 Prodotti per numero di visite</strong>
-                <!-- Sort products descending to show correct standings -->
-                <?php 
-                    usort($productStatArr, function($a, $b)
-                    {
-                        if( $a->productCount == $b->productCount) {
-                            return 0; 
-                        }
-                        return $a->productCount < $b->productCount ? 1 : -1;
-                    });
-                ?>
-                @foreach($productStatArr as $productStat)
-                    @if(array_search($productStat, $productStatArr) < 5)
-                    <div class="col-6 d-flex justify-content-between pt-1 pb-1">
-                        <div class="text-uppercase">
-                            ({{ $productStat->id }}) 
-                            {{ $productStat->productName }}
-                        </div>
-                        <div>
-                            {{ $productStat->productCount }}
-                        </div>
-                    </div>
-                    @endif
-                @endforeach
+            <div class="product_data_legend_container mt-2" style="min-height: 150px">
+                <strong>5 Articoli più visti</strong>
             </div>
         </div>
 
@@ -119,6 +78,10 @@
 <script>
 
     const productStatArr = <?php echo json_encode($productStatArr); ?>;
+
+    console.log(productStatArr);
+
+    sortData(productStatArr, 'id', false);
 
     let productData = [];
     let productLabel = [];
@@ -153,6 +116,27 @@
     productChartConfig
     );
 
+    sortData(productStatArr, 'productCount', true);
+
+    for(let i = 0; i < productStatArr.length; i++) {
+        let productDataLegendRow = '<div class="col-6 d-flex justify-content-between pt-1 pb-1">';
+        productDataLegendRow += '<div class="text-uppercase">(' + productStatArr[i].id + ') - ' + productStatArr[i].productName + '</div>';
+        productDataLegendRow += '<div>' + productStatArr[i].productCount + '</div>';
+        productDataLegendRow += '</div>'
+        $('.product_data_legend_container').append(productDataLegendRow);
+    }
+
+    function sortData(dataArr, dataToSort, descending) {
+        return dataArr.sort(function(a, b) {
+            if (a.dataToSort == b.dataToSort) {
+                return 0;
+            } else if (descending) {
+                return a.dataToSort < b.dataToSort ? 1 : -1;
+            } else {
+                return a.dataToSort < b.dataToSort ? -1 : 1;
+            }
+        });
+    }
 
     // View Chart
     const viewStatsArr = <?php echo json_encode($viewStatsArr); ?>;
