@@ -19,7 +19,7 @@
         </div>
 
         <!-- View Chart -->
-        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-6 col-xl-6 mt-2 mb-2">
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-6 col-xl-6 mt-2 mb-2 border_bottom">
             <!-- title and description -->
             <div class="mt-3 mb-5" style="min-height: 80px">
                 <span style="font-size: 20px">
@@ -54,7 +54,7 @@
             </div>
             <!-- Data legend -->
             <div style="min-height: 150px">
-                <strong>Numero di visualizzazioni</strong>
+                <strong>Numero di visualizzazioni per pagina</strong>
                 @foreach($viewStatsArr as $viewStat)
                 <div class="col-6 d-flex justify-content-between pt-1 pb-1">
                     <div class="text-uppercase">
@@ -69,7 +69,7 @@
         </div>
 
         <!-- Product Chart -->
-        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-6 col-xl-6 mt-2 mb-2">
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-6 col-xl-6 mt-2 mb-2 border_bottom">
             <!-- title and description -->
             <div class="mt-3 mb-5" style="min-height: 80px">
                 <span style="font-size: 20px">
@@ -85,15 +85,16 @@
             </div>
             <!-- Data legend -->
             <div class="mt-2" style="min-height: 150px">
-                <strong>TOP 5 Prodotti più visitati</strong>
-                @foreach($viewStatsArr as $viewStat)
-                    @if(array_search($viewStat, $viewStatsArr) < 5)
+                <strong>TOP 5 Prodotti per numero di visite</strong>
+                @foreach($productStatArr as $productStat)
+                    @if(array_search($productStat, $productStatArr) < 5)
                     <div class="col-6 d-flex justify-content-between pt-1 pb-1">
                         <div class="text-uppercase">
-                            {{ $viewStat->name }}
+                            ({{ $productStat->id }}) 
+                            {{ $productStat->productName }}
                         </div>
                         <div>
-                            {{ $viewStat->viewCount }}
+                            {{ $productStat->productCount }}
                         </div>
                     </div>
                     @endif

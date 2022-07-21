@@ -14,7 +14,7 @@ class ViewStats {
 
 class ProductStats {
     public $id;
-    public $name;
+    public $productName;
     public $productCount;
     public $viewPercentage;
 }
@@ -58,10 +58,15 @@ class StatisticController extends Controller
         
         for ($i = 0; $i < count($array_of_product_id); $i++) {
             $query = 'SELECT COUNT(id) AS id FROM statistics WHERE product = TRUE AND product_id='.$array_of_product_id[$i].'';
+            $query2 = 'SELECT nome FROM products WHERE id ='.$array_of_product_id[$i].'';
             $execute = DB::select($query);
+            $execute2 = DB::select($query2);
+
+            // dd($execute2);
     
             ${"product_" . $i} = new ProductStats();
             ${"product_" . $i}->id = $array_of_product_id[$i];
+            ${"product_" . $i}->productName = $execute2[0]->nome;
             ${"product_" . $i}->productCount = $execute[0]->id;
             array_push($productStatArr, ${"product_" . $i} );
         }
