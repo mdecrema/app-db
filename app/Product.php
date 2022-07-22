@@ -11,7 +11,7 @@ class Product extends Model
     ];
 
     protected $fillable = [
-        'nome', 'photo1', 'photo2', 'photo3', 'photo4', 'photo5', 'categoria', 'genere', 
+        'nome', 'photo1', 'photo2', 'photo3', 'photo4', 'photo5', 'category_id', 'category_title', 'genere', 
         'description', 'colore', 'sizes', 'counterSizeType', 'brand', 'amount', 'availability', 'valutazione', 'appView'
     ];
 

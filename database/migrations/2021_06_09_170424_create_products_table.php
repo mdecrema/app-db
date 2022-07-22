@@ -22,7 +22,8 @@ class CreateProductsTable extends Migration
             $table->string('photo3', 150)->nullable();
             $table->string('photo4', 150)->nullable();
             $table->string('photo5', 150)->nullable();
-            $table->string('categoria', 50);
+            $table->integer('category_id')->nullable();
+            $table->string('category_title', 50)->nullable();
             $table->string('genere', 10);
             $table->text('description', 2000);
             $table->string('colore', 20);

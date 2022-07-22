@@ -19,6 +19,7 @@ Route::get('/', 'ProductController@homePage', function() {
     // session(['key' => 'value']);
 })->name('homePage');
 
+// Products
 Route::get('/products', 'ProductController@index')->name('products');
 Route::get('/products/{type}', 'ProductController@productsByType')->name('productsByType');
 Route::get('/products/products/{id}', 'ProductController@show')->name('products.show');
@@ -60,6 +61,11 @@ Route::prefix('admin')->name('admin.')->middleware('can:admin')->group(function 
     Route::get('/dashboard', 'AdminController@index')->name('dashboard');
     // PROVA PHP MAILER
     Route::get('/dashboard/phpmailer', 'AdminController@phpMailer')->name('php.mailer');
+    /**
+     * CATEGORIES
+     */
+    Route::get('/dashboard/categories', 'AdminController@allCategoriesView')->name('allCategories');
+    Route::post('/dashboard/categories/store', 'AdminController@storeCategory')->name('categories.store');
     /**
      * PRODUCTS
      */

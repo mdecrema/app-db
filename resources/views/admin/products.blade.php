@@ -292,7 +292,7 @@ Admin Products
                 $('#label_description').html('Descrizione');
                 $('#product_description').html(product.description);
                 $('#label_category').html('Categoria');
-                $('#product_category').html(product.categoria);
+                $('#product_category').html(product.category_title);
                 $('#label_brand').html('Brand');
                 $('#product_brand').html(product.brand);
                 $('#label_color').html('Colore');
@@ -326,7 +326,7 @@ Admin Products
             //id: product_id,
             nome: $('#product_name').html(),
             description: $('#product_description').html(),
-            categoria: $('#product_category').html(),
+            category_id: $('#product_category_id').html(),
             brand: $('#product_brand').html(),
             colore: $('#product_color').html(),
             amount: $('#product_amount').html(),

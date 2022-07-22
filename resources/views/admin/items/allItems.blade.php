@@ -66,8 +66,8 @@
                             <select name="" id="categoria" class="form-control">
                                 <option value="tutti" selected>- tutti -</option>
                             @foreach($products as $product)
-                                @if($product->categoria)
-                                <option value="{{ $product->categoria }}">{{ $product->categoria }}</option>
+                                @if($product->category_title)
+                                <option value="{{ $product->category_title }}">{{ $product->category_title}}</option>
                                 @endif
                             @endforeach
                         </select>

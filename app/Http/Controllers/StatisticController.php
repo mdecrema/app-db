@@ -72,6 +72,7 @@ class StatisticController extends Controller
         }
 
         // Views Stats
+
         $teesViewCount = count($teesView);
         $hoodiesViewCount = count($hoodiesView);
         $pantsViewCount = count($pantsView);

@@ -19,7 +19,7 @@ class ProductsExport implements FromCollection, WithHeadings
     public function headings(): array
     {
         return [
-            'id', 'nome', 'photo1', 'photo2', 'photo3', 'photo4', 'photo5', 'brand', 'categoria', 'genere', 
+            'id', 'nome', 'photo1', 'photo2', 'photo3', 'photo4', 'photo5', 'brand', 'category_id', 'category_title', 'genere', 
             'description', 'colore', 'sizes', 'counterSizeType', 'amount', 'availability', 'valutazione', 'appView', 'created_at', 'updated_at'
         ];
     }

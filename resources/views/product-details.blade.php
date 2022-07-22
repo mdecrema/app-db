@@ -34,7 +34,7 @@
             </div>
         </div>
         <div class=" item-details" style="width: 50%; padding: 15px 25px;">
-            <span style="color: grey;">{{ $product->categoria }} - {{ $product->genere }}</span><br>
+            <span style="color: grey;">{{ $product->category_title }} - {{ $product->genere }}</span><br>
             <span style="color: #000; font-size: 20px; font-weight: bold">{{ $product->nome }}</span><br>
             <span style="color: #000;  font-weight: bold">{{ number_format($product->amount, 2, '.', ',') }} €</span>
         </div>

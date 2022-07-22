@@ -1,3 +1,6 @@
+<?php use App\Category; 
+    $categories = Category::all();
+?>
 <!doctype html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 <head>
@@ -79,10 +82,13 @@
     <div id="mySidenav" class="sidenav">
     <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
     <a class="voci-menu" href="{{ route('skiRent') }}">Ski Rent</a>
-    <a class="voci-menu" href="{{ route('productsByType', 't-shirt') }}">Tees</a>
+    @foreach($categories as $category)
+    <a class="voci-menu" href="{{ route('productsByType', $category->id) }}">{{ ucfirst($category->title) }}</a>
+    @endforeach
+    {{-- <a class="voci-menu" href="{{ route('productsByType', 't-shirt') }}">Tees</a>
     <a class="voci-menu" href="{{ route('productsByType', 'hoodies') }}">Felpe</a>
     <a class="voci-menu" href="{{ route('productsByType', 'pants') }}">Pantaloni</a>
-    <a class="voci-menu" href="{{ route('productsByType', 'shoes') }}">Scarpe</a>
+    <a class="voci-menu" href="{{ route('productsByType', 'shoes') }}">Scarpe</a> --}}
     <a  class="voci-menu"href="{{ route('news') }}">News</a>
         <!-- Authentication Links -->
        @guest

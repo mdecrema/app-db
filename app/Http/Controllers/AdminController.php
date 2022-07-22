@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\Facades\DB;
 use App\User;
 use App\Guest;
+use App\Category;
 use App\Product;
 use App\Item;
 use App\Order;
@@ -45,18 +46,22 @@ class AdminController extends Controller
         $ordiniMenuList = array($menuOrdini1, $menuOrdini2, $menuOrdini3);
 
         $menuMagazzino1 = new MenuLink();
-        $menuMagazzino1->name = 'Tutti i prodotti';
+        $menuMagazzino1->name = 'Tutti gli articoli';
         $menuMagazzino1->link = 'dashboard/products';
 
         $menuMagazzino2 = new MenuLink();
-        $menuMagazzino2->name = 'Aggiungi prodotti';
+        $menuMagazzino2->name = 'Aggiungi articoli';
         $menuMagazzino2->link = 'dashboard/products/create';
 
         $menuMagazzino3 = new MenuLink();
         $menuMagazzino3->name = 'Ricarica giacenza';
         $menuMagazzino3->link = 'dashboard/items/addItems';
 
-        $magazzinoMenuList = array($menuMagazzino1, $menuMagazzino2, $menuMagazzino3);
+        $menuMagazzino4 = new MenuLink();
+        $menuMagazzino4->name = 'Gestisci reparti e categorie di articoli';
+        $menuMagazzino4->link = 'dashboard/categories';
+
+        $magazzinoMenuList = array($menuMagazzino1, $menuMagazzino2, $menuMagazzino3, $menuMagazzino4);
 
         $menuNoleggio1 = new MenuLink();
         $menuNoleggio1->name = 'Tutto il materiale';
@@ -123,6 +128,32 @@ class AdminController extends Controller
     }
 
     /**
+     * All Categories.
+     *
+     * @return \Illuminate\Http\Response
+     */
+
+    public function allCategoriesView() {
+        $categories = Category::all();
+
+        return view('admin.categories.allCategories', compact('categories'));
+    }
+
+    public function storeCategory(Request $request) {
+        $data = $request->all();
+
+        $newCategory = new Category();
+
+        $newCategory->title = $data['title'];
+
+        $newCategory->save();
+
+        $categories = Category::all();
+
+        return view('admin.categories.allCategories', compact('categories'));
+    }
+
+    /**
      * Return Admin Product View w/ filters.
      *
      * @return \Illuminate\Http\Response
@@ -141,7 +172,7 @@ class AdminController extends Controller
         $options_categoria = []; $options_genere = []; $options_brand = []; $options_color = [];
         
         foreach($products as $product) {    
-            array_push($options_categoria, $product->categoria);
+            array_push($options_categoria, $product->category_title);
             array_push($options_genere, $product->genere);
             array_push($options_brand, $product->brand);
             array_push($options_color, $product->colore);
@@ -197,6 +228,11 @@ class AdminController extends Controller
                     array_push($filterNewArr, $obj);
 
                     if (count($filterNewArr) === 1) {
+                        if ($filter['name'] == 'Categoria') {
+                            $filter['name'] = 'category_title';
+                        }
+
+
                         if ($filter['name'] == 'Nome') {
                             $query .= ' WHERE ' .strtolower($filter['name']).' LIKE \'%'.$filter['option'].'%\'';
                         } else {

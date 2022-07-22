@@ -18,6 +18,7 @@
                 <h4> Aggiungi articoli </h4>
             </div>
         </div>
+        @if(count($categories) > 0)
         <!-- left box -->
         <div class="col-12 border_blue" style="background-color: #cdd9e9; margin-bottom: 20px; padding: 10px; border-radius: 5px">
             <h5 style="color: #183153; font-weight: bold">IMPORTA CATALOGO</h5>
@@ -91,7 +92,12 @@
     
                 <div class="form-group">
                     <label for="title">Categoria</label>
-                    <input type="text" class="form-control" id="title" name="categoria" placeholder="categoria">
+                    {{-- <input type="text" class="form-control" id="title" name="categoria" placeholder="categoria"> --}}
+                    <select class="form-control" name="category_id" id="category_id">
+                        @foreach($categories as $category)
+                        <option value="{{ $category->id }}">{{ $category->title }}</option>
+                        @endforeach
+                    </select>
                 </div>
     
                 <div class="form-group">
@@ -142,6 +148,13 @@
             @endif
 
         </div>
+        @else
+        <div class="col-12">
+            <h6>Non sono presenti categorie di prodotti!</h6>
+            <p>Prima di procedere all'aggiunta di articoli devi creare almeno una categoria di prodotti nella specifica sezione</p>
+            <button class="btn btn-primary"><a href="{{ route('admin.allCategories') }}" style="color: #fff; text-decoration: none">Vai a categorie</a></button>
+        </div>
+        @endif
     </div>
 </div>
 @endsection

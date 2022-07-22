@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\DB;
+use App\Category;
 use App\Product;
 use App\Item;
 use App\User;
@@ -18,6 +19,7 @@ class ProductController extends Controller
     public function homePage(Request $request)
     {
         $products = Product::all();
+        $categories = Category::all();
 
         // Session info storaging
         $ip = $request->ip();
@@ -40,7 +42,7 @@ class ProductController extends Controller
         }
         //
 
-        return view('homePage', compact('products', 'ip', 'user_agent'));
+        return view('homePage', compact('products', 'categories', 'ip', 'user_agent'));
     }
     /**
      * Display a listing of the resource.
@@ -71,7 +73,7 @@ class ProductController extends Controller
 
     public function productsByType($type) {
         $products = Product::all()
-                    ->where('categoria', $type);
+                    ->where('category_id', $type);
 
         // Statistics
         $stat = new Statistic();
@@ -90,7 +92,9 @@ class ProductController extends Controller
      */
     public function create()
     {
-        return view('admin.create');
+        $categories = Category::all();
+
+        return view('admin.create', compact('categories'));
     }
 
     /**
@@ -111,7 +115,7 @@ class ProductController extends Controller
             "photo3" => "image|nullable",
             "photo4" => "image|nullable",
             "photo5" => "image|nullable",
-            "categoria" => "required|max:50",
+            "category_id" => "required|numeric",
             "genere" => "required|max:10",
             "sizes" => "nullable|max:10",
             "counterSizeType" => "nullable|numeric",
@@ -142,7 +146,10 @@ class ProductController extends Controller
         //$newProduct->fill($data);
 
         $newProduct->nome = $data['nome'];
-        $newProduct->categoria = $data['categoria'];
+        $newProduct->category_id = $data['category_id'];
+        // find category title
+        $category_title = DB::table('categories')->select('title')->where('id', '=', $data['category_id'])->first();
+        $newProduct->category_title =  $category_title->title;
         // $newProduct->taglia = $data['taglia'];
         $newProduct->genere = $data['genere'];
         $newProduct->counterSizeType = intval($data['counterSizeType']);
@@ -289,7 +296,10 @@ class ProductController extends Controller
         $data = json_decode($data);
 
         $product->nome = $data['nome'];
-        $product->categoria = $data['categoria'];
+        $product->category_id = $data['category_id'];
+        // find category title
+        $category_title = DB::table('categories')->select('title')->where('id', '=', $data['category_id'])->first();
+        $product->category_title =  $category_title->title;
         $product->genere = $data['genere'];
         $product->description = $data['description'];
         $product->colore = $data['colore'];
