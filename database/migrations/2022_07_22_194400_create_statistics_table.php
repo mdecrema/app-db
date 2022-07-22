@@ -18,14 +18,18 @@ class CreateStatisticsTable extends Migration
 
             // tipo
             $table->boolean('view')->default(false);
+            $table->boolean('category')->default(false);
             $table->boolean('product')->default(false);
             $table->boolean('sale')->default(false);
             //
 
             // tipo info
             $table->string('view_name', 50)->nullable();
+            $table->integer('category_id')->nullable();
+            $table->string('category_title', 50)->nullable();
             $table->integer('product_id')->nullable();
-            $table->integer('order_id')->nullable(); 
+            $table->string('product_name', 50)->nullable();
+            $table->integer('order_id')->nullable();
 
             // date
             $table->bigInteger('dateTime');

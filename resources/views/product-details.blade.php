@@ -263,7 +263,7 @@
         <div class="col-lg-12" style="height: 200px; border-top: 1px solid grey; border-bottom: 1px solid grey;overflow-x: scroll; overflow-y: hidden; -webkit-overflow-scrolling: touch;">
             <div style="width: 1000px; height: 200px;">
             @foreach($products as $product)
-                <a href="products/{{$product['id']}}">
+                <a href="{{ route('products.show', $product['id']) }}">
                     <div style="width: 150px; height: 200px; display: inline-block; position: relative; margin: 0 2px;">
                         <img src="{{ 'https://img-space.fra1.digitaloceanspaces.com/img-space/uploads/images/'.$product->photo1 }}" alt="product-img" style="width: 100%; height: 150px">
                         <span style="color: #000; font-size: 12px; font-weight: bold" class="text-truncate">{{ $product->nome }}</span><br>

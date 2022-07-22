@@ -7,7 +7,7 @@
 @section('content')
 <div class="row">
     <div class="col-lg-12" style="padding: 0 35px">
-        <h4>{{ $type }}</h4>
+        <h4>{{ $category->title }}</h4>
     </div>
     
     @foreach($products as $product)

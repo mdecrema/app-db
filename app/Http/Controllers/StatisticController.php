@@ -7,16 +7,21 @@ use App\Statistic;
 use Illuminate\Support\Facades\DB;
 
 class ViewStats {
-    public $name;
+    public $id;
+    public $viewName;
     public $viewCount;
-    public $viewPercentage;
+}
+
+class CategoryStats {
+    public $id;
+    public $categoryTitle;
+    public $categoryCount;
 }
 
 class ProductStats {
     public $id;
     public $productName;
     public $productCount;
-    public $viewPercentage;
 }
 
 class StatisticController extends Controller
@@ -30,10 +35,10 @@ class StatisticController extends Controller
     {
         $viewStatsArr = [];
 
-        $teesView = Statistic::all()->where('view', true)->where('view_name', 't-shirt');
-        $hoodiesView = Statistic::all()->where('view', true)->where('view_name', 'hoodies');
-        $pantsView = Statistic::all()->where('view', true)->where('view_name', 'pants');
-        $shoesView = Statistic::all()->where('view', true)->where('view_name', 'shoes');
+        // $teesView = Statistic::all()->where('view', true)->where('view_name', 't-shirt');
+        // $hoodiesView = Statistic::all()->where('view', true)->where('view_name', 'hoodies');
+        // $pantsView = Statistic::all()->where('view', true)->where('view_name', 'pants');
+        // $shoesView = Statistic::all()->where('view', true)->where('view_name', 'shoes');
 
         // Products stats
         $productStats = Statistic::all()->where('product', true);        
@@ -71,57 +76,91 @@ class StatisticController extends Controller
             array_push($productStatArr, ${"product_" . $i} );
         }
 
-        // Views Stats
+        // Category Stats
+        $categoryStats = Statistic::all()->where('category', true);        
+        $categoryStatArr = [];
+        $categories_id = [];
+        $array_of_category_id = [];
+        $categories_id_arr = [];
 
-        $teesViewCount = count($teesView);
-        $hoodiesViewCount = count($hoodiesView);
-        $pantsViewCount = count($pantsView);
-        $shoesViewCount = count($shoesView);
-
-        $totalViewCount = $teesViewCount + $hoodiesViewCount + $pantsViewCount + $shoesViewCount;
-
-        $tee = new ViewStats();
-        $tee->name = 't-shirt';
-        $tee->viewCount = $teesViewCount;
-        if ($teesViewCount > 0) {
-            $tee->viewPercentage = ($teesViewCount / $totalViewCount) * 100;
-        } else {
-            $tee->viewPercentage = 0;
+        $query = 'SELECT category_id FROM statistics WHERE category = true';
+        $categories_id = DB::select($query);
+        for ($i = 0; $i < count($categories_id); $i++) {
+            array_push($categories_id_arr, $categories_id[$i]->category_id);
         }
-        array_push($viewStatsArr, $tee);
 
-        $hoodie = new ViewStats();
-        $hoodie->name = 'hoodies';
-        $hoodie->viewCount = $hoodiesViewCount;
-        if ($hoodiesViewCount > 0) {
-            $hoodie->viewPercentage = ($hoodiesViewCount / $totalViewCount) * 100;
-        } else {
-            $tee->viewPercentage = 0;
+        for ($i = 0; $i < count($categories_id_arr); $i++) {
+            if (!in_array($categories_id_arr[$i], $array_of_category_id)) {
+            array_push($array_of_category_id, $categories_id_arr[$i]);
+            }
         }
-        array_push($viewStatsArr, $hoodie);
+        //array_unique($array_of_category_id);
+        // dd($array_of_category_id);
+        
+        for ($i = 0; $i < count($array_of_category_id); $i++) {
+            $query = 'SELECT COUNT(id) AS id FROM statistics WHERE category = TRUE AND category_id='.$array_of_category_id[$i].'';
+            $query2 = 'SELECT title FROM categories WHERE id='.$array_of_category_id[$i].'';
+            $execute = DB::select($query);
+            $execute2 = DB::select($query2);
 
-        $pant = new ViewStats();
-        $pant->name = 'pants';
-        $pant->viewCount = $pantsViewCount;
-        if ($pantsViewCount > 0) {
-            $pant->viewPercentage = ($pantsViewCount / $totalViewCount) * 100;
-        } else {
-            $tee->viewPercentage = 0;
+            // dd($execute2);
+    
+            ${"category_" . $i} = new categoryStats();
+            ${"category_" . $i}->id = $array_of_category_id[$i];
+            ${"category_" . $i}->categoryTitle = $execute2[0]->title;
+            ${"category_" . $i}->categoryCount = $execute[0]->id;
+            array_push($categoryStatArr, ${"category_" . $i} );
         }
-        array_push($viewStatsArr, $pant);
 
-        $shoe = new ViewStats();
-        $shoe->name = 'shoes';
-        $shoe->viewCount = $shoesViewCount;
-        if ($shoesViewCount > 0) {
-            $shoe->viewPercentage = ($shoesViewCount / $totalViewCount) * 100;
-        } else {
-            $tee->viewPercentage = 0;
-        }
-        array_push($viewStatsArr, $shoe);
+        // $teesViewCount = count($teesView);
+        // $hoodiesViewCount = count($hoodiesView);
+        // $pantsViewCount = count($pantsView);
+        // $shoesViewCount = count($shoesView);
+
+        // $totalViewCount = $teesViewCount + $hoodiesViewCount + $pantsViewCount + $shoesViewCount;
+
+        // $tee = new ViewStats();
+        // $tee->name = 't-shirt';
+        // $tee->viewCount = $teesViewCount;
+        // if ($teesViewCount > 0) {
+        //     $tee->viewPercentage = ($teesViewCount / $totalViewCount) * 100;
+        // } else {
+        //     $tee->viewPercentage = 0;
+        // }
+        // array_push($viewStatsArr, $tee);
+
+        // $hoodie = new ViewStats();
+        // $hoodie->name = 'hoodies';
+        // $hoodie->viewCount = $hoodiesViewCount;
+        // if ($hoodiesViewCount > 0) {
+        //     $hoodie->viewPercentage = ($hoodiesViewCount / $totalViewCount) * 100;
+        // } else {
+        //     $tee->viewPercentage = 0;
+        // }
+        // array_push($viewStatsArr, $hoodie);
+
+        // $pant = new ViewStats();
+        // $pant->name = 'pants';
+        // $pant->viewCount = $pantsViewCount;
+        // if ($pantsViewCount > 0) {
+        //     $pant->viewPercentage = ($pantsViewCount / $totalViewCount) * 100;
+        // } else {
+        //     $tee->viewPercentage = 0;
+        // }
+        // array_push($viewStatsArr, $pant);
+
+        // $shoe = new ViewStats();
+        // $shoe->name = 'shoes';
+        // $shoe->viewCount = $shoesViewCount;
+        // if ($shoesViewCount > 0) {
+        //     $shoe->viewPercentage = ($shoesViewCount / $totalViewCount) * 100;
+        // } else {
+        //     $tee->viewPercentage = 0;
+        // }
+        // array_push($viewStatsArr, $shoe);
 
         return view('statistics/statistics', compact(
-            'viewStatsArr',
+            'categoryStatArr',
             // 'teesView',
             // 'hoodiesView',
             // 'pantsView',

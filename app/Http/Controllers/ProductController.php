@@ -74,15 +74,17 @@ class ProductController extends Controller
     public function productsByType($type) {
         $products = Product::all()
                     ->where('category_id', $type);
+        $category = DB::table('categories')->select('title')->where('id', intval($type))->first();
 
         // Statistics
         $stat = new Statistic();
-        $stat->view = true;
-        $stat->view_name = $type;
+        $stat->category = true;
+        $stat->category_id = $type;
+        $stat->category_title = $category->title;
         $stat->dateTime = intval(microtime(true) * 1000);
         $stat->save();
         
-        return view('tees', compact('products', 'type'));            
+        return view('tees', compact('products', 'category'));            
     }
 
     /**

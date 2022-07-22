@@ -31,20 +31,20 @@
                 </p>
             </div>
             <!-- chart -->
-            @if (count($viewStatsArr) > 0)
+            @if (count($categoryStatArr) > 0)
             <div class="chart-container mb-2" style="position: relative; min-height: 300px; width: 100%; margin: auto">
-                <canvas id="view_chart" width="200px" height="200px"></canvas>
+                <canvas id="category_chart" width="200px" height="200px"></canvas>
             </div>
             <!-- Data legend -->
             <div class="mt-2" style="min-height: 150px">
                 <strong>Numero di visualizzazioni per pagina</strong>
-                @foreach($viewStatsArr as $viewStat)
+                @foreach($categoryStatArr as $categoryStat)
                 <div class="col-6 d-flex justify-content-between pt-1 pb-1">
                     <div class="text-uppercase">
-                        {{ $viewStat->name }}
+                        {{ $categoryStat->categoryTitle }}
                     </div>
                     <div>
-                        {{ $viewStat->viewCount }}
+                        {{ $categoryStat->categoryCount }}
                     </div>
                 </div>
                 @endforeach
@@ -153,23 +153,23 @@
     }
 
     // View Chart
-    const viewStatsArr = <?php echo json_encode($viewStatsArr); ?>;
+    const categoryStatsArr = <?php echo json_encode($categoryStatArr); ?>;
   
-    console.log(viewStatsArr);
+    console.log(categoryStatsArr);
 
-    let viewData = [];
-    let viewLabel = [];
+    let categoryData = [];
+    let categoryLabel = [];
 
-    for(let i = 0; i < viewStatsArr.length; i++) {
-        viewLabel.push(viewStatsArr[i].name);
-        viewData.push(viewStatsArr[i].viewCount);
+    for(let i = 0; i < categoryStatsArr.length; i++) {
+        categoryData.push(categoryStatsArr[i].categoryTitle);
+        categoryLabel.push(categoryStatsArr[i].categoryCount);
     }
 
-    const viewChartdata = {
-        labels: viewLabel,
+    const categoryChartdata = {
+        labels: categoryData,
         datasets: [{
         label: 'Visualizzazioni per singola pagina',
-        data: viewData,
+        data: categoryLabel,
         backgroundColor: [
             '#183153',
             '#13468f',
@@ -180,15 +180,15 @@
         }]
     };
   
-    const viewChartConfig = {
+    const categoryChartConfig = {
       type: 'pie',
-      data: viewChartdata,
+      data: categoryChartdata,
       options: {}
     };
 
-    const view_chart = new Chart(
-    document.getElementById('view_chart'),
-    viewChartConfig
+    const category_chart = new Chart(
+    document.getElementById('category_chart'),
+    categoryChartConfig
   );
 
   </script>
