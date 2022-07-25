@@ -61,7 +61,7 @@ class AdminController extends Controller
         $menuMagazzino4->name = 'Gestisci reparti e categorie di articoli';
         $menuMagazzino4->link = 'dashboard/categories';
 
-        $magazzinoMenuList = array($menuMagazzino1, $menuMagazzino2, $menuMagazzino3, $menuMagazzino4);
+        $magazzinoMenuList = array($menuMagazzino1, $menuMagazzino2, $menuMagazzino4);
 
         $menuNoleggio1 = new MenuLink();
         $menuNoleggio1->name = 'Tutto il materiale';
