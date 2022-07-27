@@ -54,8 +54,23 @@
 </head>
 <body class="container-fluid body">
 
-    <nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm fixed-top" style="height: 70px; z-index: 10;">
-        <div style="height: 100%; width: 50px; position: absolute; top: 0; left: 0; line-height: 70px; text-align: center;">
+    <nav class="navbar navbar-expand-lg navbar-light bg-white fixed-top" style="height: 70px; z-index: 10; box-shadow: 2px 2px 10px #231202">
+        <!-- -->
+        <div style="width: 100%; height: 10px; background-color: #8A5A2C; position: absolute; top: 0; left: 0; z-index: 11">
+            <marquee
+            loop="-1"
+            scrollamount="5"
+            scrolldelay="0"
+            direction="left"
+            height="30"
+            width="100%"
+            align="right">
+                <div style="width: 70vw; height: 10px; background-color: #231202; color: #fff; text-align: center; font-size: 12px">
+                    <span>.</span>
+                </div>
+            </marquee>
+        </div>
+        <div style="height: 100%; width: 50px; position: absolute; top: 10px; left: 0; line-height: 70px; text-align: center;">
             <a id="cart-icon" href="{{ route('cart') }}">
                 <i class="fal fa-shopping-bag" aria-hidden="true" style="font-size: 20px; color: #333333"></i>
                 @if(Cart::instance('default')->count() > 0)
@@ -69,14 +84,14 @@
         </div>
         <a class="navbar-brand" href="{{ url('/') }}" style="width: 100%; font-size: 20px; font-family: 'Finger Paint', cursive; text-align: center">
         <!--<i id="dot" class="fas fa-circle" style="color: red; font-size: 15px"></i> Red dot-->
-            <div style="width: 60px; height: 60px; position: absolute; top: 10%; left: 50%; transform: translate(-50%, 0);">
+            <div style="width: 60px; height: 60px; position: absolute; top: 25%; left: 50%; transform: translate(-50%, 0);">
                 {{-- <img src="{{ asset('img/volcanoLogo.jpg') }}" alt="" style="width: 150%; height: 120%; display: block"> --}}
                 <img src="{{ asset('img/vulcano-logo2.png') }}" alt="" style="width: 100%; height: 80%; margin-left: 10px; display: block">
             </div>
         </a>
-        <div onclick="openNav()" style="height: 100%; width: 50px; position: absolute; top: 0; right: 0; line-height: 68px; font-size: 20px; text-align: center; cursor: pointer">
+        <div onclick="openNav()" style="height: 100%; width: 50px; position: absolute; top: 10px; right: 0; line-height: 68px; font-size: 20px; text-align: center; cursor: pointer">
             <i class="fal fa-bars" style="color: #333333"></i>
-        </div> 
+        </div>
     </nav>
 
     <div id="mySidenav" class="sidenav">
@@ -126,6 +141,7 @@
     </div>
 
         <main class="py-4 div-content" style="min-height: 100vh; z-index:3; margin-top: 50px">
+            
             @yield('content')
         </main>
 

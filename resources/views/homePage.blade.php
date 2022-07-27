@@ -27,9 +27,17 @@ Red dot
   - nuova collezione - VOLCANO.it - nuova collezione - VOLCANO.it - nuova collezione - VOLCANO.it - nuova collezione - VOLCANO.it - nuova collezione - VOLCANO.it -
   </marquee>
   </div> --}}
+   <!--  -->
+   <!-- Jumbotron -->
+  <div class="col-lg-12" style="position: relative; height: 70vh; overflow: hidden; margin-top: 0px; background-image: url({{ asset('img/man_drink.jpg') }}); background-size: cover; background-repeat: no-repeat;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  "></div>
 
-  <div class="img-slider">
-    <!-- Bootstrap Slider -->
+  <!-- Bootstrap Slider -->
+  {{-- <div class="img-slider">
     <div id="carouselExampleIndicators" class="carousel slide col-12" data-interval="7000" data-ride="carousel">
       <ol class="carousel-indicators" style="z-index: 5">
         <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
@@ -42,15 +50,6 @@ Red dot
         <div class="carousel-item active">
           <img class="d-block w-100" style="height: 100%" src="{{ asset('img/copertina.jpg') }}" alt="First slide">
         </div>
-       <!-- <div class="carousel-item">
-          <img class="d-block w-100" style="height: 100%" src="{{ asset('img/skirent.png') }}" alt="Second slide">
-          <div style="width: 200px; height: 70px; line-height: 30px; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); color: #fff; text-align: center;">
-            <h3 style="color: #FE0000; 
-            font-size: 28px; 
-            font-family: 'Righteous', cursive; 
-            font-style: italic;">NOLEGGIO SCI</h3>
-          </div>
-        </div> -->
       <div class="carousel-item" style="position: relative">
         <img class="d-block w-100" style="height: 100%" src="{{ asset('img/model1Street.png') }}" alt="Third slide">
         <div style="width: 200px; height: 70px; line-height: 30px; position: absolute; top: 70%; left: 50%; transform: translate(-50%, -50%); color: #fff; text-align: center;">
@@ -73,15 +72,7 @@ Red dot
         </div>
       </div>
     </div>
-    <!--<a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
-      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-      <span class="sr-only">Previous</span>
-    </a>
-    <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
-      <span class="carousel-control-next-icon" aria-hidden="true"></span>
-      <span class="sr-only">Next</span>
-    </a>-->
-  </div>
+  </div> --}}
 
   <!--  -->
   <div class="col-lg-12" style="margin-top: 30px">

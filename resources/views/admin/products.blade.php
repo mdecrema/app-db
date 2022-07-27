@@ -143,7 +143,7 @@ Admin Products
                         <div>
                             <span style="font-size: 20px">Ricarica giacenza</span>
                         </div>
-                        <div class="mt-3 mb-3 ml-3 form-check form-switch">
+                        <div class="mt-3 mb-3">
                         <form action="{{ route('admin.items.storeItems') }}" method="post" enctype="multipart/form-data">
             @csrf
             @method("POST")
@@ -164,7 +164,7 @@ Admin Products
             $sizes1 = ['XS', 'S', 'M', 'L', 'XL', 'XXL'];
             $sizes2 = ['35', '36', '37', '38', '39', '40', '41', '42', '43', '44', '45'];       
             ?>
-            <table class="table" id="tableSizeClothes" style="display: none">
+            <table class="table ml-0" id="tableSizeClothes" style="display: none">
                 <thead class="thead-dark">
                   <tr>
                     <th scope="col">taglia</th>

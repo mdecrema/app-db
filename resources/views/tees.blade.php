@@ -7,7 +7,28 @@
 @section('content')
 <div class="row">
     <div class="col-lg-12" style="padding: 0 35px">
-        <h4>{{ $category->title }}</h4>
+        <div class="" style="float: left;">
+            <h6>Home ></h6>
+        </div>
+        <div class="pl-2" style="float: left;">
+            <h6>Uomo ></h6>
+        </div>
+        <div class="pl-2" style="float: left;">
+            <h6>Vestiti ></h6>
+        </div>
+        <div class="pl-2" style="float: left;">
+            <h6>{{ $category->title }}</h6>
+        </div>
+    </div>
+    <div class="col-lg-12" style="padding: 0 35px">
+        <div>
+            <h3>{{ $category->title }}</h3>
+        </div>
+    </div>
+    <div class="col-lg-12" style="padding: 0 35px">
+        <div>
+            <h6>50 risultati</h6>
+        </div>
     </div>
     
     @foreach($products as $product)

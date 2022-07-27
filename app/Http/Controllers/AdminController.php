@@ -46,7 +46,7 @@ class AdminController extends Controller
         $ordiniMenuList = array($menuOrdini1, $menuOrdini2, $menuOrdini3);
 
         $menuMagazzino1 = new MenuLink();
-        $menuMagazzino1->name = 'Tutti gli articoli';
+        $menuMagazzino1->name = 'Gestisci articoli';
         $menuMagazzino1->link = 'dashboard/products';
 
         $menuMagazzino2 = new MenuLink();
