@@ -3,6 +3,7 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
+use App\Category;
 
 class CreateCategoriesTable extends Migration
 {
@@ -18,6 +19,9 @@ class CreateCategoriesTable extends Migration
 
             $table->string('title', 50);
             $table->text('description', 2000)->nullable();
+            $table->smallInteger('folderPosition');
+            $table->smallInteger('folderLevel');
+            $table->smallInteger('parentFolder')->nullable();
             $table->boolean('showOnMenu')->default(true);
 
 

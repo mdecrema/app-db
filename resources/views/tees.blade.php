@@ -27,7 +27,7 @@
     </div>
     <div class="col-lg-12" style="padding: 0 35px">
         <div>
-            <h6>50 risultati</h6>
+            <h6>{{ count($products) }} risultati</h6>
         </div>
     </div>
     

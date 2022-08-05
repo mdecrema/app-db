@@ -39,12 +39,20 @@
     border: 2px solid #0061EB;
 }
 
+.border_grey {
+    border: 2px solid grey;
+}
+
 .border_darkblue {
     border: 2px solid #183153;
 }
 
 .border_bottom {
     border-bottom: 1px solid lightgray;
+}
+
+.disabled {
+    opacity: 0.3;
 }
 
 .back_btn {

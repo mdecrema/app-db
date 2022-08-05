@@ -134,23 +134,27 @@ class AdminController extends Controller
      */
 
     public function allCategoriesView() {
-        $categories = Category::all();
+        $categories = Category::all()->where('folderLevel', 1);
+        $subCategories = Category::all()->where('folderLevel', 2);
 
-        return view('admin.categories.allCategories', compact('categories'));
+        return view('admin.categories.allCategories', compact('categories', 'subCategories'));
     }
 
     public function storeCategory(Request $request) {
+
         $data = $request->all();
 
         $newCategory = new Category();
 
         $newCategory->title = $data['title'];
+        $newCategory->folderLevel = 1;
+        $newCategory->folderPosition = (Category::count() > 0) ? Category::count() : 0;
 
         $newCategory->save();
 
         $categories = Category::all();
 
-        return view('admin.categories.allCategories', compact('categories'));
+        return redirect()->route('admin.allCategories', compact('categories'));
     }
 
     /**
