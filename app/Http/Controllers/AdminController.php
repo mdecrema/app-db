@@ -140,6 +140,18 @@ class AdminController extends Controller
         return view('admin.categories.allCategories', compact('categories', 'subCategories'));
     }
 
+    public function getSubCategoriesByParentCategoryId($category_id) {
+        $query = 'SELECT * from categories where folderLevel = 2 AND parentFolder = '. $category_id .'';
+
+        $subCategories = DB::select($query);
+
+        return response()->json([
+            'status'=>200,
+            'data'=>$subCategories
+        ]);
+        
+    }
+
     public function storeCategory(Request $request) {
 
         $data = $request->all();
