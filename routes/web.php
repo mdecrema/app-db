@@ -19,6 +19,10 @@ Route::get('/', 'ProductController@homePage', function() {
     // session(['key' => 'value']);
 })->name('homePage');
 
+// Categories
+// All SubCategories
+Route::get('/categories/subCategories/all', 'AdminController@getAllSubCategories')->name('public.subcategories.all');
+
 // Products
 Route::get('/products', 'ProductController@index')->name('products');
 Route::get('/products/{type}', 'ProductController@productsByType')->name('productsByType');

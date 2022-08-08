@@ -140,6 +140,15 @@ class AdminController extends Controller
         return view('admin.categories.allCategories', compact('categories', 'subCategories'));
     }
 
+    public function getAllSubCategories() {
+        $subCategories = Category::all()->where('folderLevel', 2);
+
+        return response()->json([
+            'status'=>200,
+            'data'=>$subCategories
+        ]);
+    }
+
     public function getSubCategoriesByParentCategoryId($category_id) {
         $query = 'SELECT * from categories where folderLevel = 2 AND parentFolder = '. $category_id .'';
 

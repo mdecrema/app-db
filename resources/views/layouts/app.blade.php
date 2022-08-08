@@ -1,12 +1,31 @@
-<?php use App\Category; 
-    $categories = Category::all();
+<?php use App\Category;
+    $cat_subcat_arr = [];
+
+    class Cat_SubCat {
+        public $cat;
+        public $subCat;
+    }
+
+    $categories = Category::all()->where('folderLevel', 1)->where('showOnMenu', 1);
+    // var_dump(json_decode($categories));
+    // die();
+    foreach($categories as $category) {
+        $subCategories = Category::all()->where('folderLevel', 2)->where('parentFolder', $category->id)->where('showOnMenu', 1);
+
+        $newCatSubCat = new Cat_SubCat();
+        $newCatSubCat->cat = $category;
+        $newCatSubCat->subCat = $subCategories;
+
+        array_push($cat_subcat_arr, $newCatSubCat);
+    }
+
 ?>
 <!doctype html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <!-- REALLY IMPORTANT FOR SECTURY CHECKS IN DEPLOYMENT -->
+    <!-- REALLY IMPORTANT FOR SECURITY CHECKS IN DEPLOYMENT -->
     <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
 
     <!-- CSRF Token -->
@@ -43,7 +62,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     {{-- <link rel="dns-prefetch" href="//fonts.gstatic.com"> --}}
     <link href="https://fonts.googleapis.com/css2?family=Nunito&family=Gochi+Hand&family=Bungee+Shade&family=Righteous
-    &family=Permanent+Marker&family=Abril+Fatface&family=DM+Serif+Text&family=Six+Caps&family=Lily+Script+One&family=Roboto" rel="stylesheet">
+    &family=Permanent+Marker&family=Abril+Fatface&family=DM+Serif+Text&family=Six+Caps&family=Lily+Script+One&family=Roboto&family=Asap:ital,wght@0,400" rel="stylesheet">
 
 <!-- Main font -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -54,7 +73,7 @@
 </head>
 <body class="container-fluid body">
 
-    <nav class="navbar navbar-expand-lg navbar-light bg-white fixed-top" style="height: 70px; z-index: 10; box-shadow: 2px 2px 10px #231202">
+    <nav class="navbar navbar-expand-lg navbar-light bg-white fixed-top" style="height: 70px; z-index: 10; box-shadow: 2px 2px 10px #231202;">
         <!-- -->
         <div style="width: 100%; height: 10px; background-color: #8A5A2C; position: absolute; top: 0; left: 0; z-index: 11">
             <marquee
@@ -97,8 +116,17 @@
     <div id="mySidenav" class="sidenav">
     <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
     <a class="voci-menu" href="{{ route('skiRent') }}">Ski Rent</a>
-    @foreach($categories as $category)
-    <a class="voci-menu" href="{{ route('productsByType', $category->id) }}">{{ ucfirst($category->title) }}</a>
+    @foreach($cat_subcat_arr as $cat_subcat)
+        @if (count($cat_subcat->subCat) > 0)
+            <a class="voci-menu" href="{{ route('productsByType', $cat_subcat->cat->id) }}" data-toggle="collapse" data-target="#collapse_{{  $cat_subcat->cat->id }}" aria-expanded="false" aria-controls="collapseExample">{{ ucfirst($cat_subcat->cat->title) }}</a>
+            <div class="collapse" id="collapse_{{  $cat_subcat->cat->id }}" style="border-bottom: 1px solid #fff">
+                @foreach($cat_subcat->subCat as $subCat)
+                <a class="voci-sub-menu" href="{{ route('productsByType', $subCat->id) }}" style="font-size: 14px; margin: 0px 20px">{{ ucfirst($subCat->title) }}</a>
+                @endforeach
+            </div>
+        @else
+            <a class="voci-menu" href="{{ route('productsByType', $cat_subcat->cat->id) }}">{{ ucfirst($cat_subcat->cat->title) }}</a>
+        @endif
     @endforeach
     {{-- <a class="voci-menu" href="{{ route('productsByType', 't-shirt') }}">Tees</a>
     <a class="voci-menu" href="{{ route('productsByType', 'hoodies') }}">Felpe</a>
@@ -184,6 +212,11 @@
         </footer> --}}
 
     <script type="text/javascript">
+        getAllSubCategories();
+
+        const cat_subcat_arr = <?php echo json_encode($cat_subcat_arr); ?>;
+        console.log(cat_subcat_arr);
+
         /* Set the width of the side navigation to 250px */
         function openNav() {
             document.getElementById("mySidenav").style.width = "250px";
@@ -192,6 +225,32 @@
         /* Set the width of the side navigation to 0 */
         function closeNav() {
             document.getElementById("mySidenav").style.width = "0";
+        }
+
+        function getAllSubCategories() {
+            $.ajax({
+            type: "GET",
+            url: "categories/subCategories/all",
+            success: function(res){
+                // $("#spinner").addClass('d-none');
+                const allSubCategories = res.data;
+                if (allSubCategories.length) {
+                    console.log(allSubCategories);
+                }
+            }
+            })
+        }
+
+        function getSubCategoriesByParentCategoryId(category_id) {
+            $.ajax({
+            type: "GET",
+            url: "categories/subCategories/"+parent_category_id,
+            success: function(res){
+                // $("#spinner").addClass('d-none');
+                const subCategories = res.data;
+                
+            }
+            })
         }
     </script>
     
