@@ -6,11 +6,11 @@
         public $subCat;
     }
 
-    $categories = Category::all()->where('folderLevel', 1)->where('showOnMenu', 1);
+    $categories = Category::all()->where('folderLevel', 1)->where('showOnMenu', true);
     // var_dump(json_decode($categories));
     // die();
     foreach($categories as $category) {
-        $subCategories = Category::all()->where('folderLevel', 2)->where('parentFolder', $category->id)->where('showOnMenu', 1);
+        $subCategories = Category::all()->where('folderLevel', 2)->where('parentFolder', $category->id)->where('showOnMenu', true);
 
         $newCatSubCat = new Cat_SubCat();
         $newCatSubCat->cat = $category;
