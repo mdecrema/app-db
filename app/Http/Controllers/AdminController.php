@@ -150,7 +150,7 @@ class AdminController extends Controller
     }
 
     public function getSubCategoriesByParentCategoryId($category_id) {
-        $query = 'SELECT * from categories where folderLevel = 2 AND parentFolder = '. $category_id .'';
+        $query = 'SELECT * from categories where "folderLevel" = 2 AND "parentFolder" = '. $category_id .'';
 
         $subCategories = DB::select($query);
 

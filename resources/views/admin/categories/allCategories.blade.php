@@ -39,7 +39,7 @@
                     @foreach ($categories as $category)
                     <div id="category_box_{{ $category->id }}" class="pt-3 pb-3 border_bottom category_box" style="cursor: pointer" onclick="selectCategoryBox({{ $category->id }}, {{ $category }})">
                         <div id="title_category_{{ $category->id }}" class="w-100 mt-2 mb-2 ml-3">
-                            <span class="fs_18">{{ $category->title }} . {{ $category->folderLevel }}</span>
+                            <span class="fs_18">{{ $category->title }}</span>
                         </div>
                         <div class="mt-3 mb-3 ml-3 pb-3">
                             <div id="status_category_{{ $category->id }}" status-attr={{ $category->showOnMenu }} class="mr-2" style="width: 15px; height: 15px; background: blue; border: 1px solid #fff; border-radius: 2px; float: left" onclick="changeCategoryStatus({{ $category->id }})"></div>
