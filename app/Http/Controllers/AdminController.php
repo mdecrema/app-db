@@ -173,9 +173,69 @@ class AdminController extends Controller
 
         $newCategory->save();
 
-        $categories = Category::all();
+        
+        $categories = Category::all()->where('folderLevel', 1);
+        $subCategories = Category::all()->where('folderLevel', 2);
 
-        return redirect()->route('admin.allCategories', compact('categories'));
+        return redirect()->route('admin.allCategories', compact('categories', 'subCategories'));
+    }
+
+    public function updateCategory(Request $request) {
+
+        $data = $request->all();
+
+        $transform = $data['trasform_subcategory'];
+
+        $category = Category::find($data['category_id']);
+
+        // Trasforma in cartella di secondo livello
+        if ($transform && $category->folderLevel == 1) {
+            if ($transform == '1') {
+                $category->title = $data['category_title'];
+                $category->description = $data['category_description'];
+                $category->folderLevel = 2;
+                $category->parentFolder = $data['parent_category_id'];
+                $category->folderPosition = (Category::count() > 0) ? Category::count() : 0;
+                
+                $category->update();
+                
+                // Porto eventuali sottocartelle al primo livello
+                $subCategories = Category::all()->where('folderLevel', 2)->where('parentFolder', $data['category_id']);
+                if ($subCategories && count($subCategories) > 0) {
+                    foreach($subCategories as $subCategory) {
+                        $subCategory->folderLevel = 1;
+                        $subCategory->parentFolder = null;
+                    }
+                }
+                
+            } else if ($transform == '0') {
+                $category->title = $data['category_title'];
+                $category->description = $data['category_description'];
+        
+                $category->update();
+            }
+        // Trasforma in cartella di primo livello
+        } else if ($transform && $category->folderLevel == 2) {
+            if ($transform == '1') {
+                $category->title = $data['category_title'];
+                $category->description = $data['category_description'];
+                $category->folderLevel = 1;
+                $category->parentFolder = null;
+                $category->folderPosition = (Category::count() > 0) ? Category::count() : 0;
+        
+                $category->update();
+            } else if ($transform == '0') {
+                $category->title = $data['category_title'];
+                $category->description = $data['category_description'];
+        
+                $category->update();
+            } 
+        }
+
+        $categories = Category::all()->where('folderLevel', 1);
+        $subCategories = Category::all()->where('folderLevel', 2);
+
+        return redirect()->route('admin.allCategories', compact('categories', 'subCategories'));
     }
 
     /**

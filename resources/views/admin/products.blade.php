@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.dashboard_page')
 
 @section('page-title')
 Admin Products
@@ -7,16 +7,9 @@ Admin Products
 @section('content')
 <div class="container" style="font-family: 'Roboto', sans-serif">
     <div class="row">
-        <div style="margin-bottom: 20px">
-            <a href="/admin/dashboard">
-                <div class="back_btn" style="display: inline-block;">
-                    <i class="fa fad fa-arrow-left"></i>
-                </div>
-            </a>
-            <div style="display: inline-block; margin-left: 10px">
-                <h4> Registro articoli </h4>
-            </div>
-        </div>
+        @section('menu_link')
+        Registro articoli
+        @endsection
     </div>
     <div class="row" style="height: 80vh">
         {{-- Filters --}}
@@ -400,6 +393,9 @@ Admin Products
                 $('#delete_btn').removeClass('d-none');
                 $('#config_btn').removeClass('d-none');
                 $('#ricarica_giacenza_container').removeClass('d-none');
+            },
+            error: function(err) {
+                $("#spinner").addClass('d-none');
             }
         })
     }

@@ -1,6 +1,4 @@
-<?php 
-    use App\Category;
-    
+<?php use App\Category;
     $cat_subcat_arr = [];
 
     class Cat_SubCat {
@@ -77,7 +75,7 @@
 
     <nav class="navbar navbar-expand-lg navbar-light bg-white fixed-top" style="height: 70px; z-index: 10; box-shadow: 2px 2px 10px #231202;">
         <!-- -->
-        <div style="width: 100%; height: 10px; background-color: #8A5A2C; position: absolute; top: 0; left: 0; z-index: 11">
+        {{-- <div style="width: 100%; height: 10px; background-color: #8A5A2C; position: absolute; top: 0; left: 0; z-index: 11">
             <marquee
             loop="-1"
             scrollamount="5"
@@ -90,7 +88,7 @@
                     <span>.</span>
                 </div>
             </marquee>
-        </div>
+        </div> --}}
         <div style="height: 100%; width: 50px; position: absolute; top: 10px; left: 0; line-height: 70px; text-align: center;">
             <a id="cart-icon" href="{{ route('cart') }}">
                 <i class="fal fa-shopping-bag" aria-hidden="true" style="font-size: 20px; color: #333333"></i>
@@ -170,8 +168,7 @@
         @endguest
     </div>
 
-        <main class="py-4 div-content" style="min-height: 100vh; z-index:3; margin-top: 50px">
-            
+        <main class="py-4 div-content" style="min-height: 100vh; z-index:3; margin-top: 50px">            
             @yield('content')
         </main>
 

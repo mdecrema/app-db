@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.dashboard_page')
 
 @section('page-title')
     Create new Product
@@ -8,16 +8,10 @@
 
 <div class="container">
     <div class="row">
-        <div style="margin-bottom: 20px">
-            <a href="/admin/dashboard">
-                <div class="back_btn" style="display: inline-block;">
-                    <i class="fa fad fa-arrow-left"></i>
-                </div>
-            </a>
-            <div style="display: inline-block; margin-left: 10px">
-                <h4> Aggiungi articoli </h4>
-            </div>
-        </div>
+        @section('menu_link')
+        Aggiungi articoli
+        @endsection
+
         @if(count($categories) > 0)
         <!-- left box -->
         <div class="col-12 border_blue" style="background-color: #cdd9e9; margin-bottom: 20px; padding: 10px; border-radius: 5px">

@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.dashboard_page')
 
 @section('page-title')
     Categorie di prodotto
@@ -7,16 +7,9 @@
 @section('content')
 <div class="container">
     <div class="row">
-        <div style="margin-bottom: 20px">
-            <a href="/admin/dashboard">
-                <div class="back_btn" style="display: inline-block;">
-                    <i class="fa fad fa-arrow-left"></i>
-                </div>
-            </a>
-            <div style="display: inline-block; margin-left: 10px">
-                <h4> Categorie di prodotto </h4>
-            </div>
-        </div>
+        @section('menu_link')
+        Categorie di prodotto
+        @endsection
         
         <h6>Crea una nuova categoria di prodotto</h6>
         <form action="{{ route('admin.categories.store') }}" method="post" enctype="multipart/form-data">
@@ -63,9 +56,14 @@
                     <h4>Dettagli</h4>
                 </div>
                 <div>
-                    <form action="{{ route('admin.categories.store') }}" method="post" enctype="multipart/form-data">
+                    <form action="{{ route('admin.categories.update') }}" method="post" enctype="multipart/form-data">
                         @csrf
                         @method("POST")
+
+                        <div class="form-group">
+                            <label for="category_id">Nome categoria</label>
+                            <input type="text" class="form-control " id="category_id" name="category_id">
+                        </div>
 
                         <div class="form-group">
                             <label for="category_title">Nome categoria</label>
@@ -79,20 +77,23 @@
 
 
                         <div class="form-group">
-                            <div class="mr-2" style="width: 15px; height: 15px; background: blue; border: 1px solid #fff; border-radius: 2px; float: left" onclick="click_transform_subcategory()"></div>
+                            <div id="trasform_subcategory_checkbox" class="mr-2" style="width: 15px; height: 15px; border: 1px solid #fff; border-radius: 2px; float: left" onclick="click_transform_subcategory()"></div>
                             <!-- id="trasform_subcategory_ " status-attr=... -->
-                            <label for="trasform_subcategory">Trasforma in sotto-categoria</label>
+                            <label id="transform_subcategory_title" for="trasform_subcategory"></label>
+                            <input id="trasform_subcategory" name="trasform_subcategory" class="d-none" type="number" value=0>
                         </div>
 
                         <div id="parent_folder_group" class="form-group d-none">
-                            <label for="title">Seleziona una categoria padre a cui associarla</label>
+                            <label for="parent_category_id">Seleziona una categoria padre a cui associarla</label>
                             {{-- <input type="text" class="form-control" id="title" name="categoria" placeholder="categoria"> --}}
-                            <select class="form-control" name="category_id" id="category_id">
+                            <select class="form-control" name="parent_category_id" id="parent_category_id">
                                 @foreach($categories as $category)
                                 <option value="{{ $category->id }}">{{ $category->title }}</option>
                                 @endforeach
                             </select>
                         </div>
+
+                        <button type="submit" class="btn btn-primary" style="float: right">Salva modifiche</button>
                     </form>
                 </div>
             </div>
@@ -126,11 +127,22 @@
         console.log(categoryList);
     })
 
+    var category_selected;
+
     function selectCategoryBox(category_id, category) {
+        category_selected = category;
+
+        $('#parent_folder_group').addClass('d-none');
+        $('#trasform_subcategory_checkbox').removeClass('active');
+        $('#trasform_subcategory').val(0);
+
         if (!$('#category_box_'+category_id).hasClass('bg_blue')) {
             $('.category_box').removeClass('bg_blue');
             $('#category_box_'+category_id).addClass('bg_blue');
 
+            $('#transform_subcategory_title').html('Trasforma in sotto-categoria');
+
+            $('#category_id').val(category.id)
             $('#category_title').val(category.title);
             $('#category_description').val(category.description);
 
@@ -139,9 +151,18 @@
     }
 
     function selectSubCategoryBox(subCategory_id, subCategory) {
+        category_selected = subCategory;
+
+        $('#parent_folder_group').addClass('d-none');
+        $('#trasform_subcategory_checkbox').removeClass('active');
+        $('#trasform_subcategory').val(0);
+
         $('.subcategory_box').removeClass('bg_blue');
         $('#subcategory_box_'+subCategory_id).addClass('bg_blue');
-        console.log(subCategory)
+
+        $('#transform_subcategory_title').html('Trasforma in categoria di primo livello');
+
+        $('#category_id').val(subCategory.id)
         $('#category_title').val(subCategory.title);
         $('#category_description').val(subCategory.description);
     }
@@ -211,11 +232,16 @@
     }
 
     function click_transform_subcategory() {
-        if ($('#parent_folder_group').hasClass('d-none')) {
-            $('#parent_folder_group').removeClass('d-none');
+        if (!$('#trasform_subcategory_checkbox').hasClass('active')) {
+            category_selected.folderLevel == 1 ? $('#parent_folder_group').removeClass('d-none') : '';
+            $('#trasform_subcategory_checkbox').addClass('active');
+            $('#trasform_subcategory').val(1);
         } else {
-            $('#parent_folder_group').addClass('d-none');
+            category_selected.folderLevel == 1 ? $('#parent_folder_group').addClass('d-none') : '';
+            $('#trasform_subcategory_checkbox').removeClass('active');
+            $('#trasform_subcategory').val(0);
         }
+       
     }
 
 </script>

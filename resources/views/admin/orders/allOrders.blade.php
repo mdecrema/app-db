@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.dashboard_page')
 
 @section('page-title')
     Pending orders
@@ -7,16 +7,9 @@
 @section('content')
 <div class="container" style="font-family: 'Roboto', sans-serif">
   <div class="row">
-    <div style="margin-bottom: 20px">
-      <a href="/admin/dashboard">
-          <div class="back_btn" style="display: inline-block;">
-              <i class="fa fad fa-arrow-left"></i>
-          </div>
-      </a>
-      <div style="display: inline-block; margin-left: 10px">
-          <h4> Elenco degli ordini </h4>
-      </div>
-    </div>
+    @section('menu_link')
+      Elenco degli ordini
+    @endsection
 
       <div class="col-xl-3 col-lg-3 col-md-6 col-sm-12 col-xs-12">
         <div class="form-group">

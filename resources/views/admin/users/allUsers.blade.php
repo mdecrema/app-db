@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.dashboard_page')
 
 @section('page-title')
     All User Registered
@@ -7,16 +7,8 @@
 @section('content')
 <div class="container">
     <div class="row">
-        <div style="margin-bottom: 20px">
-            <a href="/admin/dashboard">
-                <div class="back_btn" style="display: inline-block;">
-                    <i class="fa fad fa-arrow-left"></i>
-                </div>
-            </a>
-            <div style="display: inline-block; margin-left: 10px">
-                <h4> Utenti registrati </h4>
-            </div>
-        </div>
+        Utenti registrati
+        @endsection
 
         <div class="col-lg-6 col-xl-6 col-md-6 col-sm-12 col-xs-12" style="margin-bottom: 20px">
             <div id="10" onclick="changeRole(10)" class="role_menu_btn active" style="width: calc(100%/3); float: left; text-align: center; border: 1px solid #183153">Superadmin</div>

@@ -70,6 +70,7 @@ Route::prefix('admin')->name('admin.')->middleware('can:admin')->group(function 
      */
     Route::get('/dashboard/categories', 'AdminController@allCategoriesView')->name('allCategories');
     Route::post('/dashboard/categories/store', 'AdminController@storeCategory')->name('categories.store');
+    Route::post('/dashboard/categories/update', 'AdminController@updateCategory')->name('categories.update');
     // SubCategoryies by Parent Category ID
     Route::get('/dashboard/categories/subCategories/{parent_category_id}', 'AdminController@getSubCategoriesByParentCategoryId')->name('private.subcategories');
     /**

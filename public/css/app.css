@@ -11789,6 +11789,14 @@ footer::after {
   border-bottom: 1px solid lightgray;
 }
 
+#trasform_subcategory_checkbox {
+  background-color: #fff;
+}
+
+#trasform_subcategory_checkbox.active {
+  background-color: blue;
+}
+
 .disabled {
   opacity: 0.3;
 }

@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.dashboard_page')
 
 @section('page-title')
     Guest users
@@ -7,16 +7,9 @@
 @section('content')
 <div class="container">
     <div class="row">
-        <div style="margin-bottom: 20px">
-            <a href="/admin/dashboard">
-                <div class="back_btn" style="display: inline-block;">
-                    <i class="fa fad fa-arrow-left"></i>
-                </div>
-            </a>
-            <div style="display: inline-block; margin-left: 10px">
-                <h4> Utenti ospiti </h4>
-            </div>
-        </div>
+        @section('menu_link')
+        Utenti ospiti
+        @endsection
 
         <div class="col-12" style="text-align: left; margin-bottom: 20px">
             <h6>Elenco utenti che hanno effettuato acquisti ma non sono registrati</h6>
