@@ -205,6 +205,9 @@
 
         $.ajax({
             type: "GET",
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"').attr('content')
+            },
             url: "categories/subCategories/"+parent_category_id,
             success: function(res){
                 // $("#spinner").addClass('d-none');
