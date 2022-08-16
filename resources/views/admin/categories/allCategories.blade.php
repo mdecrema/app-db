@@ -24,6 +24,12 @@
             <button type="submit" class="btn btn-primary" style="float: right">Aggiungi</button>
         </form>
 
+        <form action="{{ route('admin.categories.delete.all') }}" method="post">
+            @csrf
+            @method("POST")
+            <button type="submit" class="btn btn-danger" style="float: right">Elimina tutte le categorie</button>
+        </form>
+
         <div class="col-12" style="height: 70vh">
             <div class="bg_extradarkblue pt-4 pb-4 pl-3 pr-3" style="width: calc(100%/4); height: 100%; float: left; color: #fff">
                 <div>

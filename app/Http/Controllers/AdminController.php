@@ -238,6 +238,21 @@ class AdminController extends Controller
         return redirect()->route('admin.allCategories', compact('categories', 'subCategories'));
     }
 
+    public function deleteAllCategories() {
+        $categoriesToDelete = Category::all();
+
+        foreach($categoriesToDelete as $category) {
+            $query = 'DELETE FROM categories WHERE id = '. $category->id .'';
+
+            DB::select($query);
+        }
+
+        $categories = Category::all()->where('folderLevel', 1);
+        $subCategories = Category::all()->where('folderLevel', 2);
+
+        return redirect()->route('admin.allCategories', compact('categories', 'subCategories'));
+    }
+
     /**
      * Return Admin Product View w/ filters.
      *
