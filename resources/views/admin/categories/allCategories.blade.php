@@ -68,8 +68,8 @@
                         @csrf
                         @method("POST")
 
-                        <div class="form-group">
-                            <label for="category_id">Nome categoria</label>
+                        <div class="form-group d-none">
+                            <label for="category_id">id categoria</label>
                             <input type="text" class="form-control " id="category_id" name="category_id">
                         </div>
 
@@ -83,7 +83,7 @@
                             <input type="text" class="form-control" id="category_description" name="category_description" placeholder="">
                         </div>
 
-                        <div class="form-group">
+                        <div class="form-group d-none">
                             <label for="category_status">Status</label>
                             <input type="number" class="form-control" id="category_status" name="category_status" placeholder="">
                         </div>
