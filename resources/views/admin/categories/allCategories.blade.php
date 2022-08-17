@@ -12,7 +12,7 @@
         @endsection
         
         <h6>Crea una nuova categoria di prodotto</h6>
-        <form action="{{ route('admin.categories.store') }}" method="post" enctype="multipart/form-data">
+        <form action="{{ route('admin.categories.store') }}" method="post" enctype="multipart/form-data" class="mb-3">
             @csrf
             @method("POST")
             
@@ -24,40 +24,34 @@
             <button type="submit" class="btn btn-primary" style="float: right">Aggiungi</button>
         </form>
 
-        <form action="{{ route('admin.categories.delete.all') }}" method="post">
-            @csrf
-            @method("POST")
-            <button type="submit" class="btn btn-danger" style="float: right">Elimina tutte le categorie</button>
-        </form>
-
-        <div class="col-12" style="height: 70vh">
-            <div class="bg_extradarkblue pt-4 pb-4 pl-3 pr-3" style="width: calc(100%/4); height: 100%; float: left; color: #fff">
-                <div>
+        <div class="col-12 bg_extradarkblue" style="min-height: 75vh; overflow: hidden">
+            <div class="bg_extradarkblue pt-4 pl-3 pr-3 mb-2" style="width: 100%; height: 110px; float: left; color: #fff; overflow-y: hidden; overflow-x: scroll; -webkit-overflow-scrolling: touch; display: flex; flex-direction: row;">
+                {{-- <div>
                     <h4>CATEGORIE</h4>
-                </div>
-                <div class="bg_darkblue">
+                </div> --}}
+                
                     @foreach ($categories as $category)
-                    <div id="category_box_{{ $category->id }}" class="pt-3 pb-3 border_bottom category_box" style="cursor: pointer" onclick="selectCategoryBox({{ $category->id }}, {{ $category }})">
-                        <div id="title_category_{{ $category->id }}" class="w-100 mt-2 mb-2 ml-3">
+                    <div id="category_box_{{ $category->id }}" class="bg_darkblue pt-2 pb-2 pr-2 pl-1 mr-2 border_around_radius category_box" style="width: 200px; height: 60px; cursor: pointer; float: left; display: flex; flex: 0 0 200px;" onclick="selectCategoryBox({{ $category->id }}, {{ $category }})">
+                        <div id="title_category_{{ $category->id }}" class="mt-2 mb-2 ml-3" style="overflow: hidden; white-space: nowrap; text-overflow: ellipsis;">
                             <span class="fs_18">{{ $category->title }}</span>
                         </div>
-                        <div class="mt-3 mb-3 ml-3 pb-3">
+                        {{-- <div class="mt-3 mb-3 ml-3 pb-3">
                             <div id="status_category_{{ $category->id }}" status-attr={{ $category->showOnMenu }} class="mr-2" style="width: 15px; height: 15px; background: blue; border: 1px solid #fff; border-radius: 2px; float: left" onclick="changeCategoryStatus({{ $category->id }})"></div>
                             <div class="text-truncate" style="float: left; line-height: 15px"><span id="status_category_label_disable_{{ $category->id }}">Disabilita categoria</span><span class="d-none" id="status_category_label_able_{{ $category->id }}">Abilita categoria</span></div>
-                        </div>
+                        </div> --}}
                     </div>
                     @endforeach
-                </div>
+                
             </div>
-            <div class="bg_extradarkblue pt-4 pb-4 pl-3 pr-3" style="width: calc(100%/4); height: 100%; float: left; color: #fff">
-                <div>
+            <div id="subCategories_list" class="bg_extradarkblue pb-4 pl-3 pr-3 mt-3" style="width: 100%; height: 85px; float: left; color: #fff; overflow-y: hidden; overflow-x: scroll; -webkit-overflow-scrolling: touch; display: flex; flex-direction: row;">
+                {{-- <div>
                     <h4>SOTTOCATEGORIE</h4>
-                </div>
-                <div id="subCategories_list" class="bg_darkblue">
+                </div> --}}
+                {{-- <div id="subCategories_list" class="bg_darkblue"> --}}
                     <!-- subcategories list -->
-                </div>
+                {{-- </div> --}}
             </div>
-            <div class="bg_extradarkblue pt-4 pb-4 pl-3 pr-3" style="width: calc(100%/2); height: 100%; float: left; color: #fff">
+            <div class="bg_extradarkblue pt-4 pb-4 pl-3 pr-3" style="width: 50%; height: 100%; float: left; color: #fff">
                 <div>
                     <h4>Dettagli</h4>
                 </div>
@@ -115,13 +109,12 @@
         </div>
         @endif
         
-        {{-- <div class="col-12 bg_lightgrey">
-            @foreach($categories as $category)
-            <div>
-                #{{ $category->id }} - {{ $category->title }}
-            </div>
-            @endforeach
-        </div> --}}
+        <!-- x eliminare tutte le categorie (funzionalità provvisoria) -->
+        <form action="{{ route('admin.categories.delete.all') }}" method="post">
+            @csrf
+            @method("POST")
+            <button type="submit" class="btn btn-danger" style="float: right">Elimina tutte le categorie</button>
+        </form>
 
     </div>
 </div>
@@ -144,6 +137,8 @@
 
         if (!$('#category_box_'+category_id).hasClass('bg_blue')) {
             $('.category_box').removeClass('bg_blue');
+            $('.category_box').addClass('bg_darkblue');
+            $('#category_box_'+category_id).removeClass('bg_darkblue');
             $('#category_box_'+category_id).addClass('bg_blue');
 
             $('#transform_subcategory_title').html('Trasforma in sotto-categoria');
@@ -164,6 +159,8 @@
         $('#trasform_subcategory').val(0);
 
         $('.subcategory_box').removeClass('bg_blue');
+        $('.subcategory_box').addClass('bg_darkblue');
+        $('#subcategory_box_'+subCategory_id).removeClass('bg_darkblue');
         $('#subcategory_box_'+subCategory_id).addClass('bg_blue');
 
         $('#transform_subcategory_title').html('Trasforma in categoria di primo livello');
@@ -220,17 +217,17 @@
                         return el.id;
                     })
 
-                    console.log(x)
+                    console.log(res)
 
                     for(let i = 0; i < subCategories.length; i++) {
-                        var subCategory_box = '<div id="subcategory_box_' + subCategories[i].id + '" class="pt-3 pb-3 border_bottom subcategory_box" style="cursor: pointer" onclick="selectSubCategoryBox(' + subCategories[i].id + ', ' + JSON.stringify(subCategories[i]).replace(/"/g, '&quot;') + ')">';
-                                subCategory_box += '<div id="title_subcategory_' + subCategories[i].id + '" class="w-100 mt-2 mb-2 ml-3">';
+                        var subCategory_box = '<div id="subcategory_box_' + subCategories[i].id + '" class="bg_darkblue pt-2 pb-2 pr-2 pl-1 mr-2 border_around_radius subcategory_box" style="width: 200px; height: 60px; cursor: pointer; float: left; display: flex; flex: 0 0 200px;" onclick="selectSubCategoryBox(' + subCategories[i].id + ', ' + JSON.stringify(subCategories[i]).replace(/"/g, '&quot;') + ')">';
+                                subCategory_box += '<div id="title_subcategory_' + subCategories[i].id + '" class="mt-2 mb-2 ml-3" style="overflow: hidden; white-space: nowrap; text-overflow: ellipsis;">';
                                     subCategory_box += '<span class="fs_18">' + subCategories[i].title + '</span>'
                                 subCategory_box += '</div>';
-                                subCategory_box += '<div class="mt-3 mb-3 ml-3 pb-3">';
-                                    subCategory_box += '<div id="status_subcategory_' + subCategories[i].id + '" status-attr=' + subCategories[i].showOnMenu + ' class="mr-2" style="width: 15px; height: 15px; background: blue; border: 1px solid #fff; border-radius: 2px; float: left" onclick="changeSubCategoryStatus(' + subCategories[i].id + ')"></div>'
-                                    subCategory_box += '<div class="text-truncate" style="float: left; line-height: 15px"><span id="status_subcategory_label_disable_' + subCategories[i].id + '">Disabilita categoria</span><span class="d-none" id="status_subcategory_label_able_' + subCategories[i].id + '">Abilita categoria</span></div>'
-                                subCategory_box += '</div>';
+                                // subCategory_box += '<div class="mt-3 mb-3 ml-3 pb-3">';
+                                //     subCategory_box += '<div id="status_subcategory_' + subCategories[i].id + '" status-attr=' + subCategories[i].showOnMenu + ' class="mr-2" style="width: 15px; height: 15px; background: blue; border: 1px solid #fff; border-radius: 2px; float: left" onclick="changeSubCategoryStatus(' + subCategories[i].id + ')"></div>'
+                                //     subCategory_box += '<div class="text-truncate" style="float: left; line-height: 15px"><span id="status_subcategory_label_disable_' + subCategories[i].id + '">Disabilita categoria</span><span class="d-none" id="status_subcategory_label_able_' + subCategories[i].id + '">Abilita categoria</span></div>'
+                                // subCategory_box += '</div>';
                             subCategory_box += '</div>';
 
                         $('#subCategories_list').append(subCategory_box);

@@ -51,6 +51,11 @@
     border-bottom: 1px solid lightgray;
 }
 
+.border_around_radius {
+    border: 1px solid lightgray;
+    border-radius: 10px;
+}
+
 #trasform_subcategory_checkbox {
     background-color: #fff;
 }
@@ -58,6 +63,27 @@
 #trasform_subcategory_checkbox.active {
     background-color: blue;
 }
+
+/* width */
+::-webkit-scrollbar {
+    width: 10px;
+    height: 5px;
+  }
+  
+  /* Track */
+  ::-webkit-scrollbar-track {
+    background: #f1f1f1;
+  }
+  
+  /* Handle */
+  ::-webkit-scrollbar-thumb {
+    background: #4174bc;
+  }
+  
+  /* Handle on hover */
+  ::-webkit-scrollbar-thumb:hover {
+    background: #0061EB;
+  }
 
 .disabled {
     opacity: 0.3;
@@ -81,3 +107,4 @@
       background-color: #183153;
       color: #fff;
   }
+
