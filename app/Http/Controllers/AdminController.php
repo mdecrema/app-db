@@ -150,7 +150,7 @@ class AdminController extends Controller
     }
 
     public function getSubCategoriesByParentCategoryId($category_id) {
-        $query = 'SELECT * from categories where folderLevel = 2 AND parentFolder = '. $category_id .'';
+        $query = "SELECT * from categories where `folderLevel` = 2 AND `parentFolder` = ". $category_id ."";
 
         $subCategories = DB::select($query);
 
@@ -184,15 +184,18 @@ class AdminController extends Controller
 
         $data = $request->all();
 
+        //dd($data['trasform_subcategory']);
+
         $transform = $data['trasform_subcategory'];
 
         $category = Category::find($data['category_id']);
 
         // Trasforma in cartella di secondo livello
-        if ($transform && $category->folderLevel == 1) {
+        if ($category->folderLevel == 1) {
             if ($transform == '1') {
                 $category->title = $data['category_title'];
                 $category->description = $data['category_description'];
+                $category->showOnMenu = $data['category_status'] == 1 ? true : false;
                 $category->folderLevel = 2;
                 $category->parentFolder = $data['parent_category_id'];
                 $category->folderPosition = (Category::count() > 0) ? Category::count() : 0;
@@ -211,14 +214,16 @@ class AdminController extends Controller
             } else if ($transform == '0') {
                 $category->title = $data['category_title'];
                 $category->description = $data['category_description'];
-        
+                $category->showOnMenu = $data['category_status'] == 1 ? true : false;
+
                 $category->update();
             }
         // Trasforma in cartella di primo livello
-        } else if ($transform && $category->folderLevel == 2) {
+        } else if ($category->folderLevel == 2) {
             if ($transform == '1') {
                 $category->title = $data['category_title'];
                 $category->description = $data['category_description'];
+                $category->showOnMenu = $data['category_status'] == 1 ? true : false;
                 $category->folderLevel = 1;
                 $category->parentFolder = null;
                 $category->folderPosition = (Category::count() > 0) ? Category::count() : 0;
@@ -227,6 +232,7 @@ class AdminController extends Controller
             } else if ($transform == '0') {
                 $category->title = $data['category_title'];
                 $category->description = $data['category_description'];
+                $category->showOnMenu = $data['category_status'] == 1 ? true : false;
         
                 $category->update();
             } 

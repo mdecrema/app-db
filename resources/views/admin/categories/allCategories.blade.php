@@ -31,7 +31,11 @@
                 </div> --}}
                 
                     @foreach ($categories as $category)
-                    <div id="category_box_{{ $category->id }}" class="bg_darkblue pt-2 pb-2 pr-2 pl-1 mr-2 border_around_radius category_box" style="width: 200px; height: 60px; cursor: pointer; float: left; display: flex; flex: 0 0 200px;" onclick="selectCategoryBox({{ $category->id }}, {{ $category }})">
+                        @if($category->showOnMenu == 1)
+                            <div id="category_box_{{ $category->id }}" class="bg_darkblue pt-2 pb-2 pr-2 pl-1 mr-2 border_around_radius category_box" style="width: 200px; height: 60px; cursor: pointer; float: left; display: flex; flex: 0 0 200px;" onclick="selectCategoryBox({{ $category->id }}, {{ $category }})">
+                        @elseif ($category->showOnMenu == 0)
+                            <div id="category_box_{{ $category->id }}" class="bg_darkblue pt-2 pb-2 pr-2 pl-1 mr-2 border_around_radius category_box disabled" style="width: 200px; height: 60px; cursor: pointer; float: left; display: flex; flex: 0 0 200px;" onclick="selectCategoryBox({{ $category->id }}, {{ $category }})">
+                        @endif
                         <div id="title_category_{{ $category->id }}" class="mt-2 mb-2 ml-3" style="overflow: hidden; white-space: nowrap; text-overflow: ellipsis;">
                             <span class="fs_18">{{ $category->title }}</span>
                         </div>
@@ -51,11 +55,15 @@
                     <!-- subcategories list -->
                 {{-- </div> --}}
             </div>
-            <div class="bg_extradarkblue pt-4 pb-4 pl-3 pr-3" style="width: 50%; height: 100%; float: left; color: #fff">
+            <div class="bg_extradarkblue col-xl-6 col-lg-6 col-md-8 col-sm-12 col-xs-12 pt-4 pb-4 pl-3 pr-3" style="height: 100%; float: left; color: #fff">
                 <div>
                     <h4>Dettagli</h4>
                 </div>
                 <div>
+                    <div id="status_category_group" class="mt-3 mb-3 pb-3">
+                        <!-- status checkbox -->
+                    </div>
+
                     <form action="{{ route('admin.categories.update') }}" method="post" enctype="multipart/form-data">
                         @csrf
                         @method("POST")
@@ -75,6 +83,10 @@
                             <input type="text" class="form-control" id="category_description" name="category_description" placeholder="">
                         </div>
 
+                        <div class="form-group">
+                            <label for="category_status">Status</label>
+                            <input type="number" class="form-control" id="category_status" name="category_status" placeholder="">
+                        </div>
 
                         <div class="form-group">
                             <div id="trasform_subcategory_checkbox" class="mr-2" style="width: 15px; height: 15px; border: 1px solid #fff; border-radius: 2px; float: left" onclick="click_transform_subcategory()"></div>
@@ -136,6 +148,8 @@
         $('#trasform_subcategory').val(0);
 
         if (!$('#category_box_'+category_id).hasClass('bg_blue')) {
+            $('#status_category_group').html('');
+            // $('.category_box').removeClass('disabled');
             $('.category_box').removeClass('bg_blue');
             $('.category_box').addClass('bg_darkblue');
             $('#category_box_'+category_id).removeClass('bg_darkblue');
@@ -143,9 +157,24 @@
 
             $('#transform_subcategory_title').html('Trasforma in sotto-categoria');
 
+            // status checkbox
+            if (category.showOnMenu == 1) { 
+                    $status_checkbox = '<div id="status_category_' + category_id + '" status-attr=' + category.showOnMenu + ' class="mr-2" style="width: 15px; height: 15px; background: blue; border: 1px solid #fff; border-radius: 2px; float: left" onclick="changeCategoryStatus(' + category_id + ')"></div>';
+                    $status_checkbox += '<div class="text-truncate" style="float: left; line-height: 15px">'
+                    $status_checkbox += '<span id="status_category_label_disable_' + category_id + '">Disabilita categoria</span><span class="d-none" id="status_category_label_able_' + category_id + '">Abilita categoria</span>';
+                    $status_checkbox += '</div>';
+                } else if (category.showOnMenu == 0) {
+                    $status_checkbox = '<div id="status_category_' + category_id + '" status-attr=' + category.showOnMenu + ' class="mr-2" style="width: 15px; height: 15px; background: #fff; border: 1px solid #fff; border-radius: 2px; float: left" onclick="changeCategoryStatus(' + category_id + ')"></div>';
+                    $status_checkbox += '<div class="text-truncate" style="float: left; line-height: 15px">'
+                    $status_checkbox += '<span class="d-none" id="status_category_label_disable_' + category_id + '">Disabilita categoria</span><span id="status_category_label_able_' + category_id + '">Abilita categoria</span>';
+                    $status_checkbox += '</div>';
+                }
+            $('#status_category_group').append($status_checkbox);
+            // category datas
             $('#category_id').val(category.id)
             $('#category_title').val(category.title);
             $('#category_description').val(category.description);
+            $('#category_status').val(category.showOnMenu);
 
             openSubCategories(category_id);
         }
@@ -158,6 +187,8 @@
         $('#trasform_subcategory_checkbox').removeClass('active');
         $('#trasform_subcategory').val(0);
 
+        $('#status_category_group').html('');
+        // $('.subcategory_box').removeClass('disabled');
         $('.subcategory_box').removeClass('bg_blue');
         $('.subcategory_box').addClass('bg_darkblue');
         $('#subcategory_box_'+subCategory_id).removeClass('bg_darkblue');
@@ -165,9 +196,24 @@
 
         $('#transform_subcategory_title').html('Trasforma in categoria di primo livello');
 
+        // status checkbox
+        if (subCategory.showOnMenu == 1) { 
+                $status_checkbox = '<div id="status_category_' + subCategory_id + '" status-attr=' + subCategory.showOnMenu + ' class="mr-2" style="width: 15px; height: 15px; background: blue; border: 1px solid #fff; border-radius: 2px; float: left" onclick="changeCategoryStatus(' + subCategory_id + ')"></div>';
+                $status_checkbox += '<div class="text-truncate" style="float: left; line-height: 15px">';
+                $status_checkbox += '<span id="status_category_label_disable_' + subCategory_id + '">Disabilita categoria</span><span class="d-none" id="status_category_label_able_' + subCategory_id + '">Abilita categoria</span>';
+                $status_checkbox += '</div>';
+            } else if (subCategory.showOnMenu == 0) {
+                $status_checkbox = '<div id="status_category_' + subCategory_id + '" status-attr=' + subCategory.showOnMenu + ' class="mr-2" style="width: 15px; height: 15px; background: #fff; border: 1px solid #fff; border-radius: 2px; float: left" onclick="changeCategoryStatus(' + subCategory_id + ')"></div>';
+                $status_checkbox += '<div class="text-truncate" style="float: left; line-height: 15px">';
+                $status_checkbox += '<span class="d-none" id="status_category_label_disable_' + subCategory_id + '">Disabilita categoria</span><span id="status_category_label_able_' + subCategory_id + '">Abilita categoria</span>';
+                $status_checkbox += '</div>';
+            }
+        $('#status_category_group').append($status_checkbox);
+        // category datas
         $('#category_id').val(subCategory.id)
         $('#category_title').val(subCategory.title);
         $('#category_description').val(subCategory.description);
+        $('#category_status').val(subCategory.showOnMenu);
     }
 
     function changeCategoryStatus(category_id) {
@@ -179,17 +225,23 @@
             status.css('background-color', '#fff')
             $('#status_category_label_able_'+category_id).removeClass('d-none')
             $('#status_category_label_disable_'+category_id).addClass('d-none')
-            $('#title_category_'+category_id).addClass('disabled')
+            $('#category_box_'+category_id).addClass('disabled')
+            // set form group status
+            $('#category_status').val(0)
             break;
             case '0':
             status.attr('status-attr', '1')
             status.css('background-color', 'blue')
             $('#status_category_label_able_'+category_id).addClass('d-none');
             $('#status_category_label_disable_'+category_id).removeClass('d-none')
-            $('#title_category_'+category_id).removeClass('disabled')
+            $('#category_box_'+category_id).removeClass('disabled')
+            // set form group status
+            $('#category_status').val(1)
             break;
             default:
             status.attr('status-attr', '1')
+            // set form group status
+            $('#category_status').val(1)
             break;
         }
         console.log(status.attr('status-attr'));
@@ -220,15 +272,20 @@
                     console.log(res)
 
                     for(let i = 0; i < subCategories.length; i++) {
-                        var subCategory_box = '<div id="subcategory_box_' + subCategories[i].id + '" class="bg_darkblue pt-2 pb-2 pr-2 pl-1 mr-2 border_around_radius subcategory_box" style="width: 200px; height: 60px; cursor: pointer; float: left; display: flex; flex: 0 0 200px;" onclick="selectSubCategoryBox(' + subCategories[i].id + ', ' + JSON.stringify(subCategories[i]).replace(/"/g, '&quot;') + ')">';
-                                subCategory_box += '<div id="title_subcategory_' + subCategories[i].id + '" class="mt-2 mb-2 ml-3" style="overflow: hidden; white-space: nowrap; text-overflow: ellipsis;">';
-                                    subCategory_box += '<span class="fs_18">' + subCategories[i].title + '</span>'
-                                subCategory_box += '</div>';
-                                // subCategory_box += '<div class="mt-3 mb-3 ml-3 pb-3">';
-                                //     subCategory_box += '<div id="status_subcategory_' + subCategories[i].id + '" status-attr=' + subCategories[i].showOnMenu + ' class="mr-2" style="width: 15px; height: 15px; background: blue; border: 1px solid #fff; border-radius: 2px; float: left" onclick="changeSubCategoryStatus(' + subCategories[i].id + ')"></div>'
-                                //     subCategory_box += '<div class="text-truncate" style="float: left; line-height: 15px"><span id="status_subcategory_label_disable_' + subCategories[i].id + '">Disabilita categoria</span><span class="d-none" id="status_subcategory_label_able_' + subCategories[i].id + '">Abilita categoria</span></div>'
-                                // subCategory_box += '</div>';
-                            subCategory_box += '</div>';
+                        var subCategory_box = '';
+                        if (subCategories[i].showOnMenu == 1) {
+                            subCategory_box += '<div id="subcategory_box_' + subCategories[i].id + '" class="bg_darkblue pt-2 pb-2 pr-2 pl-1 mr-2 border_around_radius subcategory_box" style="width: 200px; height: 60px; cursor: pointer; float: left; display: flex; flex: 0 0 200px;" onclick="selectSubCategoryBox(' + subCategories[i].id + ', ' + JSON.stringify(subCategories[i]).replace(/"/g, '&quot;') + ')">';
+                        } else if (subCategories[i].showOnMenu == 0) {
+                            subCategory_box += '<div id="subcategory_box_' + subCategories[i].id + '" class="bg_darkblue pt-2 pb-2 pr-2 pl-1 mr-2 border_around_radius subcategory_box disabled" style="width: 200px; height: 60px; cursor: pointer; float: left; display: flex; flex: 0 0 200px;" onclick="selectSubCategoryBox(' + subCategories[i].id + ', ' + JSON.stringify(subCategories[i]).replace(/"/g, '&quot;') + ')">';
+                        }
+                        subCategory_box += '<div id="title_subcategory_' + subCategories[i].id + '" class="mt-2 mb-2 ml-3" style="overflow: hidden; white-space: nowrap; text-overflow: ellipsis;">';
+                            subCategory_box += '<span class="fs_18">' + subCategories[i].title + '</span>'
+                        subCategory_box += '</div>';
+                        // subCategory_box += '<div class="mt-3 mb-3 ml-3 pb-3">';
+                        //     subCategory_box += '<div id="status_subcategory_' + subCategories[i].id + '" status-attr=' + subCategories[i].showOnMenu + ' class="mr-2" style="width: 15px; height: 15px; background: blue; border: 1px solid #fff; border-radius: 2px; float: left" onclick="changeSubCategoryStatus(' + subCategories[i].id + ')"></div>'
+                        //     subCategory_box += '<div class="text-truncate" style="float: left; line-height: 15px"><span id="status_subcategory_label_disable_' + subCategories[i].id + '">Disabilita categoria</span><span class="d-none" id="status_subcategory_label_able_' + subCategories[i].id + '">Abilita categoria</span></div>'
+                        // subCategory_box += '</div>';
+                        subCategory_box += '</div>';
 
                         $('#subCategories_list').append(subCategory_box);
                     }
